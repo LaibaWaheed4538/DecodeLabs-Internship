@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b191d">
+
+    <meta name="description" content="Explore remarkable artifacts, historic discoveries and extraordinary stories at Curio Museum.">
+
+    <title>My Collection | Curio Museum</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/collection.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/collection.js" defer></script>
+</head>
+
+<body class="collection-page">
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+
+            <a class="brand" href="index.html" aria-label="Curio Museum home">
+                CURIO<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="primary-navigation"
+                 id="primary-navigation"
+                 aria-label="Main navigation">
+
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="discover.html">Discover</a>
+                <a class="nav-link" href="exhibit.html">Exhibits</a>
+                <a class="nav-link" href="timeline.html">Timeline</a>
+                <a class="nav-link" href="challenge.html">Challenge</a>
+                <a class="nav-link is-active"
+                   href="collection.html"
+                   aria-current="page">Collection</a>
+                <a class="nav-link" href="about.html">About</a>
+
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-button search-toggle"
+                        type="button"
+                        data-search-toggle
+                        aria-label="Toggle search"
+                        aria-controls="site-search"
+                        aria-expanded="false">
+                    <span aria-hidden="true">⌕</span>
+                </button>
+
+                <button class="icon-button menu-toggle"
+                        type="button"
+                        data-menu-toggle
+                        aria-label="Toggle navigation"
+                        aria-controls="primary-navigation"
+                        aria-expanded="false">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="header-search" id="site-search" hidden>
+            <form class="header-search-form"
+                  action="discover.html"
+                  method="get">
+
+                <label class="visually-hidden" for="collection-search">
+                    Search discoveries
+                </label>
+
+                <input id="collection-search"
+                       type="search"
+                       name="q"
+                       placeholder="Search discoveries...">
+
+                <button class="search-submit" type="submit">
+                    Search
+                </button>
+            </form>
+        </div>
+    </header>
+
+
+    <main id="main-content">
+
+        <!-- Hero -->
+        <section class="collection-hero">
+
+            <div class="collection-hero-content">
+
+                <p class="collection-eyebrow">
+                    YOUR PERSONAL ARCHIVE
+                </p>
+
+                <h1>
+                    Wonder, <em>remembered.</em>
+                </h1>
+
+                <p class="collection-hero-description">
+                    A personal space for the discoveries that stay
+                    with you. Explore remarkable objects, forgotten
+                    stories and the wonders of our world.
+                </p>
+
+                <a class="collection-primary-link"
+                   href="discover.html">
+                    Explore the museum <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+            <div class="collection-hero-image"
+                 role="img"
+                 aria-label="Ancient artifacts and historical objects in a museum">
+            </div>
+
+        </section>
+
+
+        <!-- Collection -->
+        <section class="collection-section"
+                 aria-labelledby="collection-heading">
+
+            <div class="collection-section-header">
+
+                <div>
+                    <p class="collection-eyebrow">YOUR DISCOVERY SPACE</p>
+
+                    <h2 id="collection-heading">
+                        Saved <em>discoveries</em>
+                    </h2>
+
+                    <p class="collection-section-description">
+                        Keep your favourite museum discoveries together.
+                    </p>
+                </div>
+
+                <a class="collection-browse-link" href="discover.html">
+                    Find more <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+
+            <!-- Filters -->
+            <div class="collection-toolbar">
+
+                <div class="collection-tabs"
+                     role="group"
+                     aria-label="Filter saved discoveries">
+
+                    <button class="collection-filter is-active"
+                            type="button"
+                            data-collection-filter="all"
+                            aria-pressed="true">
+                        All
+                    </button>
+
+                    <button class="collection-filter"
+                            type="button"
+                            data-collection-filter="history"
+                            aria-pressed="false">
+                        History
+                    </button>
+
+                    <button class="collection-filter"
+                            type="button"
+                            data-collection-filter="science"
+                            aria-pressed="false">
+                        Science
+                    </button>
+
+                    <button class="collection-filter"
+                            type="button"
+                            data-collection-filter="art"
+                            aria-pressed="false">
+                        Art & Culture
+                    </button>
+
+                </div>
+
+                <label class="collection-sort-label" for="collection-sort">
+                    Sort by
+
+                    <select id="collection-sort">
+                        <option value="default">Featured</option>
+                        <option value="title">Title A–Z</option>
+                        <option value="category">Category</option>
+                    </select>
+                </label>
+
+            </div>
+
+
+            <!-- Discovery cards -->
+            <div class="collection-grid" id="collection-grid">
+
+                <article class="collection-card"
+                         data-collection-card
+                         data-category="history"
+                         data-title="The Rosetta Stone">
+
+                    <a class="collection-card-image"
+                       href="exhibit.html?id=rosetta-stone">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1566127992631-137a642a90f4?auto=format&amp;fit=crop&amp;w=850&amp;q=80"
+                            alt="Historical artifacts displayed in a museum"
+                            loading="lazy"
+                            width="850"
+                            height="650">
+
+                        <span class="collection-card-category">HISTORY</span>
+                    </a>
+
+                    <div class="collection-card-content">
+
+                        <p class="collection-card-meta">
+                            ANCIENT CIVILIZATIONS
+                        </p>
+
+                        <h3>
+                            <a href="exhibit.html?id=rosetta-stone">
+                                The Rosetta Stone
+                            </a>
+                        </h3>
+
+                        <p class="collection-card-description">
+                            Discover the inscription that helped
+                            scholars understand ancient Egyptian writing.
+                        </p>
+
+                        <div class="collection-card-footer">
+                            <a href="exhibit.html?id=rosetta-stone">
+                                Explore exhibit <span aria-hidden="true">↗</span>
+                            </a>
+
+                            <button class="collection-save-button is-saved"
+                                    type="button"
+                                    data-save-item="rosetta-stone"
+                                    aria-label="Remove The Rosetta Stone from saved items"
+                                    aria-pressed="true">
+                                ♥
+                            </button>
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <article class="collection-card"
+                         data-collection-card
+                         data-category="science"
+                         data-title="The Wonders of Space">
+
+                    <a class="collection-card-image"
+                       href="exhibit.html?id=wonders-of-space">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&amp;fit=crop&amp;w=850&amp;q=80"
+                            alt="A colourful nebula among distant stars"
+                            loading="lazy"
+                            width="850"
+                            height="650">
+
+                        <span class="collection-card-category">SCIENCE</span>
+                    </a>
+
+                    <div class="collection-card-content">
+
+                        <p class="collection-card-meta">
+                            BEYOND OUR WORLD
+                        </p>
+
+                        <h3>
+                            <a href="exhibit.html?id=wonders-of-space">
+                                The Wonders of Space
+                            </a>
+                        </h3>
+
+                        <p class="collection-card-description">
+                            Journey through distant galaxies and
+                            explore the mysteries of the universe.
+                        </p>
+
+                        <div class="collection-card-footer">
+                            <a href="exhibit.html?id=wonders-of-space">
+                                Explore exhibit <span aria-hidden="true">↗</span>
+                            </a>
+
+                            <button class="collection-save-button is-saved"
+                                    type="button"
+                                    data-save-item="wonders-of-space"
+                                    aria-label="Remove The Wonders of Space from saved items"
+                                    aria-pressed="true">
+                                ♥
+                            </button>
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <article class="collection-card"
+                         data-collection-card
+                         data-category="art"
+                         data-title="The Art of Antiquity">
+
+                    <a class="collection-card-image"
+                       href="exhibit.html?id=art-of-antiquity">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&amp;fit=crop&amp;w=850&amp;q=80"
+                            alt="Classical artwork displayed in a gallery"
+                            loading="lazy"
+                            width="850"
+                            height="650">
+
+                        <span class="collection-card-category">
+                            ART & CULTURE
+                        </span>
+                    </a>
+
+                    <div class="collection-card-content">
+
+                        <p class="collection-card-meta">
+                            HUMAN CREATIVITY
+                        </p>
+
+                        <h3>
+                            <a href="exhibit.html?id=art-of-antiquity">
+                                The Art of Antiquity
+                            </a>
+                        </h3>
+
+                        <p class="collection-card-description">
+                            Explore the artistic traditions that
+                            shaped civilizations across the ages.
+                        </p>
+
+                        <div class="collection-card-footer">
+                            <a href="exhibit.html?id=art-of-antiquity">
+                                Explore exhibit <span aria-hidden="true">↗</span>
+                            </a>
+
+                            <button class="collection-save-button is-saved"
+                                    type="button"
+                                    data-save-item="art-of-antiquity"
+                                    aria-label="Remove The Art of Antiquity from saved items"
+                                    aria-pressed="true">
+                                ♥
+                            </button>
+                        </div>
+
+                    </div>
+                </article>
+
+            </div>
+
+
+            <!-- Empty state -->
+            <div class="collection-empty" id="collection-empty" hidden>
+
+                <div class="collection-empty-icon" aria-hidden="true">✧</div>
+
+                <h3 id="collection-empty-title">
+                    Your collection is waiting.
+                </h3>
+
+                <p id="collection-empty-description">
+                    Visit Discover to find and save something extraordinary.
+                </p>
+
+                <a class="collection-primary-link" href="discover.html">
+                    Discover exhibits <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Closing section -->
+        <section class="collection-callout">
+
+            <p class="collection-eyebrow">STAY CURIOUS</p>
+
+            <h2>
+                Every discovery<br>
+                <em>opens another door.</em>
+            </h2>
+
+            <p>
+                Continue exploring the stories, objects and ideas
+                that make our world extraordinary.
+            </p>
+
+            <a class="collection-primary-link" href="discover.html">
+                Continue exploring <span aria-hidden="true">↗</span>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand-column">
+                <a class="brand footer-brand" href="index.html">
+                    CURIO<span class="brand-dot">.</span>
+                </a>
+
+                <p class="footer-description">
+                    A digital museum for the endlessly curious.
+                    Discover the stories behind our world.
+                </p>
+            </div>
+
+            <div class="footer-links-column">
+                <h2 class="footer-heading">Explore</h2>
+
+                <ul class="footer-links">
+                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="challenge.html">Challenge</a></li>
+                    <li><a href="collection.html">Collection</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h2 class="footer-heading">Curio</h2>
+
+                <ul class="footer-links">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; <span data-current-year>2026</span>
+                Curio Digital Museum.
+            </p>
+
+            <p class="footer-note">Made for the endlessly curious.</p>
+        </div>
+
+    </footer>
+
+</body>
+</html>

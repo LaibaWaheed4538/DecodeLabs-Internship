@@ -1,0 +1,665 @@
+
+/* =========================================
+   CURIO MUSEUM — COLLECTION PAGE
+   ========================================= */
+
+.collection-page {
+    --collection-bg: #09171c;
+    --collection-panel: #10252b;
+    --collection-gold: #dcb77a;
+    --collection-cream: #f4efe5;
+    --collection-muted: #b5c0bc;
+    --collection-border: rgba(220, 183, 122, 0.24);
+
+    color: var(--collection-cream);
+    background: var(--collection-bg);
+    font-family: "DM Sans", sans-serif;
+    overflow-wrap: anywhere;
+}
+
+.collection-page *,
+.collection-page *::before,
+.collection-page *::after {
+    box-sizing: border-box;
+}
+
+.collection-page img {
+    display: block;
+    max-width: 100%;
+}
+
+.collection-page a {
+    color: inherit;
+}
+
+.collection-page button,
+.collection-page select {
+    font: inherit;
+}
+
+.collection-page [hidden] {
+    display: none !important;
+}
+
+.collection-page button:focus-visible,
+.collection-page a:focus-visible,
+.collection-page select:focus-visible {
+    outline: 2px solid var(--collection-gold);
+    outline-offset: 4px;
+}
+
+/* HERO — FULL BACKGROUND IMAGE */
+
+.collection-page .collection-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: clamp(580px, 82vh, 820px);
+    padding: clamp(60px, 9vw, 120px) clamp(22px, 8vw, 115px);
+    overflow: hidden;
+    background: #09171c;
+    border-bottom: 1px solid var(--collection-border);
+}
+
+/* The image covers the entire hero */
+
+.collection-page .collection-hero-image {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background-image: url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=2000&q=85");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 0;
+    box-shadow: none;
+    animation: collection-image-enter 1.3s ease both;
+}
+
+/* Cinematic overlay */
+
+.collection-page .collection-hero::before {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 15, 20, 0.94) 0%,
+            rgba(4, 15, 20, 0.80) 38%,
+            rgba(4, 15, 20, 0.38) 72%,
+            rgba(4, 15, 20, 0.28) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(4, 15, 20, 0.65),
+            transparent 45%,
+            rgba(4, 15, 20, 0.12)
+        );
+}
+
+.collection-page .collection-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 710px;
+    animation: collection-content-enter 0.9s 0.15s ease both;
+}
+
+.collection-page .collection-eyebrow {
+    margin: 0 0 18px;
+    color: var(--collection-gold);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.19em;
+    line-height: 1.8;
+}
+
+.collection-page .collection-hero h1 {
+    margin: 0;
+    color: #fffaf0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(3rem, 6.5vw, 6rem);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.collection-page .collection-hero h1 em,
+.collection-page .collection-section-header h2 em,
+.collection-page .collection-callout h2 em {
+    color: var(--collection-gold);
+    font-weight: 400;
+}
+
+.collection-page .collection-hero-description {
+    max-width: 500px;
+    margin: 25px 0 29px;
+    color: #e0e5e0;
+    font-size: 0.96rem;
+    line-height: 1.9;
+}
+
+.collection-page .collection-primary-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 48px;
+    max-width: 100%;
+    padding: 13px 21px;
+    color: #111b1c;
+    background: var(--collection-gold);
+    border: 1px solid var(--collection-gold);
+    border-radius: 3px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.collection-page .collection-primary-link:hover {
+    color: #111b1c;
+    background: #f0d6a7;
+    transform: translateY(-3px);
+    box-shadow: 0 9px 26px rgba(220, 183, 122, 0.16);
+}
+
+/* COLLECTION SECTION */
+
+.collection-page .collection-section {
+    width: 100%;
+    max-width: 1500px;
+    margin-inline: auto;
+    padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 70px);
+}
+
+.collection-page .collection-section-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 36px;
+}
+
+.collection-page .collection-section-header h2,
+.collection-page .collection-callout h2 {
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.1rem, 4.5vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+.collection-page .collection-section-description {
+    margin: 14px 0 0;
+    color: var(--collection-muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.collection-page .collection-browse-link {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 7px;
+    color: var(--collection-gold);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.collection-page .collection-browse-link:hover {
+    gap: 15px;
+    color: var(--collection-cream);
+}
+
+/* FILTERS AND SORTING */
+
+.collection-page .collection-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--collection-border);
+}
+
+.collection-page .collection-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.collection-page .collection-filter {
+    min-height: 38px;
+    padding: 9px 14px;
+    color: var(--collection-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.collection-page .collection-filter:hover,
+.collection-page .collection-filter.is-active {
+    color: var(--collection-gold);
+    background: rgba(220, 183, 122, 0.08);
+    border-color: var(--collection-border);
+}
+
+.collection-page .collection-sort-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--collection-muted);
+    font-size: 0.8rem;
+}
+
+.collection-page .collection-sort-label select {
+    max-width: 100%;
+    padding: 9px 12px;
+    color: var(--collection-cream);
+    background: var(--collection-panel);
+    border: 1px solid var(--collection-border);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.collection-page .collection-sort-label select option {
+    color: var(--collection-cream);
+    background: var(--collection-panel);
+}
+
+/* DISCOVERY CARDS */
+
+.collection-page .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 25px;
+}
+
+.collection-page .collection-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: var(--collection-panel);
+    border: 1px solid rgba(220, 183, 122, 0.15);
+    transition:
+        opacity 0.35s ease,
+        transform 0.4s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.collection-page .collection-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(220, 183, 122, 0.48);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+}
+
+.collection-page .collection-card-image {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #172a2e;
+}
+
+.collection-page .collection-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.collection-page .collection-card:hover .collection-card-image img {
+    transform: scale(1.055);
+}
+
+.collection-page .collection-card-category {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    padding: 7px 10px;
+    color: #f5e4c4;
+    background: rgba(6, 20, 24, 0.9);
+    border: 1px solid var(--collection-border);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+}
+
+.collection-page .collection-card-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 22px;
+}
+
+.collection-page .collection-card-meta {
+    margin: 0 0 12px;
+    color: var(--collection-gold);
+    font-size: 0.63rem;
+    letter-spacing: 0.12em;
+    line-height: 1.7;
+}
+
+.collection-page .collection-card h3 {
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.collection-page .collection-card h3 a {
+    text-decoration: none;
+}
+
+.collection-page .collection-card h3 a:hover {
+    color: var(--collection-gold);
+}
+
+.collection-page .collection-card-description {
+    margin: 12px 0 20px;
+    color: var(--collection-muted);
+    font-size: 0.84rem;
+    line-height: 1.8;
+}
+
+.collection-page .collection-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.collection-page .collection-card-footer > a {
+    color: var(--collection-gold);
+    font-size: 0.78rem;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.collection-page .collection-card-footer > a:hover {
+    color: var(--collection-cream);
+}
+
+.collection-page .collection-save-button {
+    display: grid;
+    flex: 0 0 38px;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    color: var(--collection-muted);
+    background: transparent;
+    border: 1px solid var(--collection-border);
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.collection-page .collection-save-button.is-saved {
+    color: var(--collection-gold);
+}
+
+.collection-page .collection-save-button:hover {
+    color: #09171c;
+    background: var(--collection-gold);
+    transform: scale(1.06);
+}
+
+/* EMPTY STATE */
+
+.collection-page .collection-empty {
+    padding: 60px 20px;
+    text-align: center;
+    background: var(--collection-panel);
+    border: 1px solid var(--collection-border);
+    animation: collection-content-enter 0.45s ease both;
+}
+
+.collection-page .collection-empty-icon {
+    margin-bottom: 16px;
+    color: var(--collection-gold);
+    font-size: 2.5rem;
+}
+
+.collection-page .collection-empty h3 {
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.collection-page .collection-empty p {
+    margin: 14px 0 24px;
+    color: var(--collection-muted);
+    line-height: 1.8;
+}
+
+/* CLOSING SECTION */
+
+.collection-page .collection-callout {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(70px, 9vw, 115px) 22px;
+    overflow: hidden;
+    text-align: center;
+    background:
+        linear-gradient(
+            rgba(6, 19, 24, 0.88),
+            rgba(6, 19, 24, 0.94)
+        ),
+        url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1600&q=85")
+        center / cover no-repeat,
+        #09171c;
+    border-top: 1px solid var(--collection-border);
+}
+
+.collection-page .collection-callout > p:not(.collection-eyebrow) {
+    max-width: 570px;
+    margin: 20px auto 27px;
+    color: var(--collection-muted);
+    font-size: 0.9rem;
+    line-height: 1.9;
+}
+
+/* REVEAL ANIMATIONS */
+
+@keyframes collection-image-enter {
+    from {
+        opacity: 0.6;
+        transform: scale(1.055);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes collection-content-enter {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.collection-page .collection-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.collection-page .collection-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+    .collection-page .collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .collection-page .collection-hero {
+        min-height: 650px;
+        padding-inline: 6%;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .collection-page .collection-hero {
+        min-height: 680px;
+        padding: 70px 22px;
+    }
+
+    .collection-page .collection-hero-image {
+        background-position: 58% center;
+    }
+
+    .collection-page .collection-hero::before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 15, 20, 0.88),
+                rgba(4, 15, 20, 0.55)
+            ),
+            linear-gradient(
+                0deg,
+                rgba(4, 15, 20, 0.7),
+                transparent
+            );
+    }
+
+    .collection-page .collection-hero h1 {
+        font-size: clamp(2.7rem, 10vw, 4rem);
+    }
+
+    .collection-page .collection-hero-description {
+        font-size: 0.9rem;
+    }
+
+    .collection-page .collection-section {
+        padding: 60px 16px;
+    }
+
+    .collection-page .collection-section-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    .collection-page .collection-section-header h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .collection-page .collection-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .collection-page .collection-tabs {
+        width: 100%;
+        gap: 5px;
+    }
+
+    .collection-page .collection-filter {
+        padding-inline: 10px;
+        font-size: 0.73rem;
+    }
+
+    .collection-page .collection-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .collection-page .collection-card-content {
+        padding: 20px;
+    }
+
+    .collection-page .collection-callout {
+        padding-inline: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .collection-page .collection-hero {
+        padding-inline: 17px;
+    }
+
+    .collection-page .collection-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .collection-page .collection-filter {
+        padding-inline: 7px;
+        font-size: 0.68rem;
+    }
+
+    .collection-page .collection-card-content {
+        padding: 16px;
+    }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .collection-page .collection-hero-image,
+    .collection-page .collection-hero-content,
+    .collection-page .collection-reveal {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+        transition: none !important;
+    }
+
+    .collection-page *,
+    .collection-page *::before,
+    .collection-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

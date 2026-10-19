@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Curio, a digital museum of extraordinary discoveries, ancient civilizations, historical artifacts, science, nature and human imagination.">
+    <meta name="theme-color" content="#07141b">
+
+    <title>Curio — The Museum of Everything Worth Discovering</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Shared JavaScript -->
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body class="home-page">
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+
+            <a class="brand" href="index.html" aria-label="Curio home">
+                CURIO<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="primary-navigation"
+                 id="primary-navigation"
+                 aria-label="Main navigation">
+
+                <a class="nav-link is-active"
+                   href="index.html"
+                   aria-current="page">Home</a>
+
+                <a class="nav-link" href="discover.html">Discover</a>
+                <a class="nav-link" href="timeline.html">Timeline</a>
+                <a class="nav-link" href="challenge.html">Challenge</a>
+                <a class="nav-link" href="collection.html">Collection</a>
+                <a class="nav-link" href="about.html">About</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button class="icon-button search-toggle"
+                        type="button"
+                        aria-label="Open search"
+                        aria-controls="site-search"
+                        aria-expanded="false"
+                        data-search-toggle>
+
+                    <svg viewBox="0 0 24 24"
+                         width="23"
+                         height="23"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.6"
+                         stroke-linecap="round"
+                         aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="7.2"></circle>
+                        <path d="m16.2 16.2 4.4 4.4"></path>
+                    </svg>
+                </button>
+
+                <button class="icon-button menu-toggle"
+                        type="button"
+                        aria-label="Open navigation menu"
+                        aria-controls="primary-navigation"
+                        aria-expanded="false"
+                        data-menu-toggle>
+
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- SEARCH PANEL -->
+        <div class="header-search" id="site-search" hidden>
+            <form class="header-search-form"
+                  action="discover.html"
+                  method="get">
+
+                <label class="visually-hidden"
+                       for="header-search-input">
+                    Search museum discoveries
+                </label>
+
+                <input
+                    id="header-search-input"
+                    name="q"
+                    type="search"
+                    placeholder="Search artifacts, history, science..."
+                    autocomplete="off"
+                >
+
+                <button class="search-submit" type="submit">
+                    Explore
+                </button>
+            </form>
+        </div>
+    </header>
+
+
+    <main id="main-content">
+
+        <!-- HERO SECTION -->
+        <section class="hero-section" aria-labelledby="hero-title">
+
+            <div class="hero-background" aria-hidden="true">
+                <img
+                    class="hero-background-image"
+                    src="assets/Celestial%20Ruins%20and%20Marble%20Apollo.png"
+                    alt=""
+                    fetchpriority="high"
+                >
+            </div>
+
+            <div class="hero-overlay" aria-hidden="true"></div>
+
+            <div class="hero-content">
+
+                <p class="eyebrow hero-eyebrow" data-reveal>
+                    The museum of everything worth discovering
+                </p>
+
+                <h1 class="hero-title" id="hero-title" data-reveal>
+                    The Museum<br>
+                    of Everything<br>
+                    Worth <span class="text-accent">Discovering.</span>
+                </h1>
+
+                <p class="hero-description" data-reveal>
+                    Step into a world of extraordinary discoveries,
+                    from ancient civilizations to modern innovations.
+                    Every object holds a story waiting to be uncovered.
+                </p>
+
+                <a class="button button-primary hero-button"
+                   href="discover.html">
+
+                    <span>Start Exploring</span>
+
+                    <svg viewBox="0 0 24 24"
+                         width="20"
+                         height="20"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.7"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true">
+                        <path d="M4 12h15"></path>
+                        <path d="m13 5 7 7-7 7"></path>
+                    </svg>
+                </a>
+
+            </div>
+
+            <!-- Decorative rings only -->
+            <div class="hero-artwork" aria-hidden="true">
+                <div class="hero-orbit hero-orbit-one"></div>
+                <div class="hero-orbit hero-orbit-two"></div>
+                <span class="orbit-point orbit-point-one"></span>
+                <span class="orbit-point orbit-point-two"></span>
+            </div>
+
+            <div class="hero-bottom">
+
+                <a class="scroll-indicator" href="#featured-discoveries">
+                    <span class="scroll-label">Scroll to discover</span>
+                    <span class="scroll-line" aria-hidden="true"></span>
+                </a>
+
+                <div class="hero-pagination" aria-label="Introduction">
+                    <span class="pagination-current">01</span>
+                    <span class="pagination-divider">/</span>
+                    <span class="pagination-total">07</span>
+
+                    <p>
+                        A journey through<br>
+                        human curiosity
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- FEATURED DISCOVERIES -->
+        <section class="section featured-section"
+                 id="featured-discoveries"
+                 aria-labelledby="featured-title">
+
+            <div class="section-heading" data-reveal>
+
+                <div>
+                    <p class="eyebrow">Collected wonders / 01</p>
+
+                    <h2 class="section-title" id="featured-title">
+                        Featured <span class="text-accent">Discoveries</span>
+                    </h2>
+                </div>
+
+                <a class="text-link" href="discover.html">
+                    <span>View all discoveries</span>
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+
+            <div class="featured-grid">
+
+                <!-- Discovery 1 -->
+                <article class="exhibit-card exhibit-card-large" data-reveal>
+
+                    <a class="exhibit-card-image"
+                       href="exhibit.html?id=tutankhamun"
+                       aria-label="Explore Tutankhamun's Tomb">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1767938072548-112727a13266?auto=format&fit=crop&w=1000&q=85"
+                            alt="Golden funerary mask in an Egyptian museum"
+                            loading="lazy"
+                        >
+
+                        <span class="image-index">01 / 06</span>
+                    </a>
+
+                    <div class="exhibit-card-body">
+                        <p class="exhibit-category">Ancient Civilizations</p>
+
+                        <h3>
+                            <a href="exhibit.html?id=tutankhamun">
+                                Tutankhamun's Tomb
+                            </a>
+                        </h3>
+
+                        <p class="exhibit-meta">
+                            Ancient Egypt <span>·</span> 1922 CE
+                        </p>
+
+                        <a class="card-arrow"
+                           href="exhibit.html?id=tutankhamun"
+                           aria-label="Read about Tutankhamun's Tomb">↗</a>
+                    </div>
+                </article>
+
+
+                <!-- Discovery 2 -->
+                <article class="exhibit-card" data-reveal>
+
+                    <a class="exhibit-card-image"
+                       href="exhibit.html?id=hubble-telescope"
+                       aria-label="Explore the Hubble Space Telescope">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&q=85"
+                            alt="Planet Earth viewed from space"
+                            loading="lazy"
+                        >
+
+                        <span class="image-index">02 / 06</span>
+                    </a>
+
+                    <div class="exhibit-card-body">
+                        <p class="exhibit-category">Space &amp; Technology</p>
+
+                        <h3>
+                            <a href="exhibit.html?id=hubble-telescope">
+                                The Hubble Telescope
+                            </a>
+                        </h3>
+
+                        <p class="exhibit-meta">
+                            Modern Science <span>·</span> 1990 CE
+                        </p>
+
+                        <a class="card-arrow"
+                           href="exhibit.html?id=hubble-telescope"
+                           aria-label="Read about the Hubble Telescope">↗</a>
+                    </div>
+                </article>
+
+
+                <!-- Discovery 3 -->
+                <article class="exhibit-card" data-reveal>
+
+                    <a class="exhibit-card-image"
+                       href="exhibit.html?id=rosetta-stone"
+                       aria-label="Explore the Rosetta Stone">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85"
+                            alt="Historical objects and artifacts in a museum"
+                            loading="lazy"
+                        >
+
+                        <span class="image-index">03 / 06</span>
+                    </a>
+
+                    <div class="exhibit-card-body">
+                        <p class="exhibit-category">History &amp; Language</p>
+
+                        <h3>
+                            <a href="exhibit.html?id=rosetta-stone">
+                                The Rosetta Stone
+                            </a>
+                        </h3>
+
+                        <p class="exhibit-meta">
+                            Ancient Egypt <span>·</span> 196 BCE
+                        </p>
+
+                        <a class="card-arrow"
+                           href="exhibit.html?id=rosetta-stone"
+                           aria-label="Read about the Rosetta Stone">↗</a>
+                    </div>
+                </article>
+
+
+                <!-- Discovery 4 -->
+                <article class="exhibit-card" data-reveal>
+
+                    <a class="exhibit-card-image"
+                       href="exhibit.html?id=stonehenge"
+                       aria-label="Explore Stonehenge">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1599833975787-5c143f373c30?auto=format&fit=crop&w=900&q=85"
+                            alt="Ancient stone monument under an open sky"
+                            loading="lazy"
+                        >
+
+                        <span class="image-index">04 / 06</span>
+                    </a>
+
+                    <div class="exhibit-card-body">
+                        <p class="exhibit-category">Ancient Architecture</p>
+
+                        <h3>
+                            <a href="exhibit.html?id=stonehenge">
+                                Stonehenge
+                            </a>
+                        </h3>
+
+                        <p class="exhibit-meta">
+                            Prehistoric Britain <span>·</span> c. 3000 BCE
+                        </p>
+
+                        <a class="card-arrow"
+                           href="exhibit.html?id=stonehenge"
+                           aria-label="Read about Stonehenge">↗</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- TIMELINE PREVIEW -->
+        <section class="timeline-preview"
+                 aria-labelledby="timeline-title">
+
+            <div class="timeline-preview-content" data-reveal>
+
+                <p class="eyebrow">Across the ages / 02</p>
+
+                <h2 class="section-title" id="timeline-title">
+                    The world,<br>
+                    <span class="text-accent">through time.</span>
+                </h2>
+
+                <p class="section-description">
+                    From the rise of ancient civilizations to discoveries
+                    that changed modern life, explore the milestones
+                    that shaped our world.
+                </p>
+
+                <a class="button button-outline" href="timeline.html">
+                    Explore the timeline
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+
+            <div class="timeline-preview-visual" data-reveal>
+
+                <div class="timeline-track" aria-hidden="true">
+                    <span class="timeline-track-line"></span>
+                    <span class="timeline-node timeline-node-one"></span>
+                    <span class="timeline-node timeline-node-two"></span>
+                    <span class="timeline-node timeline-node-three"></span>
+                    <span class="timeline-node timeline-node-four"></span>
+                    <span class="timeline-node timeline-node-five"></span>
+                </div>
+
+                <div class="timeline-milestones">
+
+                    <a class="timeline-milestone"
+                       href="timeline.html?period=ancient">
+                        <span class="milestone-year">3000 BCE</span>
+                        <span class="milestone-name">Ancient World</span>
+                    </a>
+
+                    <a class="timeline-milestone"
+                       href="timeline.html?period=medieval">
+                        <span class="milestone-year">500 CE</span>
+                        <span class="milestone-name">Middle Ages</span>
+                    </a>
+
+                    <a class="timeline-milestone"
+                       href="timeline.html?period=renaissance">
+                        <span class="milestone-year">1400 CE</span>
+                        <span class="milestone-name">Renaissance</span>
+                    </a>
+
+                    <a class="timeline-milestone"
+                       href="timeline.html?period=industrial">
+                        <span class="milestone-year">1760 CE</span>
+                        <span class="milestone-name">Industrial Age</span>
+                    </a>
+
+                    <a class="timeline-milestone"
+                       href="timeline.html?period=modern">
+                        <span class="milestone-year">1900 CE</span>
+                        <span class="milestone-name">Modern Era</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- KNOWLEDGE CHALLENGE -->
+        <section class="challenge-preview"
+                 aria-labelledby="challenge-title">
+
+            <div class="challenge-preview-image" aria-hidden="true">
+                <img
+                    src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1500&q=85"
+                    alt=""
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="challenge-preview-overlay" aria-hidden="true"></div>
+
+            <div class="challenge-preview-content" data-reveal>
+
+                <p class="eyebrow">Curiosity, put to the test / 03</p>
+
+                <h2 class="section-title" id="challenge-title">
+                    How much do you
+                    <span class="text-accent">really know?</span>
+                </h2>
+
+                <p class="section-description">
+                    Test your knowledge of history, science, ancient
+                    civilizations and the mysteries of our universe.
+                    Every question is another opportunity to learn.
+                </p>
+
+                <a class="button button-primary" href="challenge.html">
+                    Begin the challenge
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            <span class="challenge-index" aria-hidden="true">03</span>
+        </section>
+
+
+        <!-- CURATED FACTS -->
+        <section class="section facts-section"
+                 aria-labelledby="facts-title">
+
+            <div class="section-heading" data-reveal>
+
+                <div>
+                    <p class="eyebrow">Small details, big wonders / 04</p>
+
+                    <h2 class="section-title" id="facts-title">
+                        Curated <span class="text-accent">Facts</span>
+                    </h2>
+                </div>
+
+                <a class="text-link" href="discover.html">
+                    <span>Discover more</span>
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+
+            <div class="facts-grid">
+
+                <article class="fact-card" data-reveal>
+                    <div class="fact-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=700&q=80"
+                            alt="Light bulb representing human invention"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <p class="fact-category">Inventions</p>
+                    <h3>A Brighter Idea</h3>
+
+                    <p>
+                        Electric lighting transformed how people lived,
+                        worked and experienced the night.
+                    </p>
+                </article>
+
+                <article class="fact-card" data-reveal>
+                    <div class="fact-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=700&q=80"
+                            alt="Sunlight passing through a green forest"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <p class="fact-category">Nature</p>
+                    <h3>A Living World</h3>
+
+                    <p>
+                        Forest ecosystems connect countless species
+                        through intricate relationships.
+                    </p>
+                </article>
+
+                <article class="fact-card" data-reveal>
+                    <div class="fact-image">
+                        <img
+                            src="assets/Golden%20Pharaoh%20Mask%20in%20a%20Museum%20of%20Shadows.png"
+                            alt="Ancient Egyptian monuments and desert landscape"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <p class="fact-category">Civilizations</p>
+                    <h3>Built to Endure</h3>
+
+                    <p>
+                        Ancient monuments preserve clues about the
+                        engineering and cultures of earlier societies.
+                    </p>
+                </article>
+
+                <article class="fact-card" data-reveal>
+                    <div class="fact-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=700&q=80"
+                            alt="A distant galaxy filled with stars"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <p class="fact-category">Space &amp; Science</p>
+                    <h3>Beyond Our World</h3>
+
+                    <p>
+                        Observing distant galaxies helps scientists
+                        investigate the history of the universe.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- PERSONAL COLLECTION -->
+        <section class="collection-invitation"
+                 aria-labelledby="collection-title">
+
+            <div class="collection-invitation-content" data-reveal>
+
+                <p class="eyebrow">Your discoveries, your story / 05</p>
+
+                <h2 class="section-title" id="collection-title">
+                    Keep what <span class="text-accent">moves you.</span>
+                </h2>
+
+                <p class="section-description">
+                    Save the exhibits that inspire you and create
+                    a personal collection of discoveries worth revisiting.
+                </p>
+
+                <a class="button button-primary" href="collection.html">
+                    Explore my collection
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+
+            <div class="collection-decoration" aria-hidden="true">
+                <span class="collection-decoration-number">∞</span>
+                <span class="collection-decoration-label">
+                    NEVER STOP DISCOVERING
+                </span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand-column">
+
+                <a class="brand footer-brand" href="index.html">
+                    CURIO<span class="brand-dot">.</span>
+                </a>
+
+                <p class="footer-description">
+                    The museum of everything worth discovering.
+                    A digital journey through history, science,
+                    nature and human imagination.
+                </p>
+            </div>
+
+            <div class="footer-links-column">
+
+                <h2 class="footer-heading">Explore</h2>
+
+                <ul class="footer-links">
+                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="challenge.html">Knowledge Challenge</a></li>
+                    <li><a href="collection.html">My Collection</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+
+                <h2 class="footer-heading">About Curio</h2>
+
+                <ul class="footer-links">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="about.html#mission">Our Mission</a></li>
+                    <li><a href="about.html#contact">Get in Touch</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter">
+
+                <h2 class="footer-heading">Stay Curious.</h2>
+
+                <p>
+                    There is always something extraordinary left
+                    to discover.
+                </p>
+
+                <a class="text-link" href="discover.html">
+                    Start exploring
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span data-current-year>2026</span>
+                Curio Digital Museum. All rights reserved.
+            </p>
+
+            <p class="footer-note">
+                Built for the endlessly curious.
+            </p>
+
+        </div>
+    </footer>
+
+</body>
+</html>

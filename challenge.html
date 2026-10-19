@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07141b">
+
+    <meta name="description"
+          content="Test your knowledge of history, science, ancient civilizations and extraordinary discoveries with the Curio Museum Knowledge Challenge.">
+
+    <title>Knowledge Challenge | Curio Museum</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/challenge.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/challenge.js" defer></script>
+</head>
+
+<body class="challenge-page">
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+
+            <a class="brand" href="index.html" aria-label="Curio home">
+                CURIO<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="primary-navigation"
+                 id="primary-navigation"
+                 aria-label="Main navigation">
+
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="discover.html">Discover</a>
+                <a class="nav-link" href="timeline.html">Timeline</a>
+                <a class="nav-link is-active"
+                   href="challenge.html"
+                   aria-current="page">Challenge</a>
+                <a class="nav-link" href="collection.html">Collection</a>
+                <a class="nav-link" href="about.html">About</a>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <button class="icon-button search-toggle"
+                        type="button"
+                        aria-label="Open search"
+                        aria-controls="site-search"
+                        aria-expanded="false"
+                        data-search-toggle>
+
+                    <svg viewBox="0 0 24 24"
+                         width="23"
+                         height="23"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.6"
+                         stroke-linecap="round"
+                         aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="7.2"></circle>
+                        <path d="m16.2 16.2 4.4 4.4"></path>
+                    </svg>
+
+                </button>
+
+                <button class="icon-button menu-toggle"
+                        type="button"
+                        aria-label="Open navigation menu"
+                        aria-controls="primary-navigation"
+                        aria-expanded="false"
+                        data-menu-toggle>
+
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+
+                </button>
+
+            </div>
+        </div>
+
+        <div class="header-search" id="site-search" hidden>
+
+            <form class="header-search-form"
+                  action="discover.html"
+                  method="get">
+
+                <label class="visually-hidden" for="header-search-input">
+                    Search museum exhibits
+                </label>
+
+                <input id="header-search-input"
+                       name="q"
+                       type="search"
+                       placeholder="Search discoveries..."
+                       autocomplete="off">
+
+                <button class="search-submit" type="submit">
+                    Explore
+                </button>
+
+            </form>
+
+        </div>
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+        <!-- CHALLENGE HERO -->
+        <section class="challenge-hero">
+
+            <div class="challenge-hero-content">
+
+                <p class="challenge-eyebrow">
+                    <span aria-hidden="true">✦</span>
+                    THE CURIO KNOWLEDGE CHALLENGE
+                </p>
+
+                <h1>
+                    Curiosity is<br>
+                    <em>your greatest</em><br>
+                    discovery.
+                </h1>
+
+                <p class="challenge-hero-description">
+                    How well do you know the world around you?
+                    Journey through ancient civilizations, scientific
+                    breakthroughs, historic inventions and remarkable
+                    discoveries.
+                </p>
+
+                <a class="challenge-start-link"
+                   href="#quiz-area">
+                    Enter the challenge
+                    <span aria-hidden="true">↘</span>
+                </a>
+
+                <div class="challenge-hero-note">
+                    <span>OBSERVE</span>
+                    <span aria-hidden="true">—</span>
+                    <span>THINK</span>
+                    <span aria-hidden="true">—</span>
+                    <span>DISCOVER</span>
+                </div>
+
+            </div>
+
+            <div class="challenge-hero-art" aria-hidden="true">
+
+                <div class="challenge-art-glow"></div>
+
+                <div class="challenge-art-orbit challenge-orbit-one"></div>
+                <div class="challenge-art-orbit challenge-orbit-two"></div>
+                <div class="challenge-art-orbit challenge-orbit-three"></div>
+
+                <div class="challenge-art-center">
+                    <span>?</span>
+                </div>
+
+                <span class="challenge-art-label">
+                    KNOWLEDGE / 001
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ SECTION -->
+        <section class="challenge-section" id="quiz-area">
+
+            <div class="challenge-section-heading">
+
+                <p class="challenge-eyebrow">
+                    YOUR JOURNEY STARTS HERE
+                </p>
+
+                <h2>
+                    Test what you know.<br>
+                    <em>Discover what you don't.</em>
+                </h2>
+
+                <p>
+                    Read each question carefully, select your answer
+                    and learn something new with every discovery.
+                </p>
+
+            </div>
+
+
+            <!-- QUIZ APPLICATION -->
+            <div class="quiz-container" id="quiz-container">
+
+                <div class="quiz-topbar">
+
+                    <div class="quiz-topic">
+                        <span class="quiz-topic-dot"></span>
+                        <span id="quiz-category">Knowledge Challenge</span>
+                    </div>
+
+                    <p class="quiz-question-number"
+                       id="quiz-question-number">
+                        Question 1
+                    </p>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+                <div class="quiz-progress-area">
+
+                    <div class="quiz-progress-track"
+                         id="quiz-progress-track"
+                         role="progressbar"
+                         aria-label="Quiz progress"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         aria-valuenow="0">
+
+                        <div class="quiz-progress-fill"
+                             id="quiz-progress-fill"></div>
+
+                    </div>
+
+                    <div class="quiz-progress-labels">
+                        <span id="quiz-progress-text">Ready to begin</span>
+                        <span id="quiz-progress-percentage">0%</span>
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION -->
+                <div class="quiz-question-area" id="quiz-question-area">
+
+                    <p class="quiz-question-kicker">
+                        QUESTION <span id="quiz-question-index">01</span>
+                    </p>
+
+                    <h3 id="quiz-question">
+                        Your first discovery is waiting.
+                    </h3>
+
+                    <p class="quiz-instruction">
+                        Select one answer to continue.
+                    </p>
+
+                </div>
+
+
+                <!-- ANSWER OPTIONS -->
+                <fieldset class="quiz-options" id="quiz-options">
+
+                    <legend class="visually-hidden">
+                        Choose your answer
+                    </legend>
+
+                    <label class="quiz-option">
+                        <input type="radio"
+                               name="quiz-answer"
+                               value="0">
+
+                        <span class="quiz-option-letter">A</span>
+                        <span class="quiz-option-text">
+                            Answer option one
+                        </span>
+
+                        <span class="quiz-option-indicator"
+                              aria-hidden="true">↗</span>
+                    </label>
+
+                    <label class="quiz-option">
+                        <input type="radio"
+                               name="quiz-answer"
+                               value="1">
+
+                        <span class="quiz-option-letter">B</span>
+                        <span class="quiz-option-text">
+                            Answer option two
+                        </span>
+
+                        <span class="quiz-option-indicator"
+                              aria-hidden="true">↗</span>
+                    </label>
+
+                    <label class="quiz-option">
+                        <input type="radio"
+                               name="quiz-answer"
+                               value="2">
+
+                        <span class="quiz-option-letter">C</span>
+                        <span class="quiz-option-text">
+                            Answer option three
+                        </span>
+
+                        <span class="quiz-option-indicator"
+                              aria-hidden="true">↗</span>
+                    </label>
+
+                    <label class="quiz-option">
+                        <input type="radio"
+                               name="quiz-answer"
+                               value="3">
+
+                        <span class="quiz-option-letter">D</span>
+                        <span class="quiz-option-text">
+                            Answer option four
+                        </span>
+
+                        <span class="quiz-option-indicator"
+                              aria-hidden="true">↗</span>
+                    </label>
+
+                </fieldset>
+
+
+                <!-- ANSWER FEEDBACK -->
+                <div class="quiz-feedback"
+                     id="quiz-feedback"
+                     aria-live="polite"
+                     hidden>
+
+                    <p class="quiz-feedback-title"
+                       id="quiz-feedback-title"></p>
+
+                    <p class="quiz-feedback-explanation"
+                       id="quiz-feedback-explanation"></p>
+
+                </div>
+
+
+                <!-- QUIZ ACTIONS -->
+                <div class="quiz-actions">
+
+                    <p class="quiz-score-label">
+                        YOUR SCORE
+                        <strong id="quiz-score">0</strong>
+                    </p>
+
+                    <button class="quiz-submit-button"
+                            id="quiz-submit"
+                            type="button">
+                        Check answer
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+                    <button class="quiz-next-button"
+                            id="quiz-next"
+                            type="button"
+                            hidden>
+                        Next question
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULTS -->
+            <section class="quiz-results"
+                     id="quiz-results"
+                     aria-labelledby="quiz-results-title"
+                     hidden>
+
+                <div class="quiz-results-symbol" aria-hidden="true">
+                    ✧
+                </div>
+
+                <p class="challenge-eyebrow">
+                    CHALLENGE COMPLETE
+                </p>
+
+                <h2 id="quiz-results-title">
+                    Every answer is a discovery.
+                </h2>
+
+                <p class="quiz-results-description"
+                   id="quiz-results-description">
+                    You have completed the Curio Knowledge Challenge.
+                </p>
+
+                <div class="quiz-final-score">
+                    <span class="quiz-final-score-number"
+                          id="quiz-final-score">0</span>
+
+                    <span class="quiz-final-score-divider">/</span>
+
+                    <span class="quiz-final-score-total"
+                          id="quiz-final-total">0</span>
+                </div>
+
+                <p class="quiz-final-percentage"
+                   id="quiz-final-percentage">0% correct</p>
+
+                <div class="quiz-results-actions">
+
+                    <button class="quiz-restart-button"
+                            id="quiz-restart"
+                            type="button">
+                        Play again
+                        <span aria-hidden="true">↻</span>
+                    </button>
+
+                    <a class="quiz-explore-link"
+                       href="discover.html">
+                        Explore more exhibits
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- CLOSING SECTION -->
+        <section class="challenge-closing">
+
+            <div class="challenge-closing-content">
+
+                <p class="challenge-eyebrow">
+                    NEVER STOP WONDERING
+                </p>
+
+                <h2>
+                    The more you discover,<br>
+                    <em>the more there is to know.</em>
+                </h2>
+
+                <p>
+                    Every artifact holds a clue. Every invention
+                    begins with a question. Continue your journey
+                    through the Curio Museum.
+                </p>
+
+                <a class="challenge-start-link"
+                   href="discover.html">
+                    Discover something extraordinary
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand-column">
+
+                <a class="brand footer-brand" href="index.html">
+                    CURIO<span class="brand-dot">.</span>
+                </a>
+
+                <p class="footer-description">
+                    The museum of everything worth discovering.
+                    A digital journey through history, science,
+                    nature and human imagination.
+                </p>
+
+            </div>
+
+            <div class="footer-links-column">
+
+                <h2 class="footer-heading">Explore</h2>
+
+                <ul class="footer-links">
+                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="challenge.html">Knowledge Challenge</a></li>
+                    <li><a href="collection.html">My Collection</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footer-links-column">
+
+                <h2 class="footer-heading">About Curio</h2>
+
+                <ul class="footer-links">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="about.html#mission">Our Mission</a></li>
+                    <li><a href="about.html#contact">Get in Touch</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footer-newsletter">
+
+                <h2 class="footer-heading">Stay curious.</h2>
+
+                <p>
+                    There is always something extraordinary
+                    left to discover.
+                </p>
+
+                <a class="text-link" href="discover.html">
+                    Start exploring <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span data-current-year>2026</span>
+                Curio Digital Museum. All rights reserved.
+            </p>
+
+            <p class="footer-note">
+                Built for the endlessly curious.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

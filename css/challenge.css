@@ -1,0 +1,1175 @@
+
+/* =========================================================
+   CURIO MUSEUM — CHALLENGE PAGE
+   Premium antique aesthetic | Responsive | Accessible
+   ========================================================= */
+
+.challenge-page {
+    --challenge-bg: #07141b;
+    --challenge-panel: #10242b;
+    --challenge-panel-light: #162f36;
+    --challenge-gold: #e8b66c;
+    --challenge-gold-light: #f4d7a2;
+    --challenge-cream: #f4eee3;
+    --challenge-muted: #b8c1c0;
+    --challenge-border: rgba(232, 182, 108, 0.24);
+    --challenge-success: #80c9a2;
+    --challenge-error: #f09a91;
+
+    background: var(--challenge-bg);
+    color: var(--challenge-cream);
+    font-family: "Inter", sans-serif;
+    overflow-wrap: anywhere;
+}
+
+.challenge-page *,
+.challenge-page *::before,
+.challenge-page *::after {
+    box-sizing: border-box;
+}
+
+.challenge-page img,
+.challenge-page svg {
+    max-width: 100%;
+}
+
+.challenge-page a {
+    color: inherit;
+}
+
+.challenge-page button,
+.challenge-page input {
+    font: inherit;
+}
+
+.challenge-page button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.challenge-page button:focus-visible,
+.challenge-page a:focus-visible,
+.challenge-page input:focus-visible {
+    outline: 3px solid var(--challenge-gold);
+    outline-offset: 4px;
+}
+
+.challenge-page [hidden] {
+    display: none !important;
+}
+
+.challenge-page .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* HEADER */
+
+.challenge-page .site-header {
+    position: relative;
+    z-index: 20;
+    background: rgba(5, 17, 23, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.challenge-page .brand {
+    color: var(--challenge-cream);
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: -1.5px;
+}
+
+.challenge-page .brand-dot {
+    color: var(--challenge-gold);
+}
+
+.challenge-page .nav-link {
+    transition: color 0.25s ease;
+}
+
+.challenge-page .nav-link:hover,
+.challenge-page .nav-link.is-active {
+    color: var(--challenge-gold);
+}
+
+.challenge-page .header-search {
+    padding: 16px 5%;
+    background: #0b1c23;
+    border-top: 1px solid var(--challenge-border);
+}
+
+.challenge-page .header-search-form {
+    display: flex;
+    gap: 10px;
+    width: min(100%, 760px);
+    margin-inline: auto;
+}
+
+.challenge-page .header-search-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 16px;
+    color: var(--challenge-cream);
+    background: #142a32;
+    border: 1px solid var(--challenge-border);
+    border-radius: 6px;
+}
+
+.challenge-page .header-search-form input::placeholder {
+    color: #a6b3b3;
+}
+
+.challenge-page .search-submit {
+    padding: 12px 22px;
+    color: var(--challenge-bg);
+    background: var(--challenge-gold);
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* HERO — ANCIENT OBSERVATORY BACKGROUND */
+
+.challenge-page .challenge-hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: clamp(24px, 5vw, 80px);
+    min-height: 660px;
+    padding: clamp(60px, 9vw, 120px) clamp(24px, 7vw, 110px);
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 17, 23, 0.90) 0%,
+            rgba(5, 17, 23, 0.65) 48%,
+            rgba(5, 17, 23, 0.25) 100%
+        ),
+        url("../assets/Ancient%20Observatory%20of%20Knowledge.png")
+        center center / cover no-repeat;
+
+    border-bottom: 1px solid rgba(232, 182, 108, 0.24);
+}
+
+.challenge-page .challenge-hero::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(232, 182, 108, 0.12),
+            transparent 36%
+        );
+}
+
+.challenge-page .challenge-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 660px;
+    animation: challenge-enter 0.8s ease both;
+}
+
+.challenge-page .challenge-eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 24px;
+    color: var(--challenge-gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    line-height: 1.8;
+}
+
+.challenge-page .challenge-eyebrow span {
+    font-size: 1.1rem;
+}
+
+.challenge-page .challenge-hero h1 {
+    margin: 0;
+    color: #fffaf0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3rem, 6.2vw, 6.1rem);
+    font-weight: 400;
+    line-height: 0.99;
+    letter-spacing: -0.065em;
+    text-wrap: balance;
+}
+
+.challenge-page .challenge-hero h1 em,
+.challenge-page .challenge-section-heading h2 em,
+.challenge-page .challenge-closing h2 em {
+    color: var(--challenge-gold);
+    font-weight: 400;
+}
+
+.challenge-page .challenge-hero-description {
+    max-width: 490px;
+    margin: 28px 0;
+    color: #d0d7d4;
+    font-size: clamp(0.94rem, 1.2vw, 1.05rem);
+    line-height: 1.9;
+}
+
+.challenge-page .challenge-start-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: 50px;
+    padding: 14px 23px;
+    color: #111b1c;
+    background: linear-gradient(
+        135deg,
+        var(--challenge-gold-light),
+        var(--challenge-gold)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.challenge-page .challenge-start-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(232, 182, 108, 0.2);
+}
+
+.challenge-page .challenge-start-link span {
+    font-size: 1.2rem;
+}
+
+.challenge-page .challenge-hero-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 45px;
+    color: #c0c9c6;
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+}
+
+.challenge-page .challenge-hero-note span:nth-child(even) {
+    color: var(--challenge-gold);
+}
+
+/* DECORATIVE HERO ART */
+
+.challenge-page .challenge-hero-art {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: 510px;
+    aspect-ratio: 1;
+    justify-self: center;
+    isolation: isolate;
+}
+
+.challenge-page .challenge-art-glow {
+    position: absolute;
+    z-index: -1;
+    width: 65%;
+    aspect-ratio: 1;
+    background: rgba(218, 157, 76, 0.14);
+    border-radius: 50%;
+    filter: blur(45px);
+}
+
+.challenge-page .challenge-art-orbit {
+    position: absolute;
+    width: 84%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(232, 182, 108, 0.46);
+    border-radius: 50%;
+}
+
+.challenge-page .challenge-orbit-two {
+    width: 66%;
+    border-color: rgba(234, 221, 191, 0.35);
+    transform: rotateX(64deg) rotateZ(-24deg);
+}
+
+.challenge-page .challenge-orbit-three {
+    width: 92%;
+    border-color: rgba(232, 182, 108, 0.19);
+    transform: rotateY(64deg) rotateZ(22deg);
+}
+
+.challenge-page .challenge-art-center {
+    display: grid;
+    place-items: center;
+    width: 42%;
+    aspect-ratio: 0.82;
+    color: #f3d7a2;
+    background:
+        radial-gradient(
+            ellipse at 30% 25%,
+            #334b4c,
+            #10242a 65%,
+            #07141b
+        );
+    border: 1px solid rgba(232, 182, 108, 0.7);
+    border-radius: 48% 48% 44% 44%;
+    box-shadow:
+        0 0 65px rgba(232, 182, 108, 0.12),
+        inset 0 0 35px rgba(232, 182, 108, 0.09);
+    transform: rotate(-5deg);
+}
+
+.challenge-page .challenge-art-center span {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    line-height: 1;
+}
+
+.challenge-page .challenge-art-label {
+    position: absolute;
+    right: 0;
+    bottom: 7%;
+    color: var(--challenge-gold-light);
+    font-size: 0.62rem;
+    letter-spacing: 0.19em;
+}
+
+/* SECTION HEADING */
+
+.challenge-page .challenge-section {
+    padding: clamp(65px, 9vw, 120px) clamp(20px, 5vw, 70px);
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(32, 67, 72, 0.3),
+            transparent 45%
+        ),
+        var(--challenge-bg);
+}
+
+.challenge-page .challenge-section-heading {
+    max-width: 730px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.challenge-page .challenge-section-heading .challenge-eyebrow {
+    justify-content: center;
+}
+
+.challenge-page .challenge-section-heading h2,
+.challenge-page .challenge-closing h2 {
+    margin: 0;
+    color: var(--challenge-cream);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.2rem, 4.7vw, 4.3rem);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+}
+
+.challenge-page .challenge-section-heading > p:last-child {
+    max-width: 560px;
+    margin: 20px auto 0;
+    color: var(--challenge-muted);
+    font-size: 0.97rem;
+    line-height: 1.85;
+}
+
+/* QUIZ CONTAINER */
+
+.challenge-page .quiz-container {
+    width: min(100%, 850px);
+    margin-inline: auto;
+    padding: clamp(22px, 4vw, 46px);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24, 49, 55, 0.98),
+            rgba(10, 27, 34, 0.98)
+        );
+    border: 1px solid var(--challenge-border);
+    border-radius: 16px;
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.22),
+        inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.challenge-page .quiz-topbar,
+.challenge-page .quiz-progress-labels,
+.challenge-page .quiz-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.challenge-page .quiz-topbar {
+    flex-wrap: wrap;
+    padding-bottom: 23px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.challenge-page .quiz-topic {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--challenge-gold-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.challenge-page .quiz-topic-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--challenge-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(232, 182, 108, 0.4);
+}
+
+.challenge-page .quiz-question-number {
+    margin: 0;
+    color: var(--challenge-muted);
+    font-size: 0.82rem;
+}
+
+.challenge-page .quiz-progress-area {
+    margin: 26px 0 38px;
+}
+
+.challenge-page .quiz-progress-track {
+    height: 5px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+}
+
+.challenge-page .quiz-progress-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #bb8243,
+        var(--challenge-gold-light)
+    );
+    border-radius: inherit;
+    transition: width 0.4s ease;
+}
+
+.challenge-page .quiz-progress-labels {
+    margin-top: 12px;
+    color: var(--challenge-muted);
+    font-size: 0.75rem;
+}
+
+.challenge-page #quiz-progress-percentage {
+    color: var(--challenge-gold);
+    font-weight: 600;
+}
+
+/* QUESTION */
+
+.challenge-page .quiz-question-kicker {
+    margin: 0 0 14px;
+    color: var(--challenge-gold);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+}
+
+.challenge-page .quiz-question-area h3 {
+    margin: 0;
+    color: #fffaf0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.65rem, 3.4vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.3;
+    text-wrap: balance;
+}
+
+.challenge-page .quiz-instruction {
+    margin: 15px 0 0;
+    color: var(--challenge-muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+/* ANSWER OPTIONS */
+
+.challenge-page .quiz-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+    min-width: 0;
+    margin: 28px 0;
+    padding: 0;
+    border: 0;
+}
+
+.challenge-page .quiz-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+    min-height: 76px;
+    padding: 16px;
+    color: var(--challenge-cream);
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.challenge-page .quiz-option:hover {
+    background: rgba(232, 182, 108, 0.07);
+    border-color: rgba(232, 182, 108, 0.55);
+    transform: translateY(-2px);
+}
+
+.challenge-page .quiz-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.challenge-page .quiz-option:has(input:focus-visible) {
+    outline: 2px solid var(--challenge-gold);
+    outline-offset: 3px;
+}
+
+.challenge-page .quiz-option-letter {
+    display: grid;
+    flex: 0 0 34px;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    color: var(--challenge-gold-light);
+    background: rgba(232, 182, 108, 0.09);
+    border: 1px solid rgba(232, 182, 108, 0.32);
+    border-radius: 50%;
+    font-size: 0.77rem;
+    font-weight: 600;
+}
+
+.challenge-page .quiz-option-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.89rem;
+    line-height: 1.55;
+}
+
+.challenge-page .quiz-option-indicator {
+    flex: 0 0 auto;
+    color: #9caeaa;
+    font-size: 1rem;
+}
+
+.challenge-page .quiz-option.is-selected {
+    background: rgba(232, 182, 108, 0.13);
+    border-color: var(--challenge-gold);
+}
+
+.challenge-page .quiz-option.is-selected .quiz-option-letter {
+    color: #08171b;
+    background: var(--challenge-gold);
+}
+
+.challenge-page .quiz-option.is-correct {
+    background: rgba(63, 145, 102, 0.14);
+    border-color: var(--challenge-success);
+}
+
+.challenge-page .quiz-option.is-correct .quiz-option-letter {
+    color: #071b12;
+    background: var(--challenge-success);
+    border-color: var(--challenge-success);
+}
+
+.challenge-page .quiz-option.is-incorrect {
+    background: rgba(190, 78, 70, 0.12);
+    border-color: var(--challenge-error);
+}
+
+.challenge-page .quiz-option.is-incorrect .quiz-option-letter {
+    color: #24100e;
+    background: var(--challenge-error);
+    border-color: var(--challenge-error);
+}
+
+.challenge-page .quiz-option:has(input:disabled) {
+    cursor: default;
+    transform: none;
+}
+
+/* FEEDBACK */
+
+.challenge-page .quiz-feedback {
+    margin: 20px 0;
+    padding: 18px 20px;
+    border: 1px solid var(--challenge-border);
+    border-radius: 9px;
+    animation: challenge-enter 0.3s ease both;
+}
+
+.challenge-page .quiz-feedback.is-correct {
+    background: rgba(63, 145, 102, 0.11);
+    border-color: rgba(128, 201, 162, 0.45);
+}
+
+.challenge-page .quiz-feedback.is-incorrect {
+    background: rgba(190, 78, 70, 0.1);
+    border-color: rgba(240, 154, 145, 0.4);
+}
+
+.challenge-page .quiz-feedback.is-warning {
+    background: rgba(232, 182, 108, 0.08);
+    border-color: var(--challenge-border);
+}
+
+.challenge-page .quiz-feedback-title {
+    margin: 0 0 7px;
+    color: var(--challenge-gold-light);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.challenge-page .quiz-feedback.is-correct .quiz-feedback-title {
+    color: var(--challenge-success);
+}
+
+.challenge-page .quiz-feedback.is-incorrect .quiz-feedback-title {
+    color: var(--challenge-error);
+}
+
+.challenge-page .quiz-feedback-explanation {
+    margin: 0;
+    color: #d0d8d4;
+    font-size: 0.88rem;
+    line-height: 1.8;
+}
+
+/* QUIZ ACTIONS */
+
+.challenge-page .quiz-actions {
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.challenge-page .quiz-score-label {
+    margin: 0;
+    color: var(--challenge-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+}
+
+.challenge-page .quiz-score-label strong {
+    display: block;
+    color: var(--challenge-gold-light);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.65rem;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.challenge-page .quiz-submit-button,
+.challenge-page .quiz-next-button,
+.challenge-page .quiz-restart-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-height: 48px;
+    padding: 13px 21px;
+    color: #10191a;
+    background: var(--challenge-gold);
+    border: 1px solid var(--challenge-gold);
+    border-radius: 999px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.challenge-page .quiz-submit-button:hover,
+.challenge-page .quiz-next-button:hover,
+.challenge-page .quiz-restart-button:hover {
+    background: var(--challenge-gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(232, 182, 108, 0.14);
+}
+
+.challenge-page .quiz-submit-button:disabled,
+.challenge-page .quiz-next-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* RESULTS */
+
+.challenge-page .quiz-results {
+    width: min(100%, 850px);
+    margin: 35px auto 0;
+    padding: clamp(30px, 6vw, 65px) 24px;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(232, 182, 108, 0.13),
+            transparent 50%
+        ),
+        var(--challenge-panel);
+    border: 1px solid var(--challenge-border);
+    border-radius: 16px;
+}
+
+.challenge-page .quiz-results-symbol {
+    display: grid;
+    place-items: center;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 25px;
+    color: var(--challenge-gold);
+    border: 1px solid var(--challenge-border);
+    border-radius: 50%;
+    font-size: 2.3rem;
+}
+
+.challenge-page .quiz-results .challenge-eyebrow {
+    justify-content: center;
+}
+
+.challenge-page .quiz-results h2 {
+    margin: 0;
+    color: var(--challenge-cream);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.challenge-page .quiz-results-description {
+    max-width: 510px;
+    margin: 18px auto;
+    color: var(--challenge-muted);
+    line-height: 1.8;
+}
+
+.challenge-page .quiz-final-score {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px 0 8px;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.challenge-page .quiz-final-score-number {
+    color: var(--challenge-gold-light);
+    font-size: clamp(4rem, 9vw, 6rem);
+    line-height: 1;
+}
+
+.challenge-page .quiz-final-score-divider,
+.challenge-page .quiz-final-score-total {
+    color: var(--challenge-muted);
+    font-size: 2rem;
+}
+
+.challenge-page .quiz-final-percentage {
+    color: var(--challenge-gold);
+    font-size: 0.88rem;
+}
+
+.challenge-page .quiz-results-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.challenge-page .quiz-explore-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 12px 18px;
+    color: var(--challenge-cream);
+    border: 1px solid var(--challenge-border);
+    border-radius: 999px;
+    font-size: 0.86rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.challenge-page .quiz-explore-link:hover {
+    color: var(--challenge-gold);
+    border-color: var(--challenge-gold);
+}
+
+.challenge-page .quiz-error {
+    padding: 20px;
+    color: var(--challenge-error);
+    background: rgba(190, 78, 70, 0.1);
+    border: 1px solid var(--challenge-error);
+    border-radius: 8px;
+    line-height: 1.7;
+}
+
+/* CLOSING BANNER */
+
+.challenge-page .challenge-closing {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(65px, 9vw, 120px) 24px;
+    overflow: hidden;
+    text-align: center;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 17, 23, 0.97),
+            rgba(8, 26, 32, 0.85)
+        ),
+        url("../assets/Ancient%20Observatory%20of%20Knowledge.png")
+        center 65% / cover no-repeat,
+        #0b2028;
+    border-top: 1px solid var(--challenge-border);
+}
+
+.challenge-page .challenge-closing-content {
+    width: min(100%, 820px);
+    margin-inline: auto;
+}
+
+.challenge-page .challenge-closing .challenge-eyebrow {
+    justify-content: center;
+}
+
+.challenge-page .challenge-closing > div > p:not(.challenge-eyebrow) {
+    max-width: 600px;
+    margin: 23px auto 28px;
+    color: #c4ceca;
+    font-size: 0.95rem;
+    line-height: 1.9;
+}
+
+/* FOOTER */
+
+.challenge-page .site-footer {
+    padding: 65px clamp(22px, 6vw, 85px) 22px;
+    background: #050f14;
+    border-top: 1px solid var(--challenge-border);
+}
+
+.challenge-page .footer-main {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 0.9fr 1.1fr;
+    gap: 40px;
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+.challenge-page .footer-brand {
+    display: inline-block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.challenge-page .footer-description,
+.challenge-page .footer-newsletter > p {
+    max-width: 310px;
+    color: var(--challenge-muted);
+    font-size: 0.84rem;
+    line-height: 1.9;
+}
+
+.challenge-page .footer-heading {
+    margin: 0 0 20px;
+    color: var(--challenge-gold-light);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.challenge-page .footer-links {
+    display: grid;
+    gap: 13px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.challenge-page .footer-links a,
+.challenge-page .text-link {
+    color: #b9c3bf;
+    font-size: 0.82rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.challenge-page .footer-links a:hover,
+.challenge-page .text-link:hover {
+    color: var(--challenge-gold);
+}
+
+.challenge-page .text-link {
+    display: inline-flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.challenge-page .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    max-width: 1350px;
+    margin: 50px auto 0;
+    padding-top: 22px;
+    color: #879794;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.73rem;
+}
+
+.challenge-page .footer-bottom p {
+    margin: 0;
+}
+
+/* ANIMATION */
+
+@keyframes challenge-enter {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+    .challenge-page .challenge-hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
+        min-height: 570px;
+        padding-inline: 5%;
+    }
+
+    .challenge-page .challenge-hero h1 {
+        font-size: clamp(2.8rem, 6vw, 4.7rem);
+    }
+
+    .challenge-page .challenge-hero-art {
+        max-width: 370px;
+    }
+
+    .challenge-page .footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 35px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+    .challenge-page .challenge-hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        min-height: auto;
+        padding: 70px 22px 42px;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(5, 17, 23, 0.86) 0%,
+                rgba(5, 17, 23, 0.93) 58%,
+                #07141b 100%
+            ),
+            url("../assets/Ancient%20Observatory%20of%20Knowledge.png")
+            center / cover no-repeat,
+            #07141b;
+    }
+
+    .challenge-page .challenge-hero-content {
+        max-width: 540px;
+    }
+
+    .challenge-page .challenge-hero h1 {
+        font-size: clamp(2.8rem, 10vw, 4.5rem);
+        line-height: 1.02;
+    }
+
+    .challenge-page .challenge-hero-description {
+        margin-block: 22px;
+        font-size: 0.94rem;
+    }
+
+    .challenge-page .challenge-hero-note {
+        margin-top: 30px;
+    }
+
+    .challenge-page .challenge-hero-art {
+        width: min(75%, 300px);
+        margin: 0 auto;
+    }
+
+    .challenge-page .challenge-art-center span {
+        font-size: clamp(4.5rem, 18vw, 7rem);
+    }
+
+    .challenge-page .challenge-art-label {
+        right: -10%;
+        bottom: 5%;
+        font-size: 0.54rem;
+    }
+
+    .challenge-page .challenge-section {
+        padding: 65px 16px;
+    }
+
+    .challenge-page .challenge-section-heading {
+        margin-bottom: 32px;
+    }
+
+    .challenge-page .challenge-section-heading h2 {
+        font-size: clamp(2rem, 8vw, 3.1rem);
+    }
+
+    .challenge-page .quiz-container {
+        padding: 23px 17px;
+        border-radius: 12px;
+    }
+
+    .challenge-page .quiz-topbar {
+        gap: 12px;
+    }
+
+    .challenge-page .quiz-options {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        margin-block: 23px;
+    }
+
+    .challenge-page .quiz-option {
+        min-height: 65px;
+        padding: 13px;
+    }
+
+    .challenge-page .quiz-option-text {
+        font-size: 0.88rem;
+    }
+
+    .challenge-page .quiz-actions {
+        align-items: center;
+        gap: 14px;
+    }
+
+    .challenge-page .quiz-actions > button {
+        flex: 1 1 150px;
+    }
+
+    .challenge-page .quiz-results {
+        padding-inline: 17px;
+    }
+
+    .challenge-page .challenge-closing {
+        padding-inline: 20px;
+    }
+
+    .challenge-page .footer-main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 30px;
+    }
+
+    .challenge-page .site-footer {
+        padding-inline: 22px;
+    }
+
+    .challenge-page .footer-bottom {
+        flex-direction: column;
+        margin-top: 35px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+    .challenge-page .challenge-hero {
+        padding-inline: 17px;
+    }
+
+    .challenge-page .challenge-hero h1 {
+        font-size: 2.55rem;
+    }
+
+    .challenge-page .challenge-start-link {
+        max-width: 100%;
+        gap: 12px;
+        padding-inline: 17px;
+        font-size: 0.82rem;
+    }
+
+    .challenge-page .quiz-container {
+        padding-inline: 13px;
+    }
+
+    .challenge-page .quiz-question-area h3 {
+        font-size: 1.55rem;
+    }
+
+    .challenge-page .quiz-progress-labels {
+        font-size: 0.68rem;
+    }
+
+    .challenge-page .quiz-actions > button {
+        flex-basis: 100%;
+    }
+
+    .challenge-page .quiz-score-label {
+        width: 100%;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    .challenge-page *,
+    .challenge-page *::before,
+    .challenge-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

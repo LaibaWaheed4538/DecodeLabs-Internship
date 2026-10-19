@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07141b">
+    <meta name="description" content="Explore Curio's interactive timeline of ancient civilizations, historic discoveries, inventions and scientific milestones.">
+
+    <title>Through Time | Curio Museum</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/timeline.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/timeline.js" defer></script>
+</head>
+
+<body class="timeline-page">
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+            <a class="brand" href="index.html" aria-label="Curio home">
+                CURIO<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="discover.html">Discover</a>
+                <a class="nav-link is-active" href="timeline.html" aria-current="page">Timeline</a>
+                <a class="nav-link" href="challenge.html">Challenge</a>
+                <a class="nav-link" href="collection.html">Collection</a>
+                <a class="nav-link" href="about.html">About</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-button search-toggle" type="button"
+                        aria-label="Open search" aria-controls="site-search"
+                        aria-expanded="false" data-search-toggle>
+                    <svg viewBox="0 0 24 24" width="23" height="23"
+                         fill="none" stroke="currentColor" stroke-width="1.6"
+                         stroke-linecap="round" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="7.2"></circle>
+                        <path d="m16.2 16.2 4.4 4.4"></path>
+                    </svg>
+                </button>
+
+                <button class="icon-button menu-toggle" type="button"
+                        aria-label="Open navigation menu"
+                        aria-controls="primary-navigation"
+                        aria-expanded="false" data-menu-toggle>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="header-search" id="site-search" hidden>
+            <form class="header-search-form" action="discover.html" method="get">
+                <label class="visually-hidden" for="header-search-input">Search exhibits</label>
+                <input id="header-search-input" name="q" type="search"
+                       placeholder="Search discoveries..." autocomplete="off">
+                <button class="search-submit" type="submit">Explore</button>
+            </form>
+        </div>
+    </header>
+
+
+    <main id="main-content">
+
+        <section class="timeline-hero">
+            <div class="timeline-hero-inner">
+                <div class="timeline-hero-copy">
+                    <p class="timeline-eyebrow">
+                        <span class="timeline-eyebrow-line"></span>
+                        THE CURIO CHRONICLE
+                    </p>
+
+                    <h1 id="timeline-heading">
+                        The world,<br>
+                        <em>through time.</em>
+                    </h1>
+
+                    <p class="timeline-hero-description">
+                        Every era leaves a trace. Follow the moments,
+                        discoveries and ideas that changed how we
+                        understand our world.
+                    </p>
+
+                    <a class="timeline-hero-link" href="#timeline-explorer">
+                        Explore the timeline <span aria-hidden="true">↓</span>
+                    </a>
+
+                    <div class="timeline-hero-footnote">
+                        <span>PAST</span>
+                        <span class="timeline-footnote-line"></span>
+                        <span>DISCOVERY</span>
+                        <span class="timeline-footnote-line"></span>
+                        <span>FUTURE</span>
+                    </div>
+                </div>
+
+                <div class="timeline-hero-visual" aria-hidden="true">
+                    <div class="timeline-visual-glow"></div>
+                    <div class="timeline-orbit timeline-orbit-one"></div>
+                    <div class="timeline-orbit timeline-orbit-two"></div>
+                    <div class="timeline-orbit timeline-orbit-three"></div>
+                    <div class="timeline-visual-core">
+                        <span>∞</span>
+                    </div>
+                    <span class="timeline-visual-label">TIME / 001</span>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="timeline-explorer" id="timeline-explorer">
+            <div class="timeline-section-intro">
+                <p class="timeline-eyebrow">A LIVING ARCHIVE</p>
+                <h2>History is never <em>just the past.</em></h2>
+                <p>
+                    Search a moment, browse a collection, and open
+                    its related exhibit to discover the story in detail.
+                </p>
+            </div>
+
+            <div class="timeline-tools">
+                <div class="timeline-tool-field">
+                    <label for="timeline-period">EXPLORE BY COLLECTION</label>
+                    <select id="timeline-period">
+                        <option value="all">All collections</option>
+                        <option value="ancient-civilizations">Ancient Civilizations</option>
+                        <option value="history">History & Language</option>
+                        <option value="inventions">Art & Inventions</option>
+                        <option value="science">Science & Technology</option>
+                        <option value="nature">Nature</option>
+                    </select>
+                </div>
+
+                <div class="timeline-tool-field timeline-search-field">
+                    <label for="timeline-search">SEARCH THE ARCHIVE</label>
+                    <input id="timeline-search" type="search"
+                           placeholder="Try Rosetta Stone or 1922..."
+                           autocomplete="off">
+                </div>
+
+                <button class="timeline-reset-button" id="timeline-reset" type="button">
+                    Reset filters <span aria-hidden="true">↺</span>
+                </button>
+            </div>
+
+            <div class="timeline-results-bar">
+                <p id="timeline-results-count" aria-live="polite">
+                    Loading historical moments...
+                </p>
+                <span class="timeline-results-note">CHRONOLOGICAL ORDER</span>
+            </div>
+
+            <div class="timeline-list" id="timeline-list">
+                <div class="timeline-loading" id="timeline-loading" role="status">
+                    <span class="timeline-spinner" aria-hidden="true"></span>
+                    <p>Opening the archives...</p>
+                </div>
+            </div>
+
+            <div class="timeline-empty" id="timeline-empty" hidden>
+                <span aria-hidden="true">✧</span>
+                <h3>No moments found.</h3>
+                <p>Try another search or select a different collection.</p>
+                <button class="timeline-reset-button" id="timeline-empty-reset" type="button">
+                    Show all moments
+                </button>
+            </div>
+        </section>
+
+
+        <section class="timeline-closing">
+            <div class="timeline-closing-decoration" aria-hidden="true">C.</div>
+            <div class="timeline-closing-content">
+                <p class="timeline-eyebrow">THE STORY CONTINUES</p>
+                <h2>Yesterday's wonders.<br><em>Tomorrow's discoveries.</em></h2>
+                <p>
+                    The past gives us clues. Curiosity takes us further.
+                    Continue exploring the remarkable Curio collection.
+                </p>
+                <a class="timeline-hero-link" href="discover.html">
+                    Discover the collection <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-brand-column">
+                <a class="brand footer-brand" href="index.html">
+                    CURIO<span class="brand-dot">.</span>
+                </a>
+                <p class="footer-description">
+                    The museum of everything worth discovering.
+                    A digital journey through history, science, nature
+                    and human imagination.
+                </p>
+            </div>
+
+            <div class="footer-links-column">
+                <h2 class="footer-heading">Explore</h2>
+                <ul class="footer-links">
+                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="challenge.html">Knowledge Challenge</a></li>
+                    <li><a href="collection.html">My Collection</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h2 class="footer-heading">About Curio</h2>
+                <ul class="footer-links">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="about.html#mission">Our Mission</a></li>
+                    <li><a href="about.html#contact">Get in Touch</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter">
+                <h2 class="footer-heading">Stay curious.</h2>
+                <p>There is always something extraordinary left to discover.</p>
+                <a class="text-link" href="discover.html">
+                    Start exploring <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span data-current-year>2026</span> Curio Digital Museum. All rights reserved.</p>
+            <p class="footer-note">Built for the endlessly curious.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

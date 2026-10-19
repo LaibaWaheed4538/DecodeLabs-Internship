@@ -1,0 +1,1176 @@
+
+/* =========================================================
+   CURIO MUSEUM
+   Responsive Layout, Transitions & Motion
+   Mobile · Tablet · Desktop
+   ========================================================= */
+
+
+/* 01. GLOBAL RESPONSIVE SAFETY */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+body {
+    width: 100%;
+    min-width: 320px;
+    overflow-wrap: break-word;
+}
+
+img,
+video,
+iframe,
+svg {
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    max-width: 100%;
+    font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea,
+summary {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    touch-action: manipulation;
+}
+
+main,
+section,
+header,
+footer,
+nav,
+article,
+aside {
+    min-width: 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-gold, #e9b56d);
+    outline-offset: 4px;
+}
+
+
+/* 02. SHARED TRANSITIONS */
+
+.nav-link,
+.icon-button,
+.menu-line,
+.button,
+.text-link,
+.card-arrow,
+.exhibit-card,
+.exhibit-card-image img,
+.fact-card,
+.fact-image img,
+.collection-card,
+.collection-card-image img,
+.filter-chip,
+.filter-reset,
+.bookmark-button,
+.timeline-event,
+.timeline-milestone,
+.quiz-answer,
+.footer-links a,
+.hero-artwork,
+.orbit-point {
+    transition:
+        color 250ms ease,
+        background-color 250ms ease,
+        border-color 250ms ease,
+        box-shadow 350ms ease,
+        transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 300ms ease;
+}
+
+
+/* 03. PAGE WIDTHS AND SPACING */
+
+.section,
+.featured-section,
+.facts-section,
+.timeline-preview,
+.challenge-preview,
+.collection-invitation,
+.site-footer,
+.page-hero,
+.about-intro,
+.exhibit-detail {
+    min-width: 0;
+}
+
+.section,
+.featured-section,
+.facts-section {
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+}
+
+.section-heading {
+    align-items: flex-end;
+}
+
+.section-heading > *,
+.hero-content,
+.timeline-preview-content,
+.challenge-preview-content,
+.collection-invitation-content {
+    min-width: 0;
+}
+
+.hero-title,
+.section-title,
+.page-hero h1 {
+    max-width: 100%;
+    text-wrap: balance;
+}
+
+.hero-description,
+.section-description,
+.page-hero-description {
+    overflow-wrap: break-word;
+}
+
+
+/* 04. LARGE DESKTOPS */
+
+@media (min-width: 1600px) {
+
+    :root {
+        --page-gutter: clamp(5rem, 7vw, 8rem);
+        --section-space: 9rem;
+    }
+
+    .hero-content {
+        max-width: 850px;
+    }
+
+    .featured-grid,
+    .facts-grid,
+    .footer-main,
+    .footer-bottom {
+        max-width: 1600px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .featured-grid,
+    .facts-grid {
+        gap: 2rem;
+    }
+
+    .hero-artwork {
+        right: 7%;
+        width: min(48vw, 850px);
+    }
+}
+
+
+/* 05. LAPTOPS AND SMALL DESKTOPS */
+
+@media (max-width: 1200px) {
+
+    .header-inner {
+        gap: 1.25rem;
+    }
+
+    .primary-navigation {
+        gap: clamp(0.8rem, 1.7vw, 1.5rem);
+    }
+
+    .nav-link {
+        font-size: 0.82rem;
+    }
+
+    .featured-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .exhibit-card-image,
+    .exhibit-card-large .exhibit-card-image {
+        aspect-ratio: 4 / 4.5;
+    }
+
+    .facts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem 1.5rem;
+    }
+
+    .timeline-preview {
+        gap: 3rem;
+    }
+
+    .footer-main {
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+        gap: 2.5rem;
+    }
+
+    .footer-newsletter {
+        grid-column: 1 / -1;
+    }
+
+    .collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* 06. TABLETS */
+
+@media (max-width: 900px) {
+
+    :root {
+        --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+        --section-space: clamp(4rem, 8vw, 6rem);
+    }
+
+    /* Header */
+
+    .header-inner {
+        min-height: 78px;
+    }
+
+    .primary-navigation {
+        gap: 1rem;
+    }
+
+    .header-actions {
+        gap: 0.5rem;
+    }
+
+    /* Hero */
+
+    .hero-section {
+        min-height: 760px;
+        min-height: max(760px, 94svh);
+        padding-top: 135px;
+        padding-bottom: 135px;
+    }
+
+    .hero-background-image {
+        object-position: 58% center;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 14, 20, 0.96),
+                rgba(4, 14, 20, 0.76) 60%,
+                rgba(4, 14, 20, 0.4)
+            ),
+            linear-gradient(
+                0deg,
+                rgba(4, 14, 20, 0.75),
+                transparent 55%
+            );
+    }
+
+    .hero-content {
+        max-width: 650px;
+    }
+
+    .hero-artwork {
+        right: -10%;
+        width: 60vw;
+        opacity: 0.65;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 7.5vw, 5rem);
+    }
+
+    /* Timeline */
+
+    .timeline-preview {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .timeline-preview-content {
+        max-width: 650px;
+    }
+
+    .timeline-preview-visual {
+        width: 100%;
+    }
+
+    /* Challenge */
+
+    .challenge-preview {
+        min-height: 460px;
+    }
+
+    /* Collection */
+
+    .collection-invitation {
+        min-height: 380px;
+    }
+
+    .collection-decoration {
+        width: clamp(150px, 25vw, 240px);
+    }
+
+    /* Inner pages */
+
+    .exhibit-detail {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.75rem;
+    }
+
+    .about-intro {
+        gap: 2rem;
+    }
+}
+
+
+/* 07. MOBILE NAVIGATION */
+
+@media (max-width: 767px) {
+
+    .header-inner {
+        position: relative;
+        min-height: 72px;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .brand {
+        font-size: 2rem;
+    }
+
+    .header-actions {
+        margin-left: auto;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .primary-navigation {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+        max-height: calc(100svh - 90px);
+        padding: 0.75rem var(--page-gutter) 1.25rem;
+        overflow-y: auto;
+        visibility: hidden;
+        pointer-events: none;
+        background: rgba(7, 20, 27, 0.98);
+        border-top: 1px solid var(--color-border-dark);
+        opacity: 0;
+        transform: translateY(-8px);
+        transition:
+            opacity 250ms ease,
+            transform 250ms ease,
+            visibility 250ms ease;
+        backdrop-filter: blur(18px);
+    }
+
+    .primary-navigation.is-open {
+        visibility: visible;
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .primary-navigation .nav-link {
+        display: flex;
+        min-height: 52px;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.95rem;
+    }
+
+    .primary-navigation .nav-link::after {
+        right: auto;
+        bottom: 0;
+        width: 35px;
+    }
+
+    .header-search {
+        padding: 1rem var(--page-gutter);
+    }
+
+    .header-search-form {
+        flex-wrap: wrap;
+    }
+
+    .header-search-form input {
+        flex: 1 1 180px;
+    }
+
+    .header-search-form .search-submit {
+        flex: 0 0 auto;
+    }
+}
+
+
+/* 08. MOBILE HERO */
+
+@media (max-width: 767px) {
+
+    .hero-section {
+        align-items: center;
+        min-height: 780px;
+        min-height: max(780px, 100svh);
+        padding: 125px var(--page-gutter) 145px;
+    }
+
+    .hero-background-image {
+        object-position: 58% center;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 14, 20, 0.94),
+                rgba(4, 14, 20, 0.72)
+            ),
+            linear-gradient(
+                0deg,
+                rgba(4, 14, 20, 0.8),
+                rgba(4, 14, 20, 0.08) 70%
+            );
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-top: 0;
+    }
+
+    .hero-eyebrow {
+        max-width: 320px;
+        margin-bottom: 1.5rem;
+        font-size: 0.64rem;
+        letter-spacing: 0.14em;
+    }
+
+    .hero-title {
+        max-width: 600px;
+        margin-bottom: 1.4rem;
+        font-size: clamp(2.75rem, 10vw, 4.5rem);
+        line-height: 1.02;
+        letter-spacing: -0.055em;
+    }
+
+    .hero-description {
+        max-width: 430px;
+        font-size: 0.95rem;
+        line-height: 1.85;
+    }
+
+    .hero-button {
+        min-height: 50px;
+    }
+
+    /* Keep background image full-screen.
+       Do not introduce a separate circular image. */
+
+    .hero-artwork {
+        top: 43%;
+        right: -28%;
+        width: 85vw;
+        transform: translateY(-50%);
+        opacity: 0.35;
+        pointer-events: none;
+    }
+
+    .hero-artwork-image {
+        display: none !important;
+    }
+
+    .hero-artwork-caption {
+        display: none;
+    }
+
+    .hero-bottom {
+        right: var(--page-gutter);
+        bottom: 1.75rem;
+        left: var(--page-gutter);
+        align-items: flex-end;
+    }
+
+    .scroll-line {
+        height: 48px;
+    }
+
+    .hero-pagination p {
+        font-size: 0.55rem;
+    }
+}
+
+
+/* 09. MOBILE SECTION HEADINGS AND CARDS */
+
+@media (max-width: 767px) {
+
+    .section,
+    .featured-section,
+    .facts-section {
+        padding-top: var(--section-space);
+        padding-bottom: var(--section-space);
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: clamp(2.1rem, 8vw, 3.5rem);
+    }
+
+    .section-description {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .exhibit-card-image,
+    .exhibit-card-large .exhibit-card-image {
+        aspect-ratio: 5 / 4;
+    }
+
+    .exhibit-card-body {
+        min-height: 145px;
+        padding: 1.2rem 1rem;
+    }
+
+    .exhibit-card h3 {
+        max-width: calc(100% - 1.5rem);
+        font-size: 1.45rem;
+    }
+
+    .facts-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .fact-image {
+        aspect-ratio: 5 / 3;
+    }
+
+    .fact-card h3 {
+        font-size: 1.65rem;
+    }
+
+    .fact-card > p:last-child {
+        font-size: 0.9rem;
+    }
+
+    /* Timeline */
+
+    .timeline-preview {
+        padding: var(--section-space) var(--page-gutter);
+    }
+
+    .timeline-preview-visual {
+        padding-top: 1.5rem;
+        overflow: hidden;
+    }
+
+    .timeline-milestones {
+        grid-template-columns: repeat(5, minmax(90px, 1fr));
+        gap: 0.75rem;
+        overflow-x: auto;
+        padding-bottom: 0.75rem;
+    }
+
+    .timeline-milestone {
+        min-width: 90px;
+    }
+
+    /* Challenge */
+
+    .challenge-preview {
+        min-height: 500px;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .challenge-preview .section-title {
+        font-size: clamp(2.5rem, 9vw, 4rem);
+    }
+
+    .challenge-index {
+        right: 1rem;
+        bottom: 0;
+        font-size: 8rem;
+    }
+
+    /* Collection invitation */
+
+    .collection-invitation {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2.5rem;
+        padding: var(--section-space) var(--page-gutter);
+    }
+
+    .collection-invitation .section-title {
+        font-size: clamp(2.5rem, 9vw, 4rem);
+    }
+
+    .collection-decoration {
+        align-self: flex-end;
+        width: 175px;
+    }
+
+    .collection-decoration-number {
+        font-size: 5rem;
+    }
+
+    /* Footer */
+
+    .site-footer {
+        padding-top: 3.5rem;
+    }
+
+    .footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2.5rem 1.5rem;
+    }
+
+    .footer-brand-column,
+    .footer-newsletter {
+        grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+}
+
+
+/* 10. SMALL MOBILE PHONES */
+
+@media (max-width: 430px) {
+
+    :root {
+        --page-gutter: 1.15rem;
+        --section-space: 3.75rem;
+    }
+
+    .header-inner {
+        min-height: 66px;
+    }
+
+    .brand {
+        font-size: 1.8rem;
+    }
+
+    .icon-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero-section {
+        min-height: 740px;
+        min-height: max(740px, 100svh);
+        padding-top: 110px;
+        padding-bottom: 125px;
+    }
+
+    .hero-title {
+        font-size: clamp(2.55rem, 10.5vw, 3.4rem);
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
+    .hero-bottom {
+        bottom: 1.4rem;
+    }
+
+    .scroll-label {
+        font-size: 0.58rem;
+    }
+
+    .pagination-current {
+        font-size: 1.2rem;
+    }
+
+    .hero-pagination p {
+        font-size: 0.5rem;
+    }
+
+    .featured-grid {
+        gap: 1.2rem;
+    }
+
+    .exhibit-card-image,
+    .exhibit-card-large .exhibit-card-image {
+        aspect-ratio: 4 / 4.1;
+    }
+
+    .exhibit-card-body {
+        padding: 1rem;
+    }
+
+    .exhibit-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .card-arrow {
+        right: 0.65rem;
+        bottom: 0.85rem;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-brand-column,
+    .footer-newsletter {
+        grid-column: auto;
+    }
+}
+
+
+/* 11. INNER PAGE RESPONSIVENESS */
+
+@media (max-width: 767px) {
+
+    .page-hero {
+        min-height: 430px;
+        padding-top: 9rem;
+        padding-bottom: 3rem;
+    }
+
+    .page-hero h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .page-hero-description {
+        font-size: 0.95rem;
+    }
+
+    .collection-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .collection-card-image {
+        aspect-ratio: 5 / 4;
+    }
+
+    .collection-card-content {
+        padding: 1.15rem;
+    }
+
+    .exhibit-detail,
+    .about-intro {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .exhibit-detail-media img,
+    .about-image img {
+        aspect-ratio: 5 / 4;
+    }
+
+    .exhibit-detail-content h1 {
+        font-size: clamp(2.5rem, 9vw, 3.8rem);
+    }
+
+    .exhibit-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .timeline-list {
+        gap: 1.25rem;
+        padding-left: 1.7rem;
+    }
+
+    .timeline-list::before {
+        left: 5px;
+    }
+
+    .timeline-event {
+        padding: 1.2rem;
+    }
+
+    .timeline-event::before {
+        left: -1.9rem;
+        width: 13px;
+        height: 13px;
+    }
+
+    .filter-panel {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .filter-field {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .filter-actions {
+        width: 100%;
+    }
+
+    .filter-actions .button {
+        flex: 1;
+    }
+
+    .filter-chips {
+        gap: 0.5rem;
+    }
+
+    .filter-chip {
+        min-height: 44px;
+        padding: 0.6rem 0.85rem;
+    }
+
+    .quiz-container {
+        padding: 1.25rem;
+    }
+
+    .quiz-answers {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-answer {
+        min-height: 54px;
+    }
+
+    .quiz-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .quiz-actions .button {
+        width: 100%;
+    }
+
+    .modal-panel {
+        max-height: 88svh;
+        padding: 1.25rem;
+    }
+}
+
+
+/* 12. LANDSCAPE PHONES */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .hero-section {
+        min-height: 650px;
+        padding-top: 120px;
+        padding-bottom: 100px;
+    }
+
+    .hero-bottom {
+        bottom: 1rem;
+    }
+
+    .primary-navigation {
+        max-height: calc(100svh - 75px);
+    }
+}
+
+
+/* 13. HOVER EFFECTS ONLY ON HOVER-CAPABLE DEVICES */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .exhibit-card:hover,
+    .collection-card:hover {
+        transform: translateY(-6px);
+    }
+
+    .fact-card:hover .fact-image img,
+    .collection-card:hover .collection-card-image img {
+        transform: scale(1.045);
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+    }
+
+    .timeline-event:hover {
+        transform: translateX(4px);
+    }
+}
+
+
+/* 14. REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .exhibit-card:hover,
+    .collection-card:hover,
+    .button:hover,
+    .timeline-event:hover {
+        transform: none;
+    }
+}
+
+/* =====================================================
+   CURIO — MOBILE RESPONSIVENESS PRIORITY FIX
+   Full hero image + no horizontal page scrolling
+   ===================================================== */
+
+/* Prevent horizontal scrolling on every page */
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+main,
+header,
+footer,
+section {
+    max-width: 100%;
+}
+
+/* Keep the hero image as one complete composition */
+.hero-section {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    overflow: hidden;
+    background: #07141b;
+}
+
+.hero-background-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hero-background-image {
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .hero-artwork {
+        max-width: 65%;
+        pointer-events: none;
+    }
+
+    .featured-grid,
+    .facts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile: show the complete landscape image */
+@media (max-width: 767px) {
+    .hero-section {
+        min-height: 100svh;
+        height: auto;
+        padding-top: 0;
+        padding-bottom: 110px;
+        background: #07141b;
+    }
+
+    .hero-background {
+        inset: 0;
+        background: #07141b;
+    }
+
+    .hero-background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: top center;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+            180deg,
+            rgba(7, 20, 27, 0.08) 0%,
+            rgba(7, 20, 27, 0.45) 35%,
+            #07141b 78%,
+            #07141b 100%
+        );
+        pointer-events: none;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: clamp(270px, 75vw, 430px) 0 30px;
+    }
+
+    .hero-title {
+        max-width: 100%;
+        font-size: clamp(2.2rem, 8vw, 3.5rem);
+        line-height: 1.08;
+        overflow-wrap: break-word;
+    }
+
+    .hero-description {
+        max-width: 100%;
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .hero-button {
+        max-width: 100%;
+    }
+
+    /* Decorative rings must never widen the page */
+    .hero-artwork {
+        right: 0;
+        max-width: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .hero-artwork-image {
+        display: none !important;
+    }
+
+    .featured-grid,
+    .facts-grid,
+    .collection-grid {
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .exhibit-card,
+    .fact-card,
+    .collection-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .section-heading {
+        min-width: 0;
+    }
+
+    .text-link {
+        overflow-wrap: anywhere;
+    }
+
+    .footer-main {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+    .hero-title {
+        font-size: clamp(2rem, 8.5vw, 2.6rem);
+    }
+
+    .hero-content {
+        padding-top: 270px;
+    }
+
+    .hero-bottom {
+        right: 16px;
+        left: 16px;
+    }
+
+    .section-title {
+        overflow-wrap: break-word;
+    }
+
+    .footer-main {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
