@@ -2,6 +2,7 @@
 /*
    CURIO MUSEUM — CHALLENGE PAGE
   
+
     */
 
 .challenge-page {
@@ -1010,15 +1011,15 @@
         min-height: auto;
         padding: 70px 22px 42px;
         background:
-            linear-gradient(
-                180deg,
-                rgba(5, 17, 23, 0.86) 0%,
-                rgba(5, 17, 23, 0.93) 58%,
-                #07141b 100%
-            ),
-            url("../assets/Ancient%20Observatory%20of%20Knowledge.png")
-            center / cover no-repeat,
-            #07141b;
+    linear-gradient(
+        180deg,
+        rgba(5, 17, 23, 0.40) 0%,
+        rgba(5, 17, 23, 0.52) 58%,
+        rgba(7, 20, 27, 0.75) 100%
+    ),
+    url("../assets/Ancient%20Observatory%20of%20Knowledge.png")
+    60% center / cover no-repeat,
+    #07141b;
     }
 
     .challenge-page .challenge-hero-content {
