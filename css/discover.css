@@ -1,8 +1,8 @@
 
-/* =========================================================
+/* 
    CURIO MUSEUM — DISCOVER PAGE
    Responsive styling and image presentation
-   ========================================================= */
+ */
 
 .discover-page {
     --discover-ink: #07141b;
@@ -1186,3 +1186,5 @@
         transform: none;
     }
 }
+
+

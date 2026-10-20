@@ -1,8 +1,8 @@
 
-/* =========================================================
+/* 
    CURIO MUSEUM — EXHIBIT DETAILS
    Dynamic exhibit content, bookmarks and recent history
-   ========================================================= */
+   */
 
 "use strict";
 

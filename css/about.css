@@ -1,8 +1,8 @@
 
-/* ==========================================
+/* 
    CURIO MUSEUM — ABOUT PAGE
    Antique • Cinematic • Responsive
-   ========================================== */
+    */
 
 .about-page {
     --about-bg: #09171c;
@@ -43,9 +43,9 @@
     outline-offset: 4px;
 }
 
-/* ==========================================
+/*
    HERO — FULL BACKGROUND IMAGE
-   ========================================== */
+  */
 
 .about-page .about-hero {
     position: relative;
@@ -175,9 +175,9 @@
     letter-spacing: 0.16em;
 }
 
-/* ==========================================
+/* 
    INTRODUCTION
-   ========================================== */
+ */
 
 .about-page .about-intro {
     display: grid;
@@ -216,9 +216,9 @@
     margin-top: 25px;
 }
 
-/* ==========================================
+/* 
    MISSION — IMAGE AND TEXT
-   ========================================== */
+   */
 
 .about-page .about-mission {
     display: grid;
@@ -279,9 +279,9 @@
     color: var(--about-cream);
 }
 
-/* ==========================================
+/* 
    EXPLORATION PILLARS
-   ========================================== */
+  */
 
 .about-page .about-pillars {
     padding: clamp(70px, 9vw, 115px) clamp(20px, 6vw, 80px);
@@ -373,9 +373,9 @@
     transform: translateX(4px);
 }
 
-/* ==========================================
+/* 
    CLOSING CALL TO ACTION
-   ========================================== */
+ */
 
 .about-page .about-closing {
     position: relative;
@@ -409,9 +409,9 @@
     line-height: 1.9;
 }
 
-/* ==========================================
+/* 
    PAGE TRANSITIONS
-   ========================================== */
+ */
 
 @keyframes about-image-reveal {
     from {
@@ -450,9 +450,9 @@
     transform: translateY(0);
 }
 
-/* ==========================================
+/*
    TABLET
-   ========================================== */
+ */
 
 @media (max-width: 900px) {
     .about-page .about-hero {
@@ -474,9 +474,9 @@
     }
 }
 
-/* ==========================================
+/* 
    MOBILE
-   ========================================== */
+    */
 
 @media (max-width: 600px) {
     .about-page .about-hero {
@@ -586,9 +586,9 @@
     }
 }
 
-/* ==========================================
+/* 
    REDUCED MOTION ACCESSIBILITY
-   ========================================== */
+   */
 
 @media (prefers-reduced-motion: reduce) {
     .about-page .about-hero-image,

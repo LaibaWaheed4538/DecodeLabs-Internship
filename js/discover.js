@@ -1,8 +1,8 @@
 
-/* =========================================================
+/* 
    CURIO MUSEUM — DISCOVER PAGE
    Search, category filters, sorting, bookmarks and images
-   ========================================================= */
+   */
 
 "use strict";
 

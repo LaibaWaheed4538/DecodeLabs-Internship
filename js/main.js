@@ -1,9 +1,9 @@
 
-/* =========================================================
+/*
    CURIO MUSEUM
    Main JavaScript
-   Navigation, Search, Header, Accessibility and Shared UI
-   ========================================================= */
+  
+   */
 
 "use strict";
 
@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-/* ---------------------------------------------------------
+/* 
    01. MOBILE NAVIGATION
-   --------------------------------------------------------- */
+ */
 
 function initMobileNavigation() {
     const menuToggle = document.querySelector(

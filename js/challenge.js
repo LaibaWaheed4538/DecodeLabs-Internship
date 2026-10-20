@@ -1,8 +1,7 @@
 
-/* =====================================================
+/* 
    CURIO MUSEUM — KNOWLEDGE CHALLENGE
-   Vanilla JavaScript quiz with scoring and feedback
-   ===================================================== */
+    */
 
 "use strict";
 

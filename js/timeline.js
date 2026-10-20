@@ -1,8 +1,7 @@
 
-/* ======================================================
+/* 
    CURIO MUSEUM — INTERACTIVE TIMELINE
-   Uses the shared data in js/data.js
-   ====================================================== */
+ */
 
 "use strict";
 

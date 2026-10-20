@@ -1,9 +1,9 @@
 
-/* =========================================================
+/* 
    CURIO MUSEUM
-   Responsive Layout, Transitions & Motion
+ 
    Mobile · Tablet · Desktop
-   ========================================================= */
+   */
 
 
 /* 01. GLOBAL RESPONSIVE SAFETY */
@@ -968,10 +968,10 @@ aside {
     }
 }
 
-/* =====================================================
-   CURIO — MOBILE RESPONSIVENESS PRIORITY FIX
-   Full hero image + no horizontal page scrolling
-   ===================================================== */
+/*
+   CURIO — MOBILE RESPONSIVENESS PRIORITY 
+  
+   */
 
 /* Prevent horizontal scrolling on every page */
 html {

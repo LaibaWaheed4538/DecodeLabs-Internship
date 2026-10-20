@@ -1,9 +1,9 @@
 
-/* =========================================================
+/* 
    CURIO MUSEUM
-   Shared Data
+   
    Exhibits, Timeline, Facts, Categories and Quiz
-   ========================================================= */
+   */
 
 "use strict";
 
