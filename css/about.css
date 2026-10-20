@@ -488,19 +488,23 @@
         background-position: 58% center;
     }
 
-    .about-page .about-hero::before {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(4, 15, 20, 0.88),
-                rgba(4, 15, 20, 0.57)
-            ),
-            linear-gradient(
-                0deg,
-                rgba(4, 15, 20, 0.7),
-                transparent
-            );
-    }
+   .about-page .about-hero::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: "";
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 15, 20, 0.55),
+            rgba(4, 15, 20, 0.20)
+        ),
+        linear-gradient(
+            0deg,
+            rgba(4, 15, 20, 0.35),
+            transparent 65%
+        );
+}
 
     .about-page .about-hero h1 {
         font-size: clamp(2.65rem, 10vw, 3.8rem);
