@@ -1,7 +1,8 @@
 
-/* 
+/*
    CURIO MUSEUM — COLLECTION PAGE
-   */
+   Displays discoveries saved from Discover and Exhibit pages.
+*/
 
 "use strict";
 
@@ -11,9 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!page || !grid) return;
 
-    const cards = Array.from(
-        grid.querySelectorAll("[data-collection-card]")
-    );
+    const data = window.CURIO_DATA;
+    const exhibits = Array.isArray(data?.exhibits)
+        ? data.exhibits
+        : [];
 
     const filters = Array.from(
         page.querySelectorAll("[data-collection-filter]")
@@ -21,38 +23,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sortSelect = document.getElementById("collection-sort");
     const emptyState = document.getElementById("collection-empty");
-    const storageKey = "curio-saved-discoveries";
+    const storageKey = "curio-bookmarks";
 
     let activeFilter = "all";
     let savedItems = readSavedItems();
 
-    /* Read saved items safely */
+    /* Read saved items */
 
     function readSavedItems() {
         try {
             const stored = localStorage.getItem(storageKey);
-
-            if (stored === null) {
-                return cards
-                    .map(getCardId)
-                    .filter(Boolean);
-            }
-
-            const parsed = JSON.parse(stored);
+            const parsed = stored ? JSON.parse(stored) : [];
 
             return Array.isArray(parsed)
-                ? parsed.filter(item => typeof item === "string")
+                ? [...new Set(
+                    parsed.filter(item => typeof item === "string")
+                )]
                 : [];
         } catch (error) {
             console.warn("Unable to read saved discoveries.", error);
-
-            return cards
-                .map(getCardId)
-                .filter(Boolean);
+            return [];
         }
     }
 
-    /* Save collection to the browser */
+    /* Save items */
 
     function persistSavedItems() {
         try {
@@ -60,44 +54,156 @@ document.addEventListener("DOMContentLoaded", () => {
                 storageKey,
                 JSON.stringify(savedItems)
             );
-
             return true;
         } catch (error) {
             console.warn("Unable to save discoveries.", error);
-
             return false;
         }
     }
 
-    function getCardId(card) {
-        return card.querySelector("[data-save-item]")
-            ?.dataset.saveItem || "";
+    /* Get exhibit information */
+
+    function getCategoryGroup(exhibit) {
+        const category = exhibit.categoryId || "";
+
+        if (category === "history" ||
+            category === "ancient-civilizations") {
+            return "history";
+        }
+
+        if (category === "science") {
+            return "science";
+        }
+
+        if (category === "inventions") {
+            return "art";
+        }
+
+        return "other";
     }
 
-    function getCardTitle(card) {
-        return card.dataset.title || "Discovery";
+    function createElement(tag, className, text) {
+        const element = document.createElement(tag);
+
+        if (className) element.className = className;
+        if (text !== undefined) element.textContent = text;
+
+        return element;
     }
 
-    /* Update accessible save button */
+    /* Create a collection card from exhibit data */
 
-    function updateSaveButton(button, isSaved) {
-        const card = button.closest("[data-collection-card]");
+    function createCard(exhibit) {
+        const card = createElement("article", "collection-card");
 
-        if (!card) return;
+        card.dataset.collectionCard = "";
+        card.dataset.title = exhibit.title || "Discovery";
+        card.dataset.category = getCategoryGroup(exhibit);
 
-        const title = getCardTitle(card);
-
-        button.classList.toggle("is-saved", isSaved);
-        button.setAttribute("aria-pressed", String(isSaved));
-        button.setAttribute(
-            "aria-label",
-            `${isSaved ? "Remove" : "Save"} ${title} ${
-                isSaved ? "from" : "to"
-            } your collection`
+        const imageLink = createElement(
+            "a",
+            "collection-card-image"
         );
 
-        button.textContent = isSaved ? "♥" : "♡";
+        imageLink.href =
+            "exhibit.html?id=" + encodeURIComponent(exhibit.id);
+
+        const image = document.createElement("img");
+        image.src = exhibit.image || "";
+        image.alt = exhibit.imageAlt || exhibit.title || "Museum exhibit";
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.width = 850;
+        image.height = 650;
+
+        image.addEventListener("error", () => {
+            image.hidden = true;
+        }, { once: true });
+
+        imageLink.appendChild(image);
+
+        const categoryLabel = createElement(
+            "span",
+            "collection-card-category",
+            (exhibit.category || "Discovery").toUpperCase()
+        );
+
+        imageLink.appendChild(categoryLabel);
+
+        const content = createElement(
+            "div",
+            "collection-card-content"
+        );
+
+        content.appendChild(
+            createElement(
+                "p",
+                "collection-card-meta",
+                exhibit.period || "Museum collection"
+            )
+        );
+
+        const heading = createElement("h3");
+        const titleLink = createElement(
+            "a",
+            "",
+            exhibit.title || "Untitled discovery"
+        );
+
+        titleLink.href = imageLink.href;
+        heading.appendChild(titleLink);
+        content.appendChild(heading);
+
+        content.appendChild(
+            createElement(
+                "p",
+                "collection-card-description",
+                exhibit.shortDescription ||
+                    exhibit.description ||
+                    "Explore the story behind this discovery."
+            )
+        );
+
+        const footer = createElement(
+            "div",
+            "collection-card-footer"
+        );
+
+        const exploreLink = createElement(
+            "a",
+            "",
+            "Explore exhibit ↗"
+        );
+
+        exploreLink.href = imageLink.href;
+
+        const saveButton = createElement(
+            "button",
+            "collection-save-button is-saved",
+            "♥"
+        );
+
+        saveButton.type = "button";
+        saveButton.dataset.saveItem = exhibit.id;
+        saveButton.setAttribute("aria-pressed", "true");
+        saveButton.setAttribute(
+            "aria-label",
+            "Remove " + (exhibit.title || "discovery") +
+                " from saved items"
+        );
+
+        footer.append(exploreLink, saveButton);
+        content.appendChild(footer);
+        card.append(imageLink, content);
+
+        return card;
     }
+
+    /* Create cards for all available exhibits */
+
+    const cards = exhibits
+        .filter(exhibit => exhibit && exhibit.id)
+        .map(createCard);
 
     /* Sorting */
 
@@ -107,55 +213,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (sortMode === "title") {
             orderedCards.sort((a, b) =>
-                getCardTitle(a).localeCompare(getCardTitle(b))
+                a.dataset.title.localeCompare(b.dataset.title)
             );
         } else if (sortMode === "category") {
             orderedCards.sort((a, b) =>
-                (a.dataset.category || "").localeCompare(
-                    b.dataset.category || ""
-                )
+                a.dataset.category.localeCompare(b.dataset.category)
             );
         }
 
         return orderedCards;
     }
 
-    /* Render visible discoveries */
+    /* Render saved discoveries */
 
     function renderCollection() {
-        const orderedCards = getSortedCards();
         let visibleCount = 0;
 
-        orderedCards.forEach(card => {
-            const id = getCardId(card);
+        grid.replaceChildren();
+
+        getSortedCards().forEach(card => {
+            const id = card.querySelector("[data-save-item]")
+                ?.dataset.saveItem;
+
             const isSaved = savedItems.includes(id);
 
             const matchesCategory =
                 activeFilter === "all" ||
                 card.dataset.category === activeFilter;
 
-            const shouldShow = Boolean(id) &&
-                isSaved &&
-                matchesCategory;
+            if (!id || !isSaved || !matchesCategory) return;
 
-            card.hidden = !shouldShow;
-
-            const saveButton = card.querySelector("[data-save-item]");
-
-            if (saveButton) {
-                updateSaveButton(saveButton, isSaved);
-            }
-
-            if (shouldShow) {
-                visibleCount++;
-
-                /*
-                 * Make filtered cards visible again even when
-                 * they were hidden before entering the viewport.
-                 */
-                card.classList.add("is-visible");
-            }
-
+            visibleCount++;
+            card.classList.add("is-visible");
             grid.appendChild(card);
         });
 
@@ -184,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /* Category filter buttons */
+    /* Category filters */
 
     filters.forEach(button => {
         button.addEventListener("click", () => {
@@ -205,13 +294,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    /* Sort control */
+    /* Sorting control */
 
     if (sortSelect) {
         sortSelect.addEventListener("change", renderCollection);
     }
 
-    /* Save and remove buttons */
+    /* Remove a saved discovery */
 
     grid.addEventListener("click", event => {
         const button = event.target.closest("[data-save-item]");
@@ -220,67 +309,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const id = button.dataset.saveItem;
 
-        if (!id) return;
+        savedItems = savedItems.filter(item => item !== id);
 
-        const isSaved = savedItems.includes(id);
-
-        if (isSaved) {
-            savedItems = savedItems.filter(item => item !== id);
+        if (persistSavedItems()) {
+            renderCollection();
         } else {
-            savedItems = [...savedItems, id];
+            savedItems = readSavedItems();
+            renderCollection();
         }
-
-        persistSavedItems();
-        renderCollection();
     });
 
-    /* Scroll reveal transitions */
-
-    const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    const revealElements = Array.from(
-        page.querySelectorAll(
-            ".collection-section-header, " +
-            ".collection-toolbar, " +
-            ".collection-card, " +
-            ".collection-callout"
-        )
-    );
-
-    if (!reduceMotion && "IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
-                });
-            },
-            {
-                threshold: 0.12,
-                rootMargin: "0px 0px -30px 0px"
-            }
-        );
-
-        revealElements.forEach(element => {
-            element.classList.add("collection-reveal");
-
-            /*
-             * Observe cards even if the initial filter hides them.
-             * The render function handles their visibility later.
-             */
-            observer.observe(element);
-        });
-    } else {
-        revealElements.forEach(element => {
-            element.classList.add("is-visible");
-        });
-    }
-
-    /* Initial page render */
+    /* Initial render */
 
     renderCollection();
 });

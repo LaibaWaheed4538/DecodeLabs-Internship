@@ -1,8 +1,8 @@
 
-/* 
+/*
    CURIO MUSEUM — DISCOVER PAGE
    Responsive styling and image presentation
- */
+*/
 
 .discover-page {
     --discover-ink: #07141b;
@@ -83,7 +83,8 @@
             rgba(7, 20, 27, 0.78) 0%,
             rgba(7, 20, 27, 0.32) 100%
         ),
-        url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png") center / cover no-repeat;
+        url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png")
+            center / cover no-repeat;
 
     animation: discover-hero-image-reveal 1.2s ease-out both;
 }
@@ -956,8 +957,6 @@
     }
 }
 
-
-
 @keyframes discover-hero-image-reveal {
     from {
         opacity: 0.45;
@@ -1007,8 +1006,25 @@
 
 @media (max-width: 600px) {
     .discover-hero {
-        min-height: 390px;
-        padding: 75px 6% 80px;
+        min-height: 0;
+        padding: calc(56.25vw + 75px) 6% 80px;
+    }
+
+    .discover-hero::before {
+        inset: 0;
+        background-image:
+            linear-gradient(
+                180deg,
+                rgba(7, 20, 27, 0.05) 0%,
+                rgba(7, 20, 27, 0.12) 35%,
+                rgba(7, 20, 27, 0.55) 75%,
+                #07141b 100%
+            ),
+            url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png");
+        background-position: center top, center top;
+        background-size: 100% 100%, 100% auto;
+        background-repeat: no-repeat, no-repeat;
+        animation: none;
     }
 
     .discover-hero::after {
@@ -1186,5 +1202,9 @@
         transform: none;
     }
 }
+
+
+
+
 
 
