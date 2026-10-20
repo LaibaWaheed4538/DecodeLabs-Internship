@@ -1,7 +1,5 @@
-
 /*
    CURIO MUSEUM — TIMELINE
-   
 */
 
 .timeline-page {
@@ -57,14 +55,14 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-background:
-    linear-gradient(
-        90deg,
-        rgba(7, 20, 27, 0.78) 0%,
-        rgba(7, 20, 27, 0.40) 55%,
-        rgba(7, 20, 27, 0.18) 100%
-    ),
-    url("../assets/Mystical Celestial Antiquities Hall.png") center center / cover no-repeat;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 20, 27, 0.78) 0%,
+            rgba(7, 20, 27, 0.40) 55%,
+            rgba(7, 20, 27, 0.18) 100%
+        ),
+        url("../assets/Mystical Celestial Antiquities Hall.png") center center / cover no-repeat;
 }
 
 .timeline-hero::before {
@@ -765,6 +763,24 @@ background:
 /* MOBILE */
 
 @media (max-width: 620px) {
+
+    /*
+       FIX: hero image ab poori width aur height mein fit hoti hai
+       (cover ki jagah 100% 100%), isliye crop nahi hoti.
+       Text, button aur art ki position pehle jaisi hi hai.
+    */
+    .timeline-hero {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(7, 20, 27, 0.78) 0%,
+                rgba(7, 20, 27, 0.40) 55%,
+                rgba(7, 20, 27, 0.18) 100%
+            ),
+            url("../assets/Mystical Celestial Antiquities Hall.png") center center / 100% 100% no-repeat,
+            #07141b;
+    }
+
     .timeline-hero-inner {
         grid-template-columns: minmax(0, 1fr);
         width: 90%;

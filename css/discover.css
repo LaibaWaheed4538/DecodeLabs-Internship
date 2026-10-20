@@ -1,7 +1,7 @@
-/* 
+/*
    CURIO MUSEUM — DISCOVER PAGE
    Responsive styling and image presentation
- */
+*/
 
 .discover-page {
     --discover-ink: #07141b;
@@ -955,8 +955,6 @@
     }
 }
 
-
-
 @keyframes discover-hero-image-reveal {
     from {
         opacity: 0.45;
@@ -1008,6 +1006,21 @@
     .discover-hero {
         min-height: 390px;
         padding: 75px 6% 80px;
+    }
+
+    /*
+       FIX: hero image ab poori width aur height mein fit hoti hai
+       (cover ki jagah 100% 100%), isliye crop nahi hoti.
+       Text aur baqi layout pehle jaisa hi hai.
+    */
+    .discover-hero::before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(7, 20, 27, 0.78) 0%,
+                rgba(7, 20, 27, 0.32) 100%
+            ),
+            url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png") center center / 100% 100% no-repeat;
     }
 
     .discover-hero::after {

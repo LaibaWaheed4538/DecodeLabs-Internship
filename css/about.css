@@ -1,8 +1,7 @@
-
-/* 
+/*
    CURIO MUSEUM — ABOUT PAGE
    Antique • Cinematic • Responsive
-    */
+*/
 
 .about-page {
     --about-bg: #09171c;
@@ -45,7 +44,7 @@
 
 /*
    HERO — FULL BACKGROUND IMAGE
-  */
+*/
 
 .about-page .about-hero {
     position: relative;
@@ -65,7 +64,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
-   background-image: url("../assets/Antique\ Explorer’s\ Study.png");
+    background-image: url("../assets/Antique\ Explorer’s\ Study.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -175,9 +174,9 @@
     letter-spacing: 0.16em;
 }
 
-/* 
+/*
    INTRODUCTION
- */
+*/
 
 .about-page .about-intro {
     display: grid;
@@ -216,9 +215,9 @@
     margin-top: 25px;
 }
 
-/* 
+/*
    MISSION — IMAGE AND TEXT
-   */
+*/
 
 .about-page .about-mission {
     display: grid;
@@ -279,9 +278,9 @@
     color: var(--about-cream);
 }
 
-/* 
+/*
    EXPLORATION PILLARS
-  */
+*/
 
 .about-page .about-pillars {
     padding: clamp(70px, 9vw, 115px) clamp(20px, 6vw, 80px);
@@ -373,9 +372,9 @@
     transform: translateX(4px);
 }
 
-/* 
+/*
    CLOSING CALL TO ACTION
- */
+*/
 
 .about-page .about-closing {
     position: relative;
@@ -409,9 +408,9 @@
     line-height: 1.9;
 }
 
-/* 
+/*
    PAGE TRANSITIONS
- */
+*/
 
 @keyframes about-image-reveal {
     from {
@@ -452,7 +451,7 @@
 
 /*
    TABLET
- */
+*/
 
 @media (max-width: 900px) {
     .about-page .about-hero {
@@ -474,9 +473,9 @@
     }
 }
 
-/* 
+/*
    MOBILE
-    */
+*/
 
 @media (max-width: 600px) {
     .about-page .about-hero {
@@ -484,27 +483,33 @@
         padding: 80px 22px 90px;
     }
 
+    /*
+       FIX: image ab hero ki poori width aur height mein fit hoti hai
+       (cover ki jagah 100% 100%), isliye crop nahi hoti.
+       Text, button aur caption ki position pehle jaisi hi hai.
+    */
     .about-page .about-hero-image {
-        background-position: 58% center;
+        background-position: center center;
+        background-size: 100% 100%;
     }
 
-   .about-page .about-hero::before {
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    content: "";
-    background:
-        linear-gradient(
-            90deg,
-            rgba(4, 15, 20, 0.55),
-            rgba(4, 15, 20, 0.20)
-        ),
-        linear-gradient(
-            0deg,
-            rgba(4, 15, 20, 0.35),
-            transparent 65%
-        );
-}
+    .about-page .about-hero::before {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        content: "";
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 15, 20, 0.55),
+                rgba(4, 15, 20, 0.20)
+            ),
+            linear-gradient(
+                0deg,
+                rgba(4, 15, 20, 0.35),
+                transparent 65%
+            );
+    }
 
     .about-page .about-hero h1 {
         font-size: clamp(2.65rem, 10vw, 3.8rem);
@@ -590,9 +595,9 @@
     }
 }
 
-/* 
+/*
    REDUCED MOTION ACCESSIBILITY
-   */
+*/
 
 @media (prefers-reduced-motion: reduce) {
     .about-page .about-hero-image,
