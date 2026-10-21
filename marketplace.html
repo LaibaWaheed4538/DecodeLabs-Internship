@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore historical artifacts and museum-inspired discoveries at CURIO.">
+    <meta name="theme-color" content="#07141b">
+    <title>Marketplace | CURIO Museum</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/marketplace.css">
+
+    <script src="js/main.js" defer></script>
+    <script src="js/marketplace.js" defer></script>
+</head>
+
+<body class="marketplace-page">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header" id="site-header">
+    <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="CURIO home">
+            CURIO<span class="brand-dot">.</span>
+        </a>
+
+        <nav class="primary-navigation"
+             id="primary-navigation"
+             aria-label="Main navigation">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="discover.html">Discover</a>
+            <a class="nav-link" href="timeline.html">Timeline</a>
+            <a class="nav-link" href="challenge.html">Challenge</a>
+            <a class="nav-link" href="collection.html">Collection</a>
+            <a class="nav-link" href="community-discoveries.html">
+    Community
+</a>
+            <a class="nav-link is-active" href="marketplace.html"
+               aria-current="page">Marketplace</a>
+            <a class="nav-link" href="about.html">About</a>
+        </nav>
+
+        <div class="header-actions">
+            <a class="marketplace-cart" href="billing.html">
+                Cart (<span id="cart-count">0</span>)
+            </a>
+
+            <button class="icon-button menu-toggle"
+                    type="button"
+                    aria-label="Toggle navigation"
+                    aria-controls="primary-navigation"
+                    aria-expanded="false"
+                    data-menu-toggle>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main id="main-content">
+
+    <!-- FEATURED ARTIFACT -->
+    <section class="marketplace-hero">
+        <div class="marketplace-hero-content">
+            <p class="eyebrow">THE CURIO MARKETPLACE</p>
+
+            <h1>
+                History,<br>
+                held in <span class="text-accent">objects.</span>
+            </h1>
+
+            <p class="marketplace-description">
+                Explore remarkable artifacts, ancient craftsmanship
+                and objects that preserve the stories of civilization.
+            </p>
+
+            <a class="marketplace-button"
+               href="#marketplace-collection">
+                Explore the collection
+            </a>
+        </div>
+
+        <figure class="marketplace-hero-art">
+            <img
+                src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/253135/531064/main-image"
+                alt="Ancient Greek terracotta statuette"
+                fetchpriority="high">
+
+            <figcaption>
+                <span>FEATURED OBJECT</span>
+                <span>Ancient craftsmanship</span>
+            </figcaption>
+        </figure>
+    </section>
+
+    <!-- COLLECTION -->
+    <section class="marketplace-section"
+             id="marketplace-collection">
+
+        <div class="marketplace-heading">
+            <div>
+                <p class="eyebrow">CURATED OBJECTS</p>
+                <h2>Discover the collection<span class="text-accent">.</span></h2>
+            </div>
+
+            <p>
+                Explore the art, culture and craftsmanship
+                of ancient civilizations.
+            </p>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="marketplace-filters" aria-label="Filter artifacts">
+            <button class="filter-chip is-active" type="button"
+                    data-market-filter="all" aria-pressed="true">
+                All objects
+            </button>
+            <button class="filter-chip" type="button"
+                    data-market-filter="History" aria-pressed="false">
+                History
+            </button>
+            <button class="filter-chip" type="button"
+                    data-market-filter="Art" aria-pressed="false">
+                Art
+            </button>
+        </div>
+
+        <div class="marketplace-products" id="marketplace-products">
+
+            <!-- ARTIFACT 1 -->
+            <article class="market-product"
+                     data-product-id="greek-oinochoe"
+                     data-category="History"
+                     data-name="Ancient Greek Oinochoe"
+                     data-price="85">
+                <div class="market-product-image">
+                    <img
+                        src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/253151/534222/main-image"
+                        alt="Ancient Greek terracotta oinochoe jug"
+                        loading="lazy">
+                </div>
+
+                <div class="market-product-info">
+                    <p class="eyebrow">HISTORY · NO. 001</p>
+                    <h3>Ancient Greek Oinochoe</h3>
+                    <p>A historical pottery vessel inspired by ancient Greek craftsmanship.</p>
+
+                    <div class="market-product-footer">
+                        <strong>$85.00</strong>
+                        <button class="marketplace-button"
+                                type="button" data-add-to-cart>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ARTIFACT 2 -->
+            <article class="market-product"
+                     data-product-id="greek-krater"
+                     data-category="Art"
+                     data-name="Greek Terracotta Calyx-Krater"
+                     data-price="120">
+                <div class="market-product-image">
+                    <img
+                        src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/254563/532620/main-image"
+                        alt="Ancient Greek terracotta calyx-krater"
+                        loading="lazy">
+                </div>
+
+                <div class="market-product-info">
+                    <p class="eyebrow">ART · NO. 002</p>
+                    <h3>Greek Terracotta Calyx-Krater</h3>
+                    <p>A decorated ancient vessel showcasing classical artistic traditions.</p>
+
+                    <div class="market-product-footer">
+                        <strong>$120.00</strong>
+                        <button class="marketplace-button"
+                                type="button" data-add-to-cart>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ARTIFACT 3 -->
+            <article class="market-product"
+                     data-product-id="archaic-oinochoe"
+                     data-category="History"
+                     data-name="Archaic Greek Oinochoe"
+                     data-price="95">
+                <div class="market-product-image">
+                    <img
+                        src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/247233/504388/main-image"
+                        alt="Archaic Greek pottery jug"
+                        loading="lazy">
+                </div>
+
+                <div class="market-product-info">
+                    <p class="eyebrow">HISTORY · NO. 003</p>
+                    <h3>Archaic Greek Oinochoe</h3>
+                    <p>A historical vessel inspired by ancient Greek figure decoration.</p>
+
+                    <div class="market-product-footer">
+                        <strong>$95.00</strong>
+                        <button class="marketplace-button"
+                                type="button" data-add-to-cart>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ARTIFACT 4: ADDITIONAL POTTERY -->
+            <article class="market-product"
+                     data-product-id="terracotta-vessel"
+                     data-category="History"
+                     data-name="Terracotta Vessel Study"
+                     data-price="75">
+                <div class="market-product-image">
+                    <img
+                        src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/253155/534225/main-image"
+                        alt="Ancient terracotta pottery vessel"
+                        loading="lazy">
+                </div>
+
+                <div class="market-product-info">
+                    <p class="eyebrow">HISTORY · NO. 004</p>
+                    <h3>Terracotta Vessel Study</h3>
+                    <p>A study of traditional pottery and ancient ceramic craftsmanship.</p>
+
+                    <div class="market-product-footer">
+                        <strong>$75.00</strong>
+                        <button class="marketplace-button"
+                                type="button" data-add-to-cart>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ARTIFACT 5: EGYPTIAN BRONZE -->
+            <article class="market-product"
+                     data-product-id="egyptian-bronze"
+                     data-category="History"
+                     data-name="Egyptian Bronze Statuette"
+                     data-price="110">
+                <div class="market-product-image">
+                    <img
+                        src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/244463/499495/main-image"
+                        alt="Ancient Egyptian bronze statuette"
+                        loading="lazy">
+                </div>
+
+                <div class="market-product-info">
+                    <p class="eyebrow">HISTORY · NO. 005</p>
+                    <h3>Egyptian Bronze Statuette</h3>
+                    <p>An object inspired by the religious art and metalwork of ancient Egypt.</p>
+
+                    <div class="market-product-footer">
+                        <strong>$110.00</strong>
+                        <button class="marketplace-button"
+                                type="button" data-add-to-cart>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ARTIFACT 6: BRONZE FIGURE -->
+            <article class="market-product"
+                     data-product-id="ancient-bronze-figure"
+                     data-category="Art"
+                     data-name="Ancient Bronze Figure"
+                     data-price="95">
+                <div class="market-product-image">
+                    <img
+                        src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/255383/523742/main-image"
+                        alt="Ancient bronze figurine"
+                        loading="lazy">
+                </div>
+
+                <div class="market-product-info">
+                    <p class="eyebrow">ART · NO. 006</p>
+                    <h3>Ancient Bronze Figure</h3>
+                    <p>A collectible study inspired by the sculptural traditions of antiquity.</p>
+
+                    <div class="market-product-footer">
+                        <strong>$95.00</strong>
+                        <button class="marketplace-button"
+                                type="button" data-add-to-cart>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <p id="marketplace-feedback"
+           class="marketplace-feedback"
+           role="status" aria-live="polite"></p>
+
+        <p class="marketplace-note">
+            All prices are illustrative demo prices. The displayed
+            museum objects are not being offered for sale.
+        </p>
+
+    </section>
+</main>
+
+</body>
+</html>

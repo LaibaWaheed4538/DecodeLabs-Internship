@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#263238">
+    <meta name="description" content="Review your CURIO artifact selections and billing details.">
+    <title>Billing | CURIO Museum</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/billing.css">
+
+    <script src="js/main.js" defer></script>
+    <script src="js/billing.js" defer></script>
+</head>
+
+<body class="billing-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="index.html" aria-label="CURIO home">
+                CURIO<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="primary-navigation"
+                 id="primary-navigation"
+                 aria-label="Main navigation">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="discover.html">Discover</a>
+                <a class="nav-link" href="timeline.html">Timeline</a>
+                <a class="nav-link" href="challenge.html">Challenge</a>
+                <a class="nav-link" href="collection.html">Collection</a>
+                <a class="nav-link" href="community-discoveries.html">
+    Community
+</a>
+                <a class="nav-link" href="marketplace.html">Marketplace</a>
+                <a class="nav-link" href="about.html">About</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="marketplace-cart" href="billing.html"
+                   aria-current="page">
+                    Cart (<span id="cart-count">0</span>)
+                </a>
+
+                <button class="icon-button menu-toggle"
+                        type="button"
+                        data-menu-toggle
+                        aria-label="Open navigation menu"
+                        aria-controls="primary-navigation"
+                        aria-expanded="false">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="billing-container">
+        <section class="billing-heading" aria-labelledby="billing-title">
+            <p class="billing-eyebrow">CURIO MARKETPLACE</p>
+            <h1 id="billing-title">Your order<span>.</span></h1>
+            <p>Review your selected artifacts and enter your billing details.</p>
+        </section>
+
+        <div class="billing-layout">
+            <section class="billing-panel" aria-labelledby="customer-title">
+                <h2 id="customer-title">Customer details</h2>
+
+                <form id="billing-form">
+                    <div class="billing-field">
+                        <label for="customer-name">Full name *</label>
+                        <input id="customer-name" name="customerName"
+                               type="text" autocomplete="name"
+                               maxlength="100" required>
+                    </div>
+
+                    <div class="billing-field">
+                        <label for="customer-email">Email address *</label>
+                        <input id="customer-email" name="customerEmail"
+                               type="email" autocomplete="email"
+                               maxlength="150" required>
+                    </div>
+
+                    <div class="billing-field">
+                        <label for="customer-phone">Contact number *</label>
+                        <input id="customer-phone" name="customerPhone"
+                               type="tel" autocomplete="tel"
+                               maxlength="30" required>
+                    </div>
+
+                    <div class="billing-field">
+                        <label for="customer-address">Address</label>
+                        <textarea id="customer-address" name="customerAddress"
+                                  autocomplete="street-address"
+                                  maxlength="500"></textarea>
+                    </div>
+
+                    <div class="billing-field">
+                        <label for="customer-notes">Order notes (optional)</label>
+                        <textarea id="customer-notes" name="customerNotes"
+                                  maxlength="500"></textarea>
+                    </div>
+
+                    <button class="billing-button" id="place-order" type="submit">
+                        Confirm demo order
+                    </button>
+
+                    <p class="billing-notice">
+                        Frontend demonstration only. No payment is processed,
+                        and customer details are not sent to a server.
+                    </p>
+
+                    <div id="billing-message" class="billing-message"
+                         role="status" aria-live="polite"></div>
+                </form>
+            </section>
+
+            <aside class="billing-panel" aria-labelledby="summary-title">
+                <h2 id="summary-title">Order summary</h2>
+
+                <div id="billing-items" class="billing-items">
+                    <p class="billing-empty">Loading your cart...</p>
+                </div>
+
+                <dl class="billing-totals">
+                    <div class="billing-summary-row">
+                        <dt>Subtotal</dt>
+                        <dd id="billing-subtotal">$0.00</dd>
+                    </div>
+                    <div class="billing-summary-row">
+                        <dt>Shipping</dt>
+                        <dd>Free</dd>
+                    </div>
+                    <div class="billing-summary-row billing-total">
+                        <dt>Total</dt>
+                        <dd id="billing-total">$0.00</dd>
+                    </div>
+                </dl>
+
+                <p class="billing-notice">
+                    Prices are illustrative demo prices in USD.
+                </p>
+
+                <a class="billing-back-link" href="marketplace.html">
+                    ← Continue exploring
+                </a>
+            </aside>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#A47864">
+    <meta name="description" content="Share, explore and manage community discoveries at Curio Digital Museum.">
+
+    <title>Community Discoveries | Curio Museum</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/community-discoveries.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/community-discoveries.js" defer></script>
+</head>
+
+<body class="community-page">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header" id="site-header">
+    <div class="header-inner">
+
+        <a class="brand" href="index.html" aria-label="Curio home">
+            CURIO<span class="brand-dot">.</span>
+        </a>
+
+        <nav class="primary-navigation" id="primary-navigation"
+             aria-label="Main navigation">
+
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="discover.html">Discover</a>
+            <a class="nav-link" href="timeline.html">Timeline</a>
+            <a class="nav-link" href="challenge.html">Challenge</a>
+            <a class="nav-link" href="collection.html">Collection</a>
+            <a class="nav-link is-active"
+               href="community-discoveries.html"
+               aria-current="page">Community</a>
+            <a class="nav-link" href="marketplace.html">Marketplace</a>
+            <a class="nav-link" href="billing.html">Billing</a>
+            <a class="nav-link" href="about.html">About</a>
+
+        </nav>
+
+        <div class="header-actions">
+
+            <button class="icon-button search-toggle" type="button"
+                    aria-label="Open search" aria-controls="site-search"
+                    aria-expanded="false" data-search-toggle>
+                <svg viewBox="0 0 24 24" width="23" height="23"
+                     fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" aria-hidden="true">
+                    <circle cx="10.8" cy="10.8" r="7.2"></circle>
+                    <path d="m16.2 16.2 4.4 4.4"></path>
+                </svg>
+            </button>
+
+            <button class="icon-button menu-toggle" type="button"
+                    aria-label="Open navigation menu"
+                    aria-controls="primary-navigation"
+                    aria-expanded="false" data-menu-toggle>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="header-search" id="site-search" hidden>
+        <form class="header-search-form" action="discover.html" method="get">
+            <label class="visually-hidden" for="header-search-input">
+                Search museum discoveries
+            </label>
+            <input id="header-search-input" name="q" type="search"
+                   placeholder="Search museum discoveries...">
+            <button class="search-submit" type="submit">Explore</button>
+        </form>
+    </div>
+</header>
+
+<main id="main-content">
+
+    <section class="community-hero">
+        <div class="community-hero-copy">
+            <p class="community-eyebrow">CURIO · SHARED KNOWLEDGE</p>
+
+            <h1>Community <span>Discoveries.</span></h1>
+
+            <p class="community-intro">
+                Every discovery begins with curiosity. Share your findings,
+                document remarkable observations, and build a growing record
+                of knowledge with Curio.
+            </p>
+
+            <a class="community-primary-link" href="#discovery-form">
+                Share a discovery <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+
+        <aside class="community-note" aria-label="About this feature">
+            <span class="community-note-number">01</span>
+            <p class="community-note-label">THE COMMUNITY ARCHIVE</p>
+            <h2>Observe.<br>Document.<br>Discover.</h2>
+            <p>
+                Each entry records a finding, its context and the person
+                who shared it.
+            </p>
+        </aside>
+    </section>
+
+    <section class="community-workspace" aria-label="Manage discoveries">
+
+        <section class="community-feed" aria-labelledby="feed-heading">
+            <div class="community-section-heading">
+                <div>
+                    <p class="community-kicker">THE SHARED ARCHIVE</p>
+                    <h2 id="feed-heading">Latest discoveries</h2>
+                </div>
+
+                <span class="community-total" id="discovery-count">00</span>
+            </div>
+
+            <p class="community-help">
+                Search the archive or filter entries by category.
+            </p>
+
+            <div class="community-filters">
+                <label class="visually-hidden" for="discovery-search">
+                    Search discoveries
+                </label>
+                <input id="discovery-search" type="search"
+                       placeholder="Search discoveries...">
+
+                <label class="visually-hidden" for="category-filter">
+                    Filter by category
+                </label>
+                <select id="category-filter">
+                    <option value="all">All categories</option>
+                    <option value="Archaeology">Archaeology</option>
+                    <option value="History">History</option>
+                    <option value="Science">Science</option>
+                    <option value="Nature">Nature</option>
+                    <option value="Invention">Invention</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <p class="community-results" id="results-summary"
+               aria-live="polite">No discoveries yet.</p>
+
+            <div class="community-records" id="discovery-list"
+                 aria-live="polite"></div>
+        </section>
+
+        <aside class="community-form-panel" id="discovery-form-panel">
+            <p class="community-kicker">CONTRIBUTE TO CURIO</p>
+            <h2 id="form-heading">Share a discovery</h2>
+            <p class="community-help">
+                Record the details clearly so others can understand your finding.
+            </p>
+
+            <form id="discovery-form">
+                <input type="hidden" id="edit-id">
+
+                <div class="community-field">
+                    <label for="discovery-title">Discovery title *</label>
+                    <input id="discovery-title" name="title" type="text"
+                           maxlength="100" required
+                           placeholder="Give your discovery a title">
+                </div>
+
+                <div class="community-form-row">
+                    <div class="community-field">
+                        <label for="discovery-category">Category *</label>
+                        <select id="discovery-category" name="category" required>
+                            <option value="">Choose category</option>
+                            <option value="Archaeology">Archaeology</option>
+                            <option value="History">History</option>
+                            <option value="Science">Science</option>
+                            <option value="Nature">Nature</option>
+                            <option value="Invention">Invention</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="community-field">
+                        <label for="discovery-period">Date or period *</label>
+                        <input id="discovery-period" name="period" type="text"
+                               maxlength="60" required
+                               placeholder="e.g. 2026 or 2500 BCE">
+                    </div>
+                </div>
+
+                <div class="community-field">
+                    <label for="discovery-location">Location *</label>
+                    <input id="discovery-location" name="location" type="text"
+                           maxlength="100" required
+                           placeholder="Where was it discovered?">
+                </div>
+
+                <div class="community-field">
+                    <label for="discovery-contributor">Contributor name *</label>
+                    <input id="discovery-contributor" name="contributor"
+                           type="text" maxlength="70" required
+                           placeholder="Your name">
+                </div>
+
+                <div class="community-field">
+                    <label for="discovery-description">Description *</label>
+                    <textarea id="discovery-description" name="description"
+                              rows="5" maxlength="1000" required
+                              placeholder="Explain what was discovered and why it matters..."></textarea>
+                </div>
+
+                <div class="community-field">
+                    <label for="discovery-reference">Reference or evidence</label>
+                    <input id="discovery-reference" name="reference"
+                           type="text" maxlength="180"
+                           placeholder="Optional source or reference">
+                </div>
+
+                <div class="community-form-actions">
+                    <button class="community-submit" id="submit-discovery"
+                            type="submit">Publish discovery</button>
+                    <button class="community-cancel" id="cancel-edit"
+                            type="button" hidden>Cancel edit</button>
+                </div>
+
+                <p class="community-status" id="form-status"
+                   role="status" aria-live="polite"></p>
+            </form>
+
+            <p class="community-storage-note">
+                Frontend preview: entries are saved in this browser only.
+                They are not shared online until a backend is connected.
+            </p>
+        </aside>
+
+    </section>
+</main>
+
+<footer class="community-footer">
+    <a class="brand" href="index.html">CURIO<span class="brand-dot">.</span></a>
+    <p>A museum grows whenever someone discovers something new.</p>
+    <a href="about.html">About Curio</a>
+</footer>
+
+</body>
+</html>

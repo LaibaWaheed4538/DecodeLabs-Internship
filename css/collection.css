@@ -1,7 +1,6 @@
-
-/* 
+/*
    CURIO MUSEUM — COLLECTION PAGE
-   */
+*/
 
 .collection-page {
     --collection-bg: #09171c;
@@ -556,8 +555,14 @@
         padding: 70px 22px;
     }
 
+    /*
+       FIX: image ab hero ki poori width aur height mein fit hoti hai
+       (cover ki jagah 100% 100%), isliye crop nahi hoti.
+       Text aur button ki position pehle jaisi hi hai.
+    */
     .collection-page .collection-hero-image {
-        background-position: 58% center;
+        background-position: center center;
+        background-size: 100% 100%;
     }
 
     .collection-page .collection-hero::before {

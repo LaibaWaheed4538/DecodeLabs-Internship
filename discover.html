@@ -6,23 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Discover extraordinary artifacts, ancient civilizations, scientific breakthroughs, inventions and natural wonders at the Curio Digital Museum.">
+          content="Explore historical artifacts, scientific discoveries, ancient civilizations, inventions and natural wonders at Curio Digital Museum.">
 
-    <meta name="theme-color" content="#07141b">
+    <meta name="theme-color" content="#F2F0EA">
 
     <title>Discover Exhibits | Curio Museum</title>
 
+    <!-- PDF typography: Inter + Roboto only -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet">
 
+    <!-- Existing shared stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/discover.css">
 
+    <!-- Existing shared data and JavaScript -->
     <script src="js/data.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/discover.js" defer></script>
@@ -30,8 +32,11 @@
 
 <body class="discover-page">
 
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="skip-link" href="#main-content">
+        Skip to main content
+    </a>
 
+    <!-- HEADER -->
     <header class="site-header" id="site-header">
         <div class="header-inner">
 
@@ -52,7 +57,12 @@
                 <a class="nav-link" href="timeline.html">Timeline</a>
                 <a class="nav-link" href="challenge.html">Challenge</a>
                 <a class="nav-link" href="collection.html">Collection</a>
+                <a class="nav-link" href="community-discoveries.html">
+    Community
+</a>
+                <a class="nav-link" href="marketplace.html">Marketplace</a>
                 <a class="nav-link" href="about.html">About</a>
+
             </nav>
 
             <div class="header-actions">
@@ -63,6 +73,7 @@
                         aria-controls="site-search"
                         aria-expanded="false"
                         data-search-toggle>
+
                     <svg viewBox="0 0 24 24"
                          width="23"
                          height="23"
@@ -74,6 +85,7 @@
                         <circle cx="10.8" cy="10.8" r="7.2"></circle>
                         <path d="m16.2 16.2 4.4 4.4"></path>
                     </svg>
+
                 </button>
 
                 <button class="icon-button menu-toggle"
@@ -82,45 +94,50 @@
                         aria-controls="primary-navigation"
                         aria-expanded="false"
                         data-menu-toggle>
+
                     <span class="menu-line"></span>
                     <span class="menu-line"></span>
+
                 </button>
 
             </div>
         </div>
 
+        <!-- Shared search panel -->
         <div class="header-search" id="site-search" hidden>
             <form class="header-search-form"
                   action="discover.html"
                   method="get">
 
-                <label class="visually-hidden" for="header-search-input">
+                <label class="visually-hidden"
+                       for="header-search-input">
                     Search museum discoveries
                 </label>
 
                 <input id="header-search-input"
                        name="q"
                        type="search"
-                       placeholder="Search artifacts, history, science..."
+                       placeholder="Search history, artifacts or science..."
                        autocomplete="off">
 
                 <button class="search-submit" type="submit">
                     Explore
                 </button>
+
             </form>
         </div>
     </header>
 
-
     <main id="main-content">
 
-        <!-- DISCOVER INTRODUCTION -->
+        <!-- HERO -->
         <section class="discover-hero">
 
             <div class="discover-hero-inner">
 
                 <p class="discover-eyebrow">
-                    <span class="discover-eyebrow-line"></span>
+                    <span class="discover-eyebrow-line"
+                          aria-hidden="true"></span>
                     CURATED WITH CURIOSITY
                 </p>
 
@@ -130,9 +147,9 @@
                 </h1>
 
                 <p class="discover-hero-description">
-                    Explore remarkable artifacts, scientific breakthroughs,
-                    ancient civilizations and the wonders of our natural world.
-                    Every discovery tells a story worth uncovering.
+                    Explore remarkable artifacts, ancient civilizations,
+                    scientific breakthroughs and the wonders of our
+                    natural world. Every discovery has a story to uncover.
                 </p>
 
                 <a class="discover-scroll-link" href="#discoveries">
@@ -150,15 +167,13 @@
 
         </section>
 
-
-        <!-- DISCOVERY COLLECTION -->
+        <!-- COLLECTION -->
         <section class="discover-section" id="discoveries">
 
             <div class="discover-section-heading">
-
                 <div>
                     <p class="discover-section-eyebrow">
-                        A world of knowledge
+                        A WORLD OF KNOWLEDGE
                     </p>
 
                     <h2>
@@ -166,23 +181,27 @@
                     </h2>
 
                     <p class="discover-section-description">
-                        From the secrets of the ancient world to the frontiers
-                        of modern science, find something that inspires you.
+                        From ancient civilizations to modern science,
+                        explore the discoveries that shaped our world.
                     </p>
                 </div>
 
-                <div class="discover-count">
+                <div class="discover-count"
+                     aria-label="Number of matching discoveries">
+
                     <span id="discover-count">0</span>
                     <span>DISCOVERIES</span>
-                </div>
 
+                </div>
             </div>
 
-
             <!-- SEARCH -->
-            <form class="discover-search-form" id="discover-search-form">
+            <form class="discover-search-form"
+                  id="discover-search-form"
+                  role="search">
 
-                <label class="discover-search-box" for="discover-search">
+                <label class="discover-search-box"
+                       for="discover-search">
 
                     <svg viewBox="0 0 24 24"
                          width="21"
@@ -219,8 +238,7 @@
 
             </form>
 
-
-            <!-- CATEGORY FILTERS -->
+            <!-- CATEGORY FILTERS AND SORTING -->
             <div class="discover-toolbar">
 
                 <div class="discover-category-area">
@@ -261,8 +279,7 @@
 
             </div>
 
-
-            <!-- RESULTS STATUS -->
+            <!-- RESULTS -->
             <div class="discover-results-bar">
 
                 <p id="discover-results-message" aria-live="polite">
@@ -272,14 +289,12 @@
                 <button type="button"
                         id="reset-discover-filters"
                         class="discover-reset-button">
-                    Reset filters
-                    <span aria-hidden="true">↺</span>
+                    Reset filters <span aria-hidden="true">↺</span>
                 </button>
 
             </div>
 
-
-            <!-- CARDS ARE CREATED FROM js/data.js -->
+            <!-- Cards are generated using js/data.js -->
             <div class="discover-grid" id="discover-grid">
 
                 <div class="discover-loading" id="discover-loading">
@@ -289,7 +304,6 @@
                 </div>
 
             </div>
-
 
             <!-- EMPTY STATE -->
             <div class="discover-empty" id="discover-empty" hidden>
@@ -314,8 +328,7 @@
 
         </section>
 
-
-        <!-- CLOSING BANNER -->
+        <!-- CLOSING SECTION -->
         <section class="discover-closing">
 
             <div class="discover-closing-content">
@@ -330,7 +343,7 @@
                 </h2>
 
                 <p>
-                    Your next discovery could change the way you see the world.
+                    Your next discovery could change how you see the world.
                 </p>
 
                 <a href="timeline.html" class="discover-closing-link">
@@ -348,12 +361,13 @@
 
     </main>
 
-
+    <!-- FOOTER -->
     <footer class="site-footer">
 
         <div class="footer-main">
 
             <div class="footer-brand-column">
+
                 <a class="brand footer-brand" href="index.html">
                     CURIO<span class="brand-dot">.</span>
                 </a>
@@ -363,9 +377,11 @@
                     A digital journey through history, science,
                     nature and human imagination.
                 </p>
+
             </div>
 
             <div class="footer-links-column">
+
                 <h2 class="footer-heading">Explore</h2>
 
                 <ul class="footer-links">
@@ -374,9 +390,11 @@
                     <li><a href="challenge.html">Knowledge Challenge</a></li>
                     <li><a href="collection.html">My Collection</a></li>
                 </ul>
+
             </div>
 
             <div class="footer-links-column">
+
                 <h2 class="footer-heading">About Curio</h2>
 
                 <ul class="footer-links">
@@ -384,9 +402,11 @@
                     <li><a href="about.html#mission">Our Mission</a></li>
                     <li><a href="about.html#contact">Get in Touch</a></li>
                 </ul>
+
             </div>
 
             <div class="footer-newsletter">
+
                 <h2 class="footer-heading">Stay curious.</h2>
 
                 <p>
@@ -394,14 +414,15 @@
                 </p>
 
                 <a class="text-link" href="discover.html">
-                    Start exploring
-                    <span aria-hidden="true">↗</span>
+                    Start exploring <span aria-hidden="true">↗</span>
                 </a>
+
             </div>
 
         </div>
 
         <div class="footer-bottom">
+
             <p>
                 &copy; <span data-current-year>2026</span>
                 Curio Digital Museum. All rights reserved.
@@ -410,6 +431,7 @@
             <p class="footer-note">
                 Built for the endlessly curious.
             </p>
+
         </div>
 
     </footer>
