@@ -5,6 +5,8 @@
 */
 
 .about-page {
+    --font-heading: "Playfair Display", serif;
+    --font-body: "DM Sans", sans-serif;
     --about-blue: #A0D4E0;
     --about-cream: #F2F0EA;
     --about-mocha: #A58A6F;
@@ -27,6 +29,10 @@
     font-family: "DM Sans", sans-serif;
     font-weight: 500;
     overflow-wrap: anywhere;
+}
+
+.about-page .brand {
+    font-family: "Playfair Display", serif;
 }
 
 .about-page *,
@@ -76,8 +82,8 @@
     isolation: isolate;
     display: flex;
     align-items: center;
-    min-height: clamp(580px, 85vh, 850px);
-    padding: clamp(65px, 9vw, 120px) clamp(22px, 8vw, 115px);
+    min-height: 650px;
+    padding: 80px clamp(17px, 5vw, 22px) 90px;
     overflow: hidden;
     background: var(--about-mocha);
     border-bottom: 1px solid var(--about-border);
@@ -90,9 +96,9 @@
     width: 100%;
     height: 100%;
     background-image: url("../assets/Sunlit\ Antiquarian\ Study\ with\ Globe\ and\ Atlas.png");
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     animation: about-image-reveal 1.4s ease both;
 }
 
@@ -105,14 +111,14 @@
     inset: 0;
     content: "";
     pointer-events: none;
-    background:
-        radial-gradient(circle at 75% 30%,
+    background: radial-gradient(circle at 75% 30%,
             rgba(var(--blue-rgb), 0.35),
             transparent 38%),
-        linear-gradient(90deg,
-            rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.68) 48%,
-            rgba(var(--mocha-rgb), 0.2) 100%);
+        linear-gradient(180deg,
+            rgba(var(--mocha-rgb), 0.12) 0%,
+            rgba(var(--mocha-rgb), 0.5) 30%,
+            rgba(var(--mocha-rgb), 0.5) 62%,
+            rgba(var(--mocha-rgb), 0.18) 100%);
 }
 
 .about-page .about-hero-content {
@@ -140,8 +146,8 @@
 .about-page .about-hero h1 {
     margin: 0;
     color: var(--about-cream);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(3rem, 6.7vw, 6rem);
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.45rem, 10vw, 3.8rem);
     font-weight: 400;
     line-height: 1.05;
     letter-spacing: -0.05em;
@@ -167,7 +173,7 @@
     max-width: 510px;
     margin: 25px 0 30px;
     color: var(--about-cream);
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.9;
 }
 
@@ -175,15 +181,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 22px;
+    gap: 12px;
     min-height: 52px;
     max-width: 100%;
-    padding: 14px 26px;
+    padding: 14px 18px;
     color: var(--about-mocha);
     background: var(--about-cream);
     border: 2px solid var(--about-cream);
     border-radius: 999px;
-    font-size: 0.9rem;
+    font-size: 0.84rem;
     font-weight: 700;
     text-decoration: none;
     transition:
@@ -203,12 +209,14 @@
 
 .about-page .about-hero-caption {
     position: absolute;
-    right: clamp(20px, 4vw, 55px);
-    bottom: 24px;
+    right: 18px;
+    bottom: 18px;
     color: var(--about-cream);
-    font-size: 0.62rem;
-    font-weight: 600;
+    font-size: 0.55rem;
+    font-weight: 500;
     letter-spacing: 0.16em;
+    left: 18px;
+    line-height: 1.8;
 }
 
 
@@ -218,11 +226,11 @@
 
 .about-page .about-intro {
     display: grid;
-    grid-template-columns: 0.65fr 1.35fr;
-    gap: clamp(30px, 7vw, 100px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
     max-width: 1400px;
     margin: auto;
-    padding: clamp(70px, 9vw, 125px) clamp(22px, 7vw, 95px);
+    padding: 65px 22px;
     border-bottom: 1.5px solid var(--about-border-soft);
 }
 
@@ -235,8 +243,8 @@
 .about-page .about-section-heading h2,
 .about-page .about-closing h2 {
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.3rem, 8.5vw, 3.2rem);
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.04em;
@@ -256,7 +264,7 @@
 .about-page .about-intro-content>p {
     max-width: 650px;
     color: var(--about-mocha);
-    font-size: 0.98rem;
+    font-size: 0.93rem;
     line-height: 2;
 }
 
@@ -269,26 +277,26 @@
 
 .about-page .about-mission {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: clamp(35px, 7vw, 95px);
+    gap: 38px;
     max-width: 1500px;
     margin: auto;
-    padding: clamp(65px, 8vw, 105px) clamp(22px, 6vw, 80px);
+    padding: 60px 22px;
 }
 
 
 .about-page .about-mission-image {
     min-width: 0;
     width: 100%;
-    aspect-ratio: 4 / 4.5;
+    aspect-ratio: 4 / 3;
     background:
         linear-gradient(0deg,
             rgba(var(--mocha-rgb), 0.18),
             transparent 45%),
         url("https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1100&q=85") center / cover no-repeat;
     border: 2px solid var(--about-blue);
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow:
         0 0 0 8px rgba(var(--blue-rgb), 0.25),
         0 30px 60px -34px rgba(var(--mocha-rgb), 0.75);
@@ -339,7 +347,7 @@
 */
 
 .about-page .about-pillars {
-    padding: clamp(70px, 9vw, 115px) clamp(20px, 6vw, 80px);
+    padding: 65px 18px;
     background:
         radial-gradient(ellipse at 50% 0%,
             rgba(var(--blue-rgb), 0.45),
@@ -351,7 +359,7 @@
 
 .about-page .about-section-heading {
     max-width: 750px;
-    margin: 0 auto 48px;
+    margin: 0 auto 32px;
     text-align: center;
 }
 
@@ -365,8 +373,8 @@
 
 .about-page .about-pillar-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
     max-width: 1300px;
     margin: auto;
 }
@@ -374,11 +382,11 @@
 .about-page .about-pillar {
     position: relative;
     min-width: 0;
-    padding: 32px 26px;
+    padding: 26px 22px;
     color: var(--about-mocha);
     background: var(--about-cream);
     border: 2px solid var(--about-blue);
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow:
         0 0 0 6px rgba(var(--blue-rgb), 0.2),
         0 24px 44px -32px rgba(var(--mocha-rgb), 0.75);
@@ -426,13 +434,13 @@
 .about-page .about-pillar h3 {
     margin: 0 0 14px;
     color: var(--about-mocha);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Playfair Display", serif;
     font-size: 1.7rem;
     font-weight: 400;
 }
 
 .about-page .about-pillar p {
-    min-height: 95px;
+    min-height: 0;
     margin: 0 0 24px;
     color: var(--about-mocha);
     font-size: 0.9rem;
@@ -542,154 +550,13 @@
    TABLET
 */
 
-@media (max-width: 900px) {
-    .about-page .about-hero {
-        min-height: 680px;
-        padding-inline: 6%;
-    }
-
-    .about-page .about-intro {
-        grid-template-columns: 1fr 2fr;
-        gap: 35px;
-    }
-
-    .about-page .about-mission {
-        gap: 35px;
-    }
-
-    .about-page .about-pillar-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
 
 
 /*
    MOBILE
 */
 
-@media (max-width: 600px) {
-    .about-page .about-hero {
-        min-height: 650px;
-        padding: 80px 22px 90px;
-    }
 
-    /* Image fits the full hero width and height  */
-    .about-page .about-hero-image {
-        background-position: center center;
-        background-size: 100% 100%;
-    }
-
-    
-    .about-page .about-hero::before {
-        background:
-            radial-gradient(circle at 75% 30%,
-                rgba(var(--blue-rgb), 0.35),
-                transparent 38%),
-            linear-gradient(180deg,
-                rgba(var(--mocha-rgb), 0.12) 0%,
-                rgba(var(--mocha-rgb), 0.5) 30%,
-                rgba(var(--mocha-rgb), 0.5) 62%,
-                rgba(var(--mocha-rgb), 0.18) 100%);
-    }
-
-   
-    .about-page .about-hero .about-eyebrow,
-    .about-page .about-hero h1,
-    .about-page .about-hero-description,
-    .about-page .about-hero-caption {
-        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
-    }
-
-    .about-page .about-hero h1 {
-        font-size: clamp(2.65rem, 10vw, 3.8rem);
-    }
-
-    .about-page .about-hero-description {
-        font-size: 0.95rem;
-    }
-
-    .about-page .about-hero-caption {
-        right: 18px;
-        bottom: 18px;
-        left: 18px;
-        font-size: 0.55rem;
-        line-height: 1.8;
-    }
-
-    .about-page .about-intro {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 65px 22px;
-    }
-
-    .about-page .about-intro h2,
-    .about-page .about-mission h2,
-    .about-page .about-section-heading h2,
-    .about-page .about-closing h2 {
-        font-size: clamp(2.3rem, 8.5vw, 3.2rem);
-    }
-
-    .about-page .about-intro-content>p {
-        font-size: 0.93rem;
-    }
-
-    .about-page .about-mission {
-        grid-template-columns: 1fr;
-        gap: 38px;
-        padding: 60px 22px;
-    }
-
-    .about-page .about-mission-image {
-        aspect-ratio: 4 / 3;
-        border-radius: 16px;
-    }
-
-    .about-page .about-pillars {
-        padding: 65px 18px;
-    }
-
-    .about-page .about-section-heading {
-        margin-bottom: 32px;
-    }
-
-    .about-page .about-pillar-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 18px;
-    }
-
-    .about-page .about-pillar {
-        padding: 26px 22px;
-        border-radius: 16px;
-    }
-
-    .about-page .about-pillar p {
-        min-height: 0;
-    }
-
-    .about-page .about-closing {
-        padding: 75px 20px;
-    }
-}
-
-@media (max-width: 360px) {
-    .about-page .about-hero {
-        padding-inline: 17px;
-    }
-
-    .about-page .about-hero h1 {
-        font-size: 2.45rem;
-    }
-
-    .about-page .about-primary-link {
-        gap: 12px;
-        padding-inline: 18px;
-        font-size: 0.84rem;
-    }
-
-    .about-page .about-pillar {
-        padding: 22px 18px;
-    }
-}
 
 
 /*
@@ -714,5 +581,129 @@
     .about-page *::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/*
+   MOBILE-FIRST BREAKPOINTS
+   Mobile is the default; tablet starts at 768px and desktop at 1024px.
+*/
+
+@media (min-width: 768px) {
+    .about-page .about-hero {
+        min-height: 680px;
+        padding: clamp(65px, 9vw, 120px) 6%;
+    }
+
+    .about-page .about-hero-image {
+        background-position: center;
+        background-size: cover;
+    }
+
+    .about-page .about-hero::before {
+        background:
+            radial-gradient(circle at 75% 30%,
+                rgba(var(--blue-rgb), 0.35),
+                transparent 38%),
+            linear-gradient(90deg,
+                rgba(var(--mocha-rgb), 0.94) 0%,
+                rgba(var(--mocha-rgb), 0.68) 48%,
+                rgba(var(--mocha-rgb), 0.2) 100%);
+    }
+
+    .about-page .about-hero h1 {
+        font-size: clamp(3rem, 6.7vw, 6rem);
+    }
+
+    .about-page .about-hero-description {
+        font-size: 1rem;
+    }
+
+    .about-page .about-primary-link {
+        gap: 22px;
+        padding: 14px 26px;
+        font-size: 0.9rem;
+    }
+
+    .about-page .about-hero-caption {
+        right: clamp(20px, 4vw, 55px);
+        bottom: 24px;
+        left: auto;
+        font-size: 0.62rem;
+        line-height: normal;
+    }
+
+    .about-page .about-intro {
+        grid-template-columns: 1fr 2fr;
+        gap: 35px;
+        padding: clamp(70px, 9vw, 125px) clamp(22px, 7vw, 95px);
+    }
+
+    .about-page .about-intro h2,
+    .about-page .about-mission h2,
+    .about-page .about-section-heading h2,
+    .about-page .about-closing h2 {
+        font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+    }
+
+    .about-page .about-intro-content > p {
+        font-size: 0.98rem;
+    }
+
+    .about-page .about-mission {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 35px;
+        padding: clamp(65px, 8vw, 105px) clamp(22px, 6vw, 80px);
+    }
+
+    .about-page .about-mission-image {
+        aspect-ratio: 4 / 4.5;
+        border-radius: 20px;
+    }
+
+    .about-page .about-pillars {
+        padding: clamp(70px, 9vw, 115px) clamp(20px, 6vw, 80px);
+    }
+
+    .about-page .about-section-heading {
+        margin-bottom: 48px;
+    }
+
+    .about-page .about-pillar-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .about-page .about-pillar {
+        padding: 32px 26px;
+        border-radius: 20px;
+    }
+
+    .about-page .about-pillar p {
+        min-height: 95px;
+    }
+
+    .about-page .about-closing {
+        padding: clamp(75px, 10vw, 125px) 22px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-page .about-hero {
+        min-height: clamp(580px, 85vh, 850px);
+        padding: clamp(65px, 9vw, 120px) clamp(22px, 8vw, 115px);
+    }
+
+    .about-page .about-intro {
+        grid-template-columns: 0.65fr 1.35fr;
+        gap: clamp(30px, 7vw, 100px);
+    }
+
+    .about-page .about-mission {
+        gap: clamp(35px, 7vw, 95px);
+    }
+
+    .about-page .about-pillar-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }

@@ -6,6 +6,8 @@
     --tl-blue: #A0D4E0;
     --tl-cream: #F2F0EA;
     --tl-mocha: #A58A6F;
+    --tl-body-font: "Inter", sans-serif;
+    --tl-heading-font: "Playfair Display", Georgia, serif;
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
@@ -18,6 +20,7 @@
 
     background: var(--tl-cream);
     color: var(--tl-mocha);
+    font-family: var(--tl-body-font);
     font-weight: 500;
     overflow-x: clip;
 }
@@ -75,11 +78,13 @@
     isolation: isolate;
     overflow: hidden;
     background:
-        linear-gradient(90deg,
-            rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.6) 55%,
-            rgba(var(--mocha-rgb), 0.2) 100%),
-        url("../assets/Celestial\ Marble\ Observatory\ Museum.png") center center / cover no-repeat,
+        linear-gradient(180deg,
+            rgba(var(--mocha-rgb), 0.12) 0%,
+            rgba(var(--mocha-rgb), 0.5) 30%,
+            rgba(var(--mocha-rgb), 0.5) 62%,
+            rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
+        url("../assets/Mystical Celestial Antiquities Hall.png") center center / 100% 100% no-repeat,
+        url("../assets/Celestial Marble Observatory Museum.png") center center / 100% 100% no-repeat,
         var(--tl-mocha);
 }
 
@@ -94,18 +99,19 @@
     content: "";
     mask-image: linear-gradient(90deg, transparent, black);
     pointer-events: none;
+    display: none;
 }
 
 .timeline-hero-inner {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(250px, .9fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: clamp(35px, 6vw, 95px);
-    width: min(1320px, 88%);
+    gap: 10px;
+    width: min(1320px, 90%);
     min-height: 580px;
     margin-inline: auto;
-    padding: 85px 0 90px;
+    padding: 110px 0 46px;
 }
 
 .timeline-hero-copy {
@@ -138,8 +144,8 @@
 .timeline-hero h1 {
     margin: 0;
     color: var(--tl-cream);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(3.5rem, 7.4vw, 6.8rem);
+    font-family: var(--tl-heading-font);
+    font-size: clamp(2.8rem, 12vw, 4.7rem);
     font-weight: 400;
     letter-spacing: -.055em;
     line-height: .99;
@@ -159,9 +165,9 @@
 
 .timeline-hero-description {
     max-width: 510px;
-    margin: 28px 0 0;
+    margin: 20px 0 0;
     color: var(--tl-cream);
-    font-size: 1.04rem;
+    font-size: .95rem;
     line-height: 1.95;
 }
 
@@ -195,16 +201,16 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
-    margin-top: 53px;
+    gap: 8px;
+    margin-top: 34px;
     color: var(--tl-cream);
-    font-size: .64rem;
+    font-size: .58rem;
     font-weight: 600;
-    letter-spacing: .14em;
+    letter-spacing: .08em;
 }
 
 .timeline-footnote-line {
-    width: 21px;
+    width: 13px;
     height: 2px;
     background: var(--tl-blue);
     border-radius: 999px;
@@ -216,7 +222,8 @@
     position: relative;
     display: grid;
     min-width: 0;
-    min-height: 390px;
+    min-height: 255px;
+    margin-top: 4px;
     place-items: center;
     isolation: isolate;
     animation: tl-visual-in 1100ms ease both;
@@ -236,7 +243,7 @@
 
 .timeline-orbit {
     position: absolute;
-    width: min(100%, 410px);
+    width: 250px;
     aspect-ratio: 1;
     border: 1.5px solid rgba(var(--blue-rgb), 0.8);
     border-radius: 50%;
@@ -247,13 +254,13 @@
 }
 
 .timeline-orbit-two {
-    width: min(82%, 335px);
+    width: 205px;
     border-color: rgba(var(--cream-rgb), 0.5);
     transform: rotate(38deg) scaleY(.8);
 }
 
 .timeline-orbit-three {
-    width: min(62%, 250px);
+    width: 155px;
     border-color: rgba(var(--blue-rgb), 0.9);
     transform: rotate(-55deg) scaleY(.8);
 }
@@ -261,7 +268,7 @@
 .timeline-visual-core {
     position: relative;
     display: grid;
-    width: clamp(115px, 17vw, 185px);
+    width: 112px;
     aspect-ratio: 1;
     place-items: center;
     border: 2px solid var(--tl-cream);
@@ -274,15 +281,15 @@
 
 .timeline-visual-core span {
     color: var(--tl-cream);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(4rem, 8vw, 6.5rem);
+    font-family: var(--tl-heading-font);
+    font-size: 4rem;
     font-weight: 400;
 }
 
 .timeline-visual-label {
     position: absolute;
-    right: 0;
-    bottom: 18px;
+    right: 3px;
+    bottom: 0;
     color: var(--tl-cream);
     font-size: .64rem;
     font-weight: 600;
@@ -293,9 +300,9 @@
 /* EXPLORER SECTION */
 
 .timeline-explorer {
-    width: min(1320px, 88%);
+    width: min(1320px, 90%);
     margin-inline: auto;
-    padding: 95px 0 105px;
+    padding: 62px 0 68px;
 }
 
 .timeline-section-intro {
@@ -310,8 +317,8 @@
 .timeline-section-intro h2 {
     margin: 0;
     color: var(--tl-mocha);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.5rem, 5.3vw, 4.6rem);
+    font-family: var(--tl-heading-font);
+    font-size: clamp(2.35rem, 9vw, 3.3rem);
     font-weight: 400;
     letter-spacing: -.045em;
     line-height: 1.13;
@@ -321,7 +328,7 @@
     max-width: 620px;
     margin: 19px 0 0;
     color: var(--tl-mocha);
-    font-size: 1rem;
+    font-size: .92rem;
     line-height: 1.9;
 }
 
@@ -330,10 +337,10 @@
 
 .timeline-tools {
     display: grid;
-    grid-template-columns: minmax(190px, .8fr) minmax(220px, 1.3fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     align-items: end;
-    gap: 17px;
-    padding: 26px;
+    gap: 18px;
+    padding: 18px;
     border: 1.5px solid var(--tl-border);
     border-radius: 18px;
     background: var(--tl-panel);
@@ -409,9 +416,9 @@
 
 .timeline-results-bar {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
     padding: 25px 0 17px;
     border-bottom: 2px solid var(--tl-border-soft);
 }
@@ -441,7 +448,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 18px;
+    left: 8px;
     width: 3px;
     background: linear-gradient(to bottom,
             var(--tl-blue),
@@ -454,10 +461,10 @@
 .timeline-event {
     position: relative;
     display: grid;
-    grid-template-columns: 37px minmax(0, 1fr) minmax(220px, .76fr);
-    align-items: center;
-    gap: 27px;
-    padding: 32px 0 37px;
+    grid-template-columns: 20px minmax(0, 1fr);
+    align-items: start;
+    gap: 13px;
+    padding: 27px 0;
     border-bottom: 1.5px solid var(--tl-border-soft);
     animation: tl-rise-in 450ms ease both;
     animation-delay: calc(min(var(--event-index, 0), 8) * 45ms);
@@ -474,9 +481,9 @@
     position: relative;
     z-index: 1;
     display: block;
-    width: 15px;
-    height: 15px;
-    margin-top: 5px;
+    width: 13px;
+    height: 13px;
+    margin-top: 6px;
     border: 3px solid var(--tl-cream);
     border-radius: 50%;
     background: var(--tl-mocha);
@@ -491,7 +498,8 @@
 
 .timeline-event-content {
     min-width: 0;
-    padding: 5px 0;
+    grid-column: 2;
+    padding: 0;
 }
 
 .timeline-event-header {
@@ -523,8 +531,8 @@
 .timeline-event-title {
     margin: 0;
     color: var(--tl-mocha);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(1.45rem, 2.4vw, 2.15rem);
+    font-family: var(--tl-heading-font);
+    font-size: clamp(1.45rem, 6.6vw, 1.65rem);
     font-weight: 400;
     letter-spacing: -.025em;
     line-height: 1.25;
@@ -534,12 +542,12 @@
 .timeline-event-description {
     margin: 14px 0 0;
     color: var(--tl-mocha);
-    font-size: .92rem;
+    font-size: .9rem;
     line-height: 1.9;
 }
 
 .timeline-event-footer {
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .timeline-event-exhibits {
@@ -575,7 +583,10 @@
 
 .timeline-event-visual {
     display: block;
+    grid-column: 2;
+    width: 100%;
     min-width: 0;
+    margin-top: 5px;
     overflow: hidden;
     border: 1.5px solid var(--tl-border);
     border-radius: 16px;
@@ -590,7 +601,7 @@
 
 .timeline-event-image-frame {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 5 / 3.5;
     overflow: hidden;
     background: var(--tl-blue);
 }
@@ -654,7 +665,7 @@
 
 .timeline-placeholder-title {
     color: var(--tl-cream);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: var(--tl-heading-font);
     font-size: 1.1rem;
     line-height: 1.35;
 }
@@ -704,7 +715,7 @@
 .timeline-empty h3 {
     margin: 13px 0;
     color: var(--tl-mocha);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: var(--tl-heading-font);
     font-size: 2rem;
     font-weight: 400;
 }
@@ -732,10 +743,10 @@
 .timeline-closing {
     position: relative;
     display: flex;
-    min-height: 370px;
+    min-height: 330px;
     align-items: center;
     overflow: hidden;
-    padding: 75px max(6%, calc((100% - 1320px) / 2));
+    padding: 57px 5%;
     background:
         radial-gradient(ellipse at 80% 50%,
             rgba(var(--blue-rgb), 0.38),
@@ -757,8 +768,8 @@
 .timeline-closing h2 {
     margin: 0;
     color: var(--tl-cream);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.3rem, 5vw, 4.2rem);
+    font-family: var(--tl-heading-font);
+    font-size: clamp(2.25rem, 8.5vw, 3.2rem);
     font-weight: 400;
     letter-spacing: -.04em;
     line-height: 1.16;
@@ -774,10 +785,11 @@
 
 .timeline-closing-decoration {
     position: absolute;
-    right: 7%;
+    right: -4%;
+    bottom: 0;
     color: rgba(var(--blue-rgb), 0.5);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(13rem, 29vw, 27rem);
+    font-family: var(--tl-heading-font);
+    font-size: 12rem;
     line-height: 1;
     pointer-events: none;
 }
@@ -816,264 +828,126 @@
 }
 
 
-/* TABLET */
+/* MOBILE-FIRST BASE */
+.timeline-hero .timeline-eyebrow,
+.timeline-hero h1,
+.timeline-hero-description,
+.timeline-hero-link,
+.timeline-hero-footnote {
+    text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
+}
 
-@media (max-width: 900px) {
+.timeline-tools > .timeline-reset-button {
+    width: 100%;
+}
+
+.timeline-event-marker-column {
+    grid-row: 1 / span 2;
+}
+
+.timeline-exhibit-link {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+/* TABLET: 768px and wider */
+@media (min-width: 768px) {
+    .timeline-hero {
+        background:
+            linear-gradient(90deg,
+                rgba(var(--mocha-rgb), 0.94) 0%,
+                rgba(var(--mocha-rgb), 0.6) 55%,
+                rgba(var(--mocha-rgb), 0.2) 100%),
+            url("../assets/Celestial Marble Observatory Museum.png") center center / cover no-repeat,
+            var(--tl-mocha);
+    }
+
+    .timeline-hero::before { display: block; }
+
     .timeline-hero-inner {
         grid-template-columns: minmax(0, 1fr) minmax(200px, .7fr);
         gap: 25px;
+        width: min(1320px, 88%);
         min-height: 490px;
         padding: 65px 0;
     }
 
-    .timeline-hero-visual {
-        min-height: 300px;
-    }
-
-    .timeline-event {
-        grid-template-columns: 30px minmax(0, 1fr) minmax(170px, .65fr);
-        gap: 18px;
-    }
-
-    .timeline-list::before {
-        left: 14px;
-    }
-
-    .timeline-tools {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
-    }
-
-    .timeline-tools>.timeline-reset-button {
-        grid-column: 1 / -1;
-        justify-self: start;
-    }
-}
-
-
-/* MOBILE */
-
-@media (max-width: 620px) {
-
-    /* HERO — same setup as the Collection page:
-       the picture fills the whole hero behind the text, nothing is cut,
-       and the overlay is light so the picture stays clear.            */
-
-    .timeline-hero {
-        background:
-            /* light overlay: strongest only behind the text (middle),
-               light at top and bottom so the picture shows through.
-               Lower the 0.5 numbers = clearer picture,
-               raise them = easier to read the text. */
-            linear-gradient(180deg,
-                rgba(var(--mocha-rgb), 0.12) 0%,
-                rgba(var(--mocha-rgb), 0.5) 30%,
-                rgba(var(--mocha-rgb), 0.5) 62%,
-                rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
-            /* mobile image */
-            url("../assets/Mystical Celestial Antiquities Hall.png") center center / 100% 100% no-repeat,
-            /* fallback: if the mobile file is not found, the desktop image shows */
-            url("../assets/Celestial Marble Observatory Museum.png") center center / 100% 100% no-repeat,
-            var(--tl-mocha);
-    }
-
-    /* the faint grid lines are not needed on phones, keeps the picture clean */
-    .timeline-hero::before {
-        display: none;
-    }
-
-    .timeline-hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-        width: 90%;
-        gap: 10px;
-        padding: 110px 0 46px;
-    }
-
-    /* A soft shadow keeps the text readable over the clearer picture */
+    .timeline-hero h1 { font-size: clamp(3.5rem, 7.4vw, 6.8rem); }
+    .timeline-hero-description { margin-top: 28px; font-size: 1.04rem; }
+    .timeline-hero-footnote { margin-top: 53px; gap: 12px; font-size: .64rem; letter-spacing: .14em; }
+    .timeline-footnote-line { width: 21px; }
     .timeline-hero .timeline-eyebrow,
     .timeline-hero h1,
     .timeline-hero-description,
     .timeline-hero-link,
-    .timeline-hero-footnote {
-        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
-    }
+    .timeline-hero-footnote { text-shadow: none; }
 
-    .timeline-hero h1 {
-        font-size: clamp(3.1rem, 12vw, 4.7rem);
-    }
+    .timeline-hero-visual { min-height: 300px; margin-top: 0; }
+    .timeline-orbit-one { width: min(100%, 410px); }
+    .timeline-orbit-two { width: min(82%, 335px); }
+    .timeline-orbit-three { width: min(62%, 250px); }
+    .timeline-visual-core { width: clamp(115px, 17vw, 185px); }
+    .timeline-visual-core span { font-size: clamp(4rem, 8vw, 6.5rem); }
+    .timeline-visual-label { right: 0; bottom: 18px; }
 
-    .timeline-hero-description {
-        margin-top: 20px;
-        font-size: .95rem;
-    }
-
-    .timeline-hero-footnote {
-        margin-top: 34px;
-        gap: 8px;
-        font-size: .58rem;
-    }
-
-    .timeline-footnote-line {
-        width: 13px;
-    }
-
-    .timeline-hero-visual {
-        min-height: 255px;
-        margin-top: 4px;
-    }
-
-    .timeline-orbit-one {
-        width: 250px;
-    }
-
-    .timeline-orbit-two {
-        width: 205px;
-    }
-
-    .timeline-orbit-three {
-        width: 155px;
-    }
-
-    .timeline-visual-core {
-        width: 112px;
-    }
-
-    .timeline-visual-core span {
-        font-size: 4rem;
-    }
-
-    .timeline-visual-label {
-        right: 3px;
-        bottom: 0;
-    }
-
-    .timeline-explorer {
-        width: 90%;
-        padding: 62px 0 68px;
-    }
-
-    .timeline-section-intro h2 {
-        font-size: clamp(2.35rem, 9vw, 3.3rem);
-    }
-
-    .timeline-section-intro>p:last-child {
-        font-size: .92rem;
-    }
+    .timeline-explorer { width: min(1320px, 88%); padding: 95px 0 105px; }
+    .timeline-section-intro h2 { font-size: clamp(2.5rem, 5.3vw, 4.6rem); }
+    .timeline-section-intro > p:last-child { font-size: 1rem; }
 
     .timeline-tools {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 18px;
-        padding: 18px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+        gap: 17px;
+        padding: 26px;
+    }
+    .timeline-tools > .timeline-reset-button {
+        grid-column: 1 / -1;
+        justify-self: start;
+        width: auto;
     }
 
-    .timeline-tools>.timeline-reset-button {
-        grid-column: auto;
-        width: 100%;
-    }
-
-    .timeline-tool-field input,
-    .timeline-tool-field select,
-    .timeline-reset-button {
-        min-height: 50px;
-    }
-
-    .timeline-results-bar {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-    }
-
+    .timeline-results-bar { align-items: center; flex-direction: row; gap: 15px; }
+    .timeline-list::before { left: 14px; }
     .timeline-event {
-        grid-template-columns: 20px minmax(0, 1fr);
-        align-items: start;
-        gap: 13px;
-        padding: 27px 0;
+        grid-template-columns: 30px minmax(0, 1fr) minmax(170px, .65fr);
+        align-items: center;
+        gap: 18px;
+        padding: 32px 0 37px;
+    }
+    .timeline-event-marker-column { grid-row: auto; }
+    .timeline-event-marker { width: 15px; height: 15px; margin-top: 5px; }
+    .timeline-event-content { grid-column: auto; padding: 5px 0; }
+    .timeline-event-title { font-size: clamp(1.45rem, 2.4vw, 2.15rem); }
+    .timeline-event-description { font-size: .92rem; }
+    .timeline-event-visual { grid-column: auto; width: auto; margin-top: 0; }
+    .timeline-event-image-frame { aspect-ratio: 4 / 3; }
+    .timeline-event-footer { margin-top: 20px; }
+    .timeline-exhibit-link { max-width: none; }
+
+    .timeline-closing { min-height: 370px; padding: 75px max(6%, calc((100% - 1320px) / 2)); }
+    .timeline-closing h2 { font-size: clamp(2.3rem, 5vw, 4.2rem); }
+    .timeline-closing-decoration { right: 7%; bottom: auto; font-size: clamp(13rem, 29vw, 27rem); }
+}
+
+/* DESKTOP: 1024px and wider */
+@media (min-width: 1024px) {
+    .timeline-hero-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(250px, .9fr);
+        gap: clamp(35px, 6vw, 95px);
+        min-height: 580px;
+        padding: 85px 0 90px;
     }
 
-    .timeline-list::before {
-        left: 8px;
-    }
-
-    .timeline-event-marker-column {
-        grid-row: 1 / span 2;
-    }
-
-    .timeline-event-marker {
-        width: 13px;
-        height: 13px;
-        margin-top: 6px;
-    }
-
-    .timeline-event-content {
-        grid-column: 2;
-        padding: 0;
-    }
-
-    .timeline-event-title {
-        font-size: 1.65rem;
-    }
-
-    .timeline-event-description {
-        font-size: .9rem;
-    }
-
-    .timeline-event-visual {
-        grid-column: 2;
-        width: 100%;
-        margin-top: 5px;
-    }
-
-    .timeline-event-image-frame {
-        aspect-ratio: 5 / 3.5;
-    }
-
-    .timeline-event-footer {
-        margin-top: 16px;
-    }
-
-    .timeline-exhibit-link {
-        max-width: 100%;
-        overflow-wrap: anywhere;
-    }
-
-    .timeline-closing {
-        min-height: 330px;
-        padding: 57px 5%;
-    }
-
-    .timeline-closing h2 {
-        font-size: clamp(2.25rem, 8.5vw, 3.2rem);
-    }
-
-    .timeline-closing-decoration {
-        right: -4%;
-        bottom: 0;
-        font-size: 12rem;
+    .timeline-hero-visual { min-height: 390px; }
+    .timeline-tools { grid-template-columns: minmax(190px, .8fr) minmax(220px, 1.3fr) auto; }
+    .timeline-tools > .timeline-reset-button { grid-column: auto; justify-self: stretch; }
+    .timeline-list::before { left: 18px; }
+    .timeline-event {
+        grid-template-columns: 37px minmax(0, 1fr) minmax(220px, .76fr);
+        gap: 27px;
     }
 }
 
-@media (max-width: 360px) {
-    .timeline-hero h1 {
-        font-size: 2.8rem;
-    }
-
-    .timeline-hero-footnote {
-        letter-spacing: .08em;
-    }
-
-    .timeline-event-header {
-        gap: 8px;
-    }
-
-    .timeline-event-title {
-        font-size: 1.45rem;
-    }
-
-    .timeline-event-category {
-        max-width: 100%;
-        overflow-wrap: anywhere;
-    }
-}
-
+/* Small-phone refinements are included in the mobile base values above. */
 
 @media (prefers-reduced-motion: reduce) {
 

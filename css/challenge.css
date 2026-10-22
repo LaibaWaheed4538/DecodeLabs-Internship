@@ -3,6 +3,9 @@
 */
 
 .challenge-page {
+    --font-heading: "Inter", sans-serif;
+    --font-body: "Roboto", sans-serif;
+
     --challenge-blue: #A0D4E0;
     --challenge-cream: #F2F0EA;
     --challenge-mocha: #A58A6F;
@@ -24,8 +27,8 @@
 
     background: var(--challenge-moon), var(--challenge-cream);
     color: var(--challenge-mocha);
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
+    font-family: var(--font-body);
+    font-weight: 400;
     overflow-wrap: anywhere;
 }
 
@@ -119,7 +122,7 @@
 
 .challenge-page .brand {
     color: var(--challenge-cream);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
     letter-spacing: -1.5px;
 }
 
@@ -129,7 +132,7 @@
 
 .challenge-page .nav-link {
     color: var(--challenge-soft-text);
-    font-weight: 600;
+    font-weight: 500;
     transition: color 0.25s ease;
 }
 
@@ -246,7 +249,7 @@
 .challenge-page .challenge-hero h1 {
     margin: 0;
     color: var(--challenge-cream);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
     font-size: clamp(3rem, 6.2vw, 6.1rem);
     font-weight: 400;
     line-height: 0.99;
@@ -308,7 +311,7 @@
     margin-top: 45px;
     color: var(--challenge-cream);
     font-size: 0.68rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.14em;
 }
 
@@ -376,7 +379,7 @@
 }
 
 .challenge-page .challenge-art-center span {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
     font-size: clamp(5rem, 12vw, 9rem);
     line-height: 1;
 }
@@ -387,7 +390,7 @@
     bottom: 7%;
     color: var(--challenge-cream);
     font-size: 0.66rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.17em;
 }
 
@@ -418,7 +421,7 @@
 .challenge-page .challenge-closing h2 {
     margin: 0;
     color: var(--challenge-cream);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
     font-size: clamp(2.2rem, 4.7vw, 4.3rem);
     font-weight: 400;
     line-height: 1.12;
@@ -502,7 +505,7 @@
     margin: 0;
     color: var(--challenge-mocha);
     font-size: 0.86rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .challenge-page .quiz-progress-area {
@@ -553,7 +556,7 @@
 .challenge-page .quiz-question-area h3 {
     margin: 0;
     color: var(--challenge-mocha);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
     font-size: clamp(1.65rem, 3.4vw, 2.6rem);
     font-weight: 400;
     line-height: 1.3;
@@ -760,7 +763,7 @@
     margin: 0;
     color: var(--challenge-mocha);
     font-size: 0.74rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.08em;
     line-height: 1.8;
 }
@@ -768,7 +771,7 @@
 .challenge-page .quiz-score-label strong {
     display: block;
     color: var(--challenge-mocha);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
     font-size: 1.75rem;
     font-weight: 400;
     letter-spacing: 0;
@@ -861,7 +864,7 @@
 .challenge-page .quiz-results h2 {
     margin: 0;
     color: var(--challenge-mocha);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
     font-size: clamp(2rem, 4vw, 3.3rem);
     font-weight: 400;
     line-height: 1.2;
@@ -880,7 +883,7 @@
     justify-content: center;
     gap: 12px;
     margin: 28px 0 8px;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
 }
 
 .challenge-page .quiz-final-score-number {
@@ -944,7 +947,7 @@
     background: var(--challenge-cream);
     border: 2px dashed var(--challenge-mocha);
     border-radius: 12px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.7;
 }
 
@@ -1004,7 +1007,7 @@
 .challenge-page .footer-brand {
     display: inline-block;
     color: var(--challenge-cream);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
     font-size: 2rem;
     text-decoration: none;
 }
@@ -1092,36 +1095,8 @@
     }
 }
 
-
-/* TABLET */
-
-@media (max-width: 1000px) {
-    .challenge-page .challenge-hero {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
-        min-height: 570px;
-        padding-inline: 5%;
-    }
-
-    .challenge-page .challenge-hero h1 {
-        font-size: clamp(2.8rem, 6vw, 4.7rem);
-    }
-
-    .challenge-page .challenge-hero-art {
-        max-width: 370px;
-    }
-
-    .challenge-page .footer-main {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 35px;
-    }
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    /* HERO — same setup as the other pages:
+/* MOBILE-FIRST BASE: existing mobile rules apply without a max-width query. */
+/* HERO — same setup as the other pages:
        the picture fills the whole hero behind the text, nothing is cut,
        and the overlay is light so the picture stays clear
        (same overlay numbers as the Timeline page).                    */
@@ -1257,13 +1232,13 @@
         flex-direction: column;
         margin-top: 35px;
     }
-}
 
 
-/* SMALL MOBILE */
 
-@media (max-width: 380px) {
-    .challenge-page .challenge-hero {
+/* MOBILE-FIRST RESPONSIVE LAYOUT */
+
+/* Extra-small mobile refinements are the base; wider screens override them below. */
+.challenge-page .challenge-hero {
         padding-inline: 17px;
     }
 
@@ -1297,8 +1272,181 @@
     .challenge-page .quiz-score-label {
         width: 100%;
     }
+
+/* REGULAR MOBILE: 381px and wider. */
+@media (min-width: 381px) {
+    .challenge-page .challenge-hero {
+        padding-inline: 22px;
+    }
+
+    .challenge-page .challenge-hero h1 {
+        font-size: clamp(2.8rem, 10vw, 4.5rem);
+    }
+
+    .challenge-page .challenge-start-link {
+        max-width: none;
+        gap: 24px;
+        padding: 14px 26px;
+        font-size: 0.92rem;
+    }
+
+    .challenge-page .quiz-container {
+        padding: 23px 17px;
+    }
+
+    .challenge-page .quiz-question-area h3 {
+        font-size: clamp(1.65rem, 3.4vw, 2.6rem);
+    }
+
+    .challenge-page .quiz-progress-labels {
+        font-size: 0.8rem;
+    }
+
+    .challenge-page .quiz-actions > button {
+        flex-basis: 150px;
+    }
+
+    .challenge-page .quiz-score-label {
+        width: auto;
+    }
 }
 
+/* TABLET: 768px and wider. */
+@media (min-width: 768px) {
+    .challenge-page .challenge-hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
+        gap: clamp(24px, 5vw, 80px);
+        min-height: 570px;
+        padding: calc(clamp(60px, 9vw, 120px) + 92px) 5% clamp(60px, 9vw, 120px);
+        background: linear-gradient(90deg, rgba(var(--mocha-rgb), 0.94) 0%, rgba(var(--mocha-rgb), 0.68) 48%, rgba(var(--mocha-rgb), 0.2) 100%), url("../assets/Moonlit\ Temple\ of\ Celestial\ Knowledge.png") center center / cover no-repeat, var(--challenge-mocha);
+    }
+
+    .challenge-page .challenge-hero .challenge-eyebrow,
+    .challenge-page .challenge-hero h1,
+    .challenge-page .challenge-hero-description,
+    .challenge-page .challenge-hero-note,
+    .challenge-page .challenge-art-label {
+        text-shadow: none;
+    }
+
+    .challenge-page .challenge-hero-content {
+        max-width: 660px;
+    }
+
+    .challenge-page .challenge-hero h1 {
+        font-size: clamp(2.8rem, 6vw, 4.7rem);
+        line-height: 0.99;
+    }
+
+    .challenge-page .challenge-hero-description {
+        margin: 28px 0;
+        font-size: clamp(1rem, 1.2vw, 1.1rem);
+    }
+
+    .challenge-page .challenge-hero-note {
+        margin-top: 45px;
+    }
+
+    .challenge-page .challenge-hero-art {
+        width: 100%;
+        max-width: 370px;
+        margin: 0;
+    }
+
+    .challenge-page .challenge-art-center span {
+        font-size: clamp(5rem, 12vw, 9rem);
+    }
+
+    .challenge-page .challenge-art-label {
+        right: 0;
+        bottom: 7%;
+        font-size: 0.66rem;
+    }
+
+    .challenge-page .challenge-section {
+        padding: clamp(65px, 9vw, 120px) clamp(20px, 5vw, 70px);
+    }
+
+    .challenge-page .challenge-section-heading {
+        margin-bottom: 48px;
+    }
+
+    .challenge-page .challenge-section-heading h2 {
+        font-size: clamp(2.2rem, 4.7vw, 4.3rem);
+    }
+
+    .challenge-page .quiz-container {
+        padding: clamp(22px, 4vw, 46px);
+        border-radius: 20px;
+    }
+
+    .challenge-page .quiz-topbar {
+        gap: 16px;
+    }
+
+    .challenge-page .quiz-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+        margin: 28px 0;
+    }
+
+    .challenge-page .quiz-option {
+        min-height: 76px;
+        padding: 16px;
+    }
+
+    .challenge-page .quiz-option-text {
+        font-size: 0.93rem;
+    }
+
+    .challenge-page .quiz-actions > button {
+        flex: 0 1 auto;
+    }
+
+    .challenge-page .quiz-results {
+        padding: clamp(30px, 6vw, 65px) 24px;
+    }
+
+    .challenge-page .challenge-closing {
+        padding: clamp(65px, 9vw, 120px) 24px;
+    }
+
+    .challenge-page .site-footer {
+        padding: 65px clamp(22px, 6vw, 85px) 22px;
+    }
+
+    .challenge-page .footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 35px;
+    }
+
+    .challenge-page .footer-bottom {
+        flex-direction: row;
+        margin-top: 50px;
+    }
+}
+
+/* DESKTOP: 1024px and wider. */
+@media (min-width: 1024px) {
+    .challenge-page .challenge-hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+        min-height: 700px;
+        padding: calc(clamp(60px, 9vw, 120px) + 92px) clamp(24px, 7vw, 110px) clamp(60px, 9vw, 120px);
+    }
+
+    .challenge-page .challenge-hero h1 {
+        font-size: clamp(3rem, 6.2vw, 6.1rem);
+    }
+
+    .challenge-page .challenge-hero-art {
+        max-width: 510px;
+    }
+
+    .challenge-page .footer-main {
+        grid-template-columns: 1.5fr 0.8fr 0.9fr 1.1fr;
+        gap: 40px;
+    }
+}
 
 /* REDUCED MOTION */
 

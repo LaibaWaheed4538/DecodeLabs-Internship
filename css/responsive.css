@@ -184,202 +184,35 @@ aside {
 }
 
 
-/* 04. LARGE DESKTOPS */
-
-@media (min-width: 1600px) {
-
-    :root {
-        --page-gutter: clamp(5rem, 7vw, 8rem);
-        --section-space: 9rem;
-    }
-
-    .hero-content {
-        max-width: 850px;
-    }
-
-    .featured-grid,
-    .facts-grid,
-    .footer-main,
-    .footer-bottom {
-        max-width: 1600px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .featured-grid,
-    .facts-grid {
-        gap: 2rem;
-    }
-
-    .hero-artwork {
-        right: 7%;
-        width: min(48vw, 850px);
-    }
+/* Shared typography correction: only Inter/Roboto and weights 400, 500, 700 */
+.page-hero h1,
+.collection-card-title,
+.empty-state h2,
+.empty-state h3,
+.exhibit-detail-content h1,
+.timeline-event h3,
+.quiz-question,
+.quiz-result-score,
+.about-copy h2,
+.mission-panel h2 {
+    font-family: var(--font-heading);
 }
 
-
-/* 05. LAPTOPS AND SMALL DESKTOPS */
-
-@media (max-width: 1200px) {
-
-    .header-inner {
-        gap: 1.25rem;
-    }
-
-    .primary-navigation {
-        gap: clamp(0.8rem, 1.7vw, 1.5rem);
-    }
-
-    .nav-link {
-        font-size: 0.82rem;
-    }
-
-    .featured-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.5rem;
-    }
-
-    .exhibit-card-image,
-    .exhibit-card-large .exhibit-card-image {
-        aspect-ratio: 4 / 4.5;
-    }
-
-    .facts-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 2rem 1.5rem;
-    }
-
-    .timeline-preview {
-        gap: 3rem;
-    }
-
-    .footer-main {
-        grid-template-columns: 1.2fr 0.8fr 0.8fr;
-        gap: 2.5rem;
-    }
-
-    .footer-newsletter {
-        grid-column: 1 / -1;
-    }
-
-    .collection-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+.section-label,
+.category-badge,
+.filter-field label,
+.form-field label,
+.filter-reset,
+.exhibit-fact-label,
+.timeline-event-date,
+.quiz-progress-text,
+.quiz-score {
+    font-weight: 500;
 }
 
+/* MOBILE-FIRST BASE: single-column layouts and mobile navigation */
 
-/* 06. TABLETS */
-
-@media (max-width: 900px) {
-
-    :root {
-        --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
-        --section-space: clamp(4rem, 8vw, 6rem);
-    }
-
-    /* Header */
-
-    .header-inner {
-        min-height: 78px;
-    }
-
-    .primary-navigation {
-        gap: 1rem;
-    }
-
-    .header-actions {
-        gap: 0.5rem;
-    }
-
-    /* Hero */
-
-    .hero-section {
-        min-height: 760px;
-        min-height: max(760px, 94svh);
-        padding-top: 135px;
-        padding-bottom: 135px;
-    }
-
-    .hero-background-image {
-        object-position: 58% center;
-    }
-
-    .hero-overlay {
-        background:
-            linear-gradient(90deg,
-                rgba(var(--mocha-rgb), 0.96),
-                rgba(var(--mocha-rgb), 0.76) 60%,
-                rgba(var(--mocha-rgb), 0.4)),
-            linear-gradient(0deg,
-                rgba(var(--mocha-rgb), 0.75),
-                transparent 55%);
-    }
-
-    .hero-content {
-        max-width: 650px;
-    }
-
-    .hero-artwork {
-        right: -10%;
-        width: 60vw;
-        max-width: 65%;
-        opacity: 0.65;
-        pointer-events: none;
-    }
-
-    .hero-title {
-        font-size: clamp(3rem, 7.5vw, 5rem);
-    }
-
-    /* Timeline */
-
-    .timeline-preview {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .timeline-preview-content {
-        max-width: 650px;
-    }
-
-    .timeline-preview-visual {
-        width: 100%;
-    }
-
-    /* Challenge */
-
-    .challenge-preview {
-        min-height: 460px;
-    }
-
-    /* Collection */
-
-    .collection-invitation {
-        min-height: 380px;
-    }
-
-    .collection-decoration {
-        width: clamp(150px, 25vw, 240px);
-    }
-
-    /* Inner pages */
-
-    .exhibit-detail {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.75rem;
-    }
-
-    .about-intro {
-        gap: 2rem;
-    }
-}
-
-
-/* 07. MOBILE NAVIGATION */
-
-@media (max-width: 767px) {
-
-    .header-inner {
+.header-inner {
         position: relative;
         min-height: 72px;
         gap: 0.5rem;
@@ -463,18 +296,8 @@ aside {
     .header-search-form .search-submit {
         flex: 0 0 auto;
     }
-}
 
-
-/* 08. MOBILE HERO
-   Full picture visible from the very top (nothing cut),
-   transparent header on top of it, picture fades into mocha
-   at the bottom, text sits right under the picture.
-   56.25vw = height of the 16:9 picture at full width.          */
-
-@media (max-width: 767px) {
-
-    /* Header: fully transparent, no brown, no blur */
+/* Header: fully transparent, no brown, no blur */
     .site-header {
         background: linear-gradient(180deg,
             rgba(0, 0, 0, 0.28) 0%,
@@ -592,14 +415,8 @@ aside {
     .hero-pagination p {
         font-size: 0.55rem;
     }
-}
 
-
-/* 09. MOBILE SECTION HEADINGS AND CARDS */
-
-@media (max-width: 767px) {
-
-    .section,
+.section,
     .featured-section,
     .facts-section {
         padding-top: var(--section-space);
@@ -761,113 +578,8 @@ aside {
         flex-direction: column;
         gap: 0.6rem;
     }
-}
 
-
-/* 10. SMALL MOBILE PHONES */
-
-@media (max-width: 430px) {
-
-    :root {
-        --page-gutter: 1.15rem;
-        --section-space: 3.75rem;
-    }
-
-    .header-inner {
-        min-height: 66px;
-    }
-
-    .brand {
-        font-size: 1.8rem;
-    }
-
-    .icon-button {
-        width: 40px;
-        height: 40px;
-    }
-
-    .hero-title {
-        font-size: clamp(2.2rem, 9vw, 2.9rem);
-    }
-
-    .hero-description {
-        font-size: 0.9rem;
-    }
-
-    .hero-bottom {
-        bottom: 1.4rem;
-    }
-
-    .scroll-label {
-        font-size: 0.58rem;
-    }
-
-    .pagination-current {
-        font-size: 1.2rem;
-    }
-
-    .hero-pagination p {
-        font-size: 0.5rem;
-    }
-
-    .featured-grid {
-        gap: 1.2rem;
-    }
-
-    .exhibit-card-image,
-    .exhibit-card-large .exhibit-card-image {
-        aspect-ratio: 4 / 4.1;
-    }
-
-    .exhibit-card-body {
-        padding: 1rem;
-    }
-
-    .exhibit-card h3 {
-        font-size: 1.3rem;
-    }
-
-    .card-arrow {
-        right: 0.65rem;
-        bottom: 0.85rem;
-    }
-
-    .footer-main {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 2rem;
-    }
-
-    .footer-brand-column,
-    .footer-newsletter {
-        grid-column: auto;
-    }
-}
-
-
-/* 11. VERY SMALL PHONES */
-
-@media (max-width: 380px) {
-
-    .hero-title {
-        font-size: clamp(2rem, 8.5vw, 2.6rem);
-    }
-
-    .hero-bottom {
-        right: 16px;
-        left: 16px;
-    }
-
-    .section-title {
-        overflow-wrap: break-word;
-    }
-}
-
-
-/* 12. INNER PAGE RESPONSIVENESS */
-
-@media (max-width: 767px) {
-
-    .page-hero {
+.page-hero {
         min-height: 430px;
         padding-top: 9rem;
         padding-bottom: 3rem;
@@ -983,14 +695,609 @@ aside {
         max-height: 88svh;
         padding: 1.25rem;
     }
+
+/* Fluid small-phone sizing without max-width breakpoints */
+:root {
+    --page-gutter: clamp(1rem, 4vw, 1.25rem);
+    --section-space: clamp(3.75rem, 8vw, 4rem);
 }
 
+.header-inner {
+    min-height: clamp(66px, 18vw, 72px);
+    gap: 0.5rem;
+}
 
-/* 13. LANDSCAPE PHONES */
+.brand {
+    font-size: clamp(1.8rem, 7vw, 2rem);
+}
 
+.icon-button {
+    width: clamp(40px, 10vw, 44px);
+    height: clamp(40px, 10vw, 44px);
+}
+
+.hero-title {
+    font-size: clamp(2rem, 8.5vw, 3.8rem);
+}
+
+.hero-description {
+    font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+}
+
+.hero-bottom {
+    right: var(--page-gutter);
+    bottom: clamp(1.4rem, 4vw, 1.75rem);
+    left: var(--page-gutter);
+}
+
+.scroll-label {
+    font-size: clamp(0.58rem, 1.8vw, 0.65rem);
+}
+
+.hero-pagination p {
+    font-size: clamp(0.5rem, 1.5vw, 0.55rem);
+}
+
+.featured-grid {
+    gap: clamp(1.2rem, 4vw, 1.5rem);
+}
+
+.exhibit-card-body {
+    padding: clamp(1rem, 4vw, 1.2rem);
+}
+
+.exhibit-card h3 {
+    font-size: clamp(1.3rem, 4vw, 1.45rem);
+}
+
+.footer-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+}
+
+.footer-brand-column,
+.footer-newsletter {
+    grid-column: auto;
+}
+
+.featured-grid,
+.facts-grid,
+.collection-grid,
+.timeline-preview,
+.exhibit-detail,
+.about-intro,
+.quiz-answers,
+.exhibit-facts,
+.footer-main {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.exhibit-facts {
+    gap: 1rem;
+}
+
+.section-title,
+.page-hero h1 {
+    overflow-wrap: break-word;
+}
+
+/* Tablet: expand navigation and content grids */
+@media (min-width: 768px) {
+    :root {
+        --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+        --section-space: clamp(4rem, 8vw, 6rem);
+    }
+
+    .site-header {
+        background: rgba(var(--mocha-rgb), 0.18);
+        border-bottom: 1px solid rgba(var(--cream-rgb), 0.22);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+        position: static;
+        min-height: 78px;
+        gap: 1.25rem;
+        padding: 1rem var(--page-gutter);
+    }
+
+    .brand {
+        font-size: clamp(1.8rem, 2.5vw, 2.45rem);
+    }
+
+    .header-actions {
+        margin-left: 0;
+        gap: 0.5rem;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .primary-navigation {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        max-height: none;
+        padding: 0;
+        overflow: visible;
+        visibility: visible;
+        pointer-events: auto;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        opacity: 1;
+        transform: none;
+        backdrop-filter: none;
+    }
+
+    .primary-navigation .nav-link {
+        display: inline-flex;
+        min-height: 44px;
+        padding: 0;
+        border-bottom: 0;
+        font-size: 0.82rem;
+    }
+
+    .primary-navigation .nav-link::after {
+        right: 0;
+        bottom: 4px;
+        width: auto;
+    }
+
+    .header-search {
+        padding: 0 var(--page-gutter) 1.25rem;
+    }
+
+    .header-search-form {
+        flex-wrap: nowrap;
+    }
+
+    .header-search-form input {
+        flex: 1;
+    }
+
+    .site-header .header-search[hidden] {
+        display: none;
+    }
+
+    .hero-section {
+        align-items: center;
+        min-height: max(760px, 94svh);
+        height: auto;
+        padding: 135px var(--page-gutter);
+    }
+
+    .hero-background-image {
+        position: static;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+        object-position: 58% center;
+        opacity: 0.75;
+        animation: hero-image-entrance 1.6s ease both;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(90deg,
+                rgba(var(--mocha-rgb), 0.96),
+                rgba(var(--mocha-rgb), 0.76) 60%,
+                rgba(var(--mocha-rgb), 0.4)),
+            linear-gradient(0deg,
+                rgba(var(--mocha-rgb), 0.75),
+                transparent 55%);
+    }
+
+    .hero-content {
+        max-width: 650px;
+        margin-top: 1.5rem;
+        padding: 0;
+    }
+
+    .hero-eyebrow {
+        max-width: 500px;
+        margin-bottom: clamp(1.5rem, 3vw, 2.6rem);
+        font-size: var(--text-xs);
+        letter-spacing: 0.1em;
+    }
+
+    .hero-title {
+        max-width: 800px;
+        font-size: clamp(3rem, 7.5vw, 5rem);
+        line-height: 0.99;
+        letter-spacing: -0.065em;
+    }
+
+    .hero-description {
+        max-width: 450px;
+        font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+        line-height: 1.9;
+    }
+
+    .hero-button {
+        min-height: 54px;
+        padding-inline: 1.8rem;
+    }
+
+    .hero-artwork {
+        top: 50%;
+        right: -10%;
+        width: 60vw;
+        max-width: 65%;
+        transform: translateY(-50%);
+        opacity: 0.65;
+    }
+
+    .hero-artwork-image,
+    .hero-artwork-caption {
+        display: block !important;
+    }
+
+    .section-heading {
+        align-items: flex-end;
+        flex-direction: row;
+        gap: 2rem;
+        margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    .section-title {
+        font-size: var(--heading-md);
+    }
+
+    .section-description {
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .featured-grid,
+    .facts-grid,
+    .collection-grid,
+    .quiz-answers,
+    .exhibit-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .featured-grid {
+        gap: 1.5rem;
+    }
+
+    .facts-grid {
+        gap: 2rem 1.5rem;
+    }
+
+    .exhibit-card-image,
+    .exhibit-card-large .exhibit-card-image {
+        aspect-ratio: 4 / 4.5;
+    }
+
+    .fact-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .fact-card h3 {
+        font-size: clamp(1.35rem, 2vw, 1.75rem);
+    }
+
+    .fact-card > p:last-child {
+        font-size: 0.95rem;
+    }
+
+    .timeline-preview {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2.5rem;
+    }
+
+    .timeline-preview-content {
+        max-width: 650px;
+    }
+
+    .timeline-preview-visual {
+        width: 100%;
+        padding-top: 3rem;
+    }
+
+    .timeline-milestones {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        overflow: visible;
+    }
+
+    .timeline-milestone {
+        min-width: 0;
+    }
+
+    .challenge-preview {
+        min-height: 460px;
+        padding-top: clamp(4rem, 8vw, 7rem);
+        padding-bottom: clamp(4rem, 8vw, 7rem);
+    }
+
+    .challenge-preview .section-title,
+    .collection-invitation .section-title {
+        font-size: var(--heading-lg);
+    }
+
+    .collection-invitation {
+        align-items: center;
+        flex-direction: row;
+        gap: 3rem;
+        min-height: 380px;
+    }
+
+    .collection-decoration {
+        align-self: auto;
+        width: clamp(150px, 25vw, 240px);
+    }
+
+    .collection-decoration-number {
+        font-size: clamp(5rem, 12vw, 10rem);
+    }
+
+    .site-footer {
+        padding-top: 4.5rem;
+    }
+
+    .footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2.5rem 1.5rem;
+    }
+
+    .footer-brand-column,
+    .footer-newsletter {
+        grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+        align-items: center;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .page-hero {
+        min-height: clamp(420px, 65vh, 720px);
+        padding: clamp(8rem, 15vw, 13rem) var(--page-gutter)
+            clamp(3.5rem, 7vw, 6.5rem);
+    }
+
+    .page-hero h1 {
+        font-size: var(--heading-lg);
+    }
+
+    .page-hero-description {
+        font-size: clamp(1rem, 1.4vw, 1.15rem);
+    }
+
+    .collection-grid {
+        gap: clamp(1.2rem, 2.5vw, 2rem);
+    }
+
+    .exhibit-detail,
+    .about-intro {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.75rem;
+    }
+
+    .exhibit-detail-media img,
+    .about-image img {
+        aspect-ratio: 4 / 5;
+    }
+
+    .exhibit-detail-content h1 {
+        font-size: var(--heading-lg);
+    }
+
+    .filter-panel {
+        align-items: flex-end;
+        flex-direction: row;
+    }
+
+    .filter-field {
+        flex-basis: 180px;
+        width: auto;
+    }
+
+    .filter-actions {
+        width: auto;
+    }
+
+    .filter-actions .button {
+        flex: 0 0 auto;
+    }
+
+    .quiz-container {
+        padding: 1.75rem;
+    }
+
+    .quiz-actions {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .quiz-actions .button {
+        width: auto;
+    }
+
+    .modal-panel {
+        max-height: 90svh;
+        padding: 2rem;
+    }
+}
+
+/* Desktop: expand to the wider page layouts */
+@media (min-width: 1024px) {
+    :root {
+        --page-gutter: clamp(2rem, 5vw, 5rem);
+        --section-space: clamp(4rem, 9vw, 8.5rem);
+    }
+
+    .header-inner {
+        min-height: 92px;
+    }
+
+    .primary-navigation {
+        gap: clamp(0.8rem, 1.7vw, 1.5rem);
+    }
+
+    .header-actions {
+        gap: 0.5rem;
+    }
+
+    .hero-section {
+        min-height: max(720px, 100svh);
+        padding: 150px var(--page-gutter) 145px;
+    }
+
+    .hero-background-image {
+        object-position: center 45%;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(90deg,
+                rgba(var(--mocha-rgb), 1) 0%,
+                rgba(var(--mocha-rgb), 0.93) 28%,
+                rgba(var(--mocha-rgb), 0.55) 52%,
+                rgba(var(--mocha-rgb), 0.04) 100%),
+            linear-gradient(0deg,
+                rgba(var(--mocha-rgb), 0.8) 0%,
+                transparent 35%,
+                rgba(var(--mocha-rgb), 0.15) 100%);
+    }
+
+    .hero-content {
+        max-width: 760px;
+    }
+
+    .hero-title {
+        font-size: var(--hero-size);
+        line-height: 0.99;
+    }
+
+    .hero-artwork {
+        right: 5%;
+        width: min(51vw, 760px);
+        max-width: none;
+        transform: translateY(-43%);
+        opacity: 1;
+    }
+
+    .featured-grid,
+    .facts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .challenge-preview {
+        min-height: 510px;
+    }
+
+    .timeline-preview-content {
+        max-width: 560px;
+    }
+
+    .timeline-preview {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: clamp(3rem, 8vw, 8rem);
+    }
+
+    .collection-invitation {
+        min-height: 440px;
+    }
+
+    .collection-decoration {
+        width: clamp(170px, 26vw, 360px);
+    }
+
+    .footer-main {
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+        gap: 2.5rem;
+    }
+
+    .footer-newsletter {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 1201px) {
+    .header-inner {
+        gap: 2rem;
+    }
+
+    .primary-navigation {
+        gap: clamp(1rem, 3vw, 3.1rem);
+    }
+
+    .nav-link {
+        font-size: var(--text-sm);
+    }
+
+    .header-actions {
+        gap: 1.2rem;
+    }
+
+    .featured-grid,
+    .facts-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: clamp(1rem, 2vw, 1.8rem);
+    }
+
+    .collection-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .footer-main {
+        grid-template-columns: 1.35fr 0.8fr 0.8fr 1fr;
+        gap: clamp(2rem, 4vw, 4.5rem);
+    }
+
+    .footer-newsletter {
+        grid-column: auto;
+    }
+
+    .exhibit-card-image,
+    .exhibit-card-large .exhibit-card-image {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --page-gutter: clamp(5rem, 7vw, 8rem);
+        --section-space: 9rem;
+    }
+
+    .hero-content {
+        max-width: 850px;
+    }
+
+    .featured-grid,
+    .facts-grid,
+    .footer-main,
+    .footer-bottom {
+        max-width: 1600px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .featured-grid,
+    .facts-grid {
+        gap: 2rem;
+    }
+
+    .hero-artwork {
+        right: 7%;
+        width: min(48vw, 850px);
+    }
+}
+
+/* Landscape phones */
 @media (max-height: 500px) and (orientation: landscape) {
-
-    .hero-bottom {
+.hero-bottom {
         bottom: 1rem;
     }
 
@@ -999,12 +1306,9 @@ aside {
     }
 }
 
-
-/* 14. HOVER EFFECTS ONLY ON HOVER-CAPABLE DEVICES */
-
+/* Hover effects only on hover-capable devices */
 @media (hover: hover) and (pointer: fine) {
-
-    .exhibit-card:hover,
+.exhibit-card:hover,
     .collection-card:hover {
         transform: translateY(-6px);
     }
@@ -1023,12 +1327,9 @@ aside {
     }
 }
 
-
-/* 15. REDUCED MOTION ACCESSIBILITY */
-
+/* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
-
-    html {
+html {
         scroll-behavior: auto;
     }
 

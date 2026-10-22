@@ -14,8 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
@@ -39,7 +38,8 @@
                 CURIO<span class="brand-dot">.</span>
             </a>
 
-            <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+            <nav class="primary-navigation" id="primary-navigation"
+                aria-label="Main navigation">
 
                 <a class="nav-link" href="index.html">Home</a>
                 <a class="nav-link" href="discover.html">Discover</a>
@@ -49,28 +49,30 @@
                 <a class="nav-link" href="community-discoveries.html">
                     Community
                 </a>
-
                 <a class="nav-link" href="marketplace.html">Marketplace</a>
                 <a class="nav-link" href="billing.html">Billing</a>
-
                 <a class="nav-link" href="about.html">About</a>
 
             </nav>
 
             <div class="header-actions">
 
-                <button class="icon-button search-toggle" type="button" aria-label="Open search"
-                    aria-controls="site-search" aria-expanded="false" data-search-toggle>
+                <button class="icon-button search-toggle" type="button"
+                    aria-label="Open search" aria-controls="site-search"
+                    aria-expanded="false" data-search-toggle>
 
-                    <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"
+                    <svg viewBox="0 0 24 24" width="23" height="23"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
                         stroke-linecap="round" aria-hidden="true">
                         <circle cx="10.8" cy="10.8" r="7.2"></circle>
                         <path d="m16.2 16.2 4.4 4.4"></path>
                     </svg>
                 </button>
 
-                <button class="icon-button menu-toggle" type="button" aria-label="Open navigation menu"
-                    aria-controls="primary-navigation" aria-expanded="false" data-menu-toggle>
+                <button class="icon-button menu-toggle" type="button"
+                    aria-label="Open navigation menu"
+                    aria-controls="primary-navigation"
+                    aria-expanded="false" data-menu-toggle>
 
                     <span class="menu-line"></span>
                     <span class="menu-line"></span>
@@ -86,8 +88,8 @@
                     Search museum exhibits
                 </label>
 
-                <input id="header-search-input" name="q" type="search" placeholder="Search discoveries..."
-                    autocomplete="off">
+                <input id="header-search-input" name="q" type="search"
+                    placeholder="Search discoveries..." autocomplete="off">
 
                 <button class="search-submit" type="submit">
                     Explore
@@ -95,7 +97,6 @@
             </form>
         </div>
     </header>
-
 
     <main id="main-content">
 
@@ -111,7 +112,6 @@
                 </span>
             </nav>
         </div>
-
 
         <!-- Loading and error states -->
         <div class="exhibit-loading" id="exhibit-loading" role="status">
@@ -130,7 +130,6 @@
                 Return to Discover <span aria-hidden="true">↗</span>
             </a>
         </section>
-
 
         <!-- Main exhibit content is rendered by exhibit.js -->
         <div id="exhibit-content" hidden>
@@ -164,7 +163,8 @@
 
                     <div class="exhibit-hero-actions">
 
-                        <button class="exhibit-bookmark-button" id="exhibit-bookmark" type="button"
+                        <button class="exhibit-bookmark-button"
+                            id="exhibit-bookmark" type="button"
                             aria-pressed="false">
                             <span id="bookmark-symbol" aria-hidden="true">♡</span>
                             <span id="bookmark-label">Save to collection</span>
@@ -176,10 +176,10 @@
 
                     </div>
 
-                    <p class="exhibit-feedback" id="exhibit-feedback" role="status" aria-live="polite"></p>
+                    <p class="exhibit-feedback" id="exhibit-feedback"
+                        role="status" aria-live="polite"></p>
 
                 </div>
-
 
                 <figure class="exhibit-hero-visual">
 
@@ -187,13 +187,15 @@
 
                         <img id="exhibit-image" src="" alt="" fetchpriority="high">
 
-                        <div class="exhibit-image-fallback" id="exhibit-image-fallback" hidden>
+                        <div class="exhibit-image-fallback"
+                            id="exhibit-image-fallback" hidden>
                             <span aria-hidden="true">✧</span>
                             <p id="fallback-title">Museum Exhibit</p>
                             <small>CURIO COLLECTION</small>
                         </div>
 
-                        <span class="exhibit-image-number" aria-hidden="true">C—001</span>
+                        <span class="exhibit-image-number"
+                            aria-hidden="true">C—001</span>
 
                     </div>
 
@@ -204,7 +206,6 @@
                 </figure>
 
             </section>
-
 
             <!-- Story -->
             <section class="exhibit-story-section" id="exhibit-story">
@@ -231,7 +232,6 @@
 
             </section>
 
-
             <!-- Facts -->
             <section class="exhibit-facts-section">
 
@@ -251,7 +251,6 @@
                 <div class="exhibit-facts-grid" id="exhibit-facts"></div>
 
             </section>
-
 
             <!-- Significance -->
             <section class="exhibit-significance-section">
@@ -275,13 +274,11 @@
 
             </section>
 
-
             <!-- Tags -->
             <section class="exhibit-tags-section">
                 <p class="exhibit-eyebrow">EXPLORE THE THEMES</p>
                 <div class="exhibit-tags" id="exhibit-tags"></div>
             </section>
-
 
             <!-- Related exhibits -->
             <section class="related-exhibits-section">
@@ -303,11 +300,11 @@
 
             </section>
 
-
             <!-- Previous / Next navigation -->
             <nav class="exhibit-pagination" aria-label="Other exhibits">
 
-                <a href="discover.html" class="exhibit-pagination-link" id="previous-exhibit">
+                <a href="discover.html" class="exhibit-pagination-link"
+                    id="previous-exhibit">
 
                     <span class="exhibit-pagination-label">
                         ← BACK TO DISCOVER
@@ -318,7 +315,9 @@
                     </span>
                 </a>
 
-                <a href="discover.html" class="exhibit-pagination-link exhibit-pagination-next" id="next-exhibit">
+                <a href="discover.html"
+                    class="exhibit-pagination-link exhibit-pagination-next"
+                    id="next-exhibit">
 
                     <span class="exhibit-pagination-label">
                         CONTINUE EXPLORING →
@@ -334,7 +333,6 @@
         </div>
 
     </main>
-
 
     <footer class="site-footer">
 

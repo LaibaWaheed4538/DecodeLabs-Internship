@@ -1,6 +1,10 @@
+
 /* CURIO BILLING */
 
 .billing-page {
+    --font-body: "Inter", sans-serif;
+    --font-heading: "Roboto", sans-serif;
+
     --bill-bg: #F2F0EA;
     --bill-surface: rgba(160, 212, 224, 0.16);
     --bill-ink: #A58A6F;
@@ -16,12 +20,11 @@
     overflow-wrap: anywhere;
     background: var(--bill-bg);
     color: var(--bill-ink);
+    font-family: var(--font-body);
+    font-weight: 400;
 }
 
-/* HEADER — same setup as the Challenge page:
-   absolute, over the page, cream text, colours only.
-   A soft mocha fade sits behind it because this page
-   has no dark hero image under the header. */
+/* HEADER */
 
 .billing-page .site-header {
     position: absolute;
@@ -41,7 +44,8 @@
 
 .billing-page .brand {
     color: var(--bill-bg);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading);
+    font-weight: 400;
     letter-spacing: -1.5px;
 }
 
@@ -51,7 +55,7 @@
 
 .billing-page .nav-link {
     color: rgba(var(--bill-cream-rgb), 0.9);
-    font-weight: 600;
+    font-weight: 500;
     transition: color 0.25s ease;
 }
 
@@ -103,6 +107,8 @@
     border: 0;
     border-radius: 999px;
     cursor: pointer;
+    font-family: inherit;
+    font-size: 0.875rem;
     font-weight: 700;
     transition: background 0.2s ease;
 }
@@ -111,7 +117,8 @@
     background: var(--bill-blue);
 }
 
-/* mobile menu panel, only when it is open */
+/* MOBILE MENU */
+
 .billing-page .primary-navigation.is-open,
 .billing-page .primary-navigation.active,
 .billing-page .primary-navigation.open {
@@ -124,7 +131,7 @@
     outline-color: var(--bill-bg);
 }
 
-/* MAIN */
+/* MAIN — MOBILE FIRST */
 
 .billing-container {
     width: 100%;
@@ -148,7 +155,7 @@
 
 .billing-heading h1 {
     margin: 0 0 0.75rem;
-    font-family: var(--font-heading, "Montserrat", sans-serif);
+    font-family: var(--font-heading);
     font-size: clamp(2.25rem, 8vw, 3.625rem);
     font-weight: 400;
     line-height: 1.12;
@@ -159,13 +166,11 @@
     color: var(--bill-mocha);
 }
 
-.billing-heading>p:last-child {
+.billing-heading > p:last-child {
     max-width: 42rem;
     color: var(--bill-muted);
     line-height: 1.7;
 }
-
-/* MOBILE-FIRST: ONE COLUMN */
 
 .billing-layout {
     display: grid;
@@ -183,7 +188,7 @@
 
 .billing-panel h2 {
     margin: 0 0 1.5rem;
-    font-family: var(--font-heading, "Montserrat", sans-serif);
+    font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.3;
@@ -199,7 +204,7 @@
 
 .billing-field label {
     font-size: 0.8125rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .billing-field input,
@@ -253,14 +258,14 @@
 .billing-item h3 {
     margin: 0 0 0.5rem;
     font-size: 0.9375rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.5;
 }
 
 .billing-item-price {
     color: var(--bill-mocha);
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .billing-item-controls {
@@ -349,7 +354,7 @@
 
 .billing-summary-row dd {
     color: var(--bill-ink);
-    font-weight: 600;
+    font-weight: 500;
     text-align: right;
 }
 
@@ -381,7 +386,7 @@
     color: var(--bill-bg);
     font: inherit;
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     cursor: pointer;
     transition: background-color 180ms ease, border-color 180ms ease;
@@ -427,7 +432,7 @@
     outline-offset: 3px;
 }
 
-/* TABLET: 768px */
+/* TABLET — 768px */
 
 @media (min-width: 768px) {
     .billing-container {
@@ -444,7 +449,7 @@
     }
 }
 
-/* DESKTOP: 1024px */
+/* DESKTOP — 1024px */
 
 @media (min-width: 1024px) {
     .billing-container {
@@ -460,7 +465,6 @@
 /* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
-
     .billing-page *,
     .billing-page *::before,
     .billing-page *::after {

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +13,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
@@ -32,6 +32,7 @@
 
     <header class="site-header" id="site-header">
         <div class="header-inner">
+
             <a class="brand" href="index.html" aria-label="Curio home">
                 CURIO<span class="brand-dot">.</span>
             </a>
@@ -42,49 +43,54 @@
                 <a class="nav-link is-active" href="timeline.html" aria-current="page">Timeline</a>
                 <a class="nav-link" href="challenge.html">Challenge</a>
                 <a class="nav-link" href="collection.html">Collection</a>
-                <a class="nav-link" href="community-discoveries.html">
-                    Community
-                </a>
-
+                <a class="nav-link" href="community-discoveries.html">Community</a>
                 <a class="nav-link" href="marketplace.html">Marketplace</a>
                 <a class="nav-link" href="billing.html">Billing</a>
-
                 <a class="nav-link" href="about.html">About</a>
             </nav>
 
             <div class="header-actions">
-                <button class="icon-button search-toggle" type="button" aria-label="Open search"
-                    aria-controls="site-search" aria-expanded="false" data-search-toggle>
-                    <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6"
+
+                <button class="icon-button search-toggle" type="button"
+                    aria-label="Open search" aria-controls="site-search"
+                    aria-expanded="false" data-search-toggle>
+
+                    <svg viewBox="0 0 24 24" width="23" height="23"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
                         stroke-linecap="round" aria-hidden="true">
                         <circle cx="10.8" cy="10.8" r="7.2"></circle>
                         <path d="m16.2 16.2 4.4 4.4"></path>
                     </svg>
                 </button>
 
-                <button class="icon-button menu-toggle" type="button" aria-label="Open navigation menu"
-                    aria-controls="primary-navigation" aria-expanded="false" data-menu-toggle>
+                <button class="icon-button menu-toggle" type="button"
+                    aria-label="Open navigation menu"
+                    aria-controls="primary-navigation"
+                    aria-expanded="false" data-menu-toggle>
                     <span class="menu-line"></span>
                     <span class="menu-line"></span>
                 </button>
+
             </div>
         </div>
 
         <div class="header-search" id="site-search" hidden>
             <form class="header-search-form" action="discover.html" method="get">
-                <label class="visually-hidden" for="header-search-input">Search exhibits</label>
-                <input id="header-search-input" name="q" type="search" placeholder="Search discoveries..."
-                    autocomplete="off">
+                <label class="visually-hidden" for="header-search-input">
+                    Search exhibits
+                </label>
+                <input id="header-search-input" name="q" type="search"
+                    placeholder="Search discoveries..." autocomplete="off">
                 <button class="search-submit" type="submit">Explore</button>
             </form>
         </div>
     </header>
 
-
     <main id="main-content">
 
         <section class="timeline-hero">
             <div class="timeline-hero-inner">
+
                 <div class="timeline-hero-copy">
                     <p class="timeline-eyebrow">
                         <span class="timeline-eyebrow-line"></span>
@@ -125,11 +131,12 @@
                     </div>
                     <span class="timeline-visual-label">TIME / 001</span>
                 </div>
+
             </div>
         </section>
 
-
         <section class="timeline-explorer" id="timeline-explorer">
+
             <div class="timeline-section-intro">
                 <p class="timeline-eyebrow">A LIVING ARCHIVE</p>
                 <h2>History is never <em>just the past.</em></h2>
@@ -140,27 +147,30 @@
             </div>
 
             <div class="timeline-tools">
+
                 <div class="timeline-tool-field">
                     <label for="timeline-period">EXPLORE BY COLLECTION</label>
                     <select id="timeline-period">
                         <option value="all">All collections</option>
                         <option value="ancient-civilizations">Ancient Civilizations</option>
-                        <option value="history">History & Language</option>
-                        <option value="inventions">Art & Inventions</option>
-                        <option value="science">Science & Technology</option>
+                        <option value="history">History &amp; Language</option>
+                        <option value="inventions">Art &amp; Inventions</option>
+                        <option value="science">Science &amp; Technology</option>
                         <option value="nature">Nature</option>
                     </select>
                 </div>
 
                 <div class="timeline-tool-field timeline-search-field">
                     <label for="timeline-search">SEARCH THE ARCHIVE</label>
-                    <input id="timeline-search" type="search" placeholder="Try Rosetta Stone or 1922..."
+                    <input id="timeline-search" type="search"
+                        placeholder="Try Rosetta Stone or 1922..."
                         autocomplete="off">
                 </div>
 
                 <button class="timeline-reset-button" id="timeline-reset" type="button">
                     Reset filters <span aria-hidden="true">↺</span>
                 </button>
+
             </div>
 
             <div class="timeline-results-bar">
@@ -185,11 +195,12 @@
                     Show all moments
                 </button>
             </div>
-        </section>
 
+        </section>
 
         <section class="timeline-closing">
             <div class="timeline-closing-decoration" aria-hidden="true">C.</div>
+
             <div class="timeline-closing-content">
                 <p class="timeline-eyebrow">THE STORY CONTINUES</p>
                 <h2>Yesterday's wonders.<br><em>Tomorrow's discoveries.</em></h2>
@@ -205,9 +216,10 @@
 
     </main>
 
-
     <footer class="site-footer">
+
         <div class="footer-main">
+
             <div class="footer-brand-column">
                 <a class="brand footer-brand" href="index.html">
                     CURIO<span class="brand-dot">.</span>
@@ -245,14 +257,18 @@
                     Start exploring <span aria-hidden="true">↗</span>
                 </a>
             </div>
+
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; <span data-current-year>2026</span> Curio Digital Museum. All rights reserved.</p>
+            <p>
+                &copy; <span data-current-year>2026</span>
+                Curio Digital Museum. All rights reserved.
+            </p>
             <p class="footer-note">Built for the endlessly curious.</p>
         </div>
+
     </footer>
 
 </body>
-
 </html>

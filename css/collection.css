@@ -3,6 +3,9 @@
 */
 
 .collection-page {
+    --font-body: "Inter", sans-serif;
+    --font-heading: "Roboto", sans-serif;
+
     --collection-blue: #A0D4E0;
     --collection-cream: #F2F0EA;
     --collection-mocha: #A58A6F;
@@ -25,8 +28,8 @@
 
     background: var(--collection-moon), var(--collection-cream);
     color: var(--collection-mocha);
-    font-family: "DM Sans", sans-serif;
-    font-weight: 500;
+    font-family: var(--font-body);
+    font-weight: 400;
     overflow-wrap: anywhere;
 }
 
@@ -81,8 +84,8 @@
     isolation: isolate;
     display: flex;
     align-items: center;
-    min-height: clamp(580px, 82vh, 820px);
-    padding: clamp(60px, 9vw, 120px) clamp(22px, 8vw, 115px);
+    min-height: 680px;
+    padding: 70px 17px;
     overflow: hidden;
     background: var(--collection-mocha);
     border-bottom: 1px solid var(--collection-border);
@@ -98,8 +101,8 @@
     height: 100%;
     min-height: 0;
     background-image: url("../assets/Dreamlike\ Twilight\ Nativity\ Tableau.png");
-    background-position: center;
-    background-size: cover;
+    background-position: center center;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     border: 0;
     box-shadow: none;
@@ -122,10 +125,11 @@
             transparent 38%
         ),
         linear-gradient(
-            90deg,
-            rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.68) 48%,
-            rgba(var(--mocha-rgb), 0.2) 100%
+            180deg,
+            rgba(var(--mocha-rgb), 0.12) 0%,
+            rgba(var(--mocha-rgb), 0.5) 30%,
+            rgba(var(--mocha-rgb), 0.5) 62%,
+            rgba(var(--mocha-rgb), 0.18) 100%
         );
 }
 
@@ -149,8 +153,8 @@
 .collection-page .collection-hero h1 {
     margin: 0;
     color: var(--collection-cream);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(3rem, 6.5vw, 6rem);
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 10vw, 4rem);
     font-weight: 400;
     line-height: 1.04;
     letter-spacing: -0.05em;
@@ -167,7 +171,7 @@
     max-width: 500px;
     margin: 25px 0 30px;
     color: var(--collection-cream);
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.9;
 }
 
@@ -175,15 +179,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 22px;
+    gap: 12px;
     min-height: 52px;
     max-width: 100%;
-    padding: 14px 26px;
+    padding: 14px 18px;
     color: var(--collection-mocha);
     background: var(--collection-cream);
     border: 2px solid var(--collection-cream);
     border-radius: 999px;
-    font-size: 0.9rem;
+    font-size: 0.84rem;
     font-weight: 700;
     text-decoration: none;
     transition:
@@ -208,22 +212,23 @@
     width: 100%;
     max-width: 1500px;
     margin-inline: auto;
-    padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 70px);
+    padding: 60px 16px;
 }
 
 .collection-page .collection-section-header {
     display: flex;
-    align-items: end;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 24px;
+    gap: 17px;
+    flex-direction: column;
     margin-bottom: 36px;
 }
 
 .collection-page .collection-section-header h2,
 .collection-page .collection-callout h2 {
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.1rem, 4.5vw, 3.8rem);
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 8vw, 3rem);
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.04em;
@@ -275,9 +280,10 @@
 
 .collection-page .collection-toolbar {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
+    flex-direction: column;
     gap: 18px;
     margin-bottom: 30px;
     padding-bottom: 20px;
@@ -286,19 +292,20 @@
 
 .collection-page .collection-tabs {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
 }
 
 .collection-page .collection-filter {
     min-height: 40px;
-    padding: 9px 18px;
+    padding: 9px 10px;
     color: var(--collection-mocha);
     background: var(--collection-tint);
     border: 1.5px solid var(--collection-border-dark);
     border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 500;
     cursor: pointer;
     transition:
         color 0.25s ease,
@@ -326,7 +333,7 @@
     gap: 10px;
     color: var(--collection-mocha);
     font-size: 0.82rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .collection-page .collection-sort-label select {
@@ -336,7 +343,7 @@
     background: var(--collection-cream);
     border: 2px solid var(--collection-mocha);
     border-radius: 999px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -350,9 +357,9 @@
 
 .collection-page .collection-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     align-items: stretch;
-    gap: 26px;
+    gap: 22px;
 }
 
 .collection-page .collection-card {
@@ -363,7 +370,7 @@
     color: var(--collection-mocha);
     background: var(--collection-cream);
     border: 2px solid var(--collection-blue);
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow:
         0 0 0 6px rgba(var(--blue-rgb), 0.2),
         0 24px 44px -32px rgba(var(--mocha-rgb), 0.75);
@@ -416,12 +423,16 @@
     letter-spacing: 0.1em;
 }
 
+
 .collection-page .collection-card-content {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 24px;
+    padding: 16px;
+    background: var(--collection-cream);
+    color: var(--collection-mocha);
 }
+
 
 .collection-page .collection-card-meta {
     align-self: flex-start;
@@ -439,7 +450,7 @@
 .collection-page .collection-card h3 {
     margin: 0;
     color: var(--collection-mocha);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: var(--font-heading);
     font-size: clamp(1.25rem, 1.8vw, 1.65rem);
     font-weight: 400;
     line-height: 1.35;
@@ -548,7 +559,7 @@
 
 .collection-page .collection-empty h3 {
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: var(--font-heading);
     font-size: 1.8rem;
     font-weight: 400;
 }
@@ -565,7 +576,7 @@
 .collection-page .collection-callout {
     position: relative;
     isolation: isolate;
-    padding: clamp(70px, 9vw, 115px) 22px;
+    padding: clamp(70px, 9vw, 115px) 20px;
     overflow: hidden;
     text-align: center;
     color: var(--collection-cream);
@@ -647,39 +658,50 @@
 }
 
 
-/* TABLET */
+/* MOBILE-FIRST RESPONSIVE LAYOUT */
 
-@media (max-width: 1000px) {
-    .collection-page .collection-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
+/* Regular mobile screens */
+@media (min-width: 361px) {
+    .collection-page .collection-hero {
+        padding-inline: 22px;
     }
 
-    .collection-page .collection-hero {
-        min-height: 650px;
-        padding-inline: 6%;
+    .collection-page .collection-hero h1 {
+        font-size: clamp(2.7rem, 10vw, 4rem);
+    }
+
+    .collection-page .collection-primary-link {
+        gap: 22px;
+        padding-inline: 26px;
+        font-size: 0.9rem;
+    }
+
+    .collection-page .collection-filter {
+        padding-inline: 13px;
+        font-size: 0.75rem;
+    }
+
+    .collection-page .collection-card-content {
+        padding: 20px;
+    }
+
+    .collection-page .collection-callout {
+        padding-inline: 22px;
     }
 }
 
-
-/* MOBILE */
-
-@media (max-width: 650px) {
+/* Tablet */
+@media (min-width: 768px) {
     .collection-page .collection-hero {
-        min-height: 680px;
-        padding: 70px 22px;
+        min-height: 650px;
+        padding: clamp(60px, 9vw, 120px) 6%;
     }
 
-    /* Image fits the full hero width and height */
     .collection-page .collection-hero-image {
-        background-position: center center;
-        background-size: 100% 100%;
+        background-position: center;
+        background-size: cover;
     }
 
-    /* Light overlay, same numbers as the Challenge page mobile hero:
-       strongest only behind the text (middle), light at top and bottom
-       so the picture shows through. Lower the 0.5 values = clearer
-       picture, raise them = easier to read the text. */
     .collection-page .collection-hero::before {
         background:
             radial-gradient(
@@ -688,98 +710,84 @@
                 transparent 38%
             ),
             linear-gradient(
-                180deg,
-                rgba(var(--mocha-rgb), 0.12) 0%,
-                rgba(var(--mocha-rgb), 0.5) 30%,
-                rgba(var(--mocha-rgb), 0.5) 62%,
-                rgba(var(--mocha-rgb), 0.18) 100%
+                90deg,
+                rgba(var(--mocha-rgb), 0.94) 0%,
+                rgba(var(--mocha-rgb), 0.68) 48%,
+                rgba(var(--mocha-rgb), 0.2) 100%
             );
     }
 
-    /* A soft shadow keeps the text readable over the clearer picture */
     .collection-page .collection-hero .collection-eyebrow,
     .collection-page .collection-hero h1,
     .collection-page .collection-hero-description {
-        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
+        text-shadow: none;
     }
 
     .collection-page .collection-hero h1 {
-        font-size: clamp(2.7rem, 10vw, 4rem);
+        font-size: clamp(3rem, 6.5vw, 6rem);
     }
 
     .collection-page .collection-hero-description {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 
     .collection-page .collection-section {
-        padding: 60px 16px;
+        padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 70px);
     }
 
     .collection-page .collection-section-header {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 17px;
+        align-items: end;
+        flex-direction: row;
+        gap: 24px;
     }
 
     .collection-page .collection-section-header h2 {
-        font-size: clamp(2rem, 8vw, 3rem);
+        font-size: clamp(2.1rem, 4.5vw, 3.8rem);
     }
 
     .collection-page .collection-toolbar {
-        align-items: flex-start;
-        flex-direction: column;
+        align-items: center;
+        flex-direction: row;
     }
 
     .collection-page .collection-tabs {
-        width: 100%;
-        gap: 6px;
+        width: auto;
+        gap: 8px;
     }
 
     .collection-page .collection-filter {
-        padding-inline: 13px;
-        font-size: 0.75rem;
+        padding: 9px 18px;
+        font-size: 0.8rem;
     }
 
     .collection-page .collection-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 22px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
     }
 
     .collection-page .collection-card {
-        border-radius: 16px;
+        border-radius: 20px;
     }
 
     .collection-page .collection-card-content {
-        padding: 20px;
+        padding: 24px;
     }
 
     .collection-page .collection-callout {
-        padding-inline: 20px;
+        padding-inline: 22px;
     }
 }
 
-@media (max-width: 360px) {
+/* Desktop */
+@media (min-width: 1024px) {
     .collection-page .collection-hero {
-        padding-inline: 17px;
+        min-height: clamp(580px, 82vh, 820px);
+        padding: clamp(60px, 9vw, 120px) clamp(22px, 8vw, 115px);
     }
 
-    .collection-page .collection-hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .collection-page .collection-primary-link {
-        gap: 12px;
-        padding-inline: 18px;
-        font-size: 0.84rem;
-    }
-
-    .collection-page .collection-filter {
-        padding-inline: 10px;
-        font-size: 0.7rem;
-    }
-
-    .collection-page .collection-card-content {
-        padding: 16px;
+    .collection-page .collection-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 26px;
     }
 }
 

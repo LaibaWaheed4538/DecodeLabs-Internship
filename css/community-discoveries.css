@@ -1,7 +1,6 @@
+
 /* CURIO — COMMUNITY DISCOVERIES — three-colour edition
    Responsive, mobile-first.
-
-   
 */
 
 .community-page {
@@ -19,7 +18,6 @@
     --cd-tint: rgba(var(--blue-rgb), 0.18);
     --cd-soft-text: rgba(var(--cream-rgb), 0.9);
 
-
     --cd-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
             rgba(var(--blue-rgb), 0.3));
 
@@ -28,7 +26,7 @@
     background: var(--cd-moon), var(--cd-cream);
     color: var(--cd-mocha);
     font-family: "Roboto", sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     overflow-x: clip;
 }
 
@@ -81,7 +79,6 @@
     outline-offset: 3px;
 }
 
-
 .community-page .site-header :focus-visible {
     outline-color: var(--cd-cream);
 }
@@ -90,11 +87,7 @@
     display: none !important;
 }
 
-
-/* HEADER — same setup as the Challenge page:
-   absolute, over the page, cream text, colours only.
-   A soft mocha fade sits behind it because this page
-   has no dark hero image under the header. */
+/* HEADER */
 
 .community-page .site-header {
     position: absolute;
@@ -114,7 +107,7 @@
 
 .community-page .brand {
     color: var(--cd-cream);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Inter", sans-serif;
     letter-spacing: -1.5px;
 }
 
@@ -124,7 +117,7 @@
 
 .community-page .nav-link {
     color: var(--cd-soft-text);
-    font-weight: 600;
+    font-weight: 500;
     transition: color 0.25s ease;
 }
 
@@ -189,15 +182,13 @@
     background: var(--cd-blue);
 }
 
-/* mobile menu panel, only when it is open */
 .community-page .primary-navigation.is-open,
 .community-page .primary-navigation.active,
 .community-page .primary-navigation.open {
     background: var(--cd-mocha);
 }
 
-
-/* HERO */
+/* HERO — MOBILE FIRST */
 
 .community-hero {
     display: grid;
@@ -235,13 +226,11 @@
     overflow-wrap: anywhere;
 }
 
-
 .community-hero h1 span,
 .community-page .text-accent,
 .community-page .community-accent {
     display: block;
     color: var(--cd-mocha);
-
     width: fit-content;
     max-width: 100%;
 }
@@ -289,13 +278,12 @@
     box-shadow: 0 0 0 5px rgba(var(--blue-rgb), 0.45);
 }
 
-
 .community-note {
     align-self: stretch;
     padding: clamp(1.5rem, 4vw, 2.5rem);
     background: var(--cd-blue);
     border: 2px solid var(--cd-mocha);
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow:
         0 0 0 8px rgba(var(--blue-rgb), 0.3),
         0 30px 60px -34px rgba(var(--mocha-rgb), 0.75);
@@ -325,15 +313,14 @@
     line-height: 1.2;
 }
 
-.community-note>p:last-child {
+.community-note > p:last-child {
     max-width: 340px;
     margin-bottom: 0;
     color: var(--cd-mocha);
     line-height: 1.8;
 }
 
-
-/* MAIN WORKSPACE */
+/* MAIN WORKSPACE — MOBILE FIRST */
 
 .community-workspace {
     display: grid;
@@ -387,7 +374,6 @@
     font-size: 0.92rem;
     line-height: 1.75;
 }
-
 
 /* SEARCH AND FILTERS */
 
@@ -444,11 +430,10 @@
     margin: 0 0 1rem;
     color: var(--cd-mocha);
     font-size: 0.82rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
-
-/* DISCOVERY RECORDS — */
+/* DISCOVERY RECORDS */
 
 .community-records {
     display: grid;
@@ -462,7 +447,7 @@
     padding: clamp(1.2rem, 3vw, 1.7rem);
     color: var(--cd-mocha);
     border: 2px solid var(--cd-blue);
-    border-radius: 20px;
+    border-radius: 16px;
     background: var(--cd-cream);
     box-shadow:
         0 0 0 6px rgba(var(--blue-rgb), 0.2),
@@ -504,7 +489,7 @@
 .discovery-index {
     color: var(--cd-mocha);
     font-size: 0.68rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -521,7 +506,7 @@
     justify-content: flex-start;
     color: var(--cd-mocha);
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .discovery-description {
@@ -556,7 +541,7 @@
 .discovery-contributor {
     color: var(--cd-mocha);
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 500;
     overflow-wrap: anywhere;
 }
 
@@ -581,7 +566,6 @@
     background: var(--cd-blue);
 }
 
-/* delete */
 .discovery-card-actions .delete-discovery {
     border-style: dashed;
 }
@@ -619,14 +603,13 @@
     background-size: 100% 3px;
 }
 
-
 /* CONTRIBUTION FORM */
 
 .community-form-panel {
     align-self: start;
     padding: clamp(1.3rem, 3.5vw, 2rem);
     border: 2px solid var(--cd-blue);
-    border-radius: 20px;
+    border-radius: 16px;
     background: var(--cd-cream);
     box-shadow:
         0 0 0 8px rgba(var(--blue-rgb), 0.25),
@@ -704,7 +687,6 @@
     background: rgba(var(--blue-rgb), 0.5);
 }
 
-/*  */
 .community-status {
     min-height: 1.5rem;
     margin: 0.9rem 0 0;
@@ -745,7 +727,6 @@
     line-height: 1.7;
 }
 
-
 /* FOOTER */
 
 .community-footer {
@@ -776,7 +757,7 @@
     line-height: 1.7;
 }
 
-.community-footer>a:last-child {
+.community-footer > a:last-child {
     color: var(--cd-cream);
     font-size: 0.85rem;
     font-weight: 700;
@@ -790,10 +771,20 @@
     outline-color: var(--cd-cream);
 }
 
+/* LARGER SCREENS */
 
-/* TABLET */
+@media (min-width: 481px) {
+    .community-note,
+    .discovery-card,
+    .community-page .form-card,
+    .community-form-panel {
+        border-radius: 20px;
+    }
+}
 
-@media (min-width: 600px) {
+/* TABLET — 768px */
+
+@media (min-width: 768px) {
     .community-filters {
         grid-template-columns: minmax(0, 1fr) minmax(170px, 0.55fr);
     }
@@ -809,12 +800,7 @@
         justify-content: space-between;
         flex-wrap: wrap;
     }
-}
 
-
-/* DESKTOP */
-
-@media (min-width: 768px) {
     .community-hero {
         grid-template-columns: minmax(0, 1.3fr) minmax(250px, 0.7fr);
         align-items: center;
@@ -827,23 +813,17 @@
     }
 }
 
+/* DESKTOP — 1024px */
 
-/* MOBILE */
-
-@media (max-width: 480px) {
-
-    .discovery-card,
-    .community-form-panel,
-    .community-note {
-        border-radius: 16px;
+@media (min-width: 1024px) {
+    .community-hero {
+        gap: clamp(2rem, 4vw, 4rem);
     }
 }
-
 
 /* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
-
     .community-page *,
     .community-page *::before,
     .community-page *::after {

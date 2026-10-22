@@ -1,4 +1,3 @@
-
 /* 
    CURIO MUSEUM — EXHIBIT DETAILS PAGE
    */
@@ -14,6 +13,8 @@
     background: var(--exhibit-cream);
     color: var(--exhibit-ink);
     overflow-x: clip;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
 }
 
 .exhibit-page *,
@@ -48,9 +49,9 @@
 /* Breadcrumb */
 
 .exhibit-breadcrumb-wrap {
-    width: min(1320px, 88%);
+    width: 90%;
     margin-inline: auto;
-    padding: 22px 0;
+    padding: 16px 0;
 }
 
 .exhibit-breadcrumb {
@@ -112,7 +113,7 @@
 
 .exhibit-error h1 {
     margin: 0 auto 18px;
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: clamp(2.1rem, 5vw, 3.8rem);
     font-weight: 400;
     line-height: 1.2;
@@ -134,7 +135,7 @@
     margin: 0 0 18px;
     color: #92704a;
     font-size: 0.68rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.16em;
     line-height: 1.8;
     text-transform: uppercase;
@@ -150,12 +151,12 @@
 
 .exhibit-hero {
     display: grid;
-    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: clamp(35px, 6vw, 90px);
-    width: min(1320px, 88%);
+    gap: 36px;
+    width: 90%;
     margin: 0 auto;
-    padding: 52px 0 100px;
+    padding: 32px 0 60px;
 }
 
 .exhibit-hero-copy {
@@ -166,7 +167,7 @@
     margin: 0 0 16px;
     color: #8b6a44;
     font-size: 0.74rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
@@ -174,8 +175,8 @@
 .exhibit-hero h1 {
     margin: 0;
     color: var(--exhibit-ink);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.7rem, 5.4vw, 5.2rem);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2.55rem, 11vw, 4rem);
     font-weight: 400;
     letter-spacing: -0.05em;
     line-height: 1.08;
@@ -184,19 +185,19 @@
 
 .exhibit-intro {
     max-width: 570px;
-    margin: 24px 0 0;
+    margin: 18px 0 0;
     color: #5f6b71;
-    font-size: 0.98rem;
-    line-height: 1.95;
+    font-size: 0.91rem;
+    line-height: 1.85;
 }
 
 .exhibit-hero-meta {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    gap: 12px;
     max-width: 500px;
-    margin-top: 30px;
-    padding: 21px 0;
+    margin-top: 24px;
+    padding: 17px 0;
     border-top: 1px solid var(--exhibit-border);
     border-bottom: 1px solid var(--exhibit-border);
 }
@@ -212,13 +213,13 @@
 .exhibit-meta-label {
     color: #91704a;
     font-size: 0.62rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.14em;
 }
 
 .exhibit-hero-meta > div > span:last-child {
     color: #263840;
-    font-size: 0.83rem;
+    font-size: 0.77rem;
     line-height: 1.6;
     overflow-wrap: anywhere;
 }
@@ -226,9 +227,10 @@
 .exhibit-hero-actions {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 22px;
+    align-items: flex-start;
+    gap: 18px;
     margin-top: 28px;
+    flex-direction: column;
 }
 
 .exhibit-bookmark-button {
@@ -243,7 +245,7 @@
     color: var(--exhibit-cream);
     cursor: pointer;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 500;
     transition: background 180ms ease, color 180ms ease;
 }
 
@@ -264,7 +266,7 @@
     gap: 11px;
     color: #7b5a36;
     font-size: 0.81rem;
-    font-weight: 600;
+    font-weight: 500;
     transition: gap 180ms ease, color 180ms ease;
 }
 
@@ -291,13 +293,13 @@
 .exhibit-image-frame {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 4.6;
+    aspect-ratio: 4 / 4.1;
     overflow: hidden;
     isolation: isolate;
     background:
         radial-gradient(circle at 40% 35%, #385660, transparent 50%),
         linear-gradient(145deg, #19343e, #07141b);
-    box-shadow: 18px 18px 0 rgba(13, 37, 47, 0.08);
+    box-shadow: 9px 9px 0 rgba(13, 37, 47, 0.08);
 }
 
 .exhibit-image-frame::after {
@@ -366,7 +368,7 @@
 .exhibit-image-fallback p {
     max-width: 90%;
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: clamp(1.5rem, 3vw, 2.6rem);
     line-height: 1.3;
 }
@@ -387,7 +389,7 @@
 /* Story section */
 
 .exhibit-story-section {
-    padding: 76px max(6%, calc((100% - 1320px) / 2)) 90px;
+    padding: 55px 5% 62px;
     background: #fffdf8;
 }
 
@@ -398,7 +400,7 @@
     margin-bottom: 27px;
     color: #8c6a43;
     font-size: 0.65rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.16em;
 }
 
@@ -416,15 +418,15 @@
 
 .exhibit-story-layout {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: clamp(35px, 8vw, 120px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
 }
 
 .exhibit-story-heading h2 {
     max-width: 500px;
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.2rem, 4.3vw, 3.8rem);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2rem, 8vw, 3rem);
     font-weight: 400;
     letter-spacing: -0.045em;
     line-height: 1.2;
@@ -437,17 +439,17 @@
 .exhibit-story-copy > p {
     margin: 0;
     color: #5e6b71;
-    font-size: 0.97rem;
-    line-height: 2.05;
+    font-size: 0.9rem;
+    line-height: 1.9;
     white-space: pre-line;
 }
 
 /* Facts */
 
 .exhibit-facts-section {
-    width: min(1320px, 88%);
+    width: 90%;
     margin-inline: auto;
-    padding: 88px 0 100px;
+    padding: 60px 0 65px;
 }
 
 .exhibit-section-heading {
@@ -457,8 +459,8 @@
 
 .exhibit-section-heading h2 {
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2.2rem, 9vw, 3.1rem);
     font-weight: 400;
     letter-spacing: -0.045em;
 }
@@ -477,17 +479,17 @@
 
 .exhibit-facts-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
 }
 
 .exhibit-fact-card {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 15px;
     min-width: 0;
-    min-height: 135px;
-    padding: 25px;
+    min-height: auto;
+    padding: 19px;
     border: 1px solid #e0d8cc;
     background: rgba(255, 253, 248, 0.68);
     transition:
@@ -518,7 +520,7 @@
 .exhibit-fact-text {
     margin: 3px 0 0;
     color: #46545a;
-    font-size: 0.88rem;
+    font-size: 0.84rem;
     line-height: 1.85;
 }
 
@@ -527,10 +529,10 @@
 .exhibit-significance-section {
     position: relative;
     display: grid;
-    grid-template-columns: 90px minmax(0, 1fr) minmax(190px, 0.42fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: 35px;
-    padding: 76px max(6%, calc((100% - 1320px) / 2));
+    gap: 10px;
+    padding: 55px 6%;
     overflow: hidden;
     background:
         radial-gradient(circle at 85% 15%, rgba(59, 88, 98, 0.28), transparent 36%),
@@ -541,10 +543,11 @@
 .exhibit-significance-mark {
     align-self: start;
     color: var(--exhibit-gold);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 9rem;
+    font-family: "Inter", sans-serif;
+    font-size: 6rem;
     line-height: 0.9;
     opacity: 0.8;
+    height: 55px;
 }
 
 .exhibit-significance-copy {
@@ -557,8 +560,8 @@
 
 .exhibit-significance-copy h2 {
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2.2rem, 9vw, 3rem);
     font-weight: 400;
     letter-spacing: -0.04em;
     line-height: 1.2;
@@ -572,7 +575,7 @@
 .exhibit-significance-copy > p:last-child {
     margin: 22px 0 0;
     color: #c3cecf;
-    font-size: 0.92rem;
+    font-size: 0.87rem;
     line-height: 1.95;
 }
 
@@ -580,6 +583,9 @@
     align-self: end;
     padding: 21px 0 0 23px;
     border-left: 1px solid rgba(233, 181, 109, 0.45);
+    grid-column: auto;
+    margin-top: 22px;
+    padding-left: 17px;
 }
 
 .exhibit-significance-location .exhibit-meta-label {
@@ -597,9 +603,9 @@
 /* Tags */
 
 .exhibit-tags-section {
-    width: min(1320px, 88%);
+    width: 90%;
     margin-inline: auto;
-    padding: 55px 0 60px;
+    padding: 40px 0;
     border-bottom: 1px solid var(--exhibit-border);
 }
 
@@ -629,23 +635,24 @@
 /* Related exhibits */
 
 .related-exhibits-section {
-    width: min(1320px, 88%);
+    width: 90%;
     margin-inline: auto;
-    padding: 78px 0 90px;
+    padding: 55px 0 60px;
 }
 
 .related-exhibits-heading {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 25px;
-    margin-bottom: 32px;
+    gap: 17px;
+    margin-bottom: 25px;
+    flex-direction: column;
 }
 
 .related-exhibits-heading h2 {
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2rem, 8vw, 2.8rem);
     font-weight: 400;
     letter-spacing: -0.045em;
     line-height: 1.2;
@@ -663,8 +670,8 @@
 
 .related-exhibits-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
 }
 
 .related-exhibit-card {
@@ -719,14 +726,14 @@
     margin: 0 0 10px;
     color: #8c6a43;
     font-size: 0.64rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.13em;
     text-transform: uppercase;
 }
 
 .related-exhibit-title {
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 1.4;
@@ -757,7 +764,7 @@
     margin-top: 5px;
     color: #80613e;
     font-size: 0.78rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* Previous and next */
@@ -774,7 +781,7 @@
     min-width: 0;
     flex-direction: column;
     gap: 12px;
-    padding: 34px max(6%, calc((100vw - 1320px) / 2));
+    padding: 25px 6%;
     color: var(--exhibit-ink);
     transition: background 180ms ease;
 }
@@ -791,14 +798,15 @@
 
 .exhibit-pagination-label {
     color: #8c6a43;
-    font-size: 0.64rem;
-    font-weight: 600;
+    font-size: 0.55rem;
+    font-weight: 500;
     letter-spacing: 0.12em;
+    line-height: 1.7;
 }
 
 .exhibit-pagination-title {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+    font-family: "Inter", sans-serif;
+    font-size: 1.05rem;
     line-height: 1.35;
     overflow-wrap: anywhere;
 }
@@ -813,19 +821,100 @@
 
 /* Tablet */
 
-@media (max-width: 950px) {
+/* Mobile */
+
+/* TABLET — mobile-first enhancement */
+
+@media (min-width: 768px) {
+    .exhibit-breadcrumb-wrap {
+        width: min(1320px, 88%);
+        padding: 22px 0;
+    }
+
     .exhibit-hero {
         grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
         gap: 35px;
+        width: min(1320px, 88%);
+        padding: 52px 0 100px;
+    }
+
+    .exhibit-hero h1 {
+        font-size: clamp(2.7rem, 5.4vw, 5.2rem);
+    }
+
+    .exhibit-intro {
+        margin-top: 24px;
+        font-size: 0.98rem;
+        line-height: 1.95;
+    }
+
+    .exhibit-hero-meta {
+        gap: 18px;
+        margin-top: 30px;
+        padding: 21px 0;
+    }
+
+    .exhibit-hero-meta > div > span:last-child {
+        font-size: 0.83rem;
+    }
+
+    .exhibit-hero-actions {
+        align-items: center;
+        flex-direction: row;
+        gap: 22px;
+    }
+
+    .exhibit-image-frame {
+        aspect-ratio: 4 / 4.6;
+        box-shadow: 18px 18px 0 rgba(13, 37, 47, 0.08);
+    }
+
+    .exhibit-story-section {
+        padding: 76px max(6%, calc((100% - 1320px) / 2)) 90px;
+    }
+
+    .exhibit-story-layout {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: clamp(35px, 8vw, 120px);
+    }
+
+    .exhibit-story-heading h2 {
+        font-size: clamp(2.2rem, 4.3vw, 3.8rem);
+    }
+
+    .exhibit-story-copy > p {
+        font-size: 0.97rem;
+        line-height: 2.05;
+    }
+
+    .exhibit-facts-section {
+        width: min(1320px, 88%);
+        padding: 88px 0 100px;
+    }
+
+    .exhibit-section-heading h2 {
+        font-size: clamp(2.4rem, 5vw, 4rem);
+    }
+
+    .exhibit-facts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .exhibit-fact-card {
+        min-height: 135px;
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .exhibit-fact-text {
+        font-size: 0.88rem;
     }
 
     .exhibit-significance-section {
         grid-template-columns: 55px minmax(0, 1fr);
         gap: 24px;
-    }
-
-    .exhibit-significance-mark {
-        font-size: 6rem;
+        padding: 76px max(6%, calc((100% - 1320px) / 2));
     }
 
     .exhibit-significance-location {
@@ -833,175 +922,86 @@
         justify-self: start;
         max-width: 500px;
         margin-top: 8px;
+        padding: 21px 0 0 23px;
+    }
+
+    .exhibit-tags-section {
+        width: min(1320px, 88%);
+        padding: 55px 0 60px;
+    }
+
+    .related-exhibits-section {
+        width: min(1320px, 88%);
+        padding: 78px 0 90px;
+    }
+
+    .related-exhibits-heading {
+        align-items: flex-end;
+        flex-direction: row;
+        gap: 25px;
+        margin-bottom: 32px;
+    }
+
+    .related-exhibits-heading h2 {
+        font-size: clamp(2.2rem, 4.4vw, 3.6rem);
     }
 
     .related-exhibits-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 17px;
     }
 
     .related-exhibit-content {
         padding: 16px;
     }
+
+    .exhibit-pagination-link {
+        padding: 34px max(6%, calc((100vw - 1320px) / 2));
+    }
+
+    .exhibit-pagination-label {
+        font-size: 0.64rem;
+        line-height: normal;
+    }
+
+    .exhibit-pagination-title {
+        font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+    }
 }
 
-/* Mobile */
+/* DESKTOP */
 
-@media (max-width: 650px) {
-    .exhibit-breadcrumb-wrap {
-        width: 90%;
-        padding: 16px 0;
-    }
-
+@media (min-width: 1024px) {
     .exhibit-hero {
-        grid-template-columns: minmax(0, 1fr);
-        width: 90%;
-        gap: 36px;
-        padding: 32px 0 60px;
-    }
-
-    .exhibit-hero h1 {
-        font-size: clamp(2.55rem, 11vw, 4rem);
-    }
-
-    .exhibit-intro {
-        margin-top: 18px;
-        font-size: 0.91rem;
-        line-height: 1.85;
-    }
-
-    .exhibit-hero-meta {
-        gap: 12px;
-        margin-top: 24px;
-        padding: 17px 0;
-    }
-
-    .exhibit-hero-meta > div > span:last-child {
-        font-size: 0.77rem;
-    }
-
-    .exhibit-hero-actions {
-        gap: 18px;
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .exhibit-image-frame {
-        aspect-ratio: 4 / 4.1;
-        box-shadow: 9px 9px 0 rgba(13, 37, 47, 0.08);
-    }
-
-    .exhibit-story-section {
-        padding: 55px 5% 62px;
-    }
-
-    .exhibit-story-layout {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 24px;
-    }
-
-    .exhibit-story-heading h2 {
-        font-size: clamp(2rem, 8vw, 3rem);
-    }
-
-    .exhibit-story-copy > p {
-        font-size: 0.9rem;
-        line-height: 1.9;
-    }
-
-    .exhibit-facts-section {
-        width: 90%;
-        padding: 60px 0 65px;
-    }
-
-    .exhibit-section-heading h2 {
-        font-size: clamp(2.2rem, 9vw, 3.1rem);
-    }
-
-    .exhibit-facts-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 12px;
-    }
-
-    .exhibit-fact-card {
-        min-height: auto;
-        gap: 15px;
-        padding: 19px;
-    }
-
-    .exhibit-fact-text {
-        font-size: 0.84rem;
+        grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+        gap: clamp(35px, 6vw, 90px);
     }
 
     .exhibit-significance-section {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 10px;
-        padding: 55px 6%;
+        grid-template-columns: 90px minmax(0, 1fr) minmax(190px, 0.42fr);
+        gap: 35px;
     }
 
     .exhibit-significance-mark {
-        height: 55px;
-        font-size: 6rem;
-    }
-
-    .exhibit-significance-copy h2 {
-        font-size: clamp(2.2rem, 9vw, 3rem);
-    }
-
-    .exhibit-significance-copy > p:last-child {
-        font-size: 0.87rem;
+        height: auto;
+        font-size: 9rem;
     }
 
     .exhibit-significance-location {
         grid-column: auto;
-        margin-top: 22px;
-        padding-left: 17px;
-    }
-
-    .exhibit-tags-section {
-        width: 90%;
-        padding: 40px 0;
-    }
-
-    .related-exhibits-section {
-        width: 90%;
-        padding: 55px 0 60px;
-    }
-
-    .related-exhibits-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 17px;
-        margin-bottom: 25px;
-    }
-
-    .related-exhibits-heading h2 {
-        font-size: clamp(2rem, 8vw, 2.8rem);
+        justify-self: auto;
+        align-self: end;
+        max-width: none;
+        margin-top: 0;
+        padding: 21px 0 0 23px;
     }
 
     .related-exhibits-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 20px;
-    }
-
-    .related-exhibit-image {
-        aspect-ratio: 4 / 3;
+        gap: 24px;
     }
 
     .related-exhibit-content {
         padding: 20px;
-    }
-
-    .exhibit-pagination-link {
-        padding: 25px 6%;
-    }
-
-    .exhibit-pagination-label {
-        font-size: 0.55rem;
-        line-height: 1.7;
-    }
-
-    .exhibit-pagination-title {
-        font-size: 1.05rem;
     }
 }
 

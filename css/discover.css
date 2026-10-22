@@ -96,7 +96,7 @@
             rgba(var(--mocha-rgb), 0.94) 0%,
             rgba(var(--mocha-rgb), 0.62) 55%,
             rgba(var(--mocha-rgb), 0.18) 100%),
-        url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ \(1\).png") center / cover no-repeat;
+        url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
 
     animation: discover-hero-image-reveal 1.2s ease-out both;
 }
@@ -149,7 +149,7 @@
     max-width: 800px;
     margin: 0;
     color: var(--discover-cream);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: clamp(3rem, 7vw, 6rem);
     font-weight: 400;
     letter-spacing: -0.055em;
@@ -202,7 +202,7 @@
     gap: 13px;
     color: var(--discover-cream);
     font-size: 0.64rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.14em;
 }
 
@@ -252,7 +252,7 @@
 .discover-section-heading h2 {
     margin: 0;
     color: var(--discover-mocha);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: clamp(2rem, 4.4vw, 3.7rem);
     font-weight: 400;
     letter-spacing: -0.045em;
@@ -286,7 +286,7 @@
 
 .discover-count span:first-child {
     color: var(--discover-mocha);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: 2.9rem;
     line-height: 1;
 }
@@ -443,7 +443,7 @@
     color: var(--discover-mocha);
     cursor: pointer;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.4;
     transition:
         background 180ms ease,
@@ -473,7 +473,7 @@
 .discover-sort-area label {
     color: var(--discover-mocha);
     font-size: 0.82rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .discover-sort-area select {
@@ -486,7 +486,7 @@
     color: var(--discover-mocha);
     cursor: pointer;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 
@@ -744,7 +744,7 @@
     z-index: 1;
     max-width: 90%;
     color: var(--discover-cream);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: clamp(1.15rem, 2vw, 1.6rem);
     line-height: 1.35;
 }
@@ -777,7 +777,7 @@
 
 .discover-card-title {
     margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: clamp(1.3rem, 1.8vw, 1.75rem);
     font-weight: 500;
     letter-spacing: -0.025em;
@@ -923,7 +923,7 @@
 .discover-empty h3 {
     margin: 15px 0 8px;
     color: var(--discover-mocha);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.8rem;
     font-weight: 500;
 }
@@ -970,7 +970,7 @@
 .discover-closing h2 {
     margin: 0;
     color: var(--discover-cream);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 400;
     letter-spacing: -0.04em;
@@ -1014,7 +1014,7 @@
 .discover-closing-number {
     flex-shrink: 0;
     color: rgba(var(--blue-rgb), 0.5);
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", sans-serif;
     font-size: clamp(7rem, 18vw, 16rem);
     line-height: 1;
     user-select: none;
@@ -1054,241 +1054,6 @@
 }
 
 
-/* TABLET */
-
-@media (max-width: 1000px) {
-    .discover-section {
-        width: 90%;
-        padding-top: 70px;
-        padding-bottom: 80px;
-    }
-
-    .discover-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
-    }
-
-    .discover-card-content {
-        padding: 21px;
-    }
-
-    .discover-toolbar {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .discover-sort-area {
-        width: 100%;
-        justify-content: flex-end;
-    }
-
-    .discover-hero {
-        min-height: 430px;
-    }
-}
-
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-    /* HERO — same setup as the Collection page:
-       the picture fills the whole hero behind the text, nothing is cut,
-       and the overlay is light so the picture stays clear.            */
-
-    .discover-hero {
-        align-items: center;
-        min-height: 560px;
-        padding: 110px 6% 90px;
-        background: var(--discover-mocha);
-    }
-
-    /* Whole image fitted to the full hero width and height */
-    .discover-hero::before {
-        inset: 0;
-        animation: none;
-
-        background:
-            /* light overlay: strongest only behind the text (middle),
-               light at top and bottom so the picture shows through.
-               Lower the 0.5 numbers = clearer picture,
-               raise them = easier to read the text. */
-            linear-gradient(180deg,
-                rgba(var(--mocha-rgb), 0.12) 0%,
-                rgba(var(--mocha-rgb), 0.5) 30%,
-                rgba(var(--mocha-rgb), 0.5) 62%,
-                rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
-            /* mobile image */
-            url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png") center / 100% 100% no-repeat,
-            /* fallback: if the mobile file is not found, the desktop image shows */
-            url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ \(1\).png") center / 100% 100% no-repeat;
-    }
-
-    .discover-hero::after {
-        top: -60px;
-        right: -260px;
-        width: 390px;
-        height: 390px;
-        opacity: 0.6;
-    }
-
-    /* A soft shadow keeps the text readable over the clearer picture */
-    .discover-eyebrow,
-    .discover-hero h1,
-    .discover-hero-description,
-    .discover-scroll-link {
-        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
-    }
-
-    .discover-hero h1 {
-        font-size: clamp(2.65rem, 12vw, 4.2rem);
-    }
-
-    .discover-hero-description {
-        margin-top: 20px;
-        font-size: 0.95rem;
-        line-height: 1.8;
-    }
-
-    .discover-eyebrow {
-        margin-bottom: 19px;
-        font-size: 0.68rem;
-        letter-spacing: 0.1em;
-    }
-
-    .discover-hero-decoration {
-        right: 6%;
-        bottom: 22px;
-        font-size: 0.56rem;
-    }
-
-    .discover-decoration-line {
-        width: 28px;
-    }
-
-    .discover-section {
-        width: 90%;
-        padding: 55px 0 65px;
-    }
-
-    .discover-section-heading {
-        align-items: flex-start;
-        gap: 15px;
-        margin-bottom: 25px;
-    }
-
-    .discover-section-heading h2 {
-        font-size: clamp(1.9rem, 8vw, 2.6rem);
-    }
-
-    .discover-section-description {
-        margin-top: 12px;
-        font-size: 0.92rem;
-    }
-
-    .discover-count {
-        gap: 4px;
-        padding-top: 6px;
-    }
-
-    .discover-count span:first-child {
-        font-size: 2.1rem;
-    }
-
-    .discover-count span:last-child {
-        font-size: 0.54rem;
-        letter-spacing: 0.08em;
-    }
-
-    .discover-search-form {
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 26px;
-    }
-
-    .discover-search-box {
-        min-height: 54px;
-        padding-inline: 16px;
-    }
-
-    .discover-search-box input {
-        height: 50px;
-        font-size: 0.88rem;
-    }
-
-    .discover-search-button {
-        width: 100%;
-        min-height: 52px;
-    }
-
-    .discover-category-list {
-        gap: 7px;
-    }
-
-    .discover-category-button {
-        min-height: 40px;
-        padding: 8px 14px;
-        font-size: 0.76rem;
-    }
-
-    .discover-sort-area {
-        justify-content: space-between;
-    }
-
-    .discover-sort-area select {
-        flex: 1;
-        max-width: 230px;
-    }
-
-    .discover-results-bar {
-        min-height: 58px;
-    }
-
-    .discover-results-bar p,
-    .discover-reset-button {
-        font-size: 0.78rem;
-    }
-
-    .discover-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 22px;
-    }
-
-    .discover-card-image {
-        aspect-ratio: 4 / 3.1;
-    }
-
-    .discover-card-content {
-        padding: 22px 20px 19px;
-    }
-
-    .discover-card-title {
-        font-size: 1.65rem;
-    }
-
-    .discover-card-description {
-        font-size: 0.9rem;
-    }
-
-    .discover-closing {
-        min-height: 310px;
-        padding: 55px 6%;
-    }
-
-    .discover-closing h2 {
-        font-size: clamp(2rem, 9vw, 2.8rem);
-    }
-
-    .discover-closing-number {
-        position: absolute;
-        right: -12px;
-        bottom: -20px;
-        z-index: -1;
-        font-size: 10rem;
-    }
-}
-
-
 /* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1307,5 +1072,545 @@
 
     .discover-card:hover {
         transform: none;
+    }
+}
+
+
+/* MOBILE-FIRST BASE: phone layout */
+
+.discover-hero {
+    align-items: center;
+    min-height: 560px;
+    padding: 110px 6% 90px;
+    background: var(--discover-mocha);
+}
+
+.discover-hero::before {
+    inset: 0;
+    animation: none;
+    background: /* light overlay: strongest only behind the text (middle),
+               light at top and bottom so the picture shows through.
+               Lower the 0.5 numbers = clearer picture,
+               raise them = easier to read the text. */
+            linear-gradient(180deg,
+                rgba(var(--mocha-rgb), 0.12) 0%,
+                rgba(var(--mocha-rgb), 0.5) 30%,
+                rgba(var(--mocha-rgb), 0.5) 62%,
+                rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
+            /* mobile image */
+            url("../assets/Celestial Museum Beyond the Portal.png") center / 100% 100% no-repeat,
+            /* fallback: if the mobile file is not found, the desktop image shows */
+            url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / 100% 100% no-repeat;
+}
+
+.discover-hero::after {
+    top: -60px;
+    right: -260px;
+    width: 390px;
+    height: 390px;
+    opacity: 0.6;
+}
+
+.discover-eyebrow,
+    .discover-hero h1,
+    .discover-hero-description,
+    .discover-scroll-link {
+    text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
+}
+
+.discover-hero h1 {
+    font-size: clamp(2.65rem, 12vw, 4.2rem);
+}
+
+.discover-hero-description {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.discover-eyebrow {
+    margin-bottom: 19px;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+}
+
+.discover-hero-decoration {
+    right: 6%;
+    bottom: 22px;
+    font-size: 0.56rem;
+}
+
+.discover-decoration-line {
+    width: 28px;
+}
+
+.discover-section {
+    width: 90%;
+    padding: 55px 0 65px;
+}
+
+.discover-section-heading {
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.discover-section-heading h2 {
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+}
+
+.discover-section-description {
+    margin-top: 12px;
+    font-size: 0.92rem;
+}
+
+.discover-count {
+    gap: 4px;
+    padding-top: 6px;
+}
+
+.discover-count span:first-child {
+    font-size: 2.1rem;
+}
+
+.discover-count span:last-child {
+    font-size: 0.54rem;
+    letter-spacing: 0.08em;
+}
+
+.discover-search-form {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 26px;
+}
+
+.discover-search-box {
+    min-height: 54px;
+    padding-inline: 16px;
+}
+
+.discover-search-box input {
+    height: 50px;
+    font-size: 0.88rem;
+}
+
+.discover-search-button {
+    width: 100%;
+    min-height: 52px;
+}
+
+.discover-category-list {
+    gap: 7px;
+}
+
+.discover-category-button {
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 0.76rem;
+}
+
+.discover-sort-area {
+    justify-content: space-between;
+}
+
+.discover-sort-area select {
+    flex: 1;
+    max-width: 230px;
+}
+
+.discover-results-bar {
+    min-height: 58px;
+}
+
+.discover-results-bar p,
+    .discover-reset-button {
+    font-size: 0.78rem;
+}
+
+.discover-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+}
+
+.discover-card-image {
+    aspect-ratio: 4 / 3.1;
+}
+
+.discover-card-content {
+    padding: 22px 20px 19px;
+}
+
+.discover-card-title {
+    font-size: 1.65rem;
+}
+
+.discover-card-description {
+    font-size: 0.9rem;
+}
+
+.discover-closing {
+    min-height: 310px;
+    padding: 55px 6%;
+}
+
+.discover-closing h2 {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+}
+
+.discover-closing-number {
+    position: absolute;
+    right: -12px;
+    bottom: -20px;
+    z-index: -1;
+    font-size: 10rem;
+}
+
+
+/* Mobile-first toolbar layout */
+.discover-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.discover-sort-area {
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+/* TABLET: 768px and wider */
+@media (min-width: 768px) {
+    .discover-card-content {
+        padding: 23px 23px 20px;
+    }
+    .discover-card-description {
+        font-size: 0.9rem;
+    }
+    .discover-card-image {
+        aspect-ratio: 4 / 3.6;
+    }
+    .discover-card-title {
+        font-size: clamp(1.3rem, 1.8vw, 1.75rem);
+    }
+    .discover-category-button {
+        font-size: 0.8rem;
+        min-height: 42px;
+        padding: 9px 18px;
+    }
+    .discover-category-list {
+        gap: 9px;
+    }
+    .discover-closing {
+        min-height: 340px;
+        padding: 65px max(6%, calc((100% - 1320px) / 2));
+    }
+    .discover-closing h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+    .discover-closing-number {
+        bottom: unset;
+        font-size: clamp(7rem, 18vw, 16rem);
+        position: unset;
+        right: unset;
+        z-index: unset;
+    }
+    .discover-count {
+        gap: 5px;
+        padding-top: 0;
+    }
+    .discover-count span:first-child {
+        font-size: 2.9rem;
+    }
+    .discover-count span:last-child {
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+    }
+    .discover-decoration-line {
+        width: 50px;
+    }
+    .discover-eyebrow {
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 25px;
+        text-shadow: none;
+    }
+    .discover-grid {
+        gap: 30px 25px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .discover-hero {
+        align-items: center;
+        background: radial-gradient(ellipse at 80% 35%,
+            rgba(var(--blue-rgb), 0.3),
+            transparent 45%),
+        var(--discover-mocha);
+        min-height: 480px;
+        padding: 100px max(6%, calc((100% - 1320px) / 2)) 90px;
+    }
+    .discover-hero h1 {
+        font-size: clamp(3rem, 7vw, 6rem);
+        text-shadow: none;
+    }
+    .discover-hero-decoration {
+        bottom: 34px;
+        font-size: 0.64rem;
+        right: 6%;
+    }
+    .discover-hero-description {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        margin-top: 27px;
+        text-shadow: none;
+    }
+    .discover-hero::after {
+        height: 480px;
+        opacity: 1;
+        right: -100px;
+        top: -160px;
+        width: 480px;
+    }
+    .discover-hero::before {
+        animation: discover-hero-image-reveal 1.2s ease-out both;
+        background: linear-gradient(90deg,
+            rgba(var(--mocha-rgb), 0.94) 0%,
+            rgba(var(--mocha-rgb), 0.62) 55%,
+            rgba(var(--mocha-rgb), 0.18) 100%),
+        url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
+        inset: 0;
+    }
+    .discover-reset-button {
+        font-size: 0.82rem;
+    }
+    .discover-results-bar {
+        min-height: 66px;
+    }
+    .discover-results-bar p {
+        font-size: 0.85rem;
+    }
+    .discover-scroll-link {
+        text-shadow: none;
+    }
+    .discover-search-box {
+        min-height: 58px;
+        padding-inline: 22px;
+    }
+    .discover-search-box input {
+        font-size: 0.95rem;
+        height: 54px;
+    }
+    .discover-search-button {
+        min-height: 58px;
+        width: auto;
+    }
+    .discover-search-form {
+        flex-direction: row;
+        gap: 12px;
+        margin-bottom: 34px;
+    }
+    .discover-section {
+        padding: 88px 0 100px;
+        width: min(1320px, 88%);
+    }
+    .discover-section-description {
+        font-size: 1rem;
+        margin-top: 16px;
+    }
+    .discover-section-heading {
+        align-items: flex-end;
+        gap: 30px;
+        margin-bottom: 36px;
+    }
+    .discover-section-heading h2 {
+        font-size: clamp(2rem, 4.4vw, 3.7rem);
+    }
+    .discover-sort-area {
+        justify-content: flex-start;
+    }
+    .discover-sort-area select {
+        flex: 0 1 auto;
+        max-width: 185px;
+    }
+    .discover-section {
+        width: 90%;
+        padding-top: 70px;
+        padding-bottom: 80px;
+    }
+    .discover-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+    .discover-card-content {
+        padding: 21px;
+    }
+    .discover-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .discover-sort-area {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .discover-hero {
+        min-height: 430px;
+    }
+}
+
+
+/* DESKTOP: 1024px and wider */
+@media (min-width: 1024px) {
+    .discover-card-content {
+        padding: 23px 23px 20px;
+    }
+    .discover-card-description {
+        font-size: 0.9rem;
+    }
+    .discover-card-image {
+        aspect-ratio: 4 / 3.6;
+    }
+    .discover-card-title {
+        font-size: clamp(1.3rem, 1.8vw, 1.75rem);
+    }
+    .discover-category-button {
+        font-size: 0.8rem;
+        min-height: 42px;
+        padding: 9px 18px;
+    }
+    .discover-category-list {
+        gap: 9px;
+    }
+    .discover-closing {
+        min-height: 340px;
+        padding: 65px max(6%, calc((100% - 1320px) / 2));
+    }
+    .discover-closing h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+    .discover-closing-number {
+        bottom: unset;
+        font-size: clamp(7rem, 18vw, 16rem);
+        position: unset;
+        right: unset;
+        z-index: unset;
+    }
+    .discover-count {
+        gap: 5px;
+        padding-top: 0;
+    }
+    .discover-count span:first-child {
+        font-size: 2.9rem;
+    }
+    .discover-count span:last-child {
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+    }
+    .discover-decoration-line {
+        width: 50px;
+    }
+    .discover-eyebrow {
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 25px;
+        text-shadow: none;
+    }
+    .discover-grid {
+        gap: 30px 25px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .discover-hero {
+        align-items: center;
+        background: radial-gradient(ellipse at 80% 35%,
+            rgba(var(--blue-rgb), 0.3),
+            transparent 45%),
+        var(--discover-mocha);
+        min-height: 480px;
+        padding: 100px max(6%, calc((100% - 1320px) / 2)) 90px;
+    }
+    .discover-hero h1 {
+        font-size: clamp(3rem, 7vw, 6rem);
+        text-shadow: none;
+    }
+    .discover-hero-decoration {
+        bottom: 34px;
+        font-size: 0.64rem;
+        right: 6%;
+    }
+    .discover-hero-description {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        margin-top: 27px;
+        text-shadow: none;
+    }
+    .discover-hero::after {
+        height: 480px;
+        opacity: 1;
+        right: -100px;
+        top: -160px;
+        width: 480px;
+    }
+    .discover-hero::before {
+        animation: discover-hero-image-reveal 1.2s ease-out both;
+        background: linear-gradient(90deg,
+            rgba(var(--mocha-rgb), 0.94) 0%,
+            rgba(var(--mocha-rgb), 0.62) 55%,
+            rgba(var(--mocha-rgb), 0.18) 100%),
+        url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
+        inset: 0;
+    }
+    .discover-reset-button {
+        font-size: 0.82rem;
+    }
+    .discover-results-bar {
+        min-height: 66px;
+    }
+    .discover-results-bar p {
+        font-size: 0.85rem;
+    }
+    .discover-scroll-link {
+        text-shadow: none;
+    }
+    .discover-search-box {
+        min-height: 58px;
+        padding-inline: 22px;
+    }
+    .discover-search-box input {
+        font-size: 0.95rem;
+        height: 54px;
+    }
+    .discover-search-button {
+        min-height: 58px;
+        width: auto;
+    }
+    .discover-search-form {
+        flex-direction: row;
+        gap: 12px;
+        margin-bottom: 34px;
+    }
+    .discover-section {
+        width: min(1320px, 88%);
+        padding: 88px 0 100px;
+    }
+    .discover-section-description {
+        font-size: 1rem;
+        margin-top: 16px;
+    }
+    .discover-section-heading {
+        align-items: flex-end;
+        gap: 30px;
+        margin-bottom: 36px;
+    }
+    .discover-section-heading h2 {
+        font-size: clamp(2rem, 4.4vw, 3.7rem);
+    }
+    .discover-sort-area {
+        justify-content: flex-start;
+        width: auto;
+    }
+    .discover-sort-area select {
+        flex: 0 1 auto;
+        max-width: 185px;
+    }
+    .discover-toolbar {
+        align-items: flex-end;
+        flex-direction: row;
     }
 }
