@@ -1,9 +1,6 @@
-
-/* 
-   CURIO MUSEUM
- 
-   Mobile · Tablet · Desktop
-   */
+/*
+   CURIO MUSEUM — RESPONSIVE STYLES
+*/
 
 
 /* 01. GLOBAL RESPONSIVE SAFETY */
@@ -68,7 +65,7 @@ aside {
 }
 
 :focus-visible {
-    outline: 2px solid var(--color-gold, #e9b56d);
+    outline: 2px solid var(--color-mocha);
     outline-offset: 4px;
 }
 
@@ -132,7 +129,7 @@ aside {
     align-items: flex-end;
 }
 
-.section-heading > *,
+.section-heading>*,
 .hero-content,
 .timeline-preview-content,
 .challenge-preview-content,
@@ -276,17 +273,13 @@ aside {
 
     .hero-overlay {
         background:
-            linear-gradient(
-                90deg,
-                rgba(4, 14, 20, 0.96),
-                rgba(4, 14, 20, 0.76) 60%,
-                rgba(4, 14, 20, 0.4)
-            ),
-            linear-gradient(
-                0deg,
-                rgba(4, 14, 20, 0.75),
-                transparent 55%
-            );
+            linear-gradient(90deg,
+                rgba(var(--mocha-rgb), 0.96),
+                rgba(var(--mocha-rgb), 0.76) 60%,
+                rgba(var(--mocha-rgb), 0.4)),
+            linear-gradient(0deg,
+                rgba(var(--mocha-rgb), 0.75),
+                transparent 55%);
     }
 
     .hero-content {
@@ -387,8 +380,9 @@ aside {
         overflow-y: auto;
         visibility: hidden;
         pointer-events: none;
-        background: rgba(7, 20, 27, 0.98);
+        background: rgba(var(--mocha-rgb), 0.98);
         border-top: 1px solid var(--color-border-dark);
+        box-shadow: 0 12px 24px rgba(var(--mocha-rgb), 0.4);
         opacity: 0;
         transform: translateY(-8px);
         transition:
@@ -409,7 +403,7 @@ aside {
         display: flex;
         min-height: 52px;
         padding: 0.75rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(var(--cream-rgb), 0.25);
         font-size: 0.95rem;
     }
 
@@ -454,16 +448,12 @@ aside {
 
     .hero-overlay {
         background:
-            linear-gradient(
-                90deg,
-                rgba(4, 14, 20, 0.94),
-                rgba(4, 14, 20, 0.72)
-            ),
-            linear-gradient(
-                0deg,
-                rgba(4, 14, 20, 0.8),
-                rgba(4, 14, 20, 0.08) 70%
-            );
+            linear-gradient(90deg,
+                rgba(var(--mocha-rgb), 0.94),
+                rgba(var(--mocha-rgb), 0.72)),
+            linear-gradient(0deg,
+                rgba(var(--mocha-rgb), 0.8),
+                rgba(var(--mocha-rgb), 0.08) 70%);
     }
 
     .hero-content {
@@ -593,7 +583,7 @@ aside {
         font-size: 1.65rem;
     }
 
-    .fact-card > p:last-child {
+    .fact-card>p:last-child {
         font-size: 0.9rem;
     }
 
@@ -968,10 +958,10 @@ aside {
     }
 }
 
+
 /*
-   CURIO — MOBILE RESPONSIVENESS PRIORITY 
-  
-   */
+   CURIO — MOBILE RESPONSIVENESS PRIORITY
+*/
 
 /* Prevent horizontal scrolling on every page */
 html {
@@ -1014,7 +1004,7 @@ section {
     z-index: -2;
     width: 100%;
     overflow: hidden;
-    background: #07141b;
+    background: var(--color-mocha);
 }
 
 .hero-background-image {
@@ -1043,19 +1033,19 @@ section {
     }
 }
 
-/* Mobile: show the complete landscape image */
+/* Mobile: show the complete landscape image, fading into mocha */
 @media (max-width: 767px) {
     .hero-section {
         min-height: 100svh;
         height: auto;
         padding-top: 0;
         padding-bottom: 110px;
-        background: #07141b;
+        background: var(--color-mocha);
     }
 
     .hero-background {
         inset: 0;
-        background: #07141b;
+        background: var(--color-mocha);
     }
 
     .hero-background-image {
@@ -1074,13 +1064,15 @@ section {
         position: absolute;
         inset: 0;
         z-index: -1;
-        background: linear-gradient(
-            180deg,
-            rgba(7, 20, 27, 0.08) 0%,
-            rgba(7, 20, 27, 0.45) 35%,
-            #07141b 78%,
-            #07141b 100%
-        );
+        background:
+            radial-gradient(circle at 80% 12%,
+                rgba(var(--blue-rgb), 0.3),
+                transparent 45%),
+            linear-gradient(180deg,
+                rgba(var(--mocha-rgb), 0.08) 0%,
+                rgba(var(--mocha-rgb), 0.45) 35%,
+                var(--color-mocha) 78%,
+                var(--color-mocha) 100%);
         pointer-events: none;
     }
 

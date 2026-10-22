@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,33 +26,27 @@
                 CURIO<span class="brand-dot">.</span>
             </a>
 
-            <nav class="primary-navigation"
-                 id="primary-navigation"
-                 aria-label="Main navigation">
+            <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
                 <a class="nav-link" href="index.html">Home</a>
                 <a class="nav-link" href="discover.html">Discover</a>
                 <a class="nav-link" href="timeline.html">Timeline</a>
                 <a class="nav-link" href="challenge.html">Challenge</a>
                 <a class="nav-link" href="collection.html">Collection</a>
                 <a class="nav-link" href="community-discoveries.html">
-    Community
-</a>
+                    Community
+                </a>
                 <a class="nav-link" href="marketplace.html">Marketplace</a>
+                <a class="nav-link" href="billing.html">Billing</a>
                 <a class="nav-link" href="about.html">About</a>
             </nav>
 
             <div class="header-actions">
-                <a class="marketplace-cart" href="billing.html"
-                   aria-current="page">
+                <a class="marketplace-cart" href="billing.html" aria-current="page">
                     Cart (<span id="cart-count">0</span>)
                 </a>
 
-                <button class="icon-button menu-toggle"
-                        type="button"
-                        data-menu-toggle
-                        aria-label="Open navigation menu"
-                        aria-controls="primary-navigation"
-                        aria-expanded="false">
+                <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-label="Open navigation menu"
+                    aria-controls="primary-navigation" aria-expanded="false">
                     <span class="menu-line"></span>
                     <span class="menu-line"></span>
                 </button>
@@ -74,36 +68,31 @@
                 <form id="billing-form">
                     <div class="billing-field">
                         <label for="customer-name">Full name *</label>
-                        <input id="customer-name" name="customerName"
-                               type="text" autocomplete="name"
-                               maxlength="100" required>
+                        <input id="customer-name" name="customerName" type="text" autocomplete="name" maxlength="100"
+                            required>
                     </div>
 
                     <div class="billing-field">
                         <label for="customer-email">Email address *</label>
-                        <input id="customer-email" name="customerEmail"
-                               type="email" autocomplete="email"
-                               maxlength="150" required>
+                        <input id="customer-email" name="customerEmail" type="email" autocomplete="email"
+                            maxlength="150" required>
                     </div>
 
                     <div class="billing-field">
                         <label for="customer-phone">Contact number *</label>
-                        <input id="customer-phone" name="customerPhone"
-                               type="tel" autocomplete="tel"
-                               maxlength="30" required>
+                        <input id="customer-phone" name="customerPhone" type="tel" autocomplete="tel" maxlength="30"
+                            required>
                     </div>
 
                     <div class="billing-field">
                         <label for="customer-address">Address</label>
-                        <textarea id="customer-address" name="customerAddress"
-                                  autocomplete="street-address"
-                                  maxlength="500"></textarea>
+                        <textarea id="customer-address" name="customerAddress" autocomplete="street-address"
+                            maxlength="500"></textarea>
                     </div>
 
                     <div class="billing-field">
                         <label for="customer-notes">Order notes (optional)</label>
-                        <textarea id="customer-notes" name="customerNotes"
-                                  maxlength="500"></textarea>
+                        <textarea id="customer-notes" name="customerNotes" maxlength="500"></textarea>
                     </div>
 
                     <button class="billing-button" id="place-order" type="submit">
@@ -115,8 +104,7 @@
                         and customer details are not sent to a server.
                     </p>
 
-                    <div id="billing-message" class="billing-message"
-                         role="status" aria-live="polite"></div>
+                    <div id="billing-message" class="billing-message" role="status" aria-live="polite"></div>
                 </form>
             </section>
 
@@ -153,4 +141,5 @@
         </div>
     </main>
 </body>
+
 </html>

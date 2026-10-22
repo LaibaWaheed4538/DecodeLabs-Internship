@@ -1,14 +1,14 @@
-
-/* CURIO BILLING — responsive styles */
+/* CURIO BILLING */
 
 .billing-page {
-    --bill-bg: #f2f0ea;
-    --bill-surface: #ffffff;
-    --bill-ink: #263238;
-    --bill-muted: #626b70;
-    --bill-mocha: #a47764;
-    --bill-blue: #b8dce5;
-    --bill-border: #d9d5ce;
+    --bill-bg: #F2F0EA;
+    --bill-surface: rgba(160, 212, 224, 0.16);
+    --bill-ink: #A58A6F;
+    --bill-muted: rgba(165, 138, 111, 0.82);
+    --bill-mocha: #A58A6F;
+    --bill-blue: #A0D4E0;
+    --bill-border: rgba(165, 138, 111, 0.32);
+    --bill-cream-rgb: 242, 240, 234;
 
     min-height: 100vh;
     overflow-wrap: anywhere;
@@ -44,7 +44,7 @@
 }
 
 .billing-page .brand-dot {
-    color: var(--bill-mocha);
+    color: var(--bill-blue);
 }
 
 .billing-page .header-actions {
@@ -71,7 +71,7 @@
     max-height: calc(100vh - 68px);
     overflow-y: auto;
     padding: 0.75rem 1.25rem;
-    border-top: 1px solid rgb(255 255 255 / 12%);
+    border-top: 1px solid rgba(var(--bill-cream-rgb), 0.12);
     background: var(--bill-ink);
 }
 
@@ -82,7 +82,7 @@
 .billing-page .primary-navigation .nav-link {
     display: block;
     padding: 0.875rem 0;
-    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    border-bottom: 1px solid rgba(var(--bill-cream-rgb), 0.10);
     color: var(--bill-bg);
     font-size: 0.875rem;
     text-decoration: none;
@@ -136,7 +136,7 @@
     color: var(--bill-mocha);
 }
 
-.billing-heading > p:last-child {
+.billing-heading>p:last-child {
     max-width: 42rem;
     color: var(--bill-muted);
     line-height: 1.7;
@@ -278,7 +278,7 @@
     padding: 0.4rem 0;
     border: 0;
     background: transparent;
-    color: #8b4138;
+    color: var(--bill-mocha);
     font: inherit;
     font-size: 0.8125rem;
     text-decoration: underline;
@@ -388,9 +388,9 @@
 
 .billing-success {
     padding: 1rem;
-    border: 1px solid #a8c8b2;
-    background: #edf5ef;
-    color: #244d36;
+    border: 1px solid var(--bill-mocha);
+    background: var(--bill-blue);
+    color: var(--bill-mocha);
     line-height: 1.7;
 }
 
@@ -471,6 +471,7 @@
 /* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
+
     .billing-page *,
     .billing-page *::before,
     .billing-page *::after {

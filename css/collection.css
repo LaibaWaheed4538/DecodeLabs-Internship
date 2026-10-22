@@ -1,18 +1,32 @@
 /*
-   CURIO MUSEUM — COLLECTION PAGE
+   CURIO MUSEUM — COLLECTION PAGE 
 */
 
 .collection-page {
-    --collection-bg: #09171c;
-    --collection-panel: #10252b;
-    --collection-gold: #dcb77a;
-    --collection-cream: #f4efe5;
-    --collection-muted: #b5c0bc;
-    --collection-border: rgba(220, 183, 122, 0.24);
+    --collection-blue: #A0D4E0;
+    --collection-cream: #F2F0EA;
+    --collection-mocha: #A58A6F;
 
-    color: var(--collection-cream);
-    background: var(--collection-bg);
+    --blue-rgb: 160, 212, 224;
+    --cream-rgb: 242, 240, 234;
+    --mocha-rgb: 165, 138, 111;
+
+    --collection-border: rgba(var(--cream-rgb), 0.38);          /* on mocha */
+    --collection-border-dark: rgba(var(--mocha-rgb), 0.42);     /* on linen */
+    --collection-border-soft: rgba(var(--mocha-rgb), 0.24);
+    --collection-tint: rgba(var(--blue-rgb), 0.18);
+    --collection-soft-text: rgba(var(--cream-rgb), 0.9);
+
+    /* moonlight body: linen with a veil of sky blue */
+    --collection-moon: linear-gradient(
+        rgba(var(--blue-rgb), 0.3),
+        rgba(var(--blue-rgb), 0.3)
+    );
+
+    background: var(--collection-moon), var(--collection-cream);
+    color: var(--collection-mocha);
     font-family: "DM Sans", sans-serif;
+    font-weight: 500;
     overflow-wrap: anywhere;
 }
 
@@ -36,6 +50,11 @@
     font: inherit;
 }
 
+.collection-page ::selection {
+    color: var(--collection-mocha);
+    background: var(--collection-blue);
+}
+
 .collection-page [hidden] {
     display: none !important;
 }
@@ -43,9 +62,17 @@
 .collection-page button:focus-visible,
 .collection-page a:focus-visible,
 .collection-page select:focus-visible {
-    outline: 2px solid var(--collection-gold);
+    outline: 3px solid var(--collection-mocha);
     outline-offset: 4px;
 }
+
+/* focus ring is linen on the mocha sections */
+.collection-page .collection-hero a:focus-visible,
+.collection-page .collection-callout a:focus-visible,
+.collection-page .collection-callout button:focus-visible {
+    outline-color: var(--collection-cream);
+}
+
 
 /* HERO — FULL BACKGROUND IMAGE */
 
@@ -57,7 +84,7 @@
     min-height: clamp(580px, 82vh, 820px);
     padding: clamp(60px, 9vw, 120px) clamp(22px, 8vw, 115px);
     overflow: hidden;
-    background: #09171c;
+    background: var(--collection-mocha);
     border-bottom: 1px solid var(--collection-border);
 }
 
@@ -70,7 +97,7 @@
     width: 100%;
     height: 100%;
     min-height: 0;
-    background-image: url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=2000&q=85");
+    background-image: url("../assets/Dreamlike\ Twilight\ Nativity\ Tableau.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -79,7 +106,7 @@
     animation: collection-image-enter 1.3s ease both;
 }
 
-/* Cinematic overlay */
+/* Mocha overlay with a sky-blue glow */
 
 .collection-page .collection-hero::before {
     position: absolute;
@@ -88,18 +115,17 @@
     content: "";
     pointer-events: none;
     background:
-        linear-gradient(
-            90deg,
-            rgba(4, 15, 20, 0.94) 0%,
-            rgba(4, 15, 20, 0.80) 38%,
-            rgba(4, 15, 20, 0.38) 72%,
-            rgba(4, 15, 20, 0.28) 100%
+        radial-gradient(
+            circle at 78% 28%,
+            rgba(var(--blue-rgb), 0.35),
+            transparent 40%
         ),
         linear-gradient(
-            0deg,
-            rgba(4, 15, 20, 0.65),
-            transparent 45%,
-            rgba(4, 15, 20, 0.12)
+            90deg,
+            rgba(var(--mocha-rgb), 0.94) 0%,
+            rgba(var(--mocha-rgb), 0.7) 40%,
+            rgba(var(--mocha-rgb), 0.2) 75%,
+            rgba(var(--mocha-rgb), 0.1) 100%
         );
 }
 
@@ -113,37 +139,35 @@
 
 .collection-page .collection-eyebrow {
     margin: 0 0 18px;
-    color: var(--collection-gold);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.19em;
+    color: var(--collection-cream);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     line-height: 1.8;
 }
 
 .collection-page .collection-hero h1 {
     margin: 0;
-    color: #fffaf0;
+    color: var(--collection-cream);
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(3rem, 6.5vw, 6rem);
     font-weight: 400;
-    line-height: 1.06;
-    letter-spacing: -0.045em;
+    line-height: 1.04;
+    letter-spacing: -0.05em;
     text-wrap: balance;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .collection-page .collection-hero h1 em,
-.collection-page .collection-section-header h2 em,
 .collection-page .collection-callout h2 em {
-    color: var(--collection-gold);
+    color: var(--collection-blue);
     font-weight: 400;
 }
 
 .collection-page .collection-hero-description {
     max-width: 500px;
-    margin: 25px 0 29px;
-    color: #e0e5e0;
-    font-size: 0.96rem;
+    margin: 25px 0 30px;
+    color: var(--collection-cream);
+    font-size: 1rem;
     line-height: 1.9;
 }
 
@@ -151,30 +175,32 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    min-height: 48px;
+    gap: 22px;
+    min-height: 52px;
     max-width: 100%;
-    padding: 13px 21px;
-    color: #111b1c;
-    background: var(--collection-gold);
-    border: 1px solid var(--collection-gold);
-    border-radius: 3px;
-    font-size: 0.84rem;
-    font-weight: 600;
+    padding: 14px 26px;
+    color: var(--collection-mocha);
+    background: var(--collection-cream);
+    border: 2px solid var(--collection-cream);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
     text-decoration: none;
     transition:
-        background-color 0.25s ease,
-        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
         transform 0.25s ease,
         box-shadow 0.25s ease;
 }
 
 .collection-page .collection-primary-link:hover {
-    color: #111b1c;
-    background: #f0d6a7;
+    color: var(--collection-mocha);
+    background: var(--collection-blue);
+    border-color: var(--collection-blue);
     transform: translateY(-3px);
-    box-shadow: 0 9px 26px rgba(220, 183, 122, 0.16);
+    box-shadow: 0 0 0 6px rgba(var(--cream-rgb), 0.25);
 }
+
 
 /* COLLECTION SECTION */
 
@@ -199,14 +225,27 @@
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(2.1rem, 4.5vw, 3.8rem);
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
     text-wrap: balance;
+}
+
+.collection-page .collection-section-header .collection-eyebrow,
+.collection-page .collection-section-header h2 {
+    color: var(--collection-mocha);
+}
+
+
+.collection-page .collection-section-header h2 em {
+    color: var(--collection-mocha);
+    font-weight: 400;
+   ;
 }
 
 .collection-page .collection-section-description {
     margin: 14px 0 0;
-    color: var(--collection-muted);
-    font-size: 0.9rem;
+    color: var(--collection-mocha);
+    font-size: 0.95rem;
     line-height: 1.8;
 }
 
@@ -215,17 +254,23 @@
     flex-shrink: 0;
     align-items: center;
     gap: 10px;
-    padding-bottom: 7px;
-    color: var(--collection-gold);
+    padding: 11px 22px;
+    color: var(--collection-mocha);
+    border: 2px solid var(--collection-mocha);
+    border-radius: 999px;
     font-size: 0.85rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: gap 0.25s ease, color 0.25s ease;
+    transition:
+        gap 0.25s ease,
+        background 0.25s ease;
 }
 
 .collection-page .collection-browse-link:hover {
     gap: 15px;
-    color: var(--collection-cream);
+    background: var(--collection-blue);
 }
+
 
 /* FILTERS AND SORTING */
 
@@ -237,67 +282,78 @@
     gap: 18px;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px solid var(--collection-border);
+    border-bottom: 1.5px solid var(--collection-border-soft);
 }
 
 .collection-page .collection-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: 8px;
 }
 
 .collection-page .collection-filter {
-    min-height: 38px;
-    padding: 9px 14px;
-    color: var(--collection-muted);
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    font-size: 0.78rem;
+    min-height: 40px;
+    padding: 9px 18px;
+    color: var(--collection-mocha);
+    background: var(--collection-tint);
+    border: 1.5px solid var(--collection-border-dark);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
     cursor: pointer;
     transition:
         color 0.25s ease,
-        background-color 0.25s ease,
-        border-color 0.25s ease;
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
 }
 
-.collection-page .collection-filter:hover,
+.collection-page .collection-filter:hover {
+    background: rgba(var(--blue-rgb), 0.5);
+    border-color: var(--collection-mocha);
+    transform: translateY(-2px);
+}
+
 .collection-page .collection-filter.is-active {
-    color: var(--collection-gold);
-    background: rgba(220, 183, 122, 0.08);
-    border-color: var(--collection-border);
+    color: var(--collection-cream);
+    background: var(--collection-mocha);
+    border-color: var(--collection-mocha);
+    box-shadow: 0 0 0 3px rgba(var(--blue-rgb), 0.6);
 }
 
 .collection-page .collection-sort-label {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--collection-muted);
-    font-size: 0.8rem;
+    color: var(--collection-mocha);
+    font-size: 0.82rem;
+    font-weight: 600;
 }
 
 .collection-page .collection-sort-label select {
     max-width: 100%;
-    padding: 9px 12px;
-    color: var(--collection-cream);
-    background: var(--collection-panel);
-    border: 1px solid var(--collection-border);
-    border-radius: 3px;
+    padding: 10px 18px;
+    color: var(--collection-mocha);
+    background: var(--collection-cream);
+    border: 2px solid var(--collection-mocha);
+    border-radius: 999px;
+    font-weight: 600;
     cursor: pointer;
 }
 
 .collection-page .collection-sort-label select option {
-    color: var(--collection-cream);
-    background: var(--collection-panel);
+    color: var(--collection-mocha);
+    background: var(--collection-cream);
 }
 
-/* DISCOVERY CARDS */
+
+/* DISCOVERY CARDS — linen cards with a sky ring */
 
 .collection-page .collection-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: stretch;
-    gap: 25px;
+    gap: 26px;
 }
 
 .collection-page .collection-card {
@@ -305,8 +361,13 @@
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    background: var(--collection-panel);
-    border: 1px solid rgba(220, 183, 122, 0.15);
+    color: var(--collection-mocha);
+    background: var(--collection-cream);
+    border: 2px solid var(--collection-blue);
+    border-radius: 20px;
+    box-shadow:
+        0 0 0 6px rgba(var(--blue-rgb), 0.2),
+        0 24px 44px -32px rgba(var(--mocha-rgb), 0.75);
     transition:
         opacity 0.35s ease,
         transform 0.4s ease,
@@ -316,8 +377,10 @@
 
 .collection-page .collection-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(220, 183, 122, 0.48);
-    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+    border-color: var(--collection-mocha);
+    box-shadow:
+        0 0 0 8px rgba(var(--blue-rgb), 0.4),
+        0 30px 50px -30px rgba(var(--mocha-rgb), 0.85);
 }
 
 .collection-page .collection-card-image {
@@ -325,7 +388,8 @@
     display: block;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: #172a2e;
+    background: rgba(var(--blue-rgb), 0.4);
+    border-bottom: 2px solid var(--collection-blue);
 }
 
 .collection-page .collection-card-image img {
@@ -343,11 +407,13 @@
     position: absolute;
     left: 15px;
     bottom: 15px;
-    padding: 7px 10px;
-    color: #f5e4c4;
-    background: rgba(6, 20, 24, 0.9);
+    padding: 7px 14px;
+    color: var(--collection-cream);
+    background: rgba(var(--mocha-rgb), 0.92);
     border: 1px solid var(--collection-border);
+    border-radius: 999px;
     font-size: 0.62rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
 }
 
@@ -355,37 +421,48 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 22px;
+    padding: 24px;
 }
 
 .collection-page .collection-card-meta {
-    margin: 0 0 12px;
-    color: var(--collection-gold);
-    font-size: 0.63rem;
+    align-self: flex-start;
+    margin: 0 0 14px;
+    padding: 0.2rem 0.8rem;
+    color: var(--collection-mocha);
+    background: rgba(var(--blue-rgb), 0.5);
+    border-radius: 999px;
+    font-size: 0.64rem;
+    font-weight: 700;
     letter-spacing: 0.12em;
     line-height: 1.7;
 }
 
 .collection-page .collection-card h3 {
     margin: 0;
+    color: var(--collection-mocha);
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(1.25rem, 1.8vw, 1.65rem);
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.35;
 }
 
 .collection-page .collection-card h3 a {
     text-decoration: none;
+    background-image: linear-gradient(var(--collection-blue), var(--collection-blue));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0 3px;
+    transition: background-size 0.3s ease;
 }
 
 .collection-page .collection-card h3 a:hover {
-    color: var(--collection-gold);
+    background-size: 100% 3px;
 }
 
 .collection-page .collection-card-description {
     margin: 12px 0 20px;
-    color: var(--collection-muted);
-    font-size: 0.84rem;
+    color: var(--collection-mocha);
+    font-size: 0.88rem;
     line-height: 1.8;
 }
 
@@ -396,62 +473,78 @@
     gap: 12px;
     margin-top: auto;
     padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1.5px solid var(--collection-border-soft);
 }
 
 .collection-page .collection-card-footer > a {
-    color: var(--collection-gold);
-    font-size: 0.78rem;
+    color: var(--collection-mocha);
+    font-size: 0.82rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: color 0.25s ease;
+    background-image: linear-gradient(var(--collection-blue), var(--collection-blue));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 3px;
+    transition: background-size 0.3s ease;
 }
 
 .collection-page .collection-card-footer > a:hover {
-    color: var(--collection-cream);
+    background-size: 100% 100%;
 }
 
 .collection-page .collection-save-button {
     display: grid;
-    flex: 0 0 38px;
+    flex: 0 0 40px;
     place-items: center;
-    width: 38px;
-    height: 38px;
-    color: var(--collection-muted);
-    background: transparent;
-    border: 1px solid var(--collection-border);
+    width: 40px;
+    height: 40px;
+    color: var(--collection-mocha);
+    background: var(--collection-cream);
+    border: 2px solid var(--collection-mocha);
     border-radius: 50%;
     font-size: 1.1rem;
     cursor: pointer;
     transition:
-        color 0.25s ease,
-        background-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
         transform 0.25s ease;
 }
 
 .collection-page .collection-save-button.is-saved {
-    color: var(--collection-gold);
+    background: var(--collection-blue);
+    box-shadow: 0 0 0 4px rgba(var(--blue-rgb), 0.45);
 }
 
 .collection-page .collection-save-button:hover {
-    color: #09171c;
-    background: var(--collection-gold);
-    transform: scale(1.06);
+    background: var(--collection-blue);
+    transform: scale(1.08);
 }
+
 
 /* EMPTY STATE */
 
 .collection-page .collection-empty {
     padding: 60px 20px;
     text-align: center;
-    background: var(--collection-panel);
-    border: 1px solid var(--collection-border);
+    color: var(--collection-mocha);
+    background: var(--collection-cream);
+    border: 2px dashed var(--collection-mocha);
+    border-radius: 20px;
     animation: collection-content-enter 0.45s ease both;
 }
 
 .collection-page .collection-empty-icon {
-    margin-bottom: 16px;
-    color: var(--collection-gold);
-    font-size: 2.5rem;
+    display: grid;
+    place-items: center;
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 18px;
+    color: var(--collection-mocha);
+    background: var(--collection-blue);
+    border: 2px solid var(--collection-mocha);
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(var(--blue-rgb), 0.4);
+    font-size: 2.2rem;
 }
 
 .collection-page .collection-empty h3 {
@@ -463,9 +556,10 @@
 
 .collection-page .collection-empty p {
     margin: 14px 0 24px;
-    color: var(--collection-muted);
+    color: var(--collection-mocha);
     line-height: 1.8;
 }
+
 
 /* CLOSING SECTION */
 
@@ -475,24 +569,44 @@
     padding: clamp(70px, 9vw, 115px) 22px;
     overflow: hidden;
     text-align: center;
+    color: var(--collection-cream);
     background:
         linear-gradient(
-            rgba(6, 19, 24, 0.88),
-            rgba(6, 19, 24, 0.94)
+            rgba(var(--mocha-rgb), 0.9),
+            rgba(var(--mocha-rgb), 0.96)
         ),
         url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1600&q=85")
         center / cover no-repeat,
-        #09171c;
+        var(--collection-mocha);
     border-top: 1px solid var(--collection-border);
+}
+
+.collection-page .collection-callout::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background: radial-gradient(
+        circle at 50% 0%,
+        rgba(var(--blue-rgb), 0.35),
+        transparent 55%
+    );
+}
+
+.collection-page .collection-callout .collection-eyebrow,
+.collection-page .collection-callout h2 {
+    color: var(--collection-cream);
 }
 
 .collection-page .collection-callout > p:not(.collection-eyebrow) {
     max-width: 570px;
-    margin: 20px auto 27px;
-    color: var(--collection-muted);
-    font-size: 0.9rem;
+    margin: 20px auto 28px;
+    color: var(--collection-soft-text);
+    font-size: 1rem;
     line-height: 1.9;
 }
+
 
 /* REVEAL ANIMATIONS */
 
@@ -533,6 +647,7 @@
     transform: translateY(0);
 }
 
+
 /* TABLET */
 
 @media (max-width: 1000px) {
@@ -547,6 +662,7 @@
     }
 }
 
+
 /* MOBILE */
 
 @media (max-width: 650px) {
@@ -555,11 +671,7 @@
         padding: 70px 22px;
     }
 
-    /*
-       FIX: image ab hero ki poori width aur height mein fit hoti hai
-       (cover ki jagah 100% 100%), isliye crop nahi hoti.
-       Text aur button ki position pehle jaisi hi hai.
-    */
+    /* Image fits the full hero width and height */
     .collection-page .collection-hero-image {
         background-position: center center;
         background-size: 100% 100%;
@@ -567,15 +679,16 @@
 
     .collection-page .collection-hero::before {
         background:
-            linear-gradient(
-                90deg,
-                rgba(4, 15, 20, 0.88),
-                rgba(4, 15, 20, 0.55)
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(var(--blue-rgb), 0.3),
+                transparent 45%
             ),
             linear-gradient(
-                0deg,
-                rgba(4, 15, 20, 0.7),
-                transparent
+                180deg,
+                rgba(var(--mocha-rgb), 0.6) 0%,
+                rgba(var(--mocha-rgb), 0.75) 55%,
+                rgba(var(--mocha-rgb), 0.92) 100%
             );
     }
 
@@ -584,7 +697,7 @@
     }
 
     .collection-page .collection-hero-description {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .collection-page .collection-section {
@@ -608,17 +721,21 @@
 
     .collection-page .collection-tabs {
         width: 100%;
-        gap: 5px;
+        gap: 6px;
     }
 
     .collection-page .collection-filter {
-        padding-inline: 10px;
-        font-size: 0.73rem;
+        padding-inline: 13px;
+        font-size: 0.75rem;
     }
 
     .collection-page .collection-grid {
         grid-template-columns: minmax(0, 1fr);
         gap: 22px;
+    }
+
+    .collection-page .collection-card {
+        border-radius: 16px;
     }
 
     .collection-page .collection-card-content {
@@ -639,15 +756,22 @@
         font-size: 2.5rem;
     }
 
+    .collection-page .collection-primary-link {
+        gap: 12px;
+        padding-inline: 18px;
+        font-size: 0.84rem;
+    }
+
     .collection-page .collection-filter {
-        padding-inline: 7px;
-        font-size: 0.68rem;
+        padding-inline: 10px;
+        font-size: 0.7rem;
     }
 
     .collection-page .collection-card-content {
         padding: 16px;
     }
 }
+
 
 /* ACCESSIBILITY */
 

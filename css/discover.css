@@ -4,16 +4,22 @@
 */
 
 .discover-page {
-    --discover-ink: #07141b;
-    --discover-ink-soft: #102630;
-    --discover-panel: #142b35;
-    --discover-cream: #f6f0e6;
-    --discover-muted: #b4c0c1;
-    --discover-gold: #e9b56d;
-    --discover-border: rgba(233, 181, 109, 0.22);
+    --discover-blue: #A0D4E0;
+    --discover-cream: #F2F0EA;
+    --discover-mocha: #A58A6F;
+
+    --blue-rgb: 160, 212, 224;
+    --cream-rgb: 242, 240, 234;
+    --mocha-rgb: 165, 138, 111;
+
+    --discover-border: rgba(var(--mocha-rgb), 0.38);
+    --discover-border-soft: rgba(var(--mocha-rgb), 0.22);
+    --discover-card-bg: rgba(var(--blue-rgb), 0.16);
+    --discover-soft-text: rgba(var(--cream-rgb), 0.9);
 
     background: var(--discover-cream);
-    color: var(--discover-ink);
+    color: var(--discover-mocha);
+    font-weight: 500;
     overflow-x: clip;
 }
 
@@ -37,13 +43,29 @@
     font: inherit;
 }
 
+.discover-page ::selection {
+    color: var(--discover-mocha);
+    background: var(--discover-blue);
+}
+
 .discover-page button:focus-visible,
 .discover-page a:focus-visible,
 .discover-page input:focus-visible,
 .discover-page select:focus-visible {
-    outline: 3px solid var(--discover-gold);
+    outline: 3px solid var(--discover-mocha);
     outline-offset: 4px;
 }
+
+
+.discover-hero a:focus-visible,
+.discover-hero button:focus-visible,
+.discover-closing a:focus-visible,
+.discover-closing button:focus-visible,
+.discover-card-image a:focus-visible,
+.discover-card-image button:focus-visible {
+    outline-color: var(--discover-cream);
+}
+
 
 /* HERO */
 
@@ -57,17 +79,10 @@
     isolation: isolate;
     color: var(--discover-cream);
     background:
-        radial-gradient(
-            ellipse at 80% 35%,
-            rgba(51, 86, 98, 0.36),
-            transparent 45%
-        ),
-        linear-gradient(
-            120deg,
-            #07141b 0%,
-            #102630 58%,
-            #172e37 100%
-        );
+        radial-gradient(ellipse at 80% 35%,
+            rgba(var(--blue-rgb), 0.3),
+            transparent 45%),
+        var(--discover-mocha);
 }
 
 .discover-hero::before {
@@ -77,12 +92,11 @@
     content: "";
 
     background:
-        linear-gradient(
-            90deg,
-            rgba(7, 20, 27, 0.78) 0%,
-            rgba(7, 20, 27, 0.32) 100%
-        ),
-        url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png") center / cover no-repeat;
+        linear-gradient(90deg,
+            rgba(var(--mocha-rgb), 0.94) 0%,
+            rgba(var(--mocha-rgb), 0.62) 55%,
+            rgba(var(--mocha-rgb), 0.18) 100%),
+        url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ \(1\).png") center / cover no-repeat;
 
     animation: discover-hero-image-reveal 1.2s ease-out both;
 }
@@ -94,11 +108,11 @@
     z-index: -1;
     width: 480px;
     height: 480px;
-    border: 1px solid rgba(233, 181, 109, 0.17);
+    border: 1.5px solid rgba(var(--blue-rgb), 0.75);
     border-radius: 50%;
     box-shadow:
-        0 0 0 45px rgba(233, 181, 109, 0.025),
-        0 0 0 90px rgba(233, 181, 109, 0.02);
+        0 0 0 45px rgba(var(--blue-rgb), 0.12),
+        0 0 0 90px rgba(var(--blue-rgb), 0.07);
     content: "";
 }
 
@@ -115,10 +129,10 @@
     align-items: center;
     gap: 12px;
     margin: 0 0 25px;
-    color: var(--discover-gold);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.19em;
+    color: var(--discover-cream);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     line-height: 1.7;
     text-transform: uppercase;
 }
@@ -126,8 +140,9 @@
 .discover-eyebrow-line {
     display: inline-block;
     width: 32px;
-    height: 1px;
-    background: var(--discover-gold);
+    height: 3px;
+    background: var(--discover-blue);
+    border-radius: 999px;
 }
 
 .discover-hero h1 {
@@ -143,15 +158,15 @@
 
 .discover-hero h1 span {
     display: block;
-    color: var(--discover-gold);
+    color: var(--discover-blue);
     font-style: italic;
 }
 
 .discover-hero-description {
     max-width: 630px;
     margin: 27px 0 0;
-    color: #c4cece;
-    font-size: 1rem;
+    color: var(--discover-cream);
+    font-size: 1.05rem;
     line-height: 1.9;
 }
 
@@ -161,21 +176,21 @@
     gap: 18px;
     margin-top: 32px;
     padding-bottom: 9px;
-    border-bottom: 1px solid rgba(233, 181, 109, 0.5);
+    border-bottom: 3px solid var(--discover-blue);
     color: var(--discover-cream);
-    font-size: 0.88rem;
-    font-weight: 500;
-    transition: color 200ms ease, gap 200ms ease;
+    font-size: 0.92rem;
+    font-weight: 700;
+    transition: gap 200ms ease, border-color 200ms ease;
 }
 
 .discover-scroll-link span {
-    color: var(--discover-gold);
+    color: var(--discover-blue);
     font-size: 1.1rem;
 }
 
 .discover-scroll-link:hover {
-    gap: 24px;
-    color: var(--discover-gold);
+    gap: 26px;
+    border-color: var(--discover-cream);
 }
 
 .discover-hero-decoration {
@@ -185,17 +200,20 @@
     display: flex;
     align-items: center;
     gap: 13px;
-    color: rgba(246, 240, 230, 0.55);
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
+    color: var(--discover-cream);
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
 }
 
 .discover-decoration-line {
     display: block;
     width: 50px;
-    height: 1px;
-    background: var(--discover-gold);
+    height: 2px;
+    background: var(--discover-blue);
+    border-radius: 999px;
 }
+
 
 /* COLLECTION SECTION */
 
@@ -213,19 +231,27 @@
     margin-bottom: 36px;
 }
 
-.discover-section-heading > div:first-child {
+.discover-section-heading>div:first-child {
     min-width: 0;
 }
 
 .discover-section-eyebrow {
     margin-bottom: 14px;
-    color: #86613c;
-    font-size: 0.68rem;
+    color: var(--discover-mocha);
+    font-size: 0.72rem;
+}
+
+.discover-section-eyebrow::before {
+    width: 28px;
+    height: 3px;
+    background: var(--discover-blue);
+    border-radius: 999px;
+    content: "";
 }
 
 .discover-section-heading h2 {
     margin: 0;
-    color: var(--discover-ink);
+    color: var(--discover-mocha);
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(2rem, 4.4vw, 3.7rem);
     font-weight: 400;
@@ -234,15 +260,18 @@
 }
 
 .discover-section-heading h2 span {
-    color: #94714b;
     font-style: italic;
+    background-image: linear-gradient(var(--discover-blue), var(--discover-blue));
+    background-repeat: no-repeat;
+    background-position: 0 90%;
+    background-size: 0 0;
 }
 
 .discover-section-description {
     max-width: 620px;
     margin: 16px 0 0;
-    color: #647078;
-    font-size: 0.94rem;
+    color: var(--discover-mocha);
+    font-size: 1rem;
     line-height: 1.9;
 }
 
@@ -256,18 +285,19 @@
 }
 
 .discover-count span:first-child {
-    color: #8c6a43;
+    color: var(--discover-mocha);
     font-family: "Playfair Display", Georgia, serif;
-    font-size: 2.7rem;
+    font-size: 2.9rem;
     line-height: 1;
 }
 
 .discover-count span:last-child {
-    color: #6b7479;
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.13em;
+    color: var(--discover-mocha);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
 }
+
 
 /* SEARCH */
 
@@ -285,16 +315,17 @@
     gap: 13px;
     min-width: 0;
     min-height: 58px;
-    padding: 0 17px;
-    border: 1px solid #d8d2c7;
-    background: #fffdf8;
-    color: #7a8589;
+    padding: 0 22px;
+    border: 1.5px solid var(--discover-border);
+    border-radius: 999px;
+    background: var(--discover-cream);
+    color: var(--discover-mocha);
     transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .discover-search-box:focus-within {
-    border-color: #94714b;
-    box-shadow: 0 0 0 3px rgba(148, 113, 75, 0.09);
+    border-color: var(--discover-mocha);
+    box-shadow: 0 0 0 5px rgba(var(--blue-rgb), 0.55);
 }
 
 .discover-search-box svg {
@@ -309,12 +340,13 @@
     border: 0;
     outline: 0;
     background: transparent;
-    color: var(--discover-ink);
-    font-size: 0.9rem;
+    color: var(--discover-mocha);
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .discover-search-box input::placeholder {
-    color: #92999b;
+    color: rgba(var(--mocha-rgb), 0.75);
 }
 
 .discover-clear-search {
@@ -326,10 +358,16 @@
     height: 30px;
     border: 0;
     border-radius: 50%;
-    background: #ece6dc;
-    color: var(--discover-ink);
+    background: var(--discover-blue);
+    color: var(--discover-mocha);
     cursor: pointer;
     font-size: 1.3rem;
+    transition: background 200ms ease, color 200ms ease;
+}
+
+.discover-clear-search:hover {
+    background: var(--discover-mocha);
+    color: var(--discover-cream);
 }
 
 .discover-clear-search[hidden] {
@@ -341,21 +379,27 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    min-height: 56px;
-    padding: 0 26px;
-    border: 1px solid var(--discover-ink);
-    background: var(--discover-ink);
+    min-height: 58px;
+    padding: 0 30px;
+    border: 2px solid var(--discover-mocha);
+    border-radius: 999px;
+    background: var(--discover-mocha);
     color: var(--discover-cream);
     cursor: pointer;
-    font-size: 0.87rem;
-    font-weight: 600;
-    transition: background 200ms ease, border-color 200ms ease;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition:
+        background 200ms ease,
+        color 200ms ease,
+        transform 200ms ease;
 }
 
 .discover-search-button:hover {
-    border-color: #8c6a43;
-    background: #8c6a43;
+    background: var(--discover-blue);
+    color: var(--discover-mocha);
+    transform: translateY(-2px);
 }
+
 
 /* CATEGORY FILTERS */
 
@@ -365,7 +409,7 @@
     justify-content: space-between;
     gap: 25px;
     padding-bottom: 28px;
-    border-bottom: 1px solid #dcd5ca;
+    border-bottom: 2px solid var(--discover-border-soft);
 }
 
 .discover-category-area {
@@ -375,10 +419,10 @@
 
 .discover-toolbar-label {
     margin: 0 0 14px;
-    color: #727a7e;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    color: var(--discover-mocha);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
 }
 
 .discover-category-list {
@@ -391,27 +435,31 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 40px;
-    padding: 9px 15px;
-    border: 1px solid #d7d0c5;
-    border-radius: 2px;
+    min-height: 42px;
+    padding: 9px 18px;
+    border: 1.5px solid var(--discover-border);
+    border-radius: 999px;
     background: transparent;
-    color: #445158;
+    color: var(--discover-mocha);
     cursor: pointer;
-    font-size: 0.76rem;
-    font-weight: 500;
+    font-size: 0.8rem;
+    font-weight: 600;
     line-height: 1.4;
-    transition: background 180ms ease, color 180ms ease;
+    transition:
+        background 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease;
 }
 
 .discover-category-button:hover {
-    border-color: var(--discover-ink);
-    color: var(--discover-ink);
+    border-color: var(--discover-mocha);
+    background: var(--discover-blue);
+    color: var(--discover-mocha);
 }
 
 .discover-category-button.is-active {
-    border-color: var(--discover-ink);
-    background: var(--discover-ink);
+    border-color: var(--discover-mocha);
+    background: var(--discover-mocha);
     color: var(--discover-cream);
 }
 
@@ -423,21 +471,24 @@
 }
 
 .discover-sort-area label {
-    color: #697378;
-    font-size: 0.77rem;
+    color: var(--discover-mocha);
+    font-size: 0.82rem;
+    font-weight: 600;
 }
 
 .discover-sort-area select {
     max-width: 185px;
-    min-height: 42px;
-    padding: 0 30px 0 12px;
-    border: 1px solid #d7d0c5;
-    border-radius: 0;
-    background: #fffdf8;
-    color: var(--discover-ink);
+    min-height: 44px;
+    padding: 0 30px 0 16px;
+    border: 1.5px solid var(--discover-border);
+    border-radius: 999px;
+    background: var(--discover-cream);
+    color: var(--discover-mocha);
     cursor: pointer;
-    font-size: 0.77rem;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
+
 
 /* RESULTS BAR */
 
@@ -451,8 +502,8 @@
 
 .discover-results-bar p {
     margin: 0;
-    color: #6a7479;
-    font-size: 0.79rem;
+    color: var(--discover-mocha);
+    font-size: 0.85rem;
 }
 
 .discover-reset-button {
@@ -461,12 +512,22 @@
     gap: 8px;
     padding: 8px 0;
     border: 0;
-    background: transparent;
-    color: #7f603f;
+    background-color: transparent;
+    background-image: linear-gradient(var(--discover-blue), var(--discover-blue));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 3px;
+    color: var(--discover-mocha);
     cursor: pointer;
-    font-size: 0.77rem;
-    font-weight: 600;
+    font-size: 0.82rem;
+    font-weight: 700;
+    transition: background-size 250ms ease;
 }
+
+.discover-reset-button:hover {
+    background-size: 100% 100%;
+}
+
 
 /* EXHIBIT GRID */
 
@@ -486,18 +547,23 @@
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    border: 1px solid rgba(7, 20, 27, 0.08);
-    background: #fffdf8;
-    box-shadow: 0 7px 24px rgba(7, 20, 27, 0.045);
+    border: 1.5px solid var(--discover-border);
+    border-radius: 16px;
+    background: var(--discover-card-bg);
     animation: discover-card-enter 450ms ease both;
     animation-delay: calc(var(--card-order, 0) * 35ms);
-    transition: transform 250ms ease, box-shadow 250ms ease;
+    transition:
+        transform 250ms ease,
+        box-shadow 250ms ease,
+        border-color 250ms ease;
 }
 
 .discover-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 38px rgba(7, 20, 27, 0.11);
+    border-color: var(--discover-blue);
+    transform: translateY(-6px);
+    box-shadow: 0 26px 50px -24px rgba(var(--mocha-rgb), 0.7);
 }
+
 
 /* IMAGE */
 
@@ -508,8 +574,8 @@
     aspect-ratio: 4 / 3.6;
     overflow: hidden;
     isolation: isolate;
-    background: linear-gradient(135deg, #29444d, #0c1921);
-    color: white;
+    background: var(--discover-blue);
+    color: var(--discover-cream);
 }
 
 .discover-card-image img {
@@ -538,12 +604,10 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: linear-gradient(
-        180deg,
-        rgba(7, 20, 27, 0.13) 0%,
-        transparent 38%,
-        rgba(7, 20, 27, 0.35) 100%
-    );
+    background: linear-gradient(180deg,
+            rgba(var(--mocha-rgb), 0.18) 0%,
+            transparent 38%,
+            rgba(var(--mocha-rgb), 0.62) 100%);
 }
 
 .discover-card-index {
@@ -556,14 +620,14 @@
     justify-content: center;
     min-width: 37px;
     min-height: 31px;
-    padding: 5px 9px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background: rgba(7, 20, 27, 0.58);
-    color: #fffdf8;
-    font-size: 0.7rem;
-    font-weight: 600;
+    padding: 5px 11px;
+    border: 1px solid rgba(var(--cream-rgb), 0.55);
+    border-radius: 999px;
+    background: var(--discover-mocha);
+    color: var(--discover-cream);
+    font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
-    backdrop-filter: blur(7px);
 }
 
 .discover-card-image-caption {
@@ -572,10 +636,10 @@
     bottom: 16px;
     left: 17px;
     z-index: 2;
-    color: white;
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    color: var(--discover-cream);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     pointer-events: none;
     opacity: 0;
     transform: translateY(5px);
@@ -588,6 +652,7 @@
     transform: translateY(0);
 }
 
+
 /* BOOKMARK */
 
 .discover-bookmark {
@@ -598,22 +663,27 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 39px;
-    height: 39px;
+    width: 40px;
+    height: 40px;
     padding: 0;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(var(--cream-rgb), 0.55);
     border-radius: 50%;
-    background: rgba(7, 20, 27, 0.62);
-    color: white;
+    background: var(--discover-mocha);
+    color: var(--discover-cream);
     cursor: pointer;
-    backdrop-filter: blur(7px);
-    transition: background 200ms ease, color 200ms ease;
+    transition: background 200ms ease, color 200ms ease, transform 200ms ease;
 }
 
-.discover-bookmark:hover,
+.discover-bookmark:hover {
+    background: var(--discover-cream);
+    color: var(--discover-mocha);
+    transform: scale(1.06);
+}
+
 .discover-bookmark.is-saved {
-    background: #fffdf8;
-    color: #a13d3d;
+    border-color: var(--discover-mocha);
+    background: var(--discover-blue);
+    color: var(--discover-mocha);
 }
 
 .discover-bookmark-symbol {
@@ -621,10 +691,12 @@
     line-height: 1;
 }
 
-/* IMAGE FALLBACK */
+
+/* IMAGE FALLBACK
+*/
 
 .discover-card-image.has-image-fallback {
-    background: #122630;
+    background: var(--discover-mocha);
 }
 
 .discover-image-placeholder {
@@ -639,12 +711,10 @@
     padding: 25px;
     overflow: hidden;
     background:
-        radial-gradient(
-            circle at 50% 35%,
-            color-mix(in srgb, var(--fallback-one) 80%, white),
-            transparent 55%
-        ),
-        linear-gradient(140deg, var(--fallback-one), var(--fallback-two));
+        radial-gradient(circle at 50% 35%,
+            rgba(var(--blue-rgb), 0.7),
+            transparent 58%),
+        var(--discover-mocha);
     text-align: center;
 }
 
@@ -653,7 +723,7 @@
     position: absolute;
     width: 190px;
     height: 190px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    border: 1.5px solid rgba(var(--cream-rgb), 0.4);
     border-radius: 50%;
     content: "";
 }
@@ -661,22 +731,24 @@
 .discover-image-placeholder::after {
     width: 250px;
     height: 250px;
+    border-color: rgba(var(--blue-rgb), 0.55);
 }
 
 .discover-placeholder-symbol {
     z-index: 1;
-    color: var(--discover-gold);
+    color: var(--discover-cream);
     font-size: 3.8rem;
 }
 
 .discover-placeholder-title {
     z-index: 1;
     max-width: 90%;
-    color: #fffdf8;
+    color: var(--discover-cream);
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(1.15rem, 2vw, 1.6rem);
     line-height: 1.35;
 }
+
 
 /* CARD TEXT */
 
@@ -686,15 +758,19 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 23px 23px 20px;
-    color: var(--discover-ink);
+    color: var(--discover-mocha);
 }
 
 .discover-card-category {
-    margin: 0 0 12px;
-    color: #8c6942;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.13em;
+    display: inline-block;
+    margin: 0 0 14px;
+    padding: 0.2rem 0.75rem;
+    background: rgba(var(--blue-rgb), 0.55);
+    border-radius: 999px;
+    color: var(--discover-mocha);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     line-height: 1.6;
     text-transform: uppercase;
 }
@@ -709,12 +785,16 @@
 }
 
 .discover-card-title a {
-    color: #122630;
-    transition: color 200ms ease;
+    color: var(--discover-mocha);
+    background-image: linear-gradient(var(--discover-blue), var(--discover-blue));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0 3px;
+    transition: background-size 300ms ease;
 }
 
 .discover-card-title a:hover {
-    color: #96734c;
+    background-size: 100% 3px;
 }
 
 .discover-card-description {
@@ -722,8 +802,8 @@
     min-height: 0;
     margin: 13px 0 20px;
     overflow: hidden;
-    color: #657077;
-    font-size: 0.84rem;
+    color: var(--discover-mocha);
+    font-size: 0.9rem;
     line-height: 1.85;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -737,8 +817,8 @@
     gap: 7px;
     margin-top: auto;
     padding-top: 2px;
-    color: #68747a;
-    font-size: 0.7rem;
+    color: var(--discover-mocha);
+    font-size: 0.76rem;
     line-height: 1.6;
 }
 
@@ -748,14 +828,14 @@
 }
 
 .discover-card-separator {
-    color: #a78a67;
+    opacity: 0.55;
 }
 
 .discover-card-footer {
     width: 100%;
     margin-top: 20px;
     padding-top: 16px;
-    border-top: 1px solid #e6dfd4;
+    border-top: 1.5px solid var(--discover-border-soft);
 }
 
 .discover-card-link {
@@ -763,32 +843,32 @@
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-    color: #795a37;
-    font-size: 0.8rem;
-    font-weight: 600;
-    transition: color 200ms ease;
-}
-
-.discover-card-link:hover {
-    color: #172e37;
+    color: var(--discover-mocha);
+    font-size: 0.86rem;
+    font-weight: 700;
 }
 
 .discover-card-arrow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
-    border: 1px solid #d9cbbb;
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--discover-mocha);
     border-radius: 50%;
     font-size: 0.9rem;
-    transition: background 200ms ease, color 200ms ease;
+    transition:
+        background 200ms ease,
+        color 200ms ease,
+        transform 200ms ease;
 }
 
 .discover-card-link:hover .discover-card-arrow {
-    background: var(--discover-ink);
-    color: white;
+    background: var(--discover-mocha);
+    color: var(--discover-cream);
+    transform: translateX(4px);
 }
+
 
 /* LOADING AND EMPTY STATES */
 
@@ -800,20 +880,20 @@
     justify-content: center;
     min-height: 240px;
     gap: 15px;
-    color: #6a7479;
+    color: var(--discover-mocha);
     text-align: center;
 }
 
 .discover-loading p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .discover-loading-spinner {
-    width: 36px;
-    height: 36px;
-    border: 2px solid #ded5c7;
-    border-top-color: #8c6942;
+    width: 38px;
+    height: 38px;
+    border: 3px solid rgba(var(--blue-rgb), 0.7);
+    border-top-color: var(--discover-mocha);
     border-radius: 50%;
     animation: discover-spin 800ms linear infinite;
 }
@@ -829,16 +909,20 @@
     justify-content: center;
     min-height: 300px;
     padding: 35px 20px;
+    border: 1.5px dashed var(--discover-border);
+    border-radius: 16px;
+    background: var(--discover-card-bg);
     text-align: center;
 }
 
 .discover-empty-symbol {
-    color: #9b7a52;
+    color: var(--discover-mocha);
     font-size: 3.2rem;
 }
 
 .discover-empty h3 {
     margin: 15px 0 8px;
+    color: var(--discover-mocha);
     font-family: "Playfair Display", Georgia, serif;
     font-size: 1.8rem;
     font-weight: 500;
@@ -847,10 +931,11 @@
 .discover-empty p {
     max-width: 440px;
     margin: 0 0 24px;
-    color: #68747a;
-    font-size: 0.9rem;
+    color: var(--discover-mocha);
+    font-size: 0.95rem;
     line-height: 1.8;
 }
+
 
 /* CLOSING BANNER */
 
@@ -865,12 +950,10 @@
     overflow: hidden;
     isolation: isolate;
     background:
-        radial-gradient(
-            circle at 88% 40%,
-            rgba(49, 83, 94, 0.5),
-            transparent 34%
-        ),
-        linear-gradient(120deg, #07141b, #142b35);
+        radial-gradient(circle at 88% 40%,
+            rgba(var(--blue-rgb), 0.38),
+            transparent 36%),
+        var(--discover-mocha);
     color: var(--discover-cream);
 }
 
@@ -881,7 +964,7 @@
 }
 
 .discover-closing .discover-section-eyebrow {
-    color: var(--discover-gold);
+    color: var(--discover-cream);
 }
 
 .discover-closing h2 {
@@ -895,14 +978,14 @@
 }
 
 .discover-closing h2 span {
-    color: var(--discover-gold);
+    color: var(--discover-blue);
     font-style: italic;
 }
 
-.discover-closing-content > p:not(.discover-section-eyebrow) {
+.discover-closing-content>p:not(.discover-section-eyebrow) {
     margin: 17px 0 0;
-    color: #bdc8c8;
-    font-size: 0.9rem;
+    color: var(--discover-soft-text);
+    font-size: 0.98rem;
     line-height: 1.8;
 }
 
@@ -912,28 +995,31 @@
     gap: 15px;
     margin-top: 25px;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--discover-gold);
+    border-bottom: 3px solid var(--discover-blue);
     color: var(--discover-cream);
-    font-size: 0.84rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: gap 200ms ease, border-color 200ms ease;
 }
 
 .discover-closing-link span {
-    color: var(--discover-gold);
+    color: var(--discover-blue);
 }
 
 .discover-closing-link:hover {
-    color: var(--discover-gold);
+    gap: 22px;
+    border-color: var(--discover-cream);
 }
 
 .discover-closing-number {
     flex-shrink: 0;
-    color: rgba(233, 181, 109, 0.17);
+    color: rgba(var(--blue-rgb), 0.5);
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(7rem, 18vw, 16rem);
     line-height: 1;
     user-select: none;
 }
+
 
 /* ANIMATIONS */
 
@@ -966,6 +1052,7 @@
         transform: scale(1);
     }
 }
+
 
 /* TABLET */
 
@@ -1000,6 +1087,7 @@
     }
 }
 
+
 /* MOBILE */
 
 @media (max-width: 600px) {
@@ -1008,18 +1096,14 @@
         padding: 75px 6% 80px;
     }
 
-    /*
-       FIX: hero image ab poori width aur height mein fit hoti hai
-       (cover ki jagah 100% 100%), isliye crop nahi hoti.
-       Text aur baqi layout pehle jaisa hi hai.
-    */
+    /* Hero image fits the full width and height (100% 100%) instead of
+       being cropped by "cover". */
     .discover-hero::before {
         background:
-            linear-gradient(
-                90deg,
-                rgba(7, 20, 27, 0.78) 0%,
-                rgba(7, 20, 27, 0.32) 100%
-            ),
+            linear-gradient(90deg,
+                rgba(var(--mocha-rgb), 0.94) 0%,
+                rgba(var(--mocha-rgb), 0.62) 55%,
+                rgba(var(--mocha-rgb), 0.18) 100%),
             url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png") center center / 100% 100% no-repeat;
     }
 
@@ -1036,20 +1120,20 @@
 
     .discover-hero-description {
         margin-top: 20px;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         line-height: 1.8;
     }
 
     .discover-eyebrow {
         margin-bottom: 19px;
-        font-size: 0.63rem;
-        letter-spacing: 0.14em;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
     }
 
     .discover-hero-decoration {
         right: 6%;
         bottom: 22px;
-        font-size: 0.52rem;
+        font-size: 0.56rem;
     }
 
     .discover-decoration-line {
@@ -1073,7 +1157,7 @@
 
     .discover-section-description {
         margin-top: 12px;
-        font-size: 0.86rem;
+        font-size: 0.92rem;
     }
 
     .discover-count {
@@ -1082,11 +1166,11 @@
     }
 
     .discover-count span:first-child {
-        font-size: 2rem;
+        font-size: 2.1rem;
     }
 
     .discover-count span:last-child {
-        font-size: 0.48rem;
+        font-size: 0.54rem;
         letter-spacing: 0.08em;
     }
 
@@ -1097,18 +1181,18 @@
     }
 
     .discover-search-box {
-        min-height: 53px;
-        padding-inline: 12px;
+        min-height: 54px;
+        padding-inline: 16px;
     }
 
     .discover-search-box input {
         height: 50px;
-        font-size: 0.82rem;
+        font-size: 0.88rem;
     }
 
     .discover-search-button {
         width: 100%;
-        min-height: 50px;
+        min-height: 52px;
     }
 
     .discover-category-list {
@@ -1116,9 +1200,9 @@
     }
 
     .discover-category-button {
-        min-height: 38px;
-        padding: 8px 11px;
-        font-size: 0.72rem;
+        min-height: 40px;
+        padding: 8px 14px;
+        font-size: 0.76rem;
     }
 
     .discover-sort-area {
@@ -1136,7 +1220,7 @@
 
     .discover-results-bar p,
     .discover-reset-button {
-        font-size: 0.71rem;
+        font-size: 0.78rem;
     }
 
     .discover-grid {
@@ -1157,7 +1241,7 @@
     }
 
     .discover-card-description {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
 
     .discover-closing {
@@ -1177,6 +1261,7 @@
         font-size: 10rem;
     }
 }
+
 
 /* ACCESSIBILITY */
 

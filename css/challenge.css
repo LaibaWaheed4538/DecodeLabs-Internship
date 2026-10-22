@@ -1,22 +1,31 @@
 /*
-   CURIO MUSEUM — CHALLENGE PAGE
+   CURIO MUSEUM — CHALLENGE PAGE 
 */
 
 .challenge-page {
-    --challenge-bg: #07141b;
-    --challenge-panel: #10242b;
-    --challenge-panel-light: #162f36;
-    --challenge-gold: #e8b66c;
-    --challenge-gold-light: #f4d7a2;
-    --challenge-cream: #f4eee3;
-    --challenge-muted: #b8c1c0;
-    --challenge-border: rgba(232, 182, 108, 0.24);
-    --challenge-success: #80c9a2;
-    --challenge-error: #f09a91;
+    --challenge-blue: #A0D4E0;
+    --challenge-cream: #F2F0EA;
+    --challenge-mocha: #A58A6F;
 
-    background: var(--challenge-bg);
-    color: var(--challenge-cream);
+    --blue-rgb: 160, 212, 224;
+    --cream-rgb: 242, 240, 234;
+    --mocha-rgb: 165, 138, 111;
+
+    --challenge-border: rgba(var(--cream-rgb), 0.38);
+    /* on mocha */
+    --challenge-border-dark: rgba(var(--mocha-rgb), 0.42);
+    /* on linen */
+    --challenge-border-soft: rgba(var(--mocha-rgb), 0.24);
+    --challenge-tint: rgba(var(--blue-rgb), 0.18);
+    --challenge-soft-text: rgba(var(--cream-rgb), 0.9);
+
+    --challenge-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
+            rgba(var(--blue-rgb), 0.3));
+
+    background: var(--challenge-moon), var(--challenge-cream);
+    color: var(--challenge-mocha);
     font-family: "Inter", sans-serif;
+    font-weight: 500;
     overflow-wrap: anywhere;
 }
 
@@ -44,11 +53,36 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+.challenge-page ::selection {
+    color: var(--challenge-mocha);
+    background: var(--challenge-blue);
+}
+
 .challenge-page button:focus-visible,
 .challenge-page a:focus-visible,
 .challenge-page input:focus-visible {
-    outline: 3px solid var(--challenge-gold);
+    outline: 3px solid var(--challenge-mocha);
     outline-offset: 4px;
+}
+
+.challenge-page .site-header a:focus-visible,
+.challenge-page .site-header button:focus-visible,
+.challenge-page .site-header input:focus-visible,
+.challenge-page .challenge-hero a:focus-visible,
+.challenge-page .challenge-closing a:focus-visible,
+.challenge-page .site-footer a:focus-visible,
+.challenge-page .site-footer button:focus-visible,
+.challenge-page .site-footer input:focus-visible {
+    outline-color: var(--challenge-cream);
+}
+
+
+.challenge-page .quiz-container button:focus-visible,
+.challenge-page .quiz-container a:focus-visible,
+.challenge-page .quiz-container input:focus-visible,
+.challenge-page .quiz-results button:focus-visible,
+.challenge-page .quiz-results a:focus-visible {
+    outline-color: var(--challenge-mocha);
 }
 
 .challenge-page [hidden] {
@@ -67,13 +101,20 @@
     border: 0;
 }
 
+
 /* HEADER */
 
 .challenge-page .site-header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 20;
-    background: rgba(5, 17, 23, 0.96);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    width: 100%;
+    color: var(--challenge-cream);
+    background: transparent;
+    border-bottom: 1px solid var(--challenge-border);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .challenge-page .brand {
@@ -83,21 +124,23 @@
 }
 
 .challenge-page .brand-dot {
-    color: var(--challenge-gold);
+    color: var(--challenge-blue);
 }
 
 .challenge-page .nav-link {
+    color: var(--challenge-soft-text);
+    font-weight: 600;
     transition: color 0.25s ease;
 }
 
 .challenge-page .nav-link:hover,
 .challenge-page .nav-link.is-active {
-    color: var(--challenge-gold);
+    color: var(--challenge-cream);
 }
 
 .challenge-page .header-search {
     padding: 16px 5%;
-    background: #0b1c23;
+    background: var(--challenge-mocha);
     border-top: 1px solid var(--challenge-border);
 }
 
@@ -111,27 +154,34 @@
 .challenge-page .header-search-form input {
     flex: 1;
     min-width: 0;
-    padding: 13px 16px;
+    padding: 13px 20px;
     color: var(--challenge-cream);
-    background: #142a32;
+    background: rgba(var(--cream-rgb), 0.16);
     border: 1px solid var(--challenge-border);
-    border-radius: 6px;
+    border-radius: 999px;
 }
 
 .challenge-page .header-search-form input::placeholder {
-    color: #a6b3b3;
+    color: rgba(var(--cream-rgb), 0.82);
 }
 
 .challenge-page .search-submit {
-    padding: 12px 22px;
-    color: var(--challenge-bg);
-    background: var(--challenge-gold);
+    padding: 12px 24px;
+    color: var(--challenge-mocha);
+    background: var(--challenge-cream);
     border: 0;
-    border-radius: 6px;
+    border-radius: 999px;
     cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s ease;
 }
 
-/* HERO — ANCIENT OBSERVATORY BACKGROUND */
+.challenge-page .search-submit:hover {
+    background: var(--challenge-blue);
+}
+
+
+/* HERO — BACKGROUND */
 
 .challenge-page .challenge-hero {
     position: relative;
@@ -140,21 +190,20 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
     align-items: center;
     gap: clamp(24px, 5vw, 80px);
-    min-height: 660px;
-    padding: clamp(60px, 9vw, 120px) clamp(24px, 7vw, 110px);
+    min-height: 700px;
+    padding:
+        calc(clamp(60px, 9vw, 120px) + 92px) clamp(24px, 7vw, 110px) clamp(60px, 9vw, 120px);
     overflow: hidden;
 
     background:
-        linear-gradient(
-            90deg,
-            rgba(5, 17, 23, 0.90) 0%,
-            rgba(5, 17, 23, 0.65) 48%,
-            rgba(5, 17, 23, 0.25) 100%
-        ),
-        url("../assets/Ancient%20Observatory%20of%20Knowledge.png")
-        center center / cover no-repeat;
+        linear-gradient(90deg,
+            rgba(var(--mocha-rgb), 0.94) 0%,
+            rgba(var(--mocha-rgb), 0.68) 48%,
+            rgba(var(--mocha-rgb), 0.2) 100%),
+        url("../assets/Moonlit\ Temple\ of\ Celestial\ Knowledge.png") center center / cover no-repeat,
+        var(--challenge-mocha);
 
-    border-bottom: 1px solid rgba(232, 182, 108, 0.24);
+    border-bottom: 1px solid var(--challenge-border);
 }
 
 .challenge-page .challenge-hero::before {
@@ -163,12 +212,9 @@
     inset: 0;
     content: "";
     pointer-events: none;
-    background:
-        radial-gradient(
-            circle at 75% 30%,
-            rgba(232, 182, 108, 0.12),
-            transparent 36%
-        );
+    background: radial-gradient(circle at 75% 30%,
+            rgba(var(--blue-rgb), 0.35),
+            transparent 38%);
 }
 
 .challenge-page .challenge-hero-content {
@@ -185,20 +231,21 @@
     align-items: center;
     gap: 10px;
     margin: 0 0 24px;
-    color: var(--challenge-gold);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+    color: var(--challenge-cream);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     line-height: 1.8;
 }
 
 .challenge-page .challenge-eyebrow span {
+    color: var(--challenge-blue);
     font-size: 1.1rem;
 }
 
 .challenge-page .challenge-hero h1 {
     margin: 0;
-    color: #fffaf0;
+    color: var(--challenge-cream);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(3rem, 6.2vw, 6.1rem);
     font-weight: 400;
@@ -210,15 +257,15 @@
 .challenge-page .challenge-hero h1 em,
 .challenge-page .challenge-section-heading h2 em,
 .challenge-page .challenge-closing h2 em {
-    color: var(--challenge-gold);
+    color: var(--challenge-blue);
     font-weight: 400;
 }
 
 .challenge-page .challenge-hero-description {
     max-width: 490px;
     margin: 28px 0;
-    color: #d0d7d4;
-    font-size: clamp(0.94rem, 1.2vw, 1.05rem);
+    color: var(--challenge-cream);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
     line-height: 1.9;
 }
 
@@ -227,25 +274,27 @@
     align-items: center;
     justify-content: center;
     gap: 24px;
-    min-height: 50px;
-    padding: 14px 23px;
-    color: #111b1c;
-    background: linear-gradient(
-        135deg,
-        var(--challenge-gold-light),
-        var(--challenge-gold)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    min-height: 52px;
+    padding: 14px 26px;
+    color: var(--challenge-mocha);
+    background: var(--challenge-cream);
+    border: 2px solid var(--challenge-cream);
     border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.92rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .challenge-page .challenge-start-link:hover {
+    background: var(--challenge-blue);
+    border-color: var(--challenge-blue);
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(232, 182, 108, 0.2);
+    box-shadow: 0 0 0 6px rgba(var(--cream-rgb), 0.25);
 }
 
 .challenge-page .challenge-start-link span {
@@ -257,14 +306,16 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 45px;
-    color: #c0c9c6;
-    font-size: 0.64rem;
-    letter-spacing: 0.16em;
+    color: var(--challenge-cream);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
 }
 
 .challenge-page .challenge-hero-note span:nth-child(even) {
-    color: var(--challenge-gold);
+    color: var(--challenge-blue);
 }
+
 
 /* DECORATIVE HERO ART */
 
@@ -284,7 +335,7 @@
     z-index: -1;
     width: 65%;
     aspect-ratio: 1;
-    background: rgba(218, 157, 76, 0.14);
+    background: rgba(var(--blue-rgb), 0.5);
     border-radius: 50%;
     filter: blur(45px);
 }
@@ -293,19 +344,19 @@
     position: absolute;
     width: 84%;
     aspect-ratio: 1;
-    border: 1px solid rgba(232, 182, 108, 0.46);
+    border: 1.5px solid rgba(var(--blue-rgb), 0.85);
     border-radius: 50%;
 }
 
 .challenge-page .challenge-orbit-two {
     width: 66%;
-    border-color: rgba(234, 221, 191, 0.35);
+    border-color: rgba(var(--cream-rgb), 0.55);
     transform: rotateX(64deg) rotateZ(-24deg);
 }
 
 .challenge-page .challenge-orbit-three {
     width: 92%;
-    border-color: rgba(232, 182, 108, 0.19);
+    border-color: rgba(var(--blue-rgb), 0.5);
     transform: rotateY(64deg) rotateZ(22deg);
 }
 
@@ -314,19 +365,13 @@
     place-items: center;
     width: 42%;
     aspect-ratio: 0.82;
-    color: #f3d7a2;
-    background:
-        radial-gradient(
-            ellipse at 30% 25%,
-            #334b4c,
-            #10242a 65%,
-            #07141b
-        );
-    border: 1px solid rgba(232, 182, 108, 0.7);
+    color: var(--challenge-cream);
+    background: var(--challenge-blue);
+    border: 2px solid var(--challenge-cream);
     border-radius: 48% 48% 44% 44%;
     box-shadow:
-        0 0 65px rgba(232, 182, 108, 0.12),
-        inset 0 0 35px rgba(232, 182, 108, 0.09);
+        0 0 0 10px rgba(var(--blue-rgb), 0.3),
+        0 0 0 22px rgba(var(--blue-rgb), 0.14);
     transform: rotate(-5deg);
 }
 
@@ -340,22 +385,23 @@
     position: absolute;
     right: 0;
     bottom: 7%;
-    color: var(--challenge-gold-light);
-    font-size: 0.62rem;
-    letter-spacing: 0.19em;
+    color: var(--challenge-cream);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.17em;
 }
+
 
 /* SECTION HEADING */
 
 .challenge-page .challenge-section {
     padding: clamp(65px, 9vw, 120px) clamp(20px, 5vw, 70px);
     background:
-        radial-gradient(
-            ellipse at 50% 0%,
-            rgba(32, 67, 72, 0.3),
-            transparent 45%
-        ),
-        var(--challenge-bg);
+        radial-gradient(ellipse at 50% 0%,
+            rgba(var(--blue-rgb), 0.4),
+            transparent 50%),
+        var(--challenge-moon),
+        var(--challenge-cream);
 }
 
 .challenge-page .challenge-section-heading {
@@ -380,31 +426,43 @@
     text-wrap: balance;
 }
 
-.challenge-page .challenge-section-heading > p:last-child {
+
+.challenge-page .challenge-section-heading .challenge-eyebrow,
+.challenge-page .challenge-section-heading .challenge-eyebrow span,
+.challenge-page .challenge-section-heading h2 {
+    color: var(--challenge-mocha);
+}
+
+.challenge-page .challenge-section-heading h2 em {
+    color: var(--challenge-mocha);
+    background-image: linear-gradient(var(--challenge-blue), var(--challenge-blue));
+    background-repeat: no-repeat;
+    background-position: 0 90%;
+    background-size: 100% 0.3em;
+}
+
+.challenge-page .challenge-section-heading>p:last-child {
     max-width: 560px;
     margin: 20px auto 0;
-    color: var(--challenge-muted);
-    font-size: 0.97rem;
+    color: var(--challenge-mocha);
+    font-size: 1rem;
     line-height: 1.85;
 }
 
-/* QUIZ CONTAINER */
+
+/* QUIZ CONTAINER  */
 
 .challenge-page .quiz-container {
     width: min(100%, 850px);
     margin-inline: auto;
     padding: clamp(22px, 4vw, 46px);
-    background:
-        linear-gradient(
-            145deg,
-            rgba(24, 49, 55, 0.98),
-            rgba(10, 27, 34, 0.98)
-        );
-    border: 1px solid var(--challenge-border);
-    border-radius: 16px;
+    color: var(--challenge-mocha);
+    background: var(--challenge-cream);
+    border: 2px solid var(--challenge-blue);
+    border-radius: 20px;
     box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.22),
-        inset 0 1px rgba(255, 255, 255, 0.035);
+        0 0 0 8px rgba(var(--blue-rgb), 0.25),
+        0 30px 60px -34px rgba(var(--mocha-rgb), 0.75);
 }
 
 .challenge-page .quiz-topbar,
@@ -419,30 +477,32 @@
 .challenge-page .quiz-topbar {
     flex-wrap: wrap;
     padding-bottom: 23px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    border-bottom: 1.5px solid var(--challenge-border-soft);
 }
 
 .challenge-page .quiz-topic {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    color: var(--challenge-gold-light);
-    font-size: 0.85rem;
-    font-weight: 600;
+    color: var(--challenge-mocha);
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
 .challenge-page .quiz-topic-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--challenge-gold);
+    width: 10px;
+    height: 10px;
+    background: var(--challenge-blue);
+    border: 2px solid var(--challenge-mocha);
     border-radius: 50%;
-    box-shadow: 0 0 12px rgba(232, 182, 108, 0.4);
+    box-shadow: 0 0 0 4px rgba(var(--blue-rgb), 0.45);
 }
 
 .challenge-page .quiz-question-number {
     margin: 0;
-    color: var(--challenge-muted);
-    font-size: 0.82rem;
+    color: var(--challenge-mocha);
+    font-size: 0.86rem;
+    font-weight: 600;
 }
 
 .challenge-page .quiz-progress-area {
@@ -450,48 +510,49 @@
 }
 
 .challenge-page .quiz-progress-track {
-    height: 5px;
+    height: 8px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(var(--blue-rgb), 0.45);
     border-radius: 99px;
 }
 
 .challenge-page .quiz-progress-fill {
     width: 0;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        #bb8243,
-        var(--challenge-gold-light)
-    );
+    background: var(--challenge-mocha);
     border-radius: inherit;
     transition: width 0.4s ease;
 }
 
 .challenge-page .quiz-progress-labels {
     margin-top: 12px;
-    color: var(--challenge-muted);
-    font-size: 0.75rem;
+    color: var(--challenge-mocha);
+    font-size: 0.8rem;
 }
 
 .challenge-page #quiz-progress-percentage {
-    color: var(--challenge-gold);
-    font-weight: 600;
+    color: var(--challenge-mocha);
+    font-weight: 700;
 }
+
 
 /* QUESTION */
 
 .challenge-page .quiz-question-kicker {
+    display: inline-block;
     margin: 0 0 14px;
-    color: var(--challenge-gold);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    padding: 0.2rem 0.8rem;
+    color: var(--challenge-mocha);
+    background: rgba(var(--blue-rgb), 0.5);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
 }
 
 .challenge-page .quiz-question-area h3 {
     margin: 0;
-    color: #fffaf0;
+    color: var(--challenge-mocha);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(1.65rem, 3.4vw, 2.6rem);
     font-weight: 400;
@@ -501,10 +562,11 @@
 
 .challenge-page .quiz-instruction {
     margin: 15px 0 0;
-    color: var(--challenge-muted);
-    font-size: 0.88rem;
+    color: var(--challenge-mocha);
+    font-size: 0.92rem;
     line-height: 1.7;
 }
+
 
 /* ANSWER OPTIONS */
 
@@ -526,10 +588,10 @@
     min-width: 0;
     min-height: 76px;
     padding: 16px;
-    color: var(--challenge-cream);
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 9px;
+    color: var(--challenge-mocha);
+    background: var(--challenge-tint);
+    border: 1.5px solid var(--challenge-border-dark);
+    border-radius: 14px;
     cursor: pointer;
     transition:
         background 0.2s ease,
@@ -538,8 +600,8 @@
 }
 
 .challenge-page .quiz-option:hover {
-    background: rgba(232, 182, 108, 0.07);
-    border-color: rgba(232, 182, 108, 0.55);
+    background: rgba(var(--blue-rgb), 0.5);
+    border-color: var(--challenge-mocha);
     transform: translateY(-2px);
 }
 
@@ -551,7 +613,7 @@
 }
 
 .challenge-page .quiz-option:has(input:focus-visible) {
-    outline: 2px solid var(--challenge-gold);
+    outline: 3px solid var(--challenge-mocha);
     outline-offset: 3px;
 }
 
@@ -561,57 +623,70 @@
     place-items: center;
     width: 34px;
     height: 34px;
-    color: var(--challenge-gold-light);
-    background: rgba(232, 182, 108, 0.09);
-    border: 1px solid rgba(232, 182, 108, 0.32);
+    color: var(--challenge-mocha);
+    background: var(--challenge-cream);
+    border: 1.5px solid var(--challenge-mocha);
     border-radius: 50%;
-    font-size: 0.77rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
 }
 
 .challenge-page .quiz-option-text {
     flex: 1;
     min-width: 0;
-    font-size: 0.89rem;
+    font-size: 0.93rem;
     line-height: 1.55;
 }
 
 .challenge-page .quiz-option-indicator {
     flex: 0 0 auto;
-    color: #9caeaa;
+    color: var(--challenge-mocha);
     font-size: 1rem;
 }
 
+/* selected — filled blue */
 .challenge-page .quiz-option.is-selected {
-    background: rgba(232, 182, 108, 0.13);
-    border-color: var(--challenge-gold);
+    background: rgba(var(--blue-rgb), 0.6);
+    border-color: var(--challenge-mocha);
+    box-shadow: 0 0 0 3px rgba(var(--blue-rgb), 0.6);
 }
 
 .challenge-page .quiz-option.is-selected .quiz-option-letter {
-    color: #08171b;
-    background: var(--challenge-gold);
+    color: var(--challenge-cream);
+    background: var(--challenge-mocha);
 }
 
+/* correct — solid blue fill, solid thick border */
 .challenge-page .quiz-option.is-correct {
-    background: rgba(63, 145, 102, 0.14);
-    border-color: var(--challenge-success);
+    background: var(--challenge-blue);
+    border: 2.5px solid var(--challenge-mocha);
 }
 
 .challenge-page .quiz-option.is-correct .quiz-option-letter {
-    color: #071b12;
-    background: var(--challenge-success);
-    border-color: var(--challenge-success);
+    color: var(--challenge-cream);
+    background: var(--challenge-mocha);
+    border-color: var(--challenge-mocha);
 }
 
+.challenge-page .quiz-option.is-correct .quiz-option-text {
+    font-weight: 700;
+}
+
+/* incorrect — linen fill, dashed border, muted */
 .challenge-page .quiz-option.is-incorrect {
-    background: rgba(190, 78, 70, 0.12);
-    border-color: var(--challenge-error);
+    background: var(--challenge-cream);
+    border: 2px dashed var(--challenge-mocha);
 }
 
 .challenge-page .quiz-option.is-incorrect .quiz-option-letter {
-    color: #24100e;
-    background: var(--challenge-error);
-    border-color: var(--challenge-error);
+    color: var(--challenge-mocha);
+    background: transparent;
+    border: 1.5px dashed var(--challenge-mocha);
+}
+
+.challenge-page .quiz-option.is-incorrect .quiz-option-text {
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
 }
 
 .challenge-page .quiz-option:has(input:disabled) {
@@ -619,52 +694,58 @@
     transform: none;
 }
 
+
 /* FEEDBACK */
 
 .challenge-page .quiz-feedback {
     margin: 20px 0;
     padding: 18px 20px;
-    border: 1px solid var(--challenge-border);
-    border-radius: 9px;
+    color: var(--challenge-mocha);
+    background: var(--challenge-tint);
+    border: 1.5px solid var(--challenge-border-dark);
+    border-radius: 14px;
     animation: challenge-enter 0.3s ease both;
 }
 
 .challenge-page .quiz-feedback.is-correct {
-    background: rgba(63, 145, 102, 0.11);
-    border-color: rgba(128, 201, 162, 0.45);
+    background: rgba(var(--blue-rgb), 0.55);
+    border: 1.5px solid var(--challenge-mocha);
+    border-left: 6px solid var(--challenge-mocha);
 }
 
 .challenge-page .quiz-feedback.is-incorrect {
-    background: rgba(190, 78, 70, 0.1);
-    border-color: rgba(240, 154, 145, 0.4);
+    background: var(--challenge-cream);
+    border: 1.5px dashed var(--challenge-mocha);
+    border-left: 6px dashed var(--challenge-mocha);
 }
 
 .challenge-page .quiz-feedback.is-warning {
-    background: rgba(232, 182, 108, 0.08);
-    border-color: var(--challenge-border);
+    background: var(--challenge-tint);
+    border-color: var(--challenge-border-dark);
 }
 
 .challenge-page .quiz-feedback-title {
     margin: 0 0 7px;
-    color: var(--challenge-gold-light);
-    font-weight: 600;
+    color: var(--challenge-mocha);
+    font-weight: 700;
     line-height: 1.5;
 }
 
-.challenge-page .quiz-feedback.is-correct .quiz-feedback-title {
-    color: var(--challenge-success);
+.challenge-page .quiz-feedback.is-correct .quiz-feedback-title::before {
+    content: "✓  ";
 }
 
-.challenge-page .quiz-feedback.is-incorrect .quiz-feedback-title {
-    color: var(--challenge-error);
+.challenge-page .quiz-feedback.is-incorrect .quiz-feedback-title::before {
+    content: "✕  ";
 }
 
 .challenge-page .quiz-feedback-explanation {
     margin: 0;
-    color: #d0d8d4;
-    font-size: 0.88rem;
+    color: var(--challenge-mocha);
+    font-size: 0.92rem;
     line-height: 1.8;
 }
+
 
 /* QUIZ ACTIONS */
 
@@ -672,22 +753,23 @@
     flex-wrap: wrap;
     margin-top: 30px;
     padding-top: 22px;
-    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    border-top: 1.5px solid var(--challenge-border-soft);
 }
 
 .challenge-page .quiz-score-label {
     margin: 0;
-    color: var(--challenge-muted);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    color: var(--challenge-mocha);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     line-height: 1.8;
 }
 
 .challenge-page .quiz-score-label strong {
     display: block;
-    color: var(--challenge-gold-light);
+    color: var(--challenge-mocha);
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.65rem;
+    font-size: 1.75rem;
     font-weight: 400;
     letter-spacing: 0;
 }
@@ -699,17 +781,18 @@
     align-items: center;
     justify-content: center;
     gap: 18px;
-    min-height: 48px;
-    padding: 13px 21px;
-    color: #10191a;
-    background: var(--challenge-gold);
-    border: 1px solid var(--challenge-gold);
+    min-height: 50px;
+    padding: 13px 26px;
+    color: var(--challenge-cream);
+    background: var(--challenge-mocha);
+    border: 2px solid var(--challenge-mocha);
     border-radius: 999px;
-    font-size: 0.86rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
     cursor: pointer;
     transition:
         background 0.2s ease,
+        color 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
 }
@@ -717,9 +800,10 @@
 .challenge-page .quiz-submit-button:hover,
 .challenge-page .quiz-next-button:hover,
 .challenge-page .quiz-restart-button:hover {
-    background: var(--challenge-gold-light);
+    color: var(--challenge-mocha);
+    background: var(--challenge-blue);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(232, 182, 108, 0.14);
+    box-shadow: 0 0 0 5px rgba(var(--blue-rgb), 0.45);
 }
 
 .challenge-page .quiz-submit-button:disabled,
@@ -727,45 +811,56 @@
     opacity: 0.55;
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
 }
 
-/* RESULTS */
+
+/* RESULTS — also a linen card */
 
 .challenge-page .quiz-results {
     width: min(100%, 850px);
     margin: 35px auto 0;
     padding: clamp(30px, 6vw, 65px) 24px;
     text-align: center;
+    color: var(--challenge-mocha);
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(232, 182, 108, 0.13),
-            transparent 50%
-        ),
-        var(--challenge-panel);
-    border: 1px solid var(--challenge-border);
-    border-radius: 16px;
+        radial-gradient(circle at 50% 0%,
+            rgba(var(--blue-rgb), 0.5),
+            transparent 55%),
+        var(--challenge-cream);
+    border: 2px solid var(--challenge-blue);
+    border-radius: 20px;
+    box-shadow:
+        0 0 0 8px rgba(var(--blue-rgb), 0.25),
+        0 30px 60px -34px rgba(var(--mocha-rgb), 0.75);
 }
 
 .challenge-page .quiz-results-symbol {
     display: grid;
     place-items: center;
-    width: 70px;
-    height: 70px;
+    width: 74px;
+    height: 74px;
     margin: 0 auto 25px;
-    color: var(--challenge-gold);
-    border: 1px solid var(--challenge-border);
+    color: var(--challenge-mocha);
+    background: var(--challenge-blue);
+    border: 2px solid var(--challenge-mocha);
     border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(var(--blue-rgb), 0.4);
     font-size: 2.3rem;
 }
 
 .challenge-page .quiz-results .challenge-eyebrow {
     justify-content: center;
+    color: var(--challenge-mocha);
+}
+
+.challenge-page .quiz-results .challenge-eyebrow span {
+    color: var(--challenge-mocha);
 }
 
 .challenge-page .quiz-results h2 {
     margin: 0;
-    color: var(--challenge-cream);
+    color: var(--challenge-mocha);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(2rem, 4vw, 3.3rem);
     font-weight: 400;
@@ -775,7 +870,7 @@
 .challenge-page .quiz-results-description {
     max-width: 510px;
     margin: 18px auto;
-    color: var(--challenge-muted);
+    color: var(--challenge-mocha);
     line-height: 1.8;
 }
 
@@ -789,20 +884,25 @@
 }
 
 .challenge-page .quiz-final-score-number {
-    color: var(--challenge-gold-light);
+    color: var(--challenge-mocha);
     font-size: clamp(4rem, 9vw, 6rem);
     line-height: 1;
+    background-image: linear-gradient(var(--challenge-blue), var(--challenge-blue));
+    background-repeat: no-repeat;
+    background-position: 0 88%;
+    background-size: 100% 0.2em;
 }
 
 .challenge-page .quiz-final-score-divider,
 .challenge-page .quiz-final-score-total {
-    color: var(--challenge-muted);
+    color: var(--challenge-mocha);
     font-size: 2rem;
 }
 
 .challenge-page .quiz-final-percentage {
-    color: var(--challenge-gold);
-    font-size: 0.88rem;
+    color: var(--challenge-mocha);
+    font-size: 0.92rem;
+    font-weight: 700;
 }
 
 .challenge-page .quiz-results-actions {
@@ -819,29 +919,35 @@
     align-items: center;
     justify-content: center;
     gap: 12px;
-    min-height: 48px;
-    padding: 12px 18px;
-    color: var(--challenge-cream);
-    border: 1px solid var(--challenge-border);
+    min-height: 50px;
+    padding: 12px 24px;
+    color: var(--challenge-mocha);
+    border: 2px solid var(--challenge-mocha);
     border-radius: 999px;
-    font-size: 0.86rem;
+    font-size: 0.9rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .challenge-page .quiz-explore-link:hover {
-    color: var(--challenge-gold);
-    border-color: var(--challenge-gold);
+    color: var(--challenge-mocha);
+    background: var(--challenge-blue);
 }
 
 .challenge-page .quiz-error {
     padding: 20px;
-    color: var(--challenge-error);
-    background: rgba(190, 78, 70, 0.1);
-    border: 1px solid var(--challenge-error);
-    border-radius: 8px;
+    color: var(--challenge-mocha);
+    background: var(--challenge-cream);
+    border: 2px dashed var(--challenge-mocha);
+    border-radius: 12px;
+    font-weight: 600;
     line-height: 1.7;
 }
+
 
 /* CLOSING BANNER */
 
@@ -852,14 +958,11 @@
     overflow: hidden;
     text-align: center;
     background:
-        linear-gradient(
-            90deg,
-            rgba(5, 17, 23, 0.97),
-            rgba(8, 26, 32, 0.85)
-        ),
-        url("../assets/Ancient%20Observatory%20of%20Knowledge.png")
-        center 65% / cover no-repeat,
-        #0b2028;
+        linear-gradient(90deg,
+            rgba(var(--mocha-rgb), 0.97),
+            rgba(var(--mocha-rgb), 0.82)),
+        url("../assets/Ancient%20Observatory%20of%20Knowledge.png") center 65% / cover no-repeat,
+        var(--challenge-mocha);
     border-top: 1px solid var(--challenge-border);
 }
 
@@ -872,19 +975,21 @@
     justify-content: center;
 }
 
-.challenge-page .challenge-closing > div > p:not(.challenge-eyebrow) {
+.challenge-page .challenge-closing>div>p:not(.challenge-eyebrow) {
     max-width: 600px;
     margin: 23px auto 28px;
-    color: #c4ceca;
-    font-size: 0.95rem;
+    color: var(--challenge-soft-text);
+    font-size: 1rem;
     line-height: 1.9;
 }
+
 
 /* FOOTER */
 
 .challenge-page .site-footer {
     padding: 65px clamp(22px, 6vw, 85px) 22px;
-    background: #050f14;
+    color: var(--challenge-cream);
+    background: var(--challenge-mocha);
     border-top: 1px solid var(--challenge-border);
 }
 
@@ -898,24 +1003,25 @@
 
 .challenge-page .footer-brand {
     display: inline-block;
+    color: var(--challenge-cream);
     font-family: Georgia, "Times New Roman", serif;
     font-size: 2rem;
     text-decoration: none;
 }
 
 .challenge-page .footer-description,
-.challenge-page .footer-newsletter > p {
+.challenge-page .footer-newsletter>p {
     max-width: 310px;
-    color: var(--challenge-muted);
-    font-size: 0.84rem;
+    color: var(--challenge-soft-text);
+    font-size: 0.9rem;
     line-height: 1.9;
 }
 
 .challenge-page .footer-heading {
     margin: 0 0 20px;
-    color: var(--challenge-gold-light);
-    font-size: 0.88rem;
-    font-weight: 600;
+    color: var(--challenge-cream);
+    font-size: 0.92rem;
+    font-weight: 700;
 }
 
 .challenge-page .footer-links {
@@ -928,21 +1034,30 @@
 
 .challenge-page .footer-links a,
 .challenge-page .text-link {
-    color: #b9c3bf;
-    font-size: 0.82rem;
+    color: var(--challenge-soft-text);
+    font-size: 0.86rem;
     text-decoration: none;
-    transition: color 0.2s ease;
+    background-image: linear-gradient(var(--challenge-blue), var(--challenge-blue));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0 2px;
+    transition:
+        color 0.2s ease,
+        background-size 0.3s ease;
 }
 
 .challenge-page .footer-links a:hover,
 .challenge-page .text-link:hover {
-    color: var(--challenge-gold);
+    color: var(--challenge-cream);
+    background-size: 100% 2px;
 }
 
 .challenge-page .text-link {
     display: inline-flex;
     gap: 10px;
     margin-top: 10px;
+    color: var(--challenge-cream);
+    font-weight: 700;
 }
 
 .challenge-page .footer-bottom {
@@ -953,14 +1068,15 @@
     max-width: 1350px;
     margin: 50px auto 0;
     padding-top: 22px;
-    color: #879794;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.73rem;
+    color: var(--challenge-soft-text);
+    border-top: 1px solid var(--challenge-border);
+    font-size: 0.78rem;
 }
 
 .challenge-page .footer-bottom p {
     margin: 0;
 }
+
 
 /* ANIMATION */
 
@@ -975,6 +1091,7 @@
         transform: translateY(0);
     }
 }
+
 
 /* TABLET */
 
@@ -999,6 +1116,7 @@
     }
 }
 
+
 /* MOBILE */
 
 @media (max-width: 700px) {
@@ -1006,23 +1124,16 @@
         grid-template-columns: minmax(0, 1fr);
         gap: 25px;
         min-height: auto;
-        padding: 70px 22px 42px;
+        padding: 150px 22px 42px;
 
-        /*
-           FIX: image ab hero ki poori width aur height mein fit hoti hai
-           (cover ki jagah 100% 100%), isliye image crop nahi hoti.
-           Text, art aur button ki position pehle jaisi hi hai.
-        */
+
         background:
-            linear-gradient(
-                180deg,
-                rgba(5, 17, 23, 0.40) 0%,
-                rgba(5, 17, 23, 0.52) 58%,
-                rgba(7, 20, 27, 0.75) 100%
-            ),
-            url("../assets/Ancient%20Observatory%20of%20Knowledge.png")
-            center center / 100% 100% no-repeat,
-            #07141b;
+            linear-gradient(180deg,
+                rgba(var(--mocha-rgb), 0.55) 0%,
+                rgba(var(--mocha-rgb), 0.68) 58%,
+                rgba(var(--mocha-rgb), 0.88) 100%),
+            url("../assets/Ancient%20Observatory%20of%20Knowledge.png") center center / 100% 100% no-repeat,
+            var(--challenge-mocha);
     }
 
     .challenge-page .challenge-hero-content {
@@ -1036,7 +1147,7 @@
 
     .challenge-page .challenge-hero-description {
         margin-block: 22px;
-        font-size: 0.94rem;
+        font-size: 0.98rem;
     }
 
     .challenge-page .challenge-hero-note {
@@ -1055,7 +1166,7 @@
     .challenge-page .challenge-art-label {
         right: -10%;
         bottom: 5%;
-        font-size: 0.54rem;
+        font-size: 0.58rem;
     }
 
     .challenge-page .challenge-section {
@@ -1072,7 +1183,7 @@
 
     .challenge-page .quiz-container {
         padding: 23px 17px;
-        border-radius: 12px;
+        border-radius: 16px;
     }
 
     .challenge-page .quiz-topbar {
@@ -1091,7 +1202,7 @@
     }
 
     .challenge-page .quiz-option-text {
-        font-size: 0.88rem;
+        font-size: 0.92rem;
     }
 
     .challenge-page .quiz-actions {
@@ -1099,7 +1210,7 @@
         gap: 14px;
     }
 
-    .challenge-page .quiz-actions > button {
+    .challenge-page .quiz-actions>button {
         flex: 1 1 150px;
     }
 
@@ -1126,6 +1237,7 @@
     }
 }
 
+
 /* SMALL MOBILE */
 
 @media (max-width: 380px) {
@@ -1141,7 +1253,7 @@
         max-width: 100%;
         gap: 12px;
         padding-inline: 17px;
-        font-size: 0.82rem;
+        font-size: 0.84rem;
     }
 
     .challenge-page .quiz-container {
@@ -1153,10 +1265,10 @@
     }
 
     .challenge-page .quiz-progress-labels {
-        font-size: 0.68rem;
+        font-size: 0.72rem;
     }
 
-    .challenge-page .quiz-actions > button {
+    .challenge-page .quiz-actions>button {
         flex-basis: 100%;
     }
 
@@ -1165,9 +1277,11 @@
     }
 }
 
+
 /* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
+
     .challenge-page *,
     .challenge-page *::before,
     .challenge-page *::after {

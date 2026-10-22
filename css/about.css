@@ -1,19 +1,31 @@
 /*
-   CURIO MUSEUM — ABOUT PAGE
-   Antique • Cinematic • Responsive
+   CURIO MUSEUM — ABOUT PAGE — three-colour edition
+
+   
 */
 
 .about-page {
-    --about-bg: #09171c;
-    --about-panel: #10252b;
-    --about-gold: #dcb77a;
-    --about-cream: #f4efe5;
-    --about-muted: #b5c0bc;
-    --about-border: rgba(220, 183, 122, 0.24);
+    --about-blue: #A0D4E0;
+    --about-cream: #F2F0EA;
+    --about-mocha: #A58A6F;
 
-    color: var(--about-cream);
-    background: var(--about-bg);
+    --blue-rgb: 160, 212, 224;
+    --cream-rgb: 242, 240, 234;
+    --mocha-rgb: 165, 138, 111;
+
+    --about-border: rgba(var(--cream-rgb), 0.38);
+    --about-border-dark: rgba(var(--mocha-rgb), 0.42);
+    --about-border-soft: rgba(var(--mocha-rgb), 0.24);
+    --about-tint: rgba(var(--blue-rgb), 0.18);
+    --about-soft-text: rgba(var(--cream-rgb), 0.9);
+
+    --about-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
+            rgba(var(--blue-rgb), 0.3));
+
+    background: var(--about-moon), var(--about-cream);
+    color: var(--about-mocha);
     font-family: "DM Sans", sans-serif;
+    font-weight: 500;
     overflow-wrap: anywhere;
 }
 
@@ -36,11 +48,24 @@
     color: inherit;
 }
 
+.about-page ::selection {
+    color: var(--about-mocha);
+    background: var(--about-blue);
+}
+
 .about-page a:focus-visible,
 .about-page button:focus-visible {
-    outline: 2px solid var(--about-gold);
+    outline: 3px solid var(--about-mocha);
     outline-offset: 4px;
 }
+
+
+.about-page .about-hero a:focus-visible,
+.about-page .about-closing a:focus-visible,
+.about-page .about-closing button:focus-visible {
+    outline-color: var(--about-cream);
+}
+
 
 /*
    HERO — FULL BACKGROUND IMAGE
@@ -54,7 +79,7 @@
     min-height: clamp(580px, 85vh, 850px);
     padding: clamp(65px, 9vw, 120px) clamp(22px, 8vw, 115px);
     overflow: hidden;
-    background: #09171c;
+    background: var(--about-mocha);
     border-bottom: 1px solid var(--about-border);
 }
 
@@ -64,14 +89,14 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../assets/Antique\ Explorer’s\ Study.png");
+    background-image: url("../assets/Sunlit\ Antiquarian\ Study\ with\ Globe\ and\ Atlas.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     animation: about-image-reveal 1.4s ease both;
 }
 
-/* Dark cinematic overlay */
+/* Mocha overlay with a sky-blue glow */
 
 .about-page .about-hero::before {
     position: absolute;
@@ -79,17 +104,13 @@
     inset: 0;
     content: "";
     background:
-        linear-gradient(
-            90deg,
-            rgba(4, 15, 20, 0.94) 0%,
-            rgba(4, 15, 20, 0.79) 42%,
-            rgba(4, 15, 20, 0.34) 100%
-        ),
-        linear-gradient(
-            0deg,
-            rgba(4, 15, 20, 0.62),
-            transparent 45%
-        );
+        radial-gradient(circle at 78% 28%,
+            rgba(var(--blue-rgb), 0.35),
+            transparent 40%),
+        linear-gradient(90deg,
+            rgba(var(--mocha-rgb), 0.94) 0%,
+            rgba(var(--mocha-rgb), 0.72) 42%,
+            rgba(var(--mocha-rgb), 0.2) 100%);
 }
 
 .about-page .about-hero-content {
@@ -102,38 +123,52 @@
 
 .about-page .about-eyebrow {
     margin: 0 0 18px;
-    color: var(--about-gold);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.19em;
+    color: var(--about-mocha);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     line-height: 1.8;
+}
+
+.about-page .about-hero .about-eyebrow,
+.about-page .about-closing .about-eyebrow {
+    color: var(--about-cream);
 }
 
 .about-page .about-hero h1 {
     margin: 0;
-    color: #fffaf0;
+    color: var(--about-cream);
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(3rem, 6.7vw, 6rem);
     font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.045em;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
     text-wrap: balance;
 }
 
 .about-page .about-hero h1 em,
+.about-page .about-closing h2 em {
+    color: var(--about-blue);
+    font-weight: 400;
+}
+
+
 .about-page .about-intro h2 em,
 .about-page .about-mission h2 em,
-.about-page .about-section-heading h2 em,
-.about-page .about-closing h2 em {
-    color: var(--about-gold);
+.about-page .about-section-heading h2 em {
+    color: var(--about-mocha);
     font-weight: 400;
+    background-image: linear-gradient(var(--about-blue), var(--about-blue));
+    background-repeat: no-repeat;
+    background-position: 0 90%;
+    background-size: 100% 0.3em;
 }
 
 .about-page .about-hero-description {
     max-width: 510px;
     margin: 25px 0 30px;
-    color: #e0e5e0;
-    font-size: 0.96rem;
+    color: var(--about-cream);
+    font-size: 1rem;
     line-height: 1.9;
 }
 
@@ -141,38 +176,42 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    min-height: 48px;
+    gap: 22px;
+    min-height: 52px;
     max-width: 100%;
-    padding: 13px 21px;
-    color: #111b1c;
-    background: var(--about-gold);
-    border: 1px solid var(--about-gold);
-    border-radius: 3px;
-    font-size: 0.84rem;
-    font-weight: 600;
+    padding: 14px 26px;
+    color: var(--about-mocha);
+    background: var(--about-cream);
+    border: 2px solid var(--about-cream);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
     text-decoration: none;
     transition:
-        background-color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
         transform 0.25s ease,
         box-shadow 0.25s ease;
 }
 
 .about-page .about-primary-link:hover {
-    color: #111b1c;
-    background: #f0d6a7;
+    color: var(--about-mocha);
+    background: var(--about-blue);
+    border-color: var(--about-blue);
     transform: translateY(-3px);
-    box-shadow: 0 10px 28px rgba(220, 183, 122, 0.16);
+    box-shadow: 0 0 0 6px rgba(var(--cream-rgb), 0.25);
 }
 
 .about-page .about-hero-caption {
     position: absolute;
     right: clamp(20px, 4vw, 55px);
     bottom: 24px;
-    color: rgba(244, 239, 229, 0.75);
+    color: var(--about-cream);
     font-size: 0.62rem;
+    font-weight: 600;
     letter-spacing: 0.16em;
 }
+
 
 /*
    INTRODUCTION
@@ -185,7 +224,7 @@
     max-width: 1400px;
     margin: auto;
     padding: clamp(70px, 9vw, 125px) clamp(22px, 7vw, 95px);
-    border-bottom: 1px solid var(--about-border);
+    border-bottom: 1.5px solid var(--about-border-soft);
 }
 
 .about-page .about-intro-label {
@@ -200,24 +239,34 @@
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(2.4rem, 4.8vw, 4.4rem);
     font-weight: 400;
-    line-height: 1.17;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
     text-wrap: balance;
 }
 
-.about-page .about-intro-content > p {
+.about-page .about-intro h2,
+.about-page .about-mission h2,
+.about-page .about-section-heading h2 {
+    color: var(--about-mocha);
+}
+
+.about-page .about-closing h2 {
+    color: var(--about-cream);
+}
+
+.about-page .about-intro-content>p {
     max-width: 650px;
-    color: var(--about-muted);
-    font-size: 0.94rem;
+    color: var(--about-mocha);
+    font-size: 0.98rem;
     line-height: 2;
 }
 
-.about-page .about-intro-content > p:first-of-type {
+.about-page .about-intro-content>p:first-of-type {
     margin-top: 25px;
 }
 
-/*
-   MISSION — IMAGE AND TEXT
-*/
+
+
 
 .about-page .about-mission {
     display: grid;
@@ -229,35 +278,38 @@
     padding: clamp(65px, 8vw, 105px) clamp(22px, 6vw, 80px);
 }
 
+
 .about-page .about-mission-image {
     min-width: 0;
     width: 100%;
     aspect-ratio: 4 / 4.5;
     background:
-        linear-gradient(
-            0deg,
-            rgba(5, 15, 19, 0.2),
-            transparent 45%
-        ),
-        url("https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1100&q=85")
-        center / cover no-repeat;
-    border: 1px solid var(--about-border);
-    box-shadow: 14px 14px 0 rgba(220, 183, 122, 0.055);
+        linear-gradient(0deg,
+            rgba(var(--mocha-rgb), 0.18),
+            transparent 45%),
+        url("https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1100&q=85") center / cover no-repeat;
+    border: 2px solid var(--about-blue);
+    border-radius: 20px;
+    box-shadow:
+        0 0 0 8px rgba(var(--blue-rgb), 0.25),
+        0 30px 60px -34px rgba(var(--mocha-rgb), 0.75);
     transition: box-shadow 0.35s ease;
 }
 
 .about-page .about-mission-image:hover {
-    box-shadow: 18px 18px 0 rgba(220, 183, 122, 0.1);
+    box-shadow:
+        0 0 0 12px rgba(var(--blue-rgb), 0.4),
+        0 34px 64px -32px rgba(var(--mocha-rgb), 0.85);
 }
 
 .about-page .about-mission-content {
     max-width: 550px;
 }
 
-.about-page .about-mission-content > p:not(.about-eyebrow) {
+.about-page .about-mission-content>p:not(.about-eyebrow) {
     margin: 24px 0;
-    color: var(--about-muted);
-    font-size: 0.94rem;
+    color: var(--about-mocha);
+    font-size: 0.98rem;
     line-height: 1.95;
 }
 
@@ -265,28 +317,37 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding-bottom: 7px;
-    color: var(--about-gold);
-    border-bottom: 1px solid var(--about-border);
-    font-size: 0.85rem;
+    padding: 11px 24px;
+    color: var(--about-mocha);
+    border: 2px solid var(--about-mocha);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: gap 0.25s ease, color 0.25s ease;
+    transition:
+        gap 0.25s ease,
+        background 0.25s ease;
 }
 
 .about-page .about-text-link:hover {
     gap: 18px;
-    color: var(--about-cream);
+    background: var(--about-blue);
 }
 
+
 /*
-   EXPLORATION PILLARS
+   EXPLORATION PILLARS 
 */
 
 .about-page .about-pillars {
     padding: clamp(70px, 9vw, 115px) clamp(20px, 6vw, 80px);
-    background: #0d2025;
-    border-top: 1px solid var(--about-border);
-    border-bottom: 1px solid var(--about-border);
+    background:
+        radial-gradient(ellipse at 50% 0%,
+            rgba(var(--blue-rgb), 0.45),
+            transparent 55%),
+        rgba(var(--blue-rgb), 0.3);
+    border-top: 1.5px solid var(--about-border-dark);
+    border-bottom: 1.5px solid var(--about-border-dark);
 }
 
 .about-page .about-section-heading {
@@ -295,18 +356,18 @@
     text-align: center;
 }
 
-.about-page .about-section-heading > p:last-child {
+.about-page .about-section-heading>p:last-child {
     max-width: 530px;
     margin: 20px auto 0;
-    color: var(--about-muted);
-    font-size: 0.92rem;
+    color: var(--about-mocha);
+    font-size: 0.96rem;
     line-height: 1.9;
 }
 
 .about-page .about-pillar-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
+    gap: 24px;
     max-width: 1300px;
     margin: auto;
 }
@@ -314,39 +375,58 @@
 .about-page .about-pillar {
     position: relative;
     min-width: 0;
-    padding: 30px 25px;
-    background: rgba(255, 255, 255, 0.018);
-    border: 1px solid var(--about-border);
+    padding: 32px 26px;
+    color: var(--about-mocha);
+    background: var(--about-cream);
+    border: 2px solid var(--about-blue);
+    border-radius: 20px;
+    box-shadow:
+        0 0 0 6px rgba(var(--blue-rgb), 0.2),
+        0 24px 44px -32px rgba(var(--mocha-rgb), 0.75);
     transition:
         transform 0.35s ease,
         border-color 0.35s ease,
-        background-color 0.35s ease;
+        box-shadow 0.35s ease;
 }
 
 .about-page .about-pillar:hover {
     transform: translateY(-6px);
-    background: rgba(220, 183, 122, 0.045);
-    border-color: rgba(220, 183, 122, 0.55);
+    border-color: var(--about-mocha);
+    box-shadow:
+        0 0 0 8px rgba(var(--blue-rgb), 0.4),
+        0 30px 50px -30px rgba(var(--mocha-rgb), 0.85);
 }
 
 .about-page .about-pillar-number {
     position: absolute;
     top: 24px;
     right: 24px;
-    color: rgba(220, 183, 122, 0.65);
+    padding: 0.15rem 0.7rem;
+    color: var(--about-mocha);
+    background: rgba(var(--blue-rgb), 0.5);
+    border-radius: 999px;
     font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
 }
 
 .about-page .about-pillar-symbol {
-    display: block;
-    margin-bottom: 28px;
-    color: var(--about-gold);
-    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 26px;
+    color: var(--about-mocha);
+    background: var(--about-blue);
+    border: 2px solid var(--about-mocha);
+    border-radius: 50%;
+    box-shadow: 0 0 0 6px rgba(var(--blue-rgb), 0.4);
+    font-size: 1.8rem;
 }
 
 .about-page .about-pillar h3 {
     margin: 0 0 14px;
+    color: var(--about-mocha);
     font-family: "Playfair Display", Georgia, serif;
     font-size: 1.7rem;
     font-weight: 400;
@@ -355,26 +435,33 @@
 .about-page .about-pillar p {
     min-height: 95px;
     margin: 0 0 24px;
-    color: var(--about-muted);
-    font-size: 0.86rem;
+    color: var(--about-mocha);
+    font-size: 0.9rem;
     line-height: 1.9;
 }
 
-.about-page .about-pillar > a {
+.about-page .about-pillar>a {
     display: inline-block;
-    color: var(--about-gold);
-    font-size: 0.8rem;
+    color: var(--about-mocha);
+    font-size: 0.84rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: transform 0.25s ease;
+    background-image: linear-gradient(var(--about-blue), var(--about-blue));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 3px;
+    transition:
+        background-size 0.3s ease,
+        transform 0.25s ease;
 }
 
-.about-page .about-pillar > a:hover {
+.about-page .about-pillar>a:hover {
+    background-size: 100% 100%;
     transform: translateX(4px);
 }
 
-/*
-   CLOSING CALL TO ACTION
-*/
+
+
 
 .about-page .about-closing {
     position: relative;
@@ -382,7 +469,8 @@
     padding: clamp(75px, 10vw, 125px) 22px;
     overflow: hidden;
     text-align: center;
-    background: #09171c;
+    color: var(--about-cream);
+    background: var(--about-mocha);
     border-top: 1px solid var(--about-border);
 }
 
@@ -392,21 +480,22 @@
     inset: 0;
     content: "";
     background:
-        linear-gradient(
-            rgba(5, 16, 21, 0.91),
-            rgba(5, 16, 21, 0.95)
-        ),
-        url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1600&q=85")
-        center / cover no-repeat;
+        radial-gradient(circle at 50% 0%,
+            rgba(var(--blue-rgb), 0.35),
+            transparent 55%),
+        linear-gradient(rgba(var(--mocha-rgb), 0.92),
+            rgba(var(--mocha-rgb), 0.96)),
+        url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1600&q=85") center / cover no-repeat;
 }
 
-.about-page .about-closing > p:not(.about-eyebrow) {
+.about-page .about-closing>p:not(.about-eyebrow) {
     max-width: 550px;
     margin: 20px auto 28px;
-    color: var(--about-muted);
-    font-size: 0.92rem;
+    color: var(--about-soft-text);
+    font-size: 1rem;
     line-height: 1.9;
 }
+
 
 /*
    PAGE TRANSITIONS
@@ -449,6 +538,7 @@
     transform: translateY(0);
 }
 
+
 /*
    TABLET
 */
@@ -473,6 +563,7 @@
     }
 }
 
+
 /*
    MOBILE
 */
@@ -483,32 +574,21 @@
         padding: 80px 22px 90px;
     }
 
-    /*
-       FIX: image ab hero ki poori width aur height mein fit hoti hai
-       (cover ki jagah 100% 100%), isliye crop nahi hoti.
-       Text, button aur caption ki position pehle jaisi hi hai.
-    */
+    /* Image fits the full hero width and height  */
     .about-page .about-hero-image {
         background-position: center center;
         background-size: 100% 100%;
     }
 
     .about-page .about-hero::before {
-        position: absolute;
-        z-index: -1;
-        inset: 0;
-        content: "";
         background:
-            linear-gradient(
-                90deg,
-                rgba(4, 15, 20, 0.55),
-                rgba(4, 15, 20, 0.20)
-            ),
-            linear-gradient(
-                0deg,
-                rgba(4, 15, 20, 0.35),
-                transparent 65%
-            );
+            radial-gradient(circle at 80% 20%,
+                rgba(var(--blue-rgb), 0.3),
+                transparent 45%),
+            linear-gradient(180deg,
+                rgba(var(--mocha-rgb), 0.6) 0%,
+                rgba(var(--mocha-rgb), 0.75) 55%,
+                rgba(var(--mocha-rgb), 0.92) 100%);
     }
 
     .about-page .about-hero h1 {
@@ -516,7 +596,7 @@
     }
 
     .about-page .about-hero-description {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .about-page .about-hero-caption {
@@ -540,8 +620,8 @@
         font-size: clamp(2.3rem, 8.5vw, 3.2rem);
     }
 
-    .about-page .about-intro-content > p {
-        font-size: 0.9rem;
+    .about-page .about-intro-content>p {
+        font-size: 0.93rem;
     }
 
     .about-page .about-mission {
@@ -552,7 +632,7 @@
 
     .about-page .about-mission-image {
         aspect-ratio: 4 / 3;
-        box-shadow: 7px 7px 0 rgba(220, 183, 122, 0.06);
+        border-radius: 16px;
     }
 
     .about-page .about-pillars {
@@ -565,11 +645,12 @@
 
     .about-page .about-pillar-grid {
         grid-template-columns: minmax(0, 1fr);
-        gap: 16px;
+        gap: 18px;
     }
 
     .about-page .about-pillar {
-        padding: 25px 22px;
+        padding: 26px 22px;
+        border-radius: 16px;
     }
 
     .about-page .about-pillar p {
@@ -590,16 +671,24 @@
         font-size: 2.45rem;
     }
 
+    .about-page .about-primary-link {
+        gap: 12px;
+        padding-inline: 18px;
+        font-size: 0.84rem;
+    }
+
     .about-page .about-pillar {
         padding: 22px 18px;
     }
 }
+
 
 /*
    REDUCED MOTION ACCESSIBILITY
 */
 
 @media (prefers-reduced-motion: reduce) {
+
     .about-page .about-hero-image,
     .about-page .about-hero-content {
         animation: none !important;
