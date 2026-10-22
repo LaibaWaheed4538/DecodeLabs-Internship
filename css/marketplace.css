@@ -20,6 +20,7 @@
     --market-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
             rgba(var(--blue-rgb), 0.3));
 
+    position: relative;
     background: var(--market-moon), var(--market-cream);
     color: var(--market-mocha);
     font-weight: 500;
@@ -49,6 +50,120 @@
     padding: 0 0.3rem;
     border: 1.5px solid var(--market-mocha);
     border-radius: 50%;
+}
+
+
+/* HEADER — same setup as the Challenge page:
+   absolute, over the page, cream text, colours only.
+   A soft mocha fade sits behind it because this page
+   has no dark hero image under the header. */
+
+.marketplace-page .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    color: var(--market-cream);
+    background: linear-gradient(180deg,
+            rgba(var(--mocha-rgb), 0.92) 0%,
+            rgba(var(--mocha-rgb), 0.6) 60%,
+            rgba(var(--mocha-rgb), 0) 100%);
+    border-bottom: 1px solid var(--market-border);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.marketplace-page .brand {
+    color: var(--market-cream);
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: -1.5px;
+}
+
+.marketplace-page .brand-dot {
+    color: var(--market-blue);
+}
+
+.marketplace-page .nav-link {
+    color: var(--market-soft-text);
+    font-weight: 600;
+    transition: color 0.25s ease;
+}
+
+.marketplace-page .nav-link:hover,
+.marketplace-page .nav-link.is-active {
+    color: var(--market-cream);
+}
+
+.marketplace-page .site-header .marketplace-cart {
+    color: var(--market-cream);
+}
+
+.marketplace-page .site-header .marketplace-cart span {
+    color: var(--market-mocha);
+    background: var(--market-blue);
+    border-color: var(--market-blue);
+    font-weight: 700;
+}
+
+.marketplace-page .site-header .icon-button,
+.marketplace-page .site-header .menu-toggle {
+    color: var(--market-cream);
+}
+
+.marketplace-page .header-search {
+    padding: 16px 5%;
+    background: var(--market-mocha);
+    border-top: 1px solid var(--market-border);
+}
+
+.marketplace-page .header-search-form {
+    display: flex;
+    gap: 10px;
+    width: min(100%, 760px);
+    margin-inline: auto;
+}
+
+.marketplace-page .header-search-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 20px;
+    color: var(--market-cream);
+    background: rgba(var(--cream-rgb), 0.16);
+    border: 1px solid var(--market-border);
+    border-radius: 999px;
+}
+
+.marketplace-page .header-search-form input::placeholder {
+    color: rgba(var(--cream-rgb), 0.82);
+}
+
+.marketplace-page .search-submit {
+    padding: 12px 24px;
+    color: var(--market-mocha);
+    background: var(--market-cream);
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s ease;
+}
+
+.marketplace-page .search-submit:hover {
+    background: var(--market-blue);
+}
+
+/* mobile menu panel, only when it is open */
+.marketplace-page .primary-navigation.is-open,
+.marketplace-page .primary-navigation.active,
+.marketplace-page .primary-navigation.open {
+    background: var(--market-mocha);
+}
+
+.marketplace-page .site-header a:focus-visible,
+.marketplace-page .site-header button:focus-visible,
+.marketplace-page .site-header input:focus-visible {
+    outline-color: var(--market-cream);
 }
 
 
@@ -503,197 +618,5 @@
         scroll-behavior: auto !important;
         animation: none !important;
         transition: none !important;
-    }
-}
-
-
-/* CURIO MARKETPLACE NAVBAR */
-
-.marketplace-page .site-header {
-    background: var(--market-mocha) !important;
-    color: var(--market-cream) !important;
-    opacity: 1 !important;
-    border-bottom: 1px solid var(--market-border);
-    box-shadow: 0 4px 18px rgba(var(--mocha-rgb), 0.35);
-}
-
-.marketplace-page .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    width: 100%;
-    max-width: 1600px;
-    min-height: 76px;
-    margin: 0 auto;
-    padding: 14px clamp(16px, 3vw, 42px);
-    box-sizing: border-box;
-}
-
-.marketplace-page .brand {
-    flex-shrink: 0;
-    color: var(--market-cream) !important;
-    opacity: 1 !important;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.marketplace-page .brand-dot {
-    color: var(--market-blue) !important;
-}
-
-.marketplace-page .primary-navigation {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(12px, 1.5vw, 24px);
-    min-width: 0;
-}
-
-.marketplace-page .primary-navigation .nav-link {
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-    padding: 10px 0;
-    color: var(--market-soft-text) !important;
-    opacity: 1 !important;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: color 180ms ease;
-}
-
-.marketplace-page .primary-navigation .nav-link:hover,
-.marketplace-page .primary-navigation .nav-link.is-active {
-    color: var(--market-cream) !important;
-}
-
-.marketplace-page .primary-navigation .nav-link.is-active::after {
-    content: "";
-    position: absolute;
-    bottom: 3px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--market-blue);
-    border-radius: 99px;
-}
-
-.marketplace-page .header-actions {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 14px;
-}
-
-.marketplace-page .site-header .marketplace-cart {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--market-cream) !important;
-    font-size: 13px;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.marketplace-page .site-header .marketplace-cart span {
-    display: inline-grid;
-    place-items: center;
-    min-width: 23px;
-    height: 23px;
-    border: 1.5px solid var(--market-blue);
-    border-radius: 50%;
-    color: var(--market-mocha);
-    background: var(--market-blue);
-    font-weight: 700;
-}
-
-.marketplace-page .header-actions .icon-button {
-    color: var(--market-cream) !important;
-    opacity: 1 !important;
-}
-
-
-.marketplace-page .site-header a:focus-visible,
-.marketplace-page .site-header button:focus-visible {
-    outline-color: var(--market-cream);
-}
-
-.marketplace-page .menu-toggle {
-    display: none;
-}
-
-
-/* TABLET AND MOBILE */
-
-@media (max-width: 1100px) {
-    .marketplace-page .header-inner {
-        position: relative;
-        gap: 12px;
-    }
-
-    .marketplace-page .menu-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        color: var(--market-cream) !important;
-    }
-
-    .marketplace-page .primary-navigation {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        z-index: 1001;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        gap: 0;
-        width: 100%;
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
-        padding: 12px 24px;
-        box-sizing: border-box;
-        background: var(--market-mocha) !important;
-        border-top: 1px solid var(--market-border);
-        box-shadow: 0 12px 24px rgba(var(--mocha-rgb), 0.4);
-    }
-
-    .marketplace-page .primary-navigation.is-open,
-    .marketplace-page .primary-navigation.active,
-    .marketplace-page .primary-navigation.open {
-        display: flex;
-    }
-
-    .marketplace-page .primary-navigation .nav-link {
-        width: 100%;
-        padding: 14px 0;
-        border-bottom: 1px solid var(--market-border);
-        white-space: normal;
-    }
-
-    .marketplace-page .primary-navigation .nav-link.is-active::after {
-        bottom: 5px;
-        width: 32px;
-    }
-}
-
-@media (max-width: 480px) {
-    .marketplace-page .header-inner {
-        min-height: 66px;
-        padding: 12px 16px;
-    }
-
-    .marketplace-page .header-actions {
-        gap: 10px;
-    }
-
-    .marketplace-page .site-header .marketplace-cart {
-        font-size: 12px;
     }
 }

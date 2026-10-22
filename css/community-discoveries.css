@@ -23,6 +23,7 @@
     --cd-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
             rgba(var(--blue-rgb), 0.3));
 
+    position: relative;
     margin: 0;
     background: var(--cd-moon), var(--cd-cream);
     color: var(--cd-mocha);
@@ -90,44 +91,54 @@
 }
 
 
-/* HEADER */
+/* HEADER — same setup as the Challenge page:
+   absolute, over the page, cream text, colours only.
+   A soft mocha fade sits behind it because this page
+   has no dark hero image under the header. */
 
 .community-page .site-header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 20;
-    background: var(--cd-mocha);
+    width: 100%;
     color: var(--cd-cream);
+    background: linear-gradient(180deg,
+            rgba(var(--mocha-rgb), 0.92) 0%,
+            rgba(var(--mocha-rgb), 0.6) 60%,
+            rgba(var(--mocha-rgb), 0) 100%);
     border-bottom: 1px solid var(--cd-border);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .community-page .brand {
     color: var(--cd-cream);
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: -1.5px;
 }
 
 .community-page .brand-dot {
     color: var(--cd-blue);
 }
 
-.community-page .primary-navigation {
-    gap: clamp(0.4rem, 0.8vw, 0.85rem);
-}
-
 .community-page .nav-link {
     color: var(--cd-soft-text);
-    font-size: clamp(0.67rem, 0.75vw, 0.82rem);
     font-weight: 600;
-    white-space: nowrap;
-    transition: color 180ms ease;
+    transition: color 0.25s ease;
 }
 
-.community-page .primary-navigation .nav-link:hover,
-.community-page .primary-navigation .nav-link.is-active {
+.community-page .nav-link:hover,
+.community-page .nav-link.is-active {
     color: var(--cd-cream);
-    border-bottom-color: var(--cd-blue);
+}
+
+.community-page .site-header .icon-button,
+.community-page .site-header .menu-toggle {
+    color: var(--cd-cream);
 }
 
 .community-page .icon-button {
-    color: var(--cd-cream);
     border-color: var(--cd-border);
 }
 
@@ -137,13 +148,24 @@
 }
 
 .community-page .header-search {
-    background-color: var(--cd-mocha);
+    padding: 16px 5%;
+    background: var(--cd-mocha);
     border-top: 1px solid var(--cd-border);
 }
 
+.community-page .header-search-form {
+    display: flex;
+    gap: 10px;
+    width: min(100%, 760px);
+    margin-inline: auto;
+}
+
 .community-page .header-search-form input {
-    background-color: rgba(var(--cream-rgb), 0.16);
+    flex: 1;
+    min-width: 0;
+    padding: 13px 20px;
     color: var(--cd-cream);
+    background: rgba(var(--cream-rgb), 0.16);
     border: 1px solid var(--cd-border);
     border-radius: 999px;
 }
@@ -152,42 +174,26 @@
     color: rgba(var(--cream-rgb), 0.82);
 }
 
-.community-page .menu-toggle {
-    display: none;
+.community-page .search-submit {
+    padding: 12px 24px;
+    color: var(--cd-mocha);
+    background: var(--cd-cream);
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s ease;
 }
 
-@media (max-width: 1080px) {
-    .community-page .menu-toggle {
-        display: inline-flex;
-        color: var(--cd-cream);
-    }
+.community-page .search-submit:hover {
+    background: var(--cd-blue);
+}
 
-    .community-page .primary-navigation {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 0.75rem 1rem;
-        background: var(--cd-mocha);
-        border-top: 1px solid var(--cd-border);
-        box-shadow: 0 12px 24px rgba(var(--mocha-rgb), 0.4);
-        z-index: 30;
-    }
-
-    .community-page .primary-navigation.is-open {
-        display: flex;
-    }
-
-    .community-page .nav-link {
-        padding: 0.85rem 0.65rem;
-        border-bottom: 1px solid var(--cd-border);
-        font-size: 0.9rem;
-        white-space: normal;
-    }
+/* mobile menu panel, only when it is open */
+.community-page .primary-navigation.is-open,
+.community-page .primary-navigation.active,
+.community-page .primary-navigation.open {
+    background: var(--cd-mocha);
 }
 
 
@@ -197,7 +203,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: clamp(2.5rem, 7vw, 6rem) 6%;
+    padding: clamp(7rem, 12vw, 9rem) 6% clamp(2.5rem, 7vw, 6rem);
     background: radial-gradient(circle at 85% 20%,
             rgba(var(--blue-rgb), 0.4),
             transparent 45%);
