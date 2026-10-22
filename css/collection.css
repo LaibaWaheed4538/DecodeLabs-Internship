@@ -106,7 +106,8 @@
     animation: collection-image-enter 1.3s ease both;
 }
 
-/* Mocha overlay with a sky-blue glow */
+/* Mocha overlay with a sky-blue glow
+   (same overlay values as the Challenge page) */
 
 .collection-page .collection-hero::before {
     position: absolute;
@@ -116,16 +117,15 @@
     pointer-events: none;
     background:
         radial-gradient(
-            circle at 78% 28%,
+            circle at 75% 30%,
             rgba(var(--blue-rgb), 0.35),
-            transparent 40%
+            transparent 38%
         ),
         linear-gradient(
             90deg,
             rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.7) 40%,
-            rgba(var(--mocha-rgb), 0.2) 75%,
-            rgba(var(--mocha-rgb), 0.1) 100%
+            rgba(var(--mocha-rgb), 0.68) 48%,
+            rgba(var(--mocha-rgb), 0.2) 100%
         );
 }
 
@@ -239,7 +239,6 @@
 .collection-page .collection-section-header h2 em {
     color: var(--collection-mocha);
     font-weight: 400;
-   ;
 }
 
 .collection-page .collection-section-description {
@@ -677,19 +676,31 @@
         background-size: 100% 100%;
     }
 
+    /* Light overlay, same numbers as the Challenge page mobile hero:
+       strongest only behind the text (middle), light at top and bottom
+       so the picture shows through. Lower the 0.5 values = clearer
+       picture, raise them = easier to read the text. */
     .collection-page .collection-hero::before {
         background:
             radial-gradient(
-                circle at 80% 20%,
-                rgba(var(--blue-rgb), 0.3),
-                transparent 45%
+                circle at 75% 30%,
+                rgba(var(--blue-rgb), 0.35),
+                transparent 38%
             ),
             linear-gradient(
                 180deg,
-                rgba(var(--mocha-rgb), 0.6) 0%,
-                rgba(var(--mocha-rgb), 0.75) 55%,
-                rgba(var(--mocha-rgb), 0.92) 100%
+                rgba(var(--mocha-rgb), 0.12) 0%,
+                rgba(var(--mocha-rgb), 0.5) 30%,
+                rgba(var(--mocha-rgb), 0.5) 62%,
+                rgba(var(--mocha-rgb), 0.18) 100%
             );
+    }
+
+    /* A soft shadow keeps the text readable over the clearer picture */
+    .collection-page .collection-hero .collection-eyebrow,
+    .collection-page .collection-hero h1,
+    .collection-page .collection-hero-description {
+        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
     }
 
     .collection-page .collection-hero h1 {

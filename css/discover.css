@@ -1091,20 +1091,37 @@
 /* MOBILE */
 
 @media (max-width: 600px) {
+
+    /* HERO — same setup as the Collection page:
+       the picture fills the whole hero behind the text, nothing is cut,
+       and the overlay is light so the picture stays clear.            */
+
     .discover-hero {
-        min-height: 390px;
-        padding: 75px 6% 80px;
+        align-items: center;
+        min-height: 560px;
+        padding: 110px 6% 90px;
+        background: var(--discover-mocha);
     }
 
-    /* Hero image fits the full width and height (100% 100%) instead of
-       being cropped by "cover". */
+    /* Whole image fitted to the full hero width and height */
     .discover-hero::before {
+        inset: 0;
+        animation: none;
+
         background:
-            linear-gradient(90deg,
-                rgba(var(--mocha-rgb), 0.94) 0%,
-                rgba(var(--mocha-rgb), 0.62) 55%,
-                rgba(var(--mocha-rgb), 0.18) 100%),
-            url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png") center center / 100% 100% no-repeat;
+            /* light overlay: strongest only behind the text (middle),
+               light at top and bottom so the picture shows through.
+               Lower the 0.5 numbers = clearer picture,
+               raise them = easier to read the text. */
+            linear-gradient(180deg,
+                rgba(var(--mocha-rgb), 0.12) 0%,
+                rgba(var(--mocha-rgb), 0.5) 30%,
+                rgba(var(--mocha-rgb), 0.5) 62%,
+                rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
+            /* mobile image */
+            url("../assets/Celestial\ Museum\ Beyond\ the\ Portal.png") center / 100% 100% no-repeat,
+            /* fallback: if the mobile file is not found, the desktop image shows */
+            url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ \(1\).png") center / 100% 100% no-repeat;
     }
 
     .discover-hero::after {
@@ -1112,6 +1129,15 @@
         right: -260px;
         width: 390px;
         height: 390px;
+        opacity: 0.6;
+    }
+
+    /* A soft shadow keeps the text readable over the clearer picture */
+    .discover-eyebrow,
+    .discover-hero h1,
+    .discover-hero-description,
+    .discover-scroll-link {
+        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
     }
 
     .discover-hero h1 {

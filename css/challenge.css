@@ -1120,20 +1120,42 @@
 /* MOBILE */
 
 @media (max-width: 700px) {
+
+    /* HERO — same setup as the other pages:
+       the picture fills the whole hero behind the text, nothing is cut,
+       and the overlay is light so the picture stays clear
+       (same overlay numbers as the Timeline page).                    */
+
     .challenge-page .challenge-hero {
         grid-template-columns: minmax(0, 1fr);
         gap: 25px;
         min-height: auto;
         padding: 150px 22px 42px;
 
-
         background:
+            /* light overlay: strongest only behind the text (middle),
+               light at top and bottom so the picture shows through.
+               Lower the 0.5 numbers = clearer picture,
+               raise them = easier to read the text. */
             linear-gradient(180deg,
-                rgba(var(--mocha-rgb), 0.55) 0%,
-                rgba(var(--mocha-rgb), 0.68) 58%,
-                rgba(var(--mocha-rgb), 0.88) 100%),
+                rgba(var(--mocha-rgb), 0.12) 0%,
+                rgba(var(--mocha-rgb), 0.5) 30%,
+                rgba(var(--mocha-rgb), 0.5) 62%,
+                rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
+            /* mobile image */
             url("../assets/Ancient%20Observatory%20of%20Knowledge.png") center center / 100% 100% no-repeat,
+            /* fallback: if the mobile file is not found, the desktop image shows */
+            url("../assets/Moonlit%20Temple%20of%20Celestial%20Knowledge.png") center center / 100% 100% no-repeat,
             var(--challenge-mocha);
+    }
+
+    /* A soft shadow keeps the text readable over the clearer picture */
+    .challenge-page .challenge-hero .challenge-eyebrow,
+    .challenge-page .challenge-hero h1,
+    .challenge-page .challenge-hero-description,
+    .challenge-page .challenge-hero-note,
+    .challenge-page .challenge-art-label {
+        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
     }
 
     .challenge-page .challenge-hero-content {

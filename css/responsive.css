@@ -1,5 +1,6 @@
 /*
    CURIO MUSEUM — RESPONSIVE STYLES
+  
 */
 
 
@@ -12,13 +13,18 @@
 }
 
 html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
 }
 
 body {
     width: 100%;
+    max-width: 100%;
     min-width: 320px;
+    overflow-x: clip;
     overflow-wrap: break-word;
 }
 
@@ -62,6 +68,7 @@ nav,
 article,
 aside {
     min-width: 0;
+    max-width: 100%;
 }
 
 :focus-visible {
@@ -148,6 +155,32 @@ aside {
 .section-description,
 .page-hero-description {
     overflow-wrap: break-word;
+}
+
+/* Hero must never create sideways scrolling */
+.hero-section {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    overflow: hidden;
+    background: var(--color-mocha);
+}
+
+.hero-background-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 
@@ -289,7 +322,9 @@ aside {
     .hero-artwork {
         right: -10%;
         width: 60vw;
+        max-width: 65%;
         opacity: 0.65;
+        pointer-events: none;
     }
 
     .hero-title {
@@ -431,34 +466,73 @@ aside {
 }
 
 
-/* 08. MOBILE HERO */
+/* 08. MOBILE HERO
+   Full picture visible from the very top (nothing cut),
+   transparent header on top of it, picture fades into mocha
+   at the bottom, text sits right under the picture.
+   56.25vw = height of the 16:9 picture at full width.          */
 
 @media (max-width: 767px) {
 
-    .hero-section {
-        align-items: center;
-        min-height: 780px;
-        min-height: max(780px, 100svh);
-        padding: 125px var(--page-gutter) 145px;
+    /* Header: fully transparent, no brown, no blur */
+    .site-header {
+        background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.28) 0%,
+            rgba(0, 0, 0, 0) 100%);
+        border-bottom: 0;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 
+    .hero-section {
+        display: flex;
+        align-items: flex-start;
+        min-height: 100svh;
+        height: auto;
+        padding: 0 var(--page-gutter) 125px;
+        background: var(--color-mocha);
+    }
+
+    .hero-background {
+        inset: 0;
+        background: var(--color-mocha);
+    }
+
+    /* Whole picture from the top edge, never cropped */
     .hero-background-image {
-        object-position: 58% center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        object-position: center;
+        opacity: 1;
+        animation: none;
+        -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
     }
 
     .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
         background:
-            linear-gradient(90deg,
-                rgba(var(--mocha-rgb), 0.94),
-                rgba(var(--mocha-rgb), 0.72)),
-            linear-gradient(0deg,
-                rgba(var(--mocha-rgb), 0.8),
-                rgba(var(--mocha-rgb), 0.08) 70%);
+            radial-gradient(circle at 80% 12%,
+                rgba(var(--blue-rgb), 0.2),
+                transparent 45%);
+        pointer-events: none;
     }
 
+    /* Text starts right under the picture */
     .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
         max-width: 100%;
-        margin-top: 0;
+        margin: 0;
+        padding: calc(56.25vw - 6px) 0 30px;
     }
 
     .hero-eyebrow {
@@ -469,11 +543,12 @@ aside {
     }
 
     .hero-title {
-        max-width: 600px;
+        max-width: 100%;
         margin-bottom: 1.4rem;
-        font-size: clamp(2.75rem, 10vw, 4.5rem);
-        line-height: 1.02;
+        font-size: clamp(2.4rem, 9vw, 3.8rem);
+        line-height: 1.05;
         letter-spacing: -0.055em;
+        overflow-wrap: break-word;
     }
 
     .hero-description {
@@ -483,27 +558,24 @@ aside {
     }
 
     .hero-button {
+        max-width: 100%;
         min-height: 50px;
     }
 
-    /* Keep background image full-screen.
-       Do not introduce a separate circular image. */
-
+    /* Orbit rings stay like laptop; the separate circle photo is hidden */
     .hero-artwork {
-        top: 43%;
+        top: 52%;
         right: -28%;
         width: 85vw;
+        max-width: none;
         transform: translateY(-50%);
-        opacity: 0.35;
+        opacity: 0.45;
         pointer-events: none;
     }
 
-    .hero-artwork-image {
-        display: none !important;
-    }
-
+    .hero-artwork-image,
     .hero-artwork-caption {
-        display: none;
+        display: none !important;
     }
 
     .hero-bottom {
@@ -550,9 +622,27 @@ aside {
         margin-bottom: 1.5rem;
     }
 
+    .featured-grid,
+    .facts-grid,
+    .collection-grid {
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 100%;
+    }
+
     .featured-grid {
-        grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+
+    .facts-grid {
+        gap: 2rem;
+    }
+
+    .exhibit-card,
+    .fact-card,
+    .collection-card {
+        width: 100%;
+        min-width: 0;
     }
 
     .exhibit-card-image,
@@ -570,11 +660,6 @@ aside {
         font-size: 1.45rem;
     }
 
-    .facts-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
     .fact-image {
         aspect-ratio: 5 / 3;
     }
@@ -585,6 +670,10 @@ aside {
 
     .fact-card>p:last-child {
         font-size: 0.9rem;
+    }
+
+    .text-link {
+        overflow-wrap: anywhere;
     }
 
     /* Timeline */
@@ -658,6 +747,8 @@ aside {
     .footer-main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 2.5rem 1.5rem;
+        width: 100%;
+        max-width: 100%;
     }
 
     .footer-brand-column,
@@ -695,15 +786,8 @@ aside {
         height: 40px;
     }
 
-    .hero-section {
-        min-height: 740px;
-        min-height: max(740px, 100svh);
-        padding-top: 110px;
-        padding-bottom: 125px;
-    }
-
     .hero-title {
-        font-size: clamp(2.55rem, 10.5vw, 3.4rem);
+        font-size: clamp(2.2rem, 9vw, 2.9rem);
     }
 
     .hero-description {
@@ -749,7 +833,7 @@ aside {
     }
 
     .footer-main {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
     }
 
@@ -760,7 +844,26 @@ aside {
 }
 
 
-/* 11. INNER PAGE RESPONSIVENESS */
+/* 11. VERY SMALL PHONES */
+
+@media (max-width: 380px) {
+
+    .hero-title {
+        font-size: clamp(2rem, 8.5vw, 2.6rem);
+    }
+
+    .hero-bottom {
+        right: 16px;
+        left: 16px;
+    }
+
+    .section-title {
+        overflow-wrap: break-word;
+    }
+}
+
+
+/* 12. INNER PAGE RESPONSIVENESS */
 
 @media (max-width: 767px) {
 
@@ -779,7 +882,6 @@ aside {
     }
 
     .collection-grid {
-        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
@@ -884,15 +986,9 @@ aside {
 }
 
 
-/* 12. LANDSCAPE PHONES */
+/* 13. LANDSCAPE PHONES */
 
 @media (max-height: 500px) and (orientation: landscape) {
-
-    .hero-section {
-        min-height: 650px;
-        padding-top: 120px;
-        padding-bottom: 100px;
-    }
 
     .hero-bottom {
         bottom: 1rem;
@@ -904,7 +1000,7 @@ aside {
 }
 
 
-/* 13. HOVER EFFECTS ONLY ON HOVER-CAPABLE DEVICES */
+/* 14. HOVER EFFECTS ONLY ON HOVER-CAPABLE DEVICES */
 
 @media (hover: hover) and (pointer: fine) {
 
@@ -928,7 +1024,7 @@ aside {
 }
 
 
-/* 14. REDUCED MOTION ACCESSIBILITY */
+/* 15. REDUCED MOTION ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -955,214 +1051,5 @@ aside {
     .button:hover,
     .timeline-event:hover {
         transform: none;
-    }
-}
-
-
-/*
-   CURIO — MOBILE RESPONSIVENESS PRIORITY
-*/
-
-/* Prevent horizontal scrolling on every page */
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: clip;
-}
-
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: clip;
-}
-
-img,
-video,
-iframe {
-    max-width: 100%;
-}
-
-main,
-header,
-footer,
-section {
-    max-width: 100%;
-}
-
-/* Keep the hero image as one complete composition */
-.hero-section {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    isolation: isolate;
-}
-
-.hero-background {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    width: 100%;
-    overflow: hidden;
-    background: var(--color-mocha);
-}
-
-.hero-background-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* Tablets */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .hero-background-image {
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .hero-artwork {
-        max-width: 65%;
-        pointer-events: none;
-    }
-
-    .featured-grid,
-    .facts-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* Mobile: show the complete landscape image, fading into mocha */
-@media (max-width: 767px) {
-    .hero-section {
-        min-height: 100svh;
-        height: auto;
-        padding-top: 0;
-        padding-bottom: 110px;
-        background: var(--color-mocha);
-    }
-
-    .hero-background {
-        inset: 0;
-        background: var(--color-mocha);
-    }
-
-    .hero-background-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        object-fit: contain;
-        object-position: top center;
-    }
-
-    .hero-overlay {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background:
-            radial-gradient(circle at 80% 12%,
-                rgba(var(--blue-rgb), 0.3),
-                transparent 45%),
-            linear-gradient(180deg,
-                rgba(var(--mocha-rgb), 0.08) 0%,
-                rgba(var(--mocha-rgb), 0.45) 35%,
-                var(--color-mocha) 78%,
-                var(--color-mocha) 100%);
-        pointer-events: none;
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: clamp(270px, 75vw, 430px) 0 30px;
-    }
-
-    .hero-title {
-        max-width: 100%;
-        font-size: clamp(2.2rem, 8vw, 3.5rem);
-        line-height: 1.08;
-        overflow-wrap: break-word;
-    }
-
-    .hero-description {
-        max-width: 100%;
-        font-size: 0.95rem;
-        line-height: 1.8;
-    }
-
-    .hero-button {
-        max-width: 100%;
-    }
-
-    /* Decorative rings must never widen the page */
-    .hero-artwork {
-        right: 0;
-        max-width: 100%;
-        overflow: hidden;
-        pointer-events: none;
-    }
-
-    .hero-artwork-image {
-        display: none !important;
-    }
-
-    .featured-grid,
-    .facts-grid,
-    .collection-grid {
-        grid-template-columns: minmax(0, 1fr);
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .exhibit-card,
-    .fact-card,
-    .collection-card {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .section-heading {
-        min-width: 0;
-    }
-
-    .text-link {
-        overflow-wrap: anywhere;
-    }
-
-    .footer-main {
-        width: 100%;
-        max-width: 100%;
-    }
-}
-
-/* Small phones */
-@media (max-width: 380px) {
-    .hero-title {
-        font-size: clamp(2rem, 8.5vw, 2.6rem);
-    }
-
-    .hero-content {
-        padding-top: 270px;
-    }
-
-    .hero-bottom {
-        right: 16px;
-        left: 16px;
-    }
-
-    .section-title {
-        overflow-wrap: break-word;
-    }
-
-    .footer-main {
-        grid-template-columns: minmax(0, 1fr);
     }
 }

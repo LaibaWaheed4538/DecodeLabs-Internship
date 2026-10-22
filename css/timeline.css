@@ -854,22 +854,47 @@
 
 @media (max-width: 620px) {
 
-    /* Hero image fits the full */
+    /* HERO — same setup as the Collection page:
+       the picture fills the whole hero behind the text, nothing is cut,
+       and the overlay is light so the picture stays clear.            */
+
     .timeline-hero {
         background:
-            linear-gradient(90deg,
-                rgba(var(--mocha-rgb), 0.94) 0%,
-                rgba(var(--mocha-rgb), 0.6) 55%,
-                rgba(var(--mocha-rgb), 0.2) 100%),
+            /* light overlay: strongest only behind the text (middle),
+               light at top and bottom so the picture shows through.
+               Lower the 0.5 numbers = clearer picture,
+               raise them = easier to read the text. */
+            linear-gradient(180deg,
+                rgba(var(--mocha-rgb), 0.12) 0%,
+                rgba(var(--mocha-rgb), 0.5) 30%,
+                rgba(var(--mocha-rgb), 0.5) 62%,
+                rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
+            /* mobile image */
             url("../assets/Mystical Celestial Antiquities Hall.png") center center / 100% 100% no-repeat,
+            /* fallback: if the mobile file is not found, the desktop image shows */
+            url("../assets/Celestial Marble Observatory Museum.png") center center / 100% 100% no-repeat,
             var(--tl-mocha);
+    }
+
+    /* the faint grid lines are not needed on phones, keeps the picture clean */
+    .timeline-hero::before {
+        display: none;
     }
 
     .timeline-hero-inner {
         grid-template-columns: minmax(0, 1fr);
         width: 90%;
         gap: 10px;
-        padding: 57px 0 46px;
+        padding: 110px 0 46px;
+    }
+
+    /* A soft shadow keeps the text readable over the clearer picture */
+    .timeline-hero .timeline-eyebrow,
+    .timeline-hero h1,
+    .timeline-hero-description,
+    .timeline-hero-link,
+    .timeline-hero-footnote {
+        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
     }
 
     .timeline-hero h1 {

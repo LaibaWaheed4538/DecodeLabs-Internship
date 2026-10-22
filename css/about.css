@@ -96,20 +96,22 @@
     animation: about-image-reveal 1.4s ease both;
 }
 
-/* Mocha overlay with a sky-blue glow */
+/* Mocha overlay with a sky-blue glow
+   (same overlay values as the Challenge page) */
 
 .about-page .about-hero::before {
     position: absolute;
     z-index: -1;
     inset: 0;
     content: "";
+    pointer-events: none;
     background:
-        radial-gradient(circle at 78% 28%,
+        radial-gradient(circle at 75% 30%,
             rgba(var(--blue-rgb), 0.35),
-            transparent 40%),
+            transparent 38%),
         linear-gradient(90deg,
             rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.72) 42%,
+            rgba(var(--mocha-rgb), 0.68) 48%,
             rgba(var(--mocha-rgb), 0.2) 100%);
 }
 
@@ -158,10 +160,7 @@
 .about-page .about-section-heading h2 em {
     color: var(--about-mocha);
     font-weight: 400;
-    background-image: linear-gradient(var(--about-blue), var(--about-blue));
-    background-repeat: no-repeat;
-    background-position: 0 90%;
-    background-size: 100% 0.3em;
+   
 }
 
 .about-page .about-hero-description {
@@ -580,15 +579,25 @@
         background-size: 100% 100%;
     }
 
+    
     .about-page .about-hero::before {
         background:
-            radial-gradient(circle at 80% 20%,
-                rgba(var(--blue-rgb), 0.3),
-                transparent 45%),
+            radial-gradient(circle at 75% 30%,
+                rgba(var(--blue-rgb), 0.35),
+                transparent 38%),
             linear-gradient(180deg,
-                rgba(var(--mocha-rgb), 0.6) 0%,
-                rgba(var(--mocha-rgb), 0.75) 55%,
-                rgba(var(--mocha-rgb), 0.92) 100%);
+                rgba(var(--mocha-rgb), 0.12) 0%,
+                rgba(var(--mocha-rgb), 0.5) 30%,
+                rgba(var(--mocha-rgb), 0.5) 62%,
+                rgba(var(--mocha-rgb), 0.18) 100%);
+    }
+
+   
+    .about-page .about-hero .about-eyebrow,
+    .about-page .about-hero h1,
+    .about-page .about-hero-description,
+    .about-page .about-hero-caption {
+        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
     }
 
     .about-page .about-hero h1 {
