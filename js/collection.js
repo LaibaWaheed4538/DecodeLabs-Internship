@@ -13,9 +13,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!page || !grid) return;
 
     const data = window.CURIO_DATA;
-    const exhibits = Array.isArray(data?.exhibits)
-        ? data.exhibits
-        : [];
+    let exhibits = [];
+    async function loadExhibits() {
+    try {
+        const response = await fetch("/api/exhibits");
+
+        if (!response.ok) {
+            throw new Error("Failed to load exhibits");
+        }
+
+        exhibits = await response.json();
+updateCards();
+renderCollection();
+
+    } catch (error) {
+        console.error("Unable to load collection exhibits:", error);
+    }
+}
 
     const filters = Array.from(
         page.querySelectorAll("[data-collection-filter]")
@@ -201,9 +215,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* Create cards for all available exhibits */
 
-    const cards = exhibits
+    let cards = [];
+
+function updateCards() {
+    cards = exhibits
         .filter(exhibit => exhibit && exhibit.id)
         .map(createCard);
+}
 
     /* Sorting */
 
@@ -321,5 +339,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* Initial render */
 
-    renderCollection();
+    /* Initial render */
+
+loadExhibits();
 });
+

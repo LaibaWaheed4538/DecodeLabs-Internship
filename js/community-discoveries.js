@@ -3,6 +3,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const STORAGE_KEY = "curioCommunityDiscoveries";
+    const API_URL = "/api/discoveries";
 
     const form = document.getElementById("discovery-form");
     const list = document.getElementById("discovery-list");
@@ -26,7 +27,21 @@ document.addEventListener("DOMContentLoaded", function () {
         reference: document.getElementById("discovery-reference")
     };
 
-    let discoveries = loadDiscoveries();
+    let discoveries = [];
+    async function fetchDiscoveries() {
+    try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("Failed to load discoveries");
+        }
+
+        discoveries = await response.json();
+        renderDiscoveries();
+    } catch (error) {
+        showStatus("Unable to load discoveries.", true);
+    }
+}
 
     function loadDiscoveries() {
         try {
@@ -167,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const contributor = makeElement(
                 "span", "discovery-contributor",
                 "Shared by " + item.contributor
+
             );
 
             const actions = makeElement("div", "discovery-card-actions");
@@ -175,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 makeButton("Delete", "delete", "delete-discovery", item.id)
             );
 
-            footer.append(contributor, actions);
+          footer.append(contributor, actions);
             card.append(footer);
             list.append(card);
         });
@@ -200,30 +216,60 @@ document.addEventListener("DOMContentLoaded", function () {
         return data;
     }
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event)  {
         event.preventDefault();
 
         if (!form.reportValidity()) return;
 
         const data = getFormData();
         const currentId = editId.value;
+if (!currentId) {
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
 
+        if (!response.ok) {
+            throw new Error("Failed to publish discovery");
+        }
+
+        await fetchDiscoveries();
+        resetForm();
+        showStatus("Discovery published successfully.");
+        return;
+    } catch (error) {
+        showStatus("Unable to publish discovery.", true);
+        return;
+    }
+}
         if (currentId) {
-            const index = discoveries.findIndex(
-                item => item.id === currentId
-            );
+    try {
+        const response = await fetch(`${API_URL}/${currentId}/edit`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
 
-            if (index === -1) {
-                showStatus("This discovery could not be found.", true);
-                return;
-            }
+        if (!response.ok) {
+            throw new Error("Failed to update discovery");
+        }
 
-            discoveries[index] = {
-                ...discoveries[index],
-                ...data,
-                updatedAt: new Date().toISOString()
-            };
-        } else {
+        await fetchDiscoveries();
+        resetForm();
+        showStatus("Discovery updated successfully.");
+        return;
+
+    } catch (error) {
+        showStatus("Unable to update discovery.", true);
+        return;
+    }
+}else {
             const id = window.crypto && crypto.randomUUID
                 ? crypto.randomUUID()
                 : Date.now().toString(36) +
@@ -251,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     });
 
-    list.addEventListener("click", function (event) {
+    list.addEventListener("click",async function (event) {
         const button = event.target.closest("button[data-action]");
         if (!button) return;
 
@@ -282,26 +328,32 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (!confirmed) return;
+            try {
+    const response = await fetch(`${API_URL}/${id}/delete`, {
+        method: "POST"
+    });
 
-            discoveries = discoveries.filter(record => record.id !== id);
+    if (!response.ok) {
+        throw new Error("Failed to delete discovery");
+    }
 
-            if (editId.value === id) resetForm();
+    await fetchDiscoveries();
+    if (editId.value === id) resetForm();
+    showStatus("Discovery deleted successfully.");
+    return;
 
-            const saved = saveDiscoveries();
-            renderDiscoveries();
+} catch (error) {
+    showStatus("Unable to delete discovery.", true);
+    return;
+}
+            
 
-            showStatus(
-                saved
-                    ? "Discovery deleted."
-                    : "Deleted for this session, but storage is unavailable.",
-                !saved
-            );
+           
         }
     });
 
     cancelButton.addEventListener("click", resetForm);
     search.addEventListener("input", renderDiscoveries);
     filter.addEventListener("change", renderDiscoveries);
-
-    renderDiscoveries();
+fetchDiscoveries();
 });

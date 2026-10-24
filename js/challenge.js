@@ -68,20 +68,30 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    const questionBank = data.quizQuestions.filter(function (question) {
-        return question &&
-            Array.isArray(question.options) &&
-            question.options.length >= 2 &&
-            Number.isInteger(question.answer) &&
-            question.answer >= 0 &&
-            question.answer < question.options.length &&
-            typeof question.question === "string";
-    });
+    let questionBank = [];
+    async function loadQuizQuestions() {
+    try {
+        const response = await fetch("/api/quiz");
 
-    if (!questionBank.length) {
-        showError("No valid quiz questions were found in the shared data.");
-        return;
+        if (!response.ok) {
+            throw new Error("Failed to load quiz questions");
+        }
+
+        questionBank = await response.json();
+
+        if (!questionBank.length) {
+            showError("No quiz questions available.");
+            return;
+        }
+
+        restartQuiz();
+
+    } catch (error) {
+        showError("Quiz questions could not be loaded from the server.");
     }
+}
+
+    
 
     const state = {
         questions: [],
@@ -232,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
         elements.question.focus({ preventScroll: true });
     }
 
-    function checkAnswer() {
+   async function checkAnswer() {
         if (state.answered) {
             return;
         }
@@ -252,9 +262,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         state.selectedAnswer = Number(selected.value);
+const question = state.questions[state.currentIndex];
 
-        const question = state.questions[state.currentIndex];
-        const correct = state.selectedAnswer === question.answer;
+const response = await fetch("/api/quiz/check", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        questionId: question.id,
+        selectedAnswer: state.selectedAnswer
+    })
+});
+
+if (!response.ok) {
+    showError("Could not check the answer. Please try again.");
+    return;
+}
+
+const result = await response.json();
+const correct = result.correct;
+
+question.answer = result.correctAnswer;
+question.explanation = result.explanation;
 
         state.answered = true;
 
@@ -412,5 +442,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    restartQuiz();
+   loadQuizQuestions();
 });
+

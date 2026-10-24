@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initScrollReveal();
     initNewsletterForm();
     initEscapeKey();
+    initFeaturedDiscoveries();
 });
 
 
@@ -571,4 +572,39 @@ function getCurioData() {
     }
 
     return window.CURIO_DATA;
+}
+async function initFeaturedDiscoveries() {
+    const grid = document.querySelector(".featured-grid");
+
+    if (!grid) return;
+
+    try {
+        const response = await fetch("/api/exhibits");
+
+        if (!response.ok) {
+            throw new Error("Failed to load exhibits");
+        }
+
+        const exhibits = await response.json();
+
+        grid.querySelectorAll(".exhibit-card").forEach(card => {
+            const link = card.querySelector('a[href*="exhibit.html?id="]');
+
+            if (!link) return;
+
+            const id = new URL(link.href).searchParams.get("id");
+            const exhibit = exhibits.find(item => item.id === id);
+
+            if (!exhibit) return;
+
+            const title = card.querySelector("h3 a");
+            const category = card.querySelector(".exhibit-category");
+
+            if (title) title.textContent = exhibit.title;
+            if (category) category.textContent = exhibit.category;
+        });
+
+    } catch (error) {
+        console.error("Unable to load featured discoveries:", error);
+    }
 }

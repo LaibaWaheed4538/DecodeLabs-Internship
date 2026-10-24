@@ -51,7 +51,27 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    const exhibits = data.exhibits.slice();
+   let exhibits = [];
+   async function loadExhibits() {
+    try {
+        const response = await fetch("/api/exhibits");
+
+        if (!response.ok) {
+            throw new Error("Failed to load exhibits");
+        }
+
+        exhibits = await response.json();
+
+        render();
+
+    } catch (error) {
+        console.error("Curio Discover:", error);
+
+        if (loading) {
+            loading.textContent = "Unable to load exhibits from the server.";
+        }
+    }
+}
 
     const state = {
         query: "",
@@ -633,7 +653,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderCategories();
     updateSearchControls();
-    render();
+    loadExhibits();
 
     console.info(
         "Curio Discover loaded: " + exhibits.length + " exhibits."

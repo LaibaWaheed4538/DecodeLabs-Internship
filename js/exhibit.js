@@ -26,16 +26,26 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    const exhibit = typeof data.getExhibitById === "function"
-        ? data.getExhibitById(exhibitId)
-        : data.exhibits.find(function (item) {
-            return item.id === exhibitId;
-        });
+    let exhibit = null;
+    async function loadExhibit() {
+    try {
+        const response = await fetch(
+            "/api/exhibits/" + encodeURIComponent(exhibitId)
+        );
 
-    if (!exhibit) {
-        showError("This exhibit could not be found.");
-        return;
+        if (!response.ok) {
+            throw new Error("Exhibit not found");
+        }
+
+        exhibit = await response.json();
+        renderExhibit();
+
+    } catch (error) {
+        showError("This exhibit could not be loaded.");
     }
+}
+
+    
 
     const imageFallbacks = {
         "tutankhamun":
@@ -506,5 +516,6 @@ document.addEventListener("DOMContentLoaded", function () {
         content.hidden = false;
     }
 
-    renderExhibit();
+    loadExhibit();
 });
+

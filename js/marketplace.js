@@ -11,6 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!grid) return;
 
     let cart = [];
+    async function loadProducts() {
+    const response = await fetch("/api/marketplace");
+
+    if (!response.ok) {
+        throw new Error("Unable to load marketplace products");
+    }
+
+    return response.json();
+}
+let products = [];
 
     /* READ CART */
 
@@ -99,10 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const card = button.closest(".market-product");
 
         if (!card) return;
-
-        const id = card.dataset.productId;
-        const name = card.dataset.name;
-        const price = Number(card.dataset.price);
+const id = card.dataset.productId;
+const product = products.find(item => item.id === id);
+const name = product?.name;
+const price = product?.price;
 
         if (!id || !name || !Number.isFinite(price) || price < 0) {
             if (feedback) {
@@ -139,15 +149,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         button.disabled = true;
 
-        window.setTimeout(() => {
-            button.textContent = "Add to cart";
-            button.setAttribute("aria-label", `Add ${name} to cart`);
-            button.disabled = false;
-        }, 1000);
+        button.textContent = "Added ✓";
+button.setAttribute("aria-label", `Add another ${name} to cart`);
+button.disabled = false;
     });
 
     /* INITIAL STATE */
 
     cart = readCart();
     updateCount();
+    loadProducts()
+    .then(data => {
+        products = data;
+    })
+    .catch(error => {
+        console.error("Marketplace products could not be loaded:", error);
+    });
 });

@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showMessage("Cart updated.");
     });
 
-    form.addEventListener("submit", event => {
+  form.addEventListener("submit", async event => {
         event.preventDefault();
 
         if (!cart.length || !form.reportValidity()) return;
@@ -212,6 +212,29 @@ document.addEventListener("DOMContentLoaded", () => {
             (sum, item) => sum + item.price * item.quantity,
             0
         );
+        try {
+    const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name,
+            items: cart.map(item => ({
+                id: item.id,
+                quantity: item.quantity
+            }))
+        })
+    });
+
+    if (!response.ok) {
+        showMessage("Unable to place demo order. Please try again.");
+        return;
+    }
+} catch (error) {
+    showMessage("Server connection failed. Please try again.");
+    return;
+}
 
         const confirmation = makeElement("div", "billing-success");
         const heading = makeElement("strong", "", "Demo order confirmed.");

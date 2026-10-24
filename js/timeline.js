@@ -35,9 +35,31 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    const events = data.timeline.slice().sort(function (a, b) {
-        return Number(a.sortYear) - Number(b.sortYear);
-    });
+  let events = [];
+  async function fetchTimeline() {
+    try {
+        const response = await fetch("/api/timeline");
+
+        if (!response.ok) {
+            throw new Error("Failed to load timeline");
+        }
+
+        events = await response.json();
+
+        events.sort((a, b) => Number(a.sortYear) - Number(b.sortYear));
+
+        updateResults();
+    } catch (error) {
+        if (loading) loading.hidden = true;
+
+        list.replaceChildren();
+
+        const message = document.createElement("p");
+        message.className = "timeline-error";
+        message.textContent = "Timeline data could not be loaded.";
+        list.appendChild(message);
+    }
+}
 
     const state = {
         query: "",
@@ -359,5 +381,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    updateResults();
+    fetchTimeline();
 });

@@ -2,13 +2,14 @@
    CURIO MUSEUM — EXHIBIT DETAILS PAGE
    */
 
-.exhibit-page {
-    --exhibit-ink: #07141b;
-    --exhibit-deep: #102630;
-    --exhibit-cream: #f6f0e6;
-    --exhibit-gold: #e9b56d;
-    --exhibit-muted: #69767b;
-    --exhibit-border: #ded6ca;
+
+   .exhibit-page {
+    --exhibit-ink: #273D46;
+    --exhibit-deep: #A0D4E0;
+    --exhibit-cream: #F2F0EA;
+    --exhibit-gold: #A58A6F;
+    --exhibit-muted: #65777D;
+    --exhibit-border: #D8CEC2;
 
     background: var(--exhibit-cream);
     color: var(--exhibit-ink);
@@ -1014,4 +1015,77 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+/* CURIO Exhibit — Custom Color Palette */
+
+.exhibit-page {
+    --exhibit-ink: #273D46;
+    --exhibit-deep: #A0D4E0;
+    --exhibit-cream: #F2F0EA;
+    --exhibit-gold: #A58A6F;
+    --exhibit-muted: #65777D;
+    --exhibit-border: #D8CEC2;
+
+    background: #F2F0EA;
+}
+
+/* Main backgrounds */
+.exhibit-story-section,
+.exhibit-error,
+.exhibit-pagination {
+    background: #F2F0EA;
+}
+
+/* Blue sections */
+.exhibit-significance-section {
+    background: #A0D4E0;
+    color: #273D46;
+}
+
+.exhibit-significance-copy > p:last-child,
+.exhibit-significance-location p {
+    color: #273D46;
+}
+
+/* Cards */
+.exhibit-fact-card,
+.related-exhibit-card,
+.exhibit-tag {
+    background: #F2F0EA;
+    border-color: #A58A6F;
+}
+
+/* Brown accents */
+.exhibit-eyebrow,
+.exhibit-category,
+.exhibit-meta-label,
+.exhibit-section-label,
+.exhibit-fact-number,
+.related-exhibit-category,
+.exhibit-pagination-label,
+.exhibit-text-link,
+.related-exhibit-more {
+    color: #A58A6F;
+}
+
+.exhibit-bookmark-button,
+.exhibit-bookmark-button:hover,
+.exhibit-bookmark-button.is-saved {
+    background: #A58A6F;
+    border-color: #A58A6F;
+    color: #FFFFFF;
+}
+
+/* Heading accents */
+.exhibit-section-heading h2 em,
+.related-exhibits-heading h2 em,
+.exhibit-significance-copy h2 em {
+    color: #A58A6F;
+}
+
+/* Hover effects */
+.exhibit-fact-card:hover,
+.exhibit-pagination-link:hover {
+    background: #A0D4E0;
 }
