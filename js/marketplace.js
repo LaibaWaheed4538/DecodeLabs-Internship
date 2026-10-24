@@ -111,8 +111,11 @@ let products = [];
         if (!card) return;
 const id = card.dataset.productId;
 const product = products.find(item => item.id === id);
-const name = product?.name;
-const price = product?.price;
+
+const name = product?.name || card.dataset.name;
+const price = product
+    ? Number(product.price)
+    : Number(card.dataset.price);
 
         if (!id || !name || !Number.isFinite(price) || price < 0) {
             if (feedback) {

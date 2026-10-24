@@ -64,13 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         render();
 
-    } catch (error) {
-        console.error("Curio Discover:", error);
+   } catch (error) {
+    console.warn("Backend unavailable; using local exhibits.", error);
 
-        if (loading) {
-            loading.textContent = "Unable to load exhibits from the server.";
-        }
-    }
+    exhibits = data.exhibits.slice();
+    render();
+}
 }
 
     const state = {

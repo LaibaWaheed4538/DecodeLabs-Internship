@@ -50,15 +50,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         updateResults();
     } catch (error) {
-        if (loading) loading.hidden = true;
+    console.warn("Backend unavailable; using local timeline data.", error);
 
-        list.replaceChildren();
+    events = data.timeline.slice();
 
-        const message = document.createElement("p");
-        message.className = "timeline-error";
-        message.textContent = "Timeline data could not be loaded.";
-        list.appendChild(message);
-    }
+    events.sort((a, b) => Number(a.sortYear) - Number(b.sortYear));
+
+    updateResults();
+}
 }
 
     const state = {

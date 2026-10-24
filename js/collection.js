@@ -27,8 +27,12 @@ updateCards();
 renderCollection();
 
     } catch (error) {
-        console.error("Unable to load collection exhibits:", error);
-    }
+    console.warn("Backend unavailable; using local collection data.", error);
+
+    exhibits = data.exhibits.slice();
+    updateCards();
+    renderCollection();
+}
 }
 
     const filters = Array.from(

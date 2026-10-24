@@ -227,13 +227,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     });
 
-    if (!response.ok) {
-        showMessage("Unable to place demo order. Please try again.");
-        return;
-    }
+   
+   
+   if (!response.ok) {
+    throw new Error("Order API unavailable");
+}
 } catch (error) {
-    showMessage("Server connection failed. Please try again.");
-    return;
+    console.warn("Backend unavailable; confirming demo locally.", error);
+
 }
 
         const confirmation = makeElement("div", "billing-success");

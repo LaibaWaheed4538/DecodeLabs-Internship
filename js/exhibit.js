@@ -41,8 +41,18 @@ document.addEventListener("DOMContentLoaded", function () {
         renderExhibit();
 
     } catch (error) {
-        showError("This exhibit could not be loaded.");
+    console.warn("Backend unavailable; using local exhibit data.", error);
+
+    exhibit = data.exhibits.find(function (item) {
+        return item.id === exhibitId;
+    });
+
+    if (exhibit) {
+        renderExhibit();
+    } else {
+        showError("This exhibit could not be found.");
     }
+}
 }
 
     

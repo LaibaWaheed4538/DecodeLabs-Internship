@@ -86,9 +86,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         restartQuiz();
 
-    } catch (error) {
-        showError("Quiz questions could not be loaded from the server.");
-    }
+  } catch (error) {
+    console.warn("Backend unavailable; using local quiz data.", error);
+
+    questionBank = data.quizQuestions.slice();
+
+    restartQuiz();
+}
 }
 
     
@@ -264,27 +268,46 @@ document.addEventListener("DOMContentLoaded", function () {
         state.selectedAnswer = Number(selected.value);
 const question = state.questions[state.currentIndex];
 
-const response = await fetch("/api/quiz/check", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        questionId: question.id,
-        selectedAnswer: state.selectedAnswer
-    })
-});
+let correct;
 
-if (!response.ok) {
-    showError("Could not check the answer. Please try again.");
-    return;
+try {
+    const response = await fetch("/api/quiz/check", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            questionId: question.id,
+            selectedAnswer: state.selectedAnswer
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error("Answer checking API unavailable");
+    }
+
+    const result = await response.json();
+
+    correct = result.correct;
+    question.answer = result.correctAnswer;
+    question.explanation = result.explanation;
+
+} catch (error) {
+    console.warn("Backend unavailable; checking answer locally.", error);
+
+    const localQuestion = data.quizQuestions.find(function (item) {
+        return item.id === question.id;
+    });
+
+    if (!localQuestion) {
+        showError("Could not check the answer.");
+        return;
+    }
+
+    correct = state.selectedAnswer === localQuestion.answer;
+    question.answer = localQuestion.answer;
+    question.explanation = localQuestion.explanation;
 }
-
-const result = await response.json();
-const correct = result.correct;
-
-question.answer = result.correctAnswer;
-question.explanation = result.explanation;
 
         state.answered = true;
 

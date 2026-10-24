@@ -1089,3 +1089,32 @@
 .exhibit-pagination-link:hover {
     background: #A0D4E0;
 }
+/* Exhibit palette — final section overrides */
+
+.exhibit-page .exhibit-significance-section {
+    background: #A0D4E0;
+    color: #273D46;
+}
+
+.exhibit-page .exhibit-significance-copy > p:last-child,
+.exhibit-page .exhibit-significance-location p {
+    color: #273D46;
+}
+
+.exhibit-page .exhibit-image-frame,
+.exhibit-page .related-exhibit-image,
+.exhibit-page .related-exhibit-placeholder {
+    background: #A0D4E0;
+}
+
+.exhibit-page .exhibit-story-section,
+.exhibit-page .exhibit-pagination,
+.exhibit-page .related-exhibit-card {
+    background: #F2F0EA;
+}
+
+.exhibit-page .exhibit-significance-mark,
+.exhibit-page .exhibit-significance-copy h2 em,
+.exhibit-page .exhibit-section-heading h2 em {
+    color: #A58A6F;
+}

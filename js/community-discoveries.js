@@ -38,9 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         discoveries = await response.json();
         renderDiscoveries();
-    } catch (error) {
-        showStatus("Unable to load discoveries.", true);
-    }
+   } catch (error) {
+    console.warn("Backend unavailable; loading local discoveries.", error);
+
+    discoveries = loadDiscoveries();
+    renderDiscoveries();
+}
 }
 
     function loadDiscoveries() {
@@ -242,9 +245,23 @@ if (!currentId) {
         showStatus("Discovery published successfully.");
         return;
     } catch (error) {
-        showStatus("Unable to publish discovery.", true);
-        return;
-    }
+    console.warn("Backend unavailable; saving discovery locally.", error);
+
+    discoveries = loadDiscoveries();
+
+    discoveries.unshift({
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2),
+        ...data,
+        createdAt: new Date().toISOString()
+    });
+
+    if (!saveDiscoveries()) return;
+
+    resetForm();
+    renderDiscoveries();
+    showStatus("Discovery published locally.");
+    return;
+}
 }
         if (currentId) {
     try {
@@ -265,10 +282,28 @@ if (!currentId) {
         showStatus("Discovery updated successfully.");
         return;
 
-    } catch (error) {
-        showStatus("Unable to update discovery.", true);
+  } catch (error) {
+    console.warn("Backend unavailable; updating locally.", error);
+
+    const index = discoveries.findIndex(item => item.id === currentId);
+
+    if (index === -1) {
+        showStatus("Discovery not found.", true);
         return;
     }
+
+    discoveries[index] = {
+        ...discoveries[index],
+        ...data
+    };
+
+    if (!saveDiscoveries()) return;
+
+    resetForm();
+    renderDiscoveries();
+    showStatus("Discovery updated locally.");
+    return;
+}
 }else {
             const id = window.crypto && crypto.randomUUID
                 ? crypto.randomUUID()
@@ -343,10 +378,22 @@ if (!currentId) {
     return;
 
 } catch (error) {
-    showStatus("Unable to delete discovery.", true);
+    console.warn("Backend unavailable; deleting locally.", error);
+
+    discoveries = discoveries.filter(function (record) {
+        return record.id !== id;
+    });
+
+    if (!saveDiscoveries()) return;
+
+    if (editId.value === id) {
+        resetForm();
+    }
+
+    renderDiscoveries();
+    showStatus("Discovery deleted locally.");
     return;
-}
-            
+}          
 
            
         }
