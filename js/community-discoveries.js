@@ -265,8 +265,8 @@ if (!currentId) {
 }
         if (currentId) {
     try {
-        const response = await fetch(`${API_URL}/${currentId}/edit`, {
-            method: "POST",
+        const response = await fetch(`${API_URL}/${currentId}`, {
+    method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -364,8 +364,8 @@ if (!currentId) {
 
             if (!confirmed) return;
             try {
-    const response = await fetch(`${API_URL}/${id}/delete`, {
-        method: "POST"
+   const response = await fetch(`${API_URL}/${id}`, {
+    method: "DELETE"
     });
 
     if (!response.ok) {
