@@ -96,7 +96,7 @@
             rgba(var(--mocha-rgb), 0.94) 0%,
             rgba(var(--mocha-rgb), 0.8) 55%,
             rgba(var(--mocha-rgb), 0.78) 100%),
-        url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
+        url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ 1.webp") center / cover no-repeat;
 
     animation: discover-hero-image-reveal 1.2s ease-out both;
 }
@@ -1097,10 +1097,7 @@
                 rgba(var(--mocha-rgb), 0.5) 30%,
                 rgba(var(--mocha-rgb), 0.5) 62%,
                 rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
-            /* mobile image */
-            url("../assets/Celestial Museum Beyond the Portal.png") center / 100% 100% no-repeat,
-            /* fallback: if the mobile file is not found, the desktop image shows */
-            url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / 100% 100% no-repeat;
+            url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ 1.webp") center / 100% 100% no-repeat;
 }
 
 .discover-hero::after {
@@ -1375,7 +1372,7 @@
             rgba(var(--mocha-rgb), 0.94) 0%,
             rgba(var(--mocha-rgb), 0.8) 55%,
             rgba(var(--mocha-rgb), 0.78) 100%),
-        url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
+        url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ 1.webp") center / cover no-repeat;
         inset: 0;
     }
     .discover-reset-button {
@@ -1553,7 +1550,7 @@
             rgba(var(--mocha-rgb), 0.94) 0%,
             rgba(var(--mocha-rgb), 0.8) 55%,
             rgba(var(--mocha-rgb), 0.78) 100%),
-        url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
+        url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ 1.webp") center / cover no-repeat;
         inset: 0;
     }
     .discover-reset-button {

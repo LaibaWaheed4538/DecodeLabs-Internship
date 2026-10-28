@@ -83,8 +83,7 @@
             rgba(var(--mocha-rgb), 0.5) 30%,
             rgba(var(--mocha-rgb), 0.5) 62%,
             rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
-        url("../assets/Mystical Celestial Antiquities Hall.png") center center / 100% 100% no-repeat,
-        url("../assets/Celestial Marble Observatory Museum.png") center center / 100% 100% no-repeat,
+        url("../assets/Celestial Marble Observatory Museum.webp") center center / 100% 100% no-repeat,
         var(--tl-mocha);
 }
 
@@ -858,7 +857,7 @@
                 rgba(var(--mocha-rgb), 0.94) 0%,
                 rgba(var(--mocha-rgb), 0.6) 55%,
                 rgba(var(--mocha-rgb), 0.2) 100%),
-            url("../assets/Celestial Marble Observatory Museum.png") center center / cover no-repeat,
+            url("../assets/Celestial Marble Observatory Museum.webp") center center / cover no-repeat,
             var(--tl-mocha);
     }
 

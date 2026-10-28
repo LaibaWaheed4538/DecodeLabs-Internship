@@ -208,10 +208,7 @@
             rgba(var(--mocha-rgb), 0.68) 30%,
             rgba(var(--mocha-rgb), 0.68) 62%,
             rgba(var(--mocha-rgb), 0.55) 100%) center / 100% 100% no-repeat,
-        /* mobile image */
-        url("../assets/Ancient%20Observatory%20of%20Knowledge.png") center center / 100% 100% no-repeat,
-        /* fallback: if the mobile file is not found, the desktop image shows */
-        url("../assets/Moonlit%20Temple%20of%20Celestial%20Knowledge.png") center center / 100% 100% no-repeat,
+        url("../assets/Moonlit%20Temple%20of%20Celestial%20Knowledge.webp") center center / 100% 100% no-repeat,
         var(--challenge-mocha);
 
     border-bottom: 1px solid var(--challenge-border);
@@ -997,7 +994,6 @@
         linear-gradient(90deg,
             rgba(var(--mocha-rgb), 0.97),
             rgba(var(--mocha-rgb), 0.92)),
-        url("../assets/Ancient%20Observatory%20of%20Knowledge.png") center 65% / cover no-repeat,
         var(--challenge-mocha);
     border-top: 1px solid var(--challenge-border);
 }
@@ -1183,7 +1179,7 @@
                 rgba(var(--mocha-rgb), 0.94) 0%,
                 rgba(var(--mocha-rgb), 0.76) 48%,
                 rgba(var(--mocha-rgb), 0.55) 100%),
-            url("../assets/Moonlit%20Temple%20of%20Celestial%20Knowledge.png") center center / cover no-repeat,
+            url("../assets/Moonlit%20Temple%20of%20Celestial%20Knowledge.webp") center center / cover no-repeat,
             var(--challenge-mocha);
     }
 
