@@ -3,8 +3,8 @@
 */
 
 .billing-page {
-    --font-body: "Inter", sans-serif;
-    --font-heading: "Roboto", sans-serif;
+    --font-body: "Roboto", sans-serif;
+    --font-heading: "Inter", sans-serif;
 
     --bill-bg: #F2F0EA;
     --bill-surface: rgba(160, 212, 224, 0.16);

@@ -4,8 +4,8 @@
 */
 
 .collection-page {
-    --font-body: "Inter", sans-serif;
-    --font-heading: "Roboto", sans-serif;
+    --font-body: "Roboto", sans-serif;
+    --font-heading: "Inter", sans-serif;
 
     --collection-blue: #A0D4E0;
     --collection-blue-light: #B4DDE8;

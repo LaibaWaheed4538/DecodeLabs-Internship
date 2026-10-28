@@ -6,8 +6,8 @@
     --tl-blue: #A0D4E0;
     --tl-cream: #F2F0EA;
    --tl-mocha: #76604A;
-    --tl-body-font: "Inter", sans-serif;
-    --tl-heading-font: "Roboto", sans-serif;
+    --tl-body-font: "Roboto", sans-serif;
+    --tl-heading-font: "Inter", sans-serif;
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
@@ -205,7 +205,7 @@
     margin-top: 34px;
     color: var(--tl-cream);
     font-size: .58rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: .08em;
 }
 
@@ -292,7 +292,7 @@
     bottom: 0;
     color: var(--tl-cream);
     font-size: .64rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: .15em;
 }
 
@@ -565,7 +565,7 @@
     border-radius: 999px;
     color: var(--tl-mocha);
     font-size: .74rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.5;
     transition:
         background 180ms ease,
@@ -947,8 +947,6 @@
     }
 }
 
-/* Small-phone refinements are included in the mobile base values above. */
-
 @media (prefers-reduced-motion: reduce) {
 
     .timeline-page *,
@@ -959,4 +957,4 @@
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
     }
-} 
+}
