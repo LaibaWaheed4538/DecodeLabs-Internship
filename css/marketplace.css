@@ -1,23 +1,26 @@
 /*
-   CURIO MARKETPLACE  */
+   CURIO MARKETPLACE
+   Accessible (WCAG AA) colours, mobile-first responsive layout
+*/
 
 .marketplace-page {
     --font-body: "Roboto", sans-serif;
     --font-heading: "Inter", sans-serif;
     --market-blue: #A0D4E0;
+  
+    --market-blue-light: #B4DDE8;
     --market-cream: #F2F0EA;
-    --market-mocha: #A58A6F;
+    --market-mocha: #6F563D; 
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
-    --mocha-rgb: 165, 138, 111;
+    --mocha-rgb: 111, 86, 61;
 
     --market-border: rgba(var(--cream-rgb), 0.38);
-    --market-border-dark: rgba(var(--mocha-rgb), 0.42);
+    --market-border-dark: rgba(var(--mocha-rgb), 0.5);
     --market-border-soft: rgba(var(--mocha-rgb), 0.24);
     --market-tint: rgba(var(--blue-rgb), 0.18);
-    --market-soft-text: rgba(var(--cream-rgb), 0.9);
-
+    --market-soft-text: rgba(var(--cream-rgb), 0.97);
 
     --market-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
             rgba(var(--blue-rgb), 0.3));
@@ -31,7 +34,7 @@
 
 .marketplace-page ::selection {
     color: var(--market-mocha);
-    background: var(--market-blue);
+    background: var(--market-blue-light);
 }
 
 .marketplace-page .marketplace-cart {
@@ -56,10 +59,9 @@
 }
 
 
-/* HEADER — same setup as the Challenge page:
-   absolute, over the page, cream text, colours only.
-   A soft mocha fade sits behind it because this page
-   has no dark hero image under the header. */
+/* HEADER — same fading-gradient design as before, but the part behind
+   the nav text stays dark enough (5:1+) so cream text passes contrast;
+   the fade only happens at the very bottom edge, where there is no text */
 
 .marketplace-page .site-header {
     position: absolute;
@@ -69,9 +71,9 @@
     width: 100%;
     color: var(--market-cream);
     background: linear-gradient(180deg,
-            rgba(var(--mocha-rgb), 0.92) 0%,
-            rgba(var(--mocha-rgb), 0.6) 60%,
-            rgba(var(--mocha-rgb), 0) 100%);
+            rgba(var(--mocha-rgb), 0.97) 0%,
+            rgba(var(--mocha-rgb), 0.93) 75%,
+            rgba(var(--mocha-rgb), 0.55) 100%);
     border-bottom: 1px solid var(--market-border);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -104,8 +106,8 @@
 
 .marketplace-page .site-header .marketplace-cart span {
     color: var(--market-mocha);
-    background: var(--market-blue);
-    border-color: var(--market-blue);
+    background: var(--market-blue-light);
+    border-color: var(--market-blue-light);
     font-weight: 700;
 }
 
@@ -138,7 +140,7 @@
 }
 
 .marketplace-page .header-search-form input::placeholder {
-    color: rgba(var(--cream-rgb), 0.82);
+    color: rgba(var(--cream-rgb), 0.95);
 }
 
 .marketplace-page .search-submit {
@@ -153,7 +155,7 @@
 }
 
 .marketplace-page .search-submit:hover {
-    background: var(--market-blue);
+    background: var(--market-blue-light);
 }
 
 /* mobile menu panel, only when it is open */
@@ -254,7 +256,7 @@
 }
 
 .marketplace-page .marketplace-button:hover {
-    background: var(--market-blue);
+    background: var(--market-blue-light);
     border-color: var(--market-mocha);
     color: var(--market-mocha);
     transform: translateY(-2px);
@@ -310,7 +312,7 @@
 }
 
 
-/* COLLECTION SECTION  */
+/* COLLECTION SECTION */
 
 .marketplace-section {
     padding: clamp(3.5rem, 7vw, 6.5rem) var(--page-gutter, 5vw);

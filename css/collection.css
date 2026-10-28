@@ -1,5 +1,6 @@
 /*
-   CURIO MUSEUM — COLLECTION PAGE 
+   CURIO MUSEUM — COLLECTION PAGE
+   Accessible (WCAG AA) colours, mobile-first responsive layout
 */
 
 .collection-page {
@@ -7,20 +8,20 @@
     --font-heading: "Roboto", sans-serif;
 
     --collection-blue: #A0D4E0;
+    --collection-blue-light: #B4DDE8;
     --collection-cream: #F2F0EA;
-    --collection-mocha: #A58A6F;
+    --collection-mocha: #6F563D;
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
-    --mocha-rgb: 165, 138, 111;
+    --mocha-rgb: 111, 86, 61;
 
     --collection-border: rgba(var(--cream-rgb), 0.38);          /* on mocha */
-    --collection-border-dark: rgba(var(--mocha-rgb), 0.42);     /* on linen */
+    --collection-border-dark: rgba(var(--mocha-rgb), 0.5);      /* on linen */
     --collection-border-soft: rgba(var(--mocha-rgb), 0.24);
     --collection-tint: rgba(var(--blue-rgb), 0.18);
-    --collection-soft-text: rgba(var(--cream-rgb), 0.9);
+    --collection-soft-text: rgba(var(--cream-rgb), 0.97);
 
-    /* moonlight body: linen with a veil of sky blue */
     --collection-moon: linear-gradient(
         rgba(var(--blue-rgb), 0.3),
         rgba(var(--blue-rgb), 0.3)
@@ -55,7 +56,7 @@
 
 .collection-page ::selection {
     color: var(--collection-mocha);
-    background: var(--collection-blue);
+    background: var(--collection-blue-light);
 }
 
 .collection-page [hidden] {
@@ -100,7 +101,7 @@
     width: 100%;
     height: 100%;
     min-height: 0;
-    background-image: url("../assets/Dreamlike\ Twilight\ Nativity\ Tableau.png");
+    background-image: url("../assets/Dreamlike%20Twilight%20Nativity%20Tableau.png");
     background-position: center center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -109,8 +110,8 @@
     animation: collection-image-enter 1.3s ease both;
 }
 
-/* Mocha overlay with a sky-blue glow
-   (same overlay values as the Challenge page) */
+/* Mocha overlay with a sky-blue glow.
+   Kept strong enough everywhere so cream text stays readable. */
 
 .collection-page .collection-hero::before {
     position: absolute;
@@ -121,15 +122,15 @@
     background:
         radial-gradient(
             circle at 75% 30%,
-            rgba(var(--blue-rgb), 0.35),
+            rgba(var(--blue-rgb), 0.22),
             transparent 38%
         ),
         linear-gradient(
             180deg,
-            rgba(var(--mocha-rgb), 0.12) 0%,
-            rgba(var(--mocha-rgb), 0.5) 30%,
-            rgba(var(--mocha-rgb), 0.5) 62%,
-            rgba(var(--mocha-rgb), 0.18) 100%
+            rgba(var(--mocha-rgb), 0.6) 0%,
+            rgba(var(--mocha-rgb), 0.68) 30%,
+            rgba(var(--mocha-rgb), 0.68) 62%,
+            rgba(var(--mocha-rgb), 0.55) 100%
         );
 }
 
@@ -139,6 +140,13 @@
     width: 100%;
     max-width: 710px;
     animation: collection-content-enter 0.9s 0.15s ease both;
+}
+
+/* soft shadow keeps text readable over the picture */
+.collection-page .collection-hero .collection-eyebrow,
+.collection-page .collection-hero h1,
+.collection-page .collection-hero-description {
+    text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
 }
 
 .collection-page .collection-eyebrow {
@@ -161,6 +169,7 @@
     text-wrap: balance;
 }
 
+/* large text: blue on dark mocha passes the 3:1 large-text ratio */
 .collection-page .collection-hero h1 em,
 .collection-page .collection-callout h2 em {
     color: var(--collection-blue);
@@ -190,6 +199,7 @@
     font-size: 0.84rem;
     font-weight: 700;
     text-decoration: none;
+    text-shadow: none;
     transition:
         background 0.25s ease,
         border-color 0.25s ease,
@@ -199,8 +209,8 @@
 
 .collection-page .collection-primary-link:hover {
     color: var(--collection-mocha);
-    background: var(--collection-blue);
-    border-color: var(--collection-blue);
+    background: var(--collection-blue-light);
+    border-color: var(--collection-blue-light);
     transform: translateY(-3px);
     box-shadow: 0 0 0 6px rgba(var(--cream-rgb), 0.25);
 }
@@ -240,7 +250,6 @@
     color: var(--collection-mocha);
 }
 
-
 .collection-page .collection-section-header h2 em {
     color: var(--collection-mocha);
     font-weight: 400;
@@ -272,7 +281,7 @@
 
 .collection-page .collection-browse-link:hover {
     gap: 15px;
-    background: var(--collection-blue);
+    background: var(--collection-blue-light);
 }
 
 
@@ -409,20 +418,20 @@
     transform: scale(1.055);
 }
 
+/* solid mocha chip so it stays readable over any picture */
 .collection-page .collection-card-category {
     position: absolute;
     left: 15px;
     bottom: 15px;
     padding: 7px 14px;
     color: var(--collection-cream);
-    background: rgba(var(--mocha-rgb), 0.92);
+    background: var(--collection-mocha);
     border: 1px solid var(--collection-border);
     border-radius: 999px;
-    font-size: 0.62rem;
+    font-size: 0.66rem;
     font-weight: 700;
     letter-spacing: 0.1em;
 }
-
 
 .collection-page .collection-card-content {
     display: flex;
@@ -433,7 +442,6 @@
     color: var(--collection-mocha);
 }
 
-
 .collection-page .collection-card-meta {
     align-self: flex-start;
     margin: 0 0 14px;
@@ -441,7 +449,7 @@
     color: var(--collection-mocha);
     background: rgba(var(--blue-rgb), 0.5);
     border-radius: 999px;
-    font-size: 0.64rem;
+    font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     line-height: 1.7;
@@ -491,7 +499,7 @@
     font-size: 0.82rem;
     font-weight: 700;
     text-decoration: none;
-    background-image: linear-gradient(var(--collection-blue), var(--collection-blue));
+    background-image: linear-gradient(var(--collection-blue-light), var(--collection-blue-light));
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 100% 3px;
@@ -521,12 +529,12 @@
 }
 
 .collection-page .collection-save-button.is-saved {
-    background: var(--collection-blue);
+    background: var(--collection-blue-light);
     box-shadow: 0 0 0 4px rgba(var(--blue-rgb), 0.45);
 }
 
 .collection-page .collection-save-button:hover {
-    background: var(--collection-blue);
+    background: var(--collection-blue-light);
     transform: scale(1.08);
 }
 
@@ -550,7 +558,7 @@
     height: 74px;
     margin: 0 auto 18px;
     color: var(--collection-mocha);
-    background: var(--collection-blue);
+    background: var(--collection-blue-light);
     border: 2px solid var(--collection-mocha);
     border-radius: 50%;
     box-shadow: 0 0 0 8px rgba(var(--blue-rgb), 0.4);
@@ -582,8 +590,8 @@
     color: var(--collection-cream);
     background:
         linear-gradient(
-            rgba(var(--mocha-rgb), 0.9),
-            rgba(var(--mocha-rgb), 0.96)
+            rgba(var(--mocha-rgb), 0.92),
+            rgba(var(--mocha-rgb), 0.97)
         ),
         url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1600&q=85")
         center / cover no-repeat,
@@ -599,7 +607,7 @@
     pointer-events: none;
     background: radial-gradient(
         circle at 50% 0%,
-        rgba(var(--blue-rgb), 0.35),
+        rgba(var(--blue-rgb), 0.3),
         transparent 55%
     );
 }
@@ -706,14 +714,14 @@
         background:
             radial-gradient(
                 circle at 75% 30%,
-                rgba(var(--blue-rgb), 0.35),
+                rgba(var(--blue-rgb), 0.22),
                 transparent 38%
             ),
             linear-gradient(
                 90deg,
                 rgba(var(--mocha-rgb), 0.94) 0%,
-                rgba(var(--mocha-rgb), 0.68) 48%,
-                rgba(var(--mocha-rgb), 0.2) 100%
+                rgba(var(--mocha-rgb), 0.76) 48%,
+                rgba(var(--mocha-rgb), 0.55) 100%
             );
     }
 

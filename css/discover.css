@@ -6,16 +6,16 @@
 .discover-page {
     --discover-blue: #A0D4E0;
     --discover-cream: #F2F0EA;
-    --discover-mocha: #A58A6F;
+    --discover-mocha: #6F563D; 
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
-    --mocha-rgb: 165, 138, 111;
+    --mocha-rgb: 111, 86, 61;
 
     --discover-border: rgba(var(--mocha-rgb), 0.38);
     --discover-border-soft: rgba(var(--mocha-rgb), 0.22);
     --discover-card-bg: rgba(var(--blue-rgb), 0.16);
-    --discover-soft-text: rgba(var(--cream-rgb), 0.9);
+    --discover-soft-text: rgba(var(--cream-rgb), 0.97);
 
     background: var(--discover-cream);
     color: var(--discover-mocha);
@@ -94,8 +94,8 @@
     background:
         linear-gradient(90deg,
             rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.62) 55%,
-            rgba(var(--mocha-rgb), 0.18) 100%),
+            rgba(var(--mocha-rgb), 0.8) 55%,
+            rgba(var(--mocha-rgb), 0.78) 100%),
         url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
 
     animation: discover-hero-image-reveal 1.2s ease-out both;
@@ -184,7 +184,7 @@
 }
 
 .discover-scroll-link span {
-    color: var(--discover-blue);
+    color: var(--discover-cream);
     font-size: 1.1rem;
 }
 
@@ -346,7 +346,7 @@
 }
 
 .discover-search-box input::placeholder {
-    color: rgba(var(--mocha-rgb), 0.75);
+    color: rgba(var(--mocha-rgb), 0.9);
 }
 
 .discover-clear-search {
@@ -712,7 +712,7 @@
     overflow: hidden;
     background:
         radial-gradient(circle at 50% 35%,
-            rgba(var(--blue-rgb), 0.7),
+            rgba(var(--blue-rgb), 0.22),
             transparent 58%),
         var(--discover-mocha);
     text-align: center;
@@ -828,7 +828,7 @@
 }
 
 .discover-card-separator {
-    opacity: 0.55;
+    opacity: 1;
 }
 
 .discover-card-footer {
@@ -1003,7 +1003,7 @@
 }
 
 .discover-closing-link span {
-    color: var(--discover-blue);
+    color: var(--discover-cream);
 }
 
 .discover-closing-link:hover {
@@ -1013,7 +1013,7 @@
 
 .discover-closing-number {
     flex-shrink: 0;
-    color: rgba(var(--blue-rgb), 0.5);
+    color: rgba(var(--blue-rgb), 0.9);
     font-family: "Inter", sans-serif;
     font-size: clamp(7rem, 18vw, 16rem);
     line-height: 1;
@@ -1373,8 +1373,8 @@
         animation: discover-hero-image-reveal 1.2s ease-out both;
         background: linear-gradient(90deg,
             rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.62) 55%,
-            rgba(var(--mocha-rgb), 0.18) 100%),
+            rgba(var(--mocha-rgb), 0.8) 55%,
+            rgba(var(--mocha-rgb), 0.78) 100%),
         url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
         inset: 0;
     }
@@ -1551,8 +1551,8 @@
         animation: discover-hero-image-reveal 1.2s ease-out both;
         background: linear-gradient(90deg,
             rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.62) 55%,
-            rgba(var(--mocha-rgb), 0.18) 100%),
+            rgba(var(--mocha-rgb), 0.8) 55%,
+            rgba(var(--mocha-rgb), 0.78) 100%),
         url("../assets/Moonlit Marble Palace and Celestial Vista (1).png") center / cover no-repeat;
         inset: 0;
     }

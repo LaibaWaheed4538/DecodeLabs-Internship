@@ -9,12 +9,16 @@
     /* The three colours */
     --color-blue: #A0D4E0;
     --color-cream: #F2F0EA;
-    --color-mocha: #A58A6F;
+    
+    --color-mocha-original: #A58A6F;
+    --color-mocha: #6F563D;
+    --color-mocha-dark: #5A4531;
+    --color-gold: #6F563D;
 
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
-    --mocha-rgb: 165, 138, 111;
+    --mocha-rgb: 111, 86, 61;
 
     /* Roles */
     --bg-light: var(--color-cream);
@@ -22,7 +26,7 @@
     --accent: var(--color-blue);
     --text-on-light: var(--color-mocha);
     --text-on-dark: var(--color-cream);
-    --text-on-dark-soft: rgba(var(--cream-rgb), 0.88);
+    --text-on-dark-soft: rgba(var(--cream-rgb), 0.96);
 
     --color-border-light: rgba(var(--mocha-rgb), 0.35);
     --color-border-dark: rgba(var(--cream-rgb), 0.32);
@@ -328,7 +332,7 @@ button {
     z-index: 1000;
     width: 100%;
     color: var(--text-on-dark);
-    background: rgba(var(--mocha-rgb), 0.18);
+    background: rgba(var(--mocha-rgb), 0.92);
     border-bottom: 1px solid rgba(var(--cream-rgb), 0.22);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -835,7 +839,7 @@ button {
 
 .pagination-divider,
 .pagination-total {
-    color: rgba(var(--cream-rgb), 0.8);
+    color: var(--color-cream);
     font-size: 0.85rem;
 }
 
@@ -989,7 +993,7 @@ button {
 
 .exhibit-meta span {
     margin-inline: 0.2rem;
-    opacity: 0.6;
+    opacity: 1;
 }
 
 .card-arrow {
@@ -1332,7 +1336,7 @@ button {
 .collection-decoration-number {
     position: relative;
     z-index: 1;
-    color: var(--color-cream);
+    color: var(--color-mocha);
     font-family: var(--font-heading);
     font-size: clamp(5rem, 12vw, 10rem);
     font-weight: 400;
@@ -1343,7 +1347,7 @@ button {
     position: relative;
     z-index: 1;
     margin-top: 1rem;
-    color: var(--color-mocha);
+    color: var(--color-mocha-dark);
     font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.18em;

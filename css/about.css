@@ -1,25 +1,26 @@
 /*
    CURIO MUSEUM — ABOUT PAGE — three-colour edition
-
-   
+   Accessible (WCAG AA) colours, mobile-first responsive layout
 */
 
 .about-page {
     --font-heading: "Playfair Display", serif;
     --font-body: "DM Sans", sans-serif;
     --about-blue: #A0D4E0;
+   
+    --about-blue-light: #B4DDE8;
     --about-cream: #F2F0EA;
-    --about-mocha: #A58A6F;
+    --about-mocha: #6F563D; 
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
-    --mocha-rgb: 165, 138, 111;
+    --mocha-rgb: 111, 86, 61;
 
     --about-border: rgba(var(--cream-rgb), 0.38);
-    --about-border-dark: rgba(var(--mocha-rgb), 0.42);
+    --about-border-dark: rgba(var(--mocha-rgb), 0.5);
     --about-border-soft: rgba(var(--mocha-rgb), 0.24);
     --about-tint: rgba(var(--blue-rgb), 0.18);
-    --about-soft-text: rgba(var(--cream-rgb), 0.9);
+    --about-soft-text: rgba(var(--cream-rgb), 0.97);
 
     --about-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
             rgba(var(--blue-rgb), 0.3));
@@ -56,7 +57,7 @@
 
 .about-page ::selection {
     color: var(--about-mocha);
-    background: var(--about-blue);
+    background: var(--about-blue-light);
 }
 
 .about-page a:focus-visible,
@@ -65,7 +66,6 @@
     outline-offset: 4px;
 }
 
-
 .about-page .about-hero a:focus-visible,
 .about-page .about-closing a:focus-visible,
 .about-page .about-closing button:focus-visible {
@@ -73,9 +73,7 @@
 }
 
 
-/*
-   HERO — FULL BACKGROUND IMAGE
-*/
+/* HERO — FULL BACKGROUND IMAGE */
 
 .about-page .about-hero {
     position: relative;
@@ -95,15 +93,15 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../assets/Sunlit\ Antiquarian\ Study\ with\ Globe\ and\ Atlas.png");
+    background-image: url("../assets/Sunlit%20Antiquarian%20Study%20with%20Globe%20and%20Atlas.png");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     animation: about-image-reveal 1.4s ease both;
 }
 
-/* Mocha overlay with a sky-blue glow
-   (same overlay values as the Challenge page) */
+/* Mocha overlay with a sky-blue glow.
+   Kept strong enough everywhere so cream text stays readable. */
 
 .about-page .about-hero::before {
     position: absolute;
@@ -112,13 +110,13 @@
     content: "";
     pointer-events: none;
     background: radial-gradient(circle at 75% 30%,
-            rgba(var(--blue-rgb), 0.35),
+            rgba(var(--blue-rgb), 0.22),
             transparent 38%),
         linear-gradient(180deg,
-            rgba(var(--mocha-rgb), 0.12) 0%,
-            rgba(var(--mocha-rgb), 0.5) 30%,
-            rgba(var(--mocha-rgb), 0.5) 62%,
-            rgba(var(--mocha-rgb), 0.18) 100%);
+            rgba(var(--mocha-rgb), 0.6) 0%,
+            rgba(var(--mocha-rgb), 0.68) 30%,
+            rgba(var(--mocha-rgb), 0.68) 62%,
+            rgba(var(--mocha-rgb), 0.6) 100%);
 }
 
 .about-page .about-hero-content {
@@ -127,6 +125,14 @@
     width: 100%;
     max-width: 740px;
     animation: about-content-reveal 0.9s 0.15s ease both;
+}
+
+/* soft shadow keeps text readable over the picture */
+.about-page .about-hero .about-eyebrow,
+.about-page .about-hero h1,
+.about-page .about-hero-description,
+.about-page .about-hero-caption {
+    text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
 }
 
 .about-page .about-eyebrow {
@@ -154,19 +160,18 @@
     text-wrap: balance;
 }
 
+/* large text: blue on dark mocha passes the 3:1 large-text ratio */
 .about-page .about-hero h1 em,
 .about-page .about-closing h2 em {
     color: var(--about-blue);
     font-weight: 400;
 }
 
-
 .about-page .about-intro h2 em,
 .about-page .about-mission h2 em,
 .about-page .about-section-heading h2 em {
     color: var(--about-mocha);
     font-weight: 400;
-   
 }
 
 .about-page .about-hero-description {
@@ -192,6 +197,7 @@
     font-size: 0.84rem;
     font-weight: 700;
     text-decoration: none;
+    text-shadow: none;
     transition:
         background 0.25s ease,
         border-color 0.25s ease,
@@ -201,8 +207,8 @@
 
 .about-page .about-primary-link:hover {
     color: var(--about-mocha);
-    background: var(--about-blue);
-    border-color: var(--about-blue);
+    background: var(--about-blue-light);
+    border-color: var(--about-blue-light);
     transform: translateY(-3px);
     box-shadow: 0 0 0 6px rgba(var(--cream-rgb), 0.25);
 }
@@ -211,18 +217,16 @@
     position: absolute;
     right: 18px;
     bottom: 18px;
+    left: 18px;
     color: var(--about-cream);
-    font-size: 0.55rem;
+    font-size: 0.6rem;
     font-weight: 500;
     letter-spacing: 0.16em;
-    left: 18px;
     line-height: 1.8;
 }
 
 
-/*
-   INTRODUCTION
-*/
+/* INTRODUCTION */
 
 .about-page .about-intro {
     display: grid;
@@ -273,7 +277,7 @@
 }
 
 
-
+/* MISSION */
 
 .about-page .about-mission {
     display: grid;
@@ -284,7 +288,6 @@
     margin: auto;
     padding: 60px 22px;
 }
-
 
 .about-page .about-mission-image {
     min-width: 0;
@@ -338,13 +341,11 @@
 
 .about-page .about-text-link:hover {
     gap: 18px;
-    background: var(--about-blue);
+    background: var(--about-blue-light);
 }
 
 
-/*
-   EXPLORATION PILLARS 
-*/
+/* EXPLORATION PILLARS */
 
 .about-page .about-pillars {
     padding: 65px 18px;
@@ -424,7 +425,7 @@
     height: 64px;
     margin-bottom: 26px;
     color: var(--about-mocha);
-    background: var(--about-blue);
+    background: var(--about-blue-light);
     border: 2px solid var(--about-mocha);
     border-radius: 50%;
     box-shadow: 0 0 0 6px rgba(var(--blue-rgb), 0.4);
@@ -453,7 +454,7 @@
     font-size: 0.84rem;
     font-weight: 700;
     text-decoration: none;
-    background-image: linear-gradient(var(--about-blue), var(--about-blue));
+    background-image: linear-gradient(var(--about-blue-light), var(--about-blue-light));
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 100% 3px;
@@ -468,7 +469,7 @@
 }
 
 
-
+/* CLOSING SECTION */
 
 .about-page .about-closing {
     position: relative;
@@ -488,10 +489,10 @@
     content: "";
     background:
         radial-gradient(circle at 50% 0%,
-            rgba(var(--blue-rgb), 0.35),
+            rgba(var(--blue-rgb), 0.3),
             transparent 55%),
-        linear-gradient(rgba(var(--mocha-rgb), 0.92),
-            rgba(var(--mocha-rgb), 0.96)),
+        linear-gradient(rgba(var(--mocha-rgb), 0.93),
+            rgba(var(--mocha-rgb), 0.97)),
         url("https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1600&q=85") center / cover no-repeat;
 }
 
@@ -504,9 +505,7 @@
 }
 
 
-/*
-   PAGE TRANSITIONS
-*/
+/* PAGE TRANSITIONS */
 
 @keyframes about-image-reveal {
     from {
@@ -546,22 +545,7 @@
 }
 
 
-/*
-   TABLET
-*/
-
-
-
-/*
-   MOBILE
-*/
-
-
-
-
-/*
-   REDUCED MOTION ACCESSIBILITY
-*/
+/* REDUCED MOTION ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -584,10 +568,9 @@
     }
 }
 
-/*
-   MOBILE-FIRST BREAKPOINTS
-   Mobile is the default; tablet starts at 768px and desktop at 1024px.
-*/
+
+/* MOBILE-FIRST BREAKPOINTS
+   Mobile is the default; tablet starts at 768px and desktop at 1024px. */
 
 @media (min-width: 768px) {
     .about-page .about-hero {
@@ -603,12 +586,18 @@
     .about-page .about-hero::before {
         background:
             radial-gradient(circle at 75% 30%,
-                rgba(var(--blue-rgb), 0.35),
+                rgba(var(--blue-rgb), 0.22),
                 transparent 38%),
             linear-gradient(90deg,
                 rgba(var(--mocha-rgb), 0.94) 0%,
-                rgba(var(--mocha-rgb), 0.68) 48%,
-                rgba(var(--mocha-rgb), 0.2) 100%);
+                rgba(var(--mocha-rgb), 0.76) 48%,
+                rgba(var(--mocha-rgb), 0.55) 100%);
+    }
+
+    .about-page .about-hero .about-eyebrow,
+    .about-page .about-hero h1,
+    .about-page .about-hero-description {
+        text-shadow: none;
     }
 
     .about-page .about-hero h1 {
@@ -629,7 +618,7 @@
         right: clamp(20px, 4vw, 55px);
         bottom: 24px;
         left: auto;
-        font-size: 0.62rem;
+        font-size: 0.66rem;
         line-height: normal;
     }
 

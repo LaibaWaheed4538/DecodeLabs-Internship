@@ -5,13 +5,13 @@
 .timeline-page {
     --tl-blue: #A0D4E0;
     --tl-cream: #F2F0EA;
-    --tl-mocha: #A58A6F;
+   --tl-mocha: #76604A;
     --tl-body-font: "Inter", sans-serif;
     --tl-heading-font: "Playfair Display", Georgia, serif;
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
-    --mocha-rgb: 165, 138, 111;
+   --mocha-rgb: 118, 96, 74;
 
     --tl-border: rgba(var(--mocha-rgb), 0.38);
     --tl-border-soft: rgba(var(--mocha-rgb), 0.24);

@@ -1,22 +1,24 @@
 
 /* CURIO — COMMUNITY DISCOVERIES — three-colour edition
-   Responsive, mobile-first.
+   Accessible (WCAG AA) colours. Responsive, mobile-first.
 */
 
 .community-page {
     --cd-blue: #A0D4E0;
+    
+    --cd-blue-light: #B4DDE8;
     --cd-cream: #F2F0EA;
-    --cd-mocha: #A58A6F;
+    --cd-mocha: #6F563D; 
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
-    --mocha-rgb: 165, 138, 111;
+    --mocha-rgb: 111, 86, 61;
 
     --cd-border: rgba(var(--cream-rgb), 0.38);
-    --cd-border-dark: rgba(var(--mocha-rgb), 0.42);
+    --cd-border-dark: rgba(var(--mocha-rgb), 0.5);
     --cd-border-soft: rgba(var(--mocha-rgb), 0.24);
     --cd-tint: rgba(var(--blue-rgb), 0.18);
-    --cd-soft-text: rgba(var(--cream-rgb), 0.9);
+    --cd-soft-text: rgba(var(--cream-rgb), 0.97);
 
     --cd-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
             rgba(var(--blue-rgb), 0.3));
@@ -56,7 +58,7 @@
 
 .community-page ::selection {
     color: var(--cd-mocha);
-    background: var(--cd-blue);
+    background: var(--cd-blue-light);
 }
 
 .community-page button,
@@ -87,7 +89,9 @@
     display: none !important;
 }
 
-/* HEADER */
+/* HEADER — same fading-gradient design as before, but the part behind
+   the nav text stays dark enough (5:1+) so cream text passes contrast;
+   the fade only happens at the very bottom edge, where there is no text */
 
 .community-page .site-header {
     position: absolute;
@@ -97,9 +101,9 @@
     width: 100%;
     color: var(--cd-cream);
     background: linear-gradient(180deg,
-            rgba(var(--mocha-rgb), 0.92) 0%,
-            rgba(var(--mocha-rgb), 0.6) 60%,
-            rgba(var(--mocha-rgb), 0) 100%);
+            rgba(var(--mocha-rgb), 0.97) 0%,
+            rgba(var(--mocha-rgb), 0.93) 75%,
+            rgba(var(--mocha-rgb), 0.55) 100%);
     border-bottom: 1px solid var(--cd-border);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -164,7 +168,7 @@
 }
 
 .community-page .header-search-form input::placeholder {
-    color: rgba(var(--cream-rgb), 0.82);
+    color: rgba(var(--cream-rgb), 0.95);
 }
 
 .community-page .search-submit {
@@ -179,7 +183,7 @@
 }
 
 .community-page .search-submit:hover {
-    background: var(--cd-blue);
+    background: var(--cd-blue-light);
 }
 
 .community-page .primary-navigation.is-open,
@@ -272,7 +276,7 @@
 
 .community-primary-link:hover,
 .community-page .button-primary:hover {
-    background: var(--cd-blue);
+    background: var(--cd-blue-light);
     color: var(--cd-mocha) !important;
     transform: translateY(-2px);
     box-shadow: 0 0 0 5px rgba(var(--blue-rgb), 0.45);
@@ -281,7 +285,7 @@
 .community-note {
     align-self: stretch;
     padding: clamp(1.5rem, 4vw, 2.5rem);
-    background: var(--cd-blue);
+    background: var(--cd-blue-light);
     border: 2px solid var(--cd-mocha);
     border-radius: 16px;
     box-shadow:
@@ -358,7 +362,7 @@
     height: 52px;
     flex-shrink: 0;
     place-items: center;
-    background: var(--cd-blue);
+    background: var(--cd-blue-light);
     border: 2px solid var(--cd-mocha);
     border-radius: 50%;
     box-shadow: 0 0 0 5px rgba(var(--blue-rgb), 0.4);
@@ -407,7 +411,7 @@
 .community-filters input::placeholder,
 .community-field input::placeholder,
 .community-field textarea::placeholder {
-    color: rgba(var(--mocha-rgb), 0.7);
+    color: rgba(var(--mocha-rgb), 0.9);
 }
 
 .community-field textarea {
@@ -563,7 +567,7 @@
 }
 
 .discovery-card-actions button:hover {
-    background: var(--cd-blue);
+    background: var(--cd-blue-light);
 }
 
 .discovery-card-actions .delete-discovery {
@@ -571,7 +575,7 @@
 }
 
 .discovery-card-actions .delete-discovery:hover {
-    background: rgba(var(--mocha-rgb), 0.16);
+    background: rgba(var(--mocha-rgb), 0.14);
 }
 
 .community-empty {
@@ -597,7 +601,7 @@
     margin-top: 0.5rem;
     color: var(--cd-mocha);
     font-weight: 700;
-    background-image: linear-gradient(var(--cd-blue), var(--cd-blue));
+    background-image: linear-gradient(var(--cd-blue-light), var(--cd-blue-light));
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 100% 3px;
@@ -673,7 +677,7 @@
 
 .community-submit:hover,
 .community-page button[type="submit"]:hover {
-    background: var(--cd-blue);
+    background: var(--cd-blue-light);
     color: var(--cd-mocha);
     box-shadow: 0 0 0 5px rgba(var(--blue-rgb), 0.45);
 }
@@ -698,7 +702,7 @@
 
 .community-status:not(:empty) {
     padding: 0.7rem 1rem;
-    background: rgba(var(--blue-rgb), 0.55);
+    background: rgba(var(--blue-rgb), 0.5);
     border: 1.5px solid var(--cd-mocha);
     border-left: 6px solid var(--cd-mocha);
     border-radius: 12px;

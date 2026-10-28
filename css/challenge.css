@@ -1,5 +1,6 @@
 /*
-   CURIO MUSEUM — CHALLENGE PAGE 
+   CURIO MUSEUM — CHALLENGE PAGE
+   Accessible (WCAG AA) colours, mobile-first responsive layout
 */
 
 .challenge-page {
@@ -7,20 +8,22 @@
     --font-body: "Roboto", sans-serif;
 
     --challenge-blue: #A0D4E0;
+
+    --challenge-blue-light: #B4DDE8;
     --challenge-cream: #F2F0EA;
-    --challenge-mocha: #A58A6F;
+    --challenge-mocha: #6F563D; 
 
     --blue-rgb: 160, 212, 224;
     --cream-rgb: 242, 240, 234;
-    --mocha-rgb: 165, 138, 111;
+    --mocha-rgb: 111, 86, 61;
 
     --challenge-border: rgba(var(--cream-rgb), 0.38);
     /* on mocha */
-    --challenge-border-dark: rgba(var(--mocha-rgb), 0.42);
-    /* on linen */
+    --challenge-border-dark: rgba(var(--mocha-rgb), 0.5);
+    /* on cream */
     --challenge-border-soft: rgba(var(--mocha-rgb), 0.24);
     --challenge-tint: rgba(var(--blue-rgb), 0.18);
-    --challenge-soft-text: rgba(var(--cream-rgb), 0.9);
+    --challenge-soft-text: rgba(var(--cream-rgb), 0.97);
 
     --challenge-moon: linear-gradient(rgba(var(--blue-rgb), 0.3),
             rgba(var(--blue-rgb), 0.3));
@@ -58,7 +61,7 @@
 
 .challenge-page ::selection {
     color: var(--challenge-mocha);
-    background: var(--challenge-blue);
+    background: var(--challenge-blue-light);
 }
 
 .challenge-page button:focus-visible,
@@ -68,6 +71,7 @@
     outline-offset: 4px;
 }
 
+/* focus ring on dark (mocha) areas */
 .challenge-page .site-header a:focus-visible,
 .challenge-page .site-header button:focus-visible,
 .challenge-page .site-header input:focus-visible,
@@ -79,7 +83,7 @@
     outline-color: var(--challenge-cream);
 }
 
-
+/* focus ring on light (cream) areas */
 .challenge-page .quiz-container button:focus-visible,
 .challenge-page .quiz-container a:focus-visible,
 .challenge-page .quiz-container input:focus-visible,
@@ -165,7 +169,7 @@
 }
 
 .challenge-page .header-search-form input::placeholder {
-    color: rgba(var(--cream-rgb), 0.82);
+    color: rgba(var(--cream-rgb), 0.95);
 }
 
 .challenge-page .search-submit {
@@ -180,30 +184,34 @@
 }
 
 .challenge-page .search-submit:hover {
-    background: var(--challenge-blue);
+    background: var(--challenge-blue-light);
 }
 
 
-/* HERO — BACKGROUND */
+/* HERO — mobile first: picture fills the hero behind the text */
 
 .challenge-page .challenge-hero {
     position: relative;
     isolation: isolate;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: clamp(24px, 5vw, 80px);
-    min-height: 700px;
-    padding:
-        calc(clamp(60px, 9vw, 120px) + 92px) clamp(24px, 7vw, 110px) clamp(60px, 9vw, 120px);
+    gap: 25px;
+    min-height: auto;
+    padding: 150px 17px 42px;
     overflow: hidden;
 
     background:
-        linear-gradient(90deg,
-            rgba(var(--mocha-rgb), 0.94) 0%,
-            rgba(var(--mocha-rgb), 0.68) 48%,
-            rgba(var(--mocha-rgb), 0.2) 100%),
-        url("../assets/Moonlit\ Temple\ of\ Celestial\ Knowledge.png") center center / cover no-repeat,
+        /* overlay: kept strong enough everywhere so cream text stays readable */
+        linear-gradient(180deg,
+            rgba(var(--mocha-rgb), 0.6) 0%,
+            rgba(var(--mocha-rgb), 0.68) 30%,
+            rgba(var(--mocha-rgb), 0.68) 62%,
+            rgba(var(--mocha-rgb), 0.55) 100%) center / 100% 100% no-repeat,
+        /* mobile image */
+        url("../assets/Ancient%20Observatory%20of%20Knowledge.png") center center / 100% 100% no-repeat,
+        /* fallback: if the mobile file is not found, the desktop image shows */
+        url("../assets/Moonlit%20Temple%20of%20Celestial%20Knowledge.png") center center / 100% 100% no-repeat,
         var(--challenge-mocha);
 
     border-bottom: 1px solid var(--challenge-border);
@@ -216,15 +224,24 @@
     content: "";
     pointer-events: none;
     background: radial-gradient(circle at 75% 30%,
-            rgba(var(--blue-rgb), 0.35),
+            rgba(var(--blue-rgb), 0.22),
             transparent 38%);
+}
+
+/* soft shadow keeps text readable over the picture */
+.challenge-page .challenge-hero .challenge-eyebrow,
+.challenge-page .challenge-hero h1,
+.challenge-page .challenge-hero-description,
+.challenge-page .challenge-hero-note,
+.challenge-page .challenge-art-label {
+    text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
 }
 
 .challenge-page .challenge-hero-content {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 660px;
+    max-width: 540px;
     animation: challenge-enter 0.8s ease both;
 }
 
@@ -242,7 +259,7 @@
 }
 
 .challenge-page .challenge-eyebrow span {
-    color: var(--challenge-blue);
+    color: var(--challenge-cream);
     font-size: 1.1rem;
 }
 
@@ -250,15 +267,15 @@
     margin: 0;
     color: var(--challenge-cream);
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 6.2vw, 6.1rem);
+    font-size: 2.55rem;
     font-weight: 400;
-    line-height: 0.99;
+    line-height: 1.02;
     letter-spacing: -0.065em;
     text-wrap: balance;
 }
 
+/* large text: blue on dark mocha passes the 3:1 large-text ratio */
 .challenge-page .challenge-hero h1 em,
-.challenge-page .challenge-section-heading h2 em,
 .challenge-page .challenge-closing h2 em {
     color: var(--challenge-blue);
     font-weight: 400;
@@ -266,9 +283,9 @@
 
 .challenge-page .challenge-hero-description {
     max-width: 490px;
-    margin: 28px 0;
+    margin: 22px 0;
     color: var(--challenge-cream);
-    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    font-size: 0.98rem;
     line-height: 1.9;
 }
 
@@ -276,16 +293,18 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 12px;
+    max-width: 100%;
     min-height: 52px;
-    padding: 14px 26px;
+    padding: 14px 17px;
     color: var(--challenge-mocha);
     background: var(--challenge-cream);
     border: 2px solid var(--challenge-cream);
     border-radius: 999px;
-    font-size: 0.92rem;
+    font-size: 0.84rem;
     font-weight: 700;
     text-decoration: none;
+    text-shadow: none;
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
@@ -294,8 +313,8 @@
 }
 
 .challenge-page .challenge-start-link:hover {
-    background: var(--challenge-blue);
-    border-color: var(--challenge-blue);
+    background: var(--challenge-blue-light);
+    border-color: var(--challenge-blue-light);
     transform: translateY(-3px);
     box-shadow: 0 0 0 6px rgba(var(--cream-rgb), 0.25);
 }
@@ -308,7 +327,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 45px;
+    margin-top: 30px;
     color: var(--challenge-cream);
     font-size: 0.68rem;
     font-weight: 500;
@@ -316,7 +335,7 @@
 }
 
 .challenge-page .challenge-hero-note span:nth-child(even) {
-    color: var(--challenge-blue);
+    color: var(--challenge-cream);
 }
 
 
@@ -326,9 +345,10 @@
     position: relative;
     display: grid;
     place-items: center;
-    width: 100%;
+    width: min(75%, 300px);
     max-width: 510px;
     aspect-ratio: 1;
+    margin: 0 auto;
     justify-self: center;
     isolation: isolate;
 }
@@ -368,28 +388,30 @@
     place-items: center;
     width: 42%;
     aspect-ratio: 0.82;
-    color: var(--challenge-cream);
-    background: var(--challenge-blue);
+    color: var(--challenge-mocha);
+    background: var(--challenge-blue-light);
     border: 2px solid var(--challenge-cream);
     border-radius: 48% 48% 44% 44%;
     box-shadow:
         0 0 0 10px rgba(var(--blue-rgb), 0.3),
         0 0 0 22px rgba(var(--blue-rgb), 0.14);
     transform: rotate(-5deg);
+    text-shadow: none;
 }
 
 .challenge-page .challenge-art-center span {
+    color: var(--challenge-mocha);
     font-family: var(--font-heading);
-    font-size: clamp(5rem, 12vw, 9rem);
+    font-size: clamp(4.5rem, 18vw, 7rem);
     line-height: 1;
 }
 
 .challenge-page .challenge-art-label {
     position: absolute;
-    right: 0;
-    bottom: 7%;
+    right: -10%;
+    bottom: 5%;
     color: var(--challenge-cream);
-    font-size: 0.66rem;
+    font-size: 0.58rem;
     font-weight: 500;
     letter-spacing: 0.17em;
 }
@@ -398,7 +420,7 @@
 /* SECTION HEADING */
 
 .challenge-page .challenge-section {
-    padding: clamp(65px, 9vw, 120px) clamp(20px, 5vw, 70px);
+    padding: 65px 16px;
     background:
         radial-gradient(ellipse at 50% 0%,
             rgba(var(--blue-rgb), 0.4),
@@ -409,7 +431,7 @@
 
 .challenge-page .challenge-section-heading {
     max-width: 730px;
-    margin: 0 auto 48px;
+    margin: 0 auto 32px;
     text-align: center;
 }
 
@@ -422,13 +444,12 @@
     margin: 0;
     color: var(--challenge-cream);
     font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 4.7vw, 4.3rem);
+    font-size: clamp(2rem, 8vw, 3.1rem);
     font-weight: 400;
     line-height: 1.12;
     letter-spacing: -0.045em;
     text-wrap: balance;
 }
-
 
 .challenge-page .challenge-section-heading .challenge-eyebrow,
 .challenge-page .challenge-section-heading .challenge-eyebrow span,
@@ -438,6 +459,7 @@
 
 .challenge-page .challenge-section-heading h2 em {
     color: var(--challenge-mocha);
+    font-weight: 400;
     background-image: linear-gradient(var(--challenge-blue), var(--challenge-blue));
     background-repeat: no-repeat;
     background-position: 0 90%;
@@ -453,16 +475,16 @@
 }
 
 
-/* QUIZ CONTAINER  */
+/* QUIZ CONTAINER */
 
 .challenge-page .quiz-container {
     width: min(100%, 850px);
     margin-inline: auto;
-    padding: clamp(22px, 4vw, 46px);
+    padding: 23px 13px;
     color: var(--challenge-mocha);
     background: var(--challenge-cream);
     border: 2px solid var(--challenge-blue);
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow:
         0 0 0 8px rgba(var(--blue-rgb), 0.25),
         0 30px 60px -34px rgba(var(--mocha-rgb), 0.75);
@@ -479,6 +501,7 @@
 
 .challenge-page .quiz-topbar {
     flex-wrap: wrap;
+    gap: 12px;
     padding-bottom: 23px;
     border-bottom: 1.5px solid var(--challenge-border-soft);
 }
@@ -530,7 +553,7 @@
 .challenge-page .quiz-progress-labels {
     margin-top: 12px;
     color: var(--challenge-mocha);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
 }
 
 .challenge-page #quiz-progress-percentage {
@@ -557,7 +580,7 @@
     margin: 0;
     color: var(--challenge-mocha);
     font-family: var(--font-heading);
-    font-size: clamp(1.65rem, 3.4vw, 2.6rem);
+    font-size: 1.55rem;
     font-weight: 400;
     line-height: 1.3;
     text-wrap: balance;
@@ -575,10 +598,10 @@
 
 .challenge-page .quiz-options {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 13px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
     min-width: 0;
-    margin: 28px 0;
+    margin: 23px 0;
     padding: 0;
     border: 0;
 }
@@ -589,8 +612,8 @@
     align-items: center;
     gap: 13px;
     min-width: 0;
-    min-height: 76px;
-    padding: 16px;
+    min-height: 65px;
+    padding: 13px;
     color: var(--challenge-mocha);
     background: var(--challenge-tint);
     border: 1.5px solid var(--challenge-border-dark);
@@ -637,7 +660,7 @@
 .challenge-page .quiz-option-text {
     flex: 1;
     min-width: 0;
-    font-size: 0.93rem;
+    font-size: 0.92rem;
     line-height: 1.55;
 }
 
@@ -647,9 +670,9 @@
     font-size: 1rem;
 }
 
-/* selected — filled blue */
+/* selected — light blue fill */
 .challenge-page .quiz-option.is-selected {
-    background: rgba(var(--blue-rgb), 0.6);
+    background: rgba(var(--blue-rgb), 0.55);
     border-color: var(--challenge-mocha);
     box-shadow: 0 0 0 3px rgba(var(--blue-rgb), 0.6);
 }
@@ -659,9 +682,9 @@
     background: var(--challenge-mocha);
 }
 
-/* correct — solid blue fill, solid thick border */
+/* correct — blue fill, solid thick border */
 .challenge-page .quiz-option.is-correct {
-    background: var(--challenge-blue);
+    background: var(--challenge-blue-light);
     border: 2.5px solid var(--challenge-mocha);
 }
 
@@ -675,7 +698,7 @@
     font-weight: 700;
 }
 
-/* incorrect — linen fill, dashed border, muted */
+/* incorrect — cream fill, dashed border, struck through */
 .challenge-page .quiz-option.is-incorrect {
     background: var(--challenge-cream);
     border: 2px dashed var(--challenge-mocha);
@@ -711,7 +734,7 @@
 }
 
 .challenge-page .quiz-feedback.is-correct {
-    background: rgba(var(--blue-rgb), 0.55);
+    background: rgba(var(--blue-rgb), 0.5);
     border: 1.5px solid var(--challenge-mocha);
     border-left: 6px solid var(--challenge-mocha);
 }
@@ -754,12 +777,18 @@
 
 .challenge-page .quiz-actions {
     flex-wrap: wrap;
+    gap: 14px;
     margin-top: 30px;
     padding-top: 22px;
     border-top: 1.5px solid var(--challenge-border-soft);
 }
 
+.challenge-page .quiz-actions>button {
+    flex: 1 1 100%;
+}
+
 .challenge-page .quiz-score-label {
+    width: 100%;
     margin: 0;
     color: var(--challenge-mocha);
     font-size: 0.74rem;
@@ -804,26 +833,30 @@
 .challenge-page .quiz-next-button:hover,
 .challenge-page .quiz-restart-button:hover {
     color: var(--challenge-mocha);
-    background: var(--challenge-blue);
+    background: var(--challenge-blue-light);
     transform: translateY(-2px);
     box-shadow: 0 0 0 5px rgba(var(--blue-rgb), 0.45);
 }
 
+/* disabled: solid (not faded) colours so contrast is kept */
 .challenge-page .quiz-submit-button:disabled,
 .challenge-page .quiz-next-button:disabled {
-    opacity: 0.55;
+    color: var(--challenge-mocha);
+    background: transparent;
+    border-style: dashed;
+    opacity: 1;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
 
-/* RESULTS — also a linen card */
+/* RESULTS */
 
 .challenge-page .quiz-results {
     width: min(100%, 850px);
     margin: 35px auto 0;
-    padding: clamp(30px, 6vw, 65px) 24px;
+    padding: clamp(30px, 6vw, 65px) 17px;
     text-align: center;
     color: var(--challenge-mocha);
     background:
@@ -845,7 +878,7 @@
     height: 74px;
     margin: 0 auto 25px;
     color: var(--challenge-mocha);
-    background: var(--challenge-blue);
+    background: var(--challenge-blue-light);
     border: 2px solid var(--challenge-mocha);
     border-radius: 50%;
     box-shadow: 0 0 0 8px rgba(var(--blue-rgb), 0.4);
@@ -938,7 +971,7 @@
 
 .challenge-page .quiz-explore-link:hover {
     color: var(--challenge-mocha);
-    background: var(--challenge-blue);
+    background: var(--challenge-blue-light);
 }
 
 .challenge-page .quiz-error {
@@ -957,13 +990,13 @@
 .challenge-page .challenge-closing {
     position: relative;
     isolation: isolate;
-    padding: clamp(65px, 9vw, 120px) 24px;
+    padding: 65px 20px;
     overflow: hidden;
     text-align: center;
     background:
         linear-gradient(90deg,
             rgba(var(--mocha-rgb), 0.97),
-            rgba(var(--mocha-rgb), 0.82)),
+            rgba(var(--mocha-rgb), 0.92)),
         url("../assets/Ancient%20Observatory%20of%20Knowledge.png") center 65% / cover no-repeat,
         var(--challenge-mocha);
     border-top: 1px solid var(--challenge-border);
@@ -990,7 +1023,7 @@
 /* FOOTER */
 
 .challenge-page .site-footer {
-    padding: 65px clamp(22px, 6vw, 85px) 22px;
+    padding: 65px 22px 22px;
     color: var(--challenge-cream);
     background: var(--challenge-mocha);
     border-top: 1px solid var(--challenge-border);
@@ -998,8 +1031,8 @@
 
 .challenge-page .footer-main {
     display: grid;
-    grid-template-columns: 1.5fr 0.8fr 0.9fr 1.1fr;
-    gap: 40px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
     max-width: 1350px;
     margin: 0 auto;
 }
@@ -1065,11 +1098,12 @@
 
 .challenge-page .footer-bottom {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 12px;
     max-width: 1350px;
-    margin: 50px auto 0;
+    margin: 35px auto 0;
     padding-top: 22px;
     color: var(--challenge-soft-text);
     border-top: 1px solid var(--challenge-border);
@@ -1095,185 +1129,9 @@
     }
 }
 
-/* MOBILE-FIRST BASE: existing mobile rules apply without a max-width query. */
-/* HERO — same setup as the other pages:
-       the picture fills the whole hero behind the text, nothing is cut,
-       and the overlay is light so the picture stays clear
-       (same overlay numbers as the Timeline page).                    */
 
-    .challenge-page .challenge-hero {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 25px;
-        min-height: auto;
-        padding: 150px 22px 42px;
+/* REGULAR MOBILE: 381px and wider */
 
-        background:
-            /* light overlay: strongest only behind the text (middle),
-               light at top and bottom so the picture shows through.
-               Lower the 0.5 numbers = clearer picture,
-               raise them = easier to read the text. */
-            linear-gradient(180deg,
-                rgba(var(--mocha-rgb), 0.12) 0%,
-                rgba(var(--mocha-rgb), 0.5) 30%,
-                rgba(var(--mocha-rgb), 0.5) 62%,
-                rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
-            /* mobile image */
-            url("../assets/Ancient%20Observatory%20of%20Knowledge.png") center center / 100% 100% no-repeat,
-            /* fallback: if the mobile file is not found, the desktop image shows */
-            url("../assets/Moonlit%20Temple%20of%20Celestial%20Knowledge.png") center center / 100% 100% no-repeat,
-            var(--challenge-mocha);
-    }
-
-    /* A soft shadow keeps the text readable over the clearer picture */
-    .challenge-page .challenge-hero .challenge-eyebrow,
-    .challenge-page .challenge-hero h1,
-    .challenge-page .challenge-hero-description,
-    .challenge-page .challenge-hero-note,
-    .challenge-page .challenge-art-label {
-        text-shadow: 0 2px 14px rgba(var(--mocha-rgb), 0.75);
-    }
-
-    .challenge-page .challenge-hero-content {
-        max-width: 540px;
-    }
-
-    .challenge-page .challenge-hero h1 {
-        font-size: clamp(2.8rem, 10vw, 4.5rem);
-        line-height: 1.02;
-    }
-
-    .challenge-page .challenge-hero-description {
-        margin-block: 22px;
-        font-size: 0.98rem;
-    }
-
-    .challenge-page .challenge-hero-note {
-        margin-top: 30px;
-    }
-
-    .challenge-page .challenge-hero-art {
-        width: min(75%, 300px);
-        margin: 0 auto;
-    }
-
-    .challenge-page .challenge-art-center span {
-        font-size: clamp(4.5rem, 18vw, 7rem);
-    }
-
-    .challenge-page .challenge-art-label {
-        right: -10%;
-        bottom: 5%;
-        font-size: 0.58rem;
-    }
-
-    .challenge-page .challenge-section {
-        padding: 65px 16px;
-    }
-
-    .challenge-page .challenge-section-heading {
-        margin-bottom: 32px;
-    }
-
-    .challenge-page .challenge-section-heading h2 {
-        font-size: clamp(2rem, 8vw, 3.1rem);
-    }
-
-    .challenge-page .quiz-container {
-        padding: 23px 17px;
-        border-radius: 16px;
-    }
-
-    .challenge-page .quiz-topbar {
-        gap: 12px;
-    }
-
-    .challenge-page .quiz-options {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 10px;
-        margin-block: 23px;
-    }
-
-    .challenge-page .quiz-option {
-        min-height: 65px;
-        padding: 13px;
-    }
-
-    .challenge-page .quiz-option-text {
-        font-size: 0.92rem;
-    }
-
-    .challenge-page .quiz-actions {
-        align-items: center;
-        gap: 14px;
-    }
-
-    .challenge-page .quiz-actions>button {
-        flex: 1 1 150px;
-    }
-
-    .challenge-page .quiz-results {
-        padding-inline: 17px;
-    }
-
-    .challenge-page .challenge-closing {
-        padding-inline: 20px;
-    }
-
-    .challenge-page .footer-main {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 30px;
-    }
-
-    .challenge-page .site-footer {
-        padding-inline: 22px;
-    }
-
-    .challenge-page .footer-bottom {
-        flex-direction: column;
-        margin-top: 35px;
-    }
-
-
-
-/* MOBILE-FIRST RESPONSIVE LAYOUT */
-
-/* Extra-small mobile refinements are the base; wider screens override them below. */
-.challenge-page .challenge-hero {
-        padding-inline: 17px;
-    }
-
-    .challenge-page .challenge-hero h1 {
-        font-size: 2.55rem;
-    }
-
-    .challenge-page .challenge-start-link {
-        max-width: 100%;
-        gap: 12px;
-        padding-inline: 17px;
-        font-size: 0.84rem;
-    }
-
-    .challenge-page .quiz-container {
-        padding-inline: 13px;
-    }
-
-    .challenge-page .quiz-question-area h3 {
-        font-size: 1.55rem;
-    }
-
-    .challenge-page .quiz-progress-labels {
-        font-size: 0.72rem;
-    }
-
-    .challenge-page .quiz-actions>button {
-        flex-basis: 100%;
-    }
-
-    .challenge-page .quiz-score-label {
-        width: 100%;
-    }
-
-/* REGULAR MOBILE: 381px and wider. */
 @media (min-width: 381px) {
     .challenge-page .challenge-hero {
         padding-inline: 22px;
@@ -1302,7 +1160,7 @@
         font-size: 0.8rem;
     }
 
-    .challenge-page .quiz-actions > button {
+    .challenge-page .quiz-actions>button {
         flex-basis: 150px;
     }
 
@@ -1311,21 +1169,28 @@
     }
 }
 
-/* TABLET: 768px and wider. */
+
+/* TABLET: 768px and wider */
+
 @media (min-width: 768px) {
     .challenge-page .challenge-hero {
         grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
         gap: clamp(24px, 5vw, 80px);
         min-height: 570px;
         padding: calc(clamp(60px, 9vw, 120px) + 92px) 5% clamp(60px, 9vw, 120px);
-        background: linear-gradient(90deg, rgba(var(--mocha-rgb), 0.94) 0%, rgba(var(--mocha-rgb), 0.68) 48%, rgba(var(--mocha-rgb), 0.2) 100%), url("../assets/Moonlit\ Temple\ of\ Celestial\ Knowledge.png") center center / cover no-repeat, var(--challenge-mocha);
+        background:
+            linear-gradient(90deg,
+                rgba(var(--mocha-rgb), 0.94) 0%,
+                rgba(var(--mocha-rgb), 0.76) 48%,
+                rgba(var(--mocha-rgb), 0.55) 100%),
+            url("../assets/Moonlit%20Temple%20of%20Celestial%20Knowledge.png") center center / cover no-repeat,
+            var(--challenge-mocha);
     }
 
     .challenge-page .challenge-hero .challenge-eyebrow,
     .challenge-page .challenge-hero h1,
     .challenge-page .challenge-hero-description,
-    .challenge-page .challenge-hero-note,
-    .challenge-page .challenge-art-label {
+    .challenge-page .challenge-hero-note {
         text-shadow: none;
     }
 
@@ -1371,7 +1236,8 @@
         margin-bottom: 48px;
     }
 
-    .challenge-page .challenge-section-heading h2 {
+    .challenge-page .challenge-section-heading h2,
+    .challenge-page .challenge-closing h2 {
         font-size: clamp(2.2rem, 4.7vw, 4.3rem);
     }
 
@@ -1399,7 +1265,7 @@
         font-size: 0.93rem;
     }
 
-    .challenge-page .quiz-actions > button {
+    .challenge-page .quiz-actions>button {
         flex: 0 1 auto;
     }
 
@@ -1426,7 +1292,9 @@
     }
 }
 
-/* DESKTOP: 1024px and wider. */
+
+/* DESKTOP: 1024px and wider */
+
 @media (min-width: 1024px) {
     .challenge-page .challenge-hero {
         grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
@@ -1447,6 +1315,7 @@
         gap: 40px;
     }
 }
+
 
 /* REDUCED MOTION */
 

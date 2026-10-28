@@ -1,5 +1,6 @@
-
-/* CURIO BILLING */
+/* CURIO BILLING
+   Accessible (WCAG AA) colours, mobile-first responsive layout
+*/
 
 .billing-page {
     --font-body: "Inter", sans-serif;
@@ -7,13 +8,15 @@
 
     --bill-bg: #F2F0EA;
     --bill-surface: rgba(160, 212, 224, 0.16);
-    --bill-ink: #A58A6F;
-    --bill-muted: rgba(165, 138, 111, 0.82);
-    --bill-mocha: #A58A6F;
+    --bill-ink: #6F563D; 
+    --bill-muted: rgba(111, 86, 61, 0.94);
+    --bill-mocha: #6F563D;
     --bill-blue: #A0D4E0;
-    --bill-border: rgba(165, 138, 111, 0.32);
+    
+    --bill-blue-light: #B4DDE8;
+    --bill-border: rgba(111, 86, 61, 0.45);
     --bill-cream-rgb: 242, 240, 234;
-    --bill-mocha-rgb: 165, 138, 111;
+    --bill-mocha-rgb: 111, 86, 61;
 
     position: relative;
     min-height: 100vh;
@@ -24,7 +27,9 @@
     font-weight: 400;
 }
 
-/* HEADER */
+/* HEADER — same fading-gradient design as before, but the part behind
+   the nav text stays dark enough (5:1+) so cream text passes contrast;
+   the fade only happens at the very bottom edge, where there is no text */
 
 .billing-page .site-header {
     position: absolute;
@@ -34,9 +39,9 @@
     width: 100%;
     color: var(--bill-bg);
     background: linear-gradient(180deg,
-            rgba(var(--bill-mocha-rgb), 0.92) 0%,
-            rgba(var(--bill-mocha-rgb), 0.6) 60%,
-            rgba(var(--bill-mocha-rgb), 0) 100%);
+            rgba(var(--bill-mocha-rgb), 0.97) 0%,
+            rgba(var(--bill-mocha-rgb), 0.93) 75%,
+            rgba(var(--bill-mocha-rgb), 0.55) 100%);
     border-bottom: 1px solid rgba(var(--bill-cream-rgb), 0.38);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -54,7 +59,7 @@
 }
 
 .billing-page .nav-link {
-    color: rgba(var(--bill-cream-rgb), 0.9);
+    color: rgba(var(--bill-cream-rgb), 0.97);
     font-weight: 500;
     transition: color 0.25s ease;
 }
@@ -97,7 +102,7 @@
 }
 
 .billing-page .header-search-form input::placeholder {
-    color: rgba(var(--bill-cream-rgb), 0.82);
+    color: rgba(var(--bill-cream-rgb), 0.95);
 }
 
 .billing-page .search-submit {
@@ -114,7 +119,7 @@
 }
 
 .billing-page .search-submit:hover {
-    background: var(--bill-blue);
+    background: var(--bill-blue-light);
 }
 
 /* MOBILE MENU */
@@ -220,6 +225,11 @@
     font: inherit;
     font-size: 0.875rem;
     box-sizing: border-box;
+}
+
+.billing-field input::placeholder,
+.billing-field textarea::placeholder {
+    color: rgba(var(--bill-mocha-rgb), 0.9);
 }
 
 .billing-field input {
@@ -389,17 +399,22 @@
     font-weight: 500;
     text-align: center;
     cursor: pointer;
-    transition: background-color 180ms ease, border-color 180ms ease;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
 .billing-button:hover:not(:disabled) {
     border-color: var(--bill-mocha);
-    background: var(--bill-mocha);
+    background: var(--bill-blue-light);
+    color: var(--bill-mocha);
 }
 
+/* disabled: solid (not faded) colours so contrast is kept */
 .billing-button:disabled {
+    background: transparent;
+    border-style: dashed;
+    color: var(--bill-mocha);
     cursor: not-allowed;
-    opacity: 0.55;
+    opacity: 1;
 }
 
 .billing-notice {
@@ -417,7 +432,7 @@
 .billing-success {
     padding: 1rem;
     border: 1px solid var(--bill-mocha);
-    background: var(--bill-blue);
+    background: var(--bill-blue-light);
     color: var(--bill-mocha);
     line-height: 1.7;
 }
