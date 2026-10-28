@@ -1,137 +1,124 @@
-CURIO Museum
 An Interactive Digital Museum Experience
-1. Project Overview
-CURIO Museum is an interactive web-based museum platform developed as
-part of the DecodeLabs Internship. It helps visitors explore
-historical exhibits, ancient civilizations, and cultural heritage
-through a modern digital experience.
+DecodeLabs Full Stack Development Internship --- Batch 2026
+Project Overview
+CURIO Museum is a responsive, interactive museum website for exploring
+historical exhibits and cultural heritage. Visitors can browse
+artifacts, explore a historical timeline, take a quiz, save favorite
+exhibits, share community discoveries, and browse museum-inspired
+products.
 
-Visitors can browse exhibits, explore historical timelines, take
-quizzes, save favorite artifacts, share community discoveries, and
-browse museum-inspired products.
-2. Project 1 --- Frontend and Responsive Design
-Project 1 focuses on the website interface, page structure, styling,
-responsiveness, and accessibility.
+This repository brings together the three internship milestones: P1
+--- Responsive Frontend Interface, P2 --- Backend API Development, and
+P3 --- Database Integration.
+Project 1 --- Responsive Frontend Interface
+Goal: Create a clean, user-friendly interface that adapts to
+different screen sizes.
+- Built with HTML5, CSS3, and JavaScript.
+- Responsive page layouts and navigation.
+- Museum pages for exhibits, artifact details, timeline, quiz,
+  collection, community discoveries, marketplace, and demo checkout.
+- Search, filtering, and interactive controls where supported.
+To view: Start the application using the setup instructions below,
+then open http://localhost:5000.
+Project 2 --- Backend API Development
+Goal: Build backend endpoints that receive requests, process input,
+and return responses.
+- Node.js and Express.js backend.
+- JSON request and response handling.
+- API routes for supported museum features.
+- Basic input validation and error responses.
+Start the backend:
+cd backend
+npm install
+npm run dev
+On Windows PowerShell, use npm.cmd run dev if PowerShell blocks npm.
 
-Includes: - Semantic HTML5 page structure. - CSS styling with
-responsive layouts. - Navigation between museum sections. - Search and
-filtering interfaces. - Interactive exhibit, timeline, quiz, collection,
-community, and marketplace pages. - Accessibility and readable colour
-contrast.
+The server runs at http://localhost:5000 by default. The Express
+server also serves the frontend, so you can use the same address to open
+the website.
 
-How to check: Open index.html in a browser and navigate through
-the website pages. Test the layout at desktop and mobile widths.
-3. Project 2 --- Backend and API Integration
-Project 2 connects the website to a Node.js and Express backend. The
-backend provides API endpoints and returns JSON responses for supported
-features.
-
-Includes: - REST-style API routes. - GET and POST requests for
-supported features. - Input validation and error handling. -
-Frontend-to-backend communication using JavaScript fetch().
-
-How to run the backend:
-1. Install Node.js.
-2. Open a terminal in the project folder.
-3. Run:
-   cd backend
-   npm install
-   npm run dev
-4. The backend runs at http://localhost:5000.
-5. Check the API at http://localhost:5000/api/health.
-Keep the backend running while testing features that use the API.
-4. Project 3 --- MySQL Database Integration
-Project 3 connects Community Discoveries to a MySQL database so
-discovery records can be created, viewed, updated, and deleted.
-
-Includes: - MySQL database: curio_museum - Table:
-community_discoveries - CRUD operations through the backend API. -
-Basic database constraints and input validation.
-
-Database setup:
-1. Start MySQL.
+Health endpoint: http://localhost:5000/api/health
+Project 3 --- Database Integration
+Goal: Connect the backend to a database to store and retrieve
+community discoveries.
+- MySQL database: curio_museum
+- Table: community_discoveries
+- Create, Read, Update, and Delete (CRUD) operations through the
+  backend API.
+- Schema constraints for required discovery fields.
+Database Setup
+1. Install and start MySQL.
 2. Open backend/schema.sql in MySQL Workbench and execute it.
-3. Create backend/.env using backend/.env.example as a guide.
-4. Add your local MySQL connection details to backend/.env.
-5. Start the backend using the commands in Project 2.
-Test the database integration: - Add a discovery on the Community
-page and confirm it appears in MySQL. - Refresh the page and confirm the
-discovery is still displayed. - Edit a discovery and check the updated
-values in MySQL. - Delete a discovery and confirm the record is removed.
+3. Copy backend/.env.example to backend/.env.
+4. Update backend/.env with your local MySQL credentials.
+5. From the backend folder, run npm install and npm run dev.
+6. Open http://localhost:5000/community-discoveries.html to use the
+   Community page.
+The .env file contains local credentials and must not be committed to
+GitHub. Commit .env.example instead.
+Database Verification
+In MySQL Workbench, run:
+USE curio_museum;
 
-Keep real database credentials in backend/.env and do not commit that
-file to GitHub.
-5. Functional Requirements
-The website provides these user-facing functions:
-1. Navigation: Users can move between the museum pages.
-2. Exhibit browsing: Users can view exhibit cards and individual
-   exhibit details.
-3. Search and filtering: Users can search and filter available
-   exhibits and discoveries where supported.
-4. Bookmarks: Users can save and remove favorite exhibits in their
-   browser collection.
-5. Timeline: Users can browse historical events and filter the
-   timeline.
-6. Quiz: Users can answer quiz questions, receive feedback, and
-   view their score.
-7. Community discoveries: Users can create, view, search, edit, and
-   delete discoveries through the Community page.
-8. Marketplace: Users can browse products and manage cart items.
-9. Demo checkout: Users can enter checkout details and submit a
-   simulated order; no real payment is processed.
-10. API communication: Frontend JavaScript can request data from
-    backend API endpoints.
-11. Validation and errors: Required inputs are checked and the
-    interface displays feedback for supported errors.
-6. Non-Functional Requirements
-- Usability: Pages should be clear and easy to navigate.
-- Responsiveness: Layouts should adapt to desktop, tablet, and
-  mobile screen sizes.
-- Accessibility: Text and controls should remain readable and
-  usable, including sufficient colour contrast.
-- Performance: Pages and interactions should respond in a
-  reasonable time.
-- Reliability: API failures should be handled with useful
-  feedback.
-- Maintainability: HTML, CSS, JavaScript, and backend code should
-  remain organized.
-- Compatibility: The website should work in modern browsers.
-- Data integrity: Community discovery records should follow the
-  database schema and validation rules.
-- Security: Real database credentials must stay in .env and must
-  not be committed to GitHub.
-7. Other Website Features
-Home Page
-Introduces CURIO Museum and links to its main sections.
-Discover Exhibits
-Displays historical exhibits with search, filtering, sorting, and
-browsing options.
-Exhibit Details
-Shows artifact images, descriptions, and historical context.
-My Collection
-Allows visitors to bookmark favorite exhibits. Collection data is stored
-in the browser.
-Historical Timeline
-Presents historical events with search and filtering options.
-Museum Challenge
-Provides an interactive quiz with answer feedback and scoring.
-Community Discoveries
-Allows visitors to publish, view, search, edit, and delete discoveries.
-Museum Marketplace
-Displays museum-inspired products and provides a shopping cart.
-Demo Checkout
-Simulates checkout and order submission. No real payments are processed.
-8. Technologies Used
+SELECT id, title, category, created_at
+FROM community_discoveries
+ORDER BY created_at DESC;
+Add, edit, and delete a discovery through the Community page, then run
+the query again to confirm that database records reflect the changes.
+Functional Requirements
+The application supports the following functions:
+1. Navigate between museum pages.
+2. Browse exhibits and view artifact details.
+3. Search and filter content on supported pages.
+4. Save and remove favorite exhibits in the browser collection.
+5. Browse and filter historical timeline events.
+6. Answer quiz questions and view feedback and scores.
+7. Create, view, edit, and delete community discoveries through the
+   backend and MySQL database.
+8. Browse marketplace products and manage cart items.
+9. Submit a simulated checkout; no real payment is processed.
+10. Validate supported form inputs and display operation feedback.
+Non-Functional Requirements
+- Usability: Clear navigation and understandable page controls.
+- Responsiveness: Layouts adapt to desktop and mobile screen
+  sizes.
+- Accessibility: Readable content and colour contrast are
+  considered in the interface.
+- Performance: Pages and interactions should respond promptly
+  under normal local use.
+- Reliability: Backend requests return responses and errors are
+  handled.
+- Maintainability: Frontend assets and backend code are separated
+  into organized files.
+- Data integrity: Community discovery records follow the MySQL
+  schema and required-field constraints.
+- Security: Database credentials are kept in the local .env
+  file, not committed to the repository.
+Other Website Features
+- Home: Overview and navigation to museum sections.
+- Discover Exhibits: Browse, search, filter, and sort exhibits.
+- Exhibit Details: Artifact imagery, descriptions, and historical
+  context.
+- My Collection: Browser-based bookmarks for favorite exhibits.
+- Historical Timeline: Historical events with search and
+  filtering.
+- Museum Challenge: Interactive quiz with answer feedback and
+  scoring.
+- Community Discoveries: Community-submitted discoveries managed
+  through CRUD operations.
+- Museum Marketplace: Product browsing and shopping cart.
+- Demo Checkout: Demonstration checkout only; no real payments.
+Technologies Used
   Technology       Purpose
-  HTML5            Website structure
-  CSS3             Styling and responsive design
-  JavaScript       User interactions and API requests
+  HTML5            Page structure
+  CSS3             Styling and responsive layouts
+  JavaScript       Interactions and API requests
   Node.js          Backend runtime
-  Express.js       API routes and request handling
+  Express.js       HTTP API and static file serving
   MySQL            Persistent storage for community discoveries
-  JSON             Data exchange
+  JSON             API data exchange
   Git and GitHub   Version control
-9. Project Structure
+Project Structure
 CURIO Museum/
 ├── assets/
 ├── css/
@@ -154,20 +141,13 @@ CURIO Museum/
 ├── billing.html
 ├── about.html
 └── README.md
-10. Testing Checklist
-- Navigate through the website pages.
-- Test responsive layouts, search, and filters.
-- Check backend health at /api/health.
-- Test community discovery create, read, update, and delete
-  operations.
-- Verify database changes in MySQL Workbench.
-- Confirm that .env credentials are not included in the repository.
-11. Notes
-- Node.js and MySQL must be installed to run the backend and database
-  locally.
-- Configure backend/.env with your own MySQL credentials before
-  testing database features.
-- The checkout is a demonstration only and does not process real
-  payments.
-- The Vercel deployment is for preview/testing; local MySQL is not
-  automatically connected to the deployed site.
+Notes
+- MySQL must be running for database-backed Community Discoveries.
+- The website and API are available from the Express server at
+  http://localhost:5000 during local development.
+- A separate static frontend server uses a different origin; in that
+  case, its API URL and backend CORS configuration must match the
+  local setup.
+- The Vercel URL is a preview deployment. It does not automatically
+  connect to your laptop's local MySQL database.
+- The checkout is a demo and does not process real payments.
