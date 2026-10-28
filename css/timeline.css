@@ -78,11 +78,11 @@
     isolation: isolate;
     overflow: hidden;
     background:
-        linear-gradient(180deg,
-            rgba(var(--mocha-rgb), 0.12) 0%,
-            rgba(var(--mocha-rgb), 0.5) 30%,
-            rgba(var(--mocha-rgb), 0.5) 62%,
-            rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
+         linear-gradient(180deg,
+        rgba(var(--mocha-rgb), 0.40) 0%,
+        rgba(var(--mocha-rgb), 0.65) 30%,
+        rgba(var(--mocha-rgb), 0.65) 62%,
+        rgba(var(--mocha-rgb), 0.40) 100%),
         url("../assets/Celestial Marble Observatory Museum.webp") center center / 100% 100% no-repeat,
         var(--tl-mocha);
 }

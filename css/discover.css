@@ -1092,11 +1092,11 @@
                light at top and bottom so the picture shows through.
                Lower the 0.5 numbers = clearer picture,
                raise them = easier to read the text. */
-            linear-gradient(180deg,
-                rgba(var(--mocha-rgb), 0.12) 0%,
-                rgba(var(--mocha-rgb), 0.5) 30%,
-                rgba(var(--mocha-rgb), 0.5) 62%,
-                rgba(var(--mocha-rgb), 0.18) 100%) center / 100% 100% no-repeat,
+             linear-gradient(180deg,
+        rgba(var(--mocha-rgb), 0.40) 0%,
+        rgba(var(--mocha-rgb), 0.65) 30%,
+        rgba(var(--mocha-rgb), 0.65) 62%,
+        rgba(var(--mocha-rgb), 0.40) 100%),
             url("../assets/Moonlit\ Marble\ Palace\ and\ Celestial\ Vista\ 1.webp") center / 100% 100% no-repeat;
 }
 
