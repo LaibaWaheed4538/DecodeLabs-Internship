@@ -934,7 +934,7 @@
         grid-template-columns: minmax(0, 1fr) minmax(250px, .9fr);
         gap: clamp(35px, 6vw, 95px);
         min-height: 580px;
-        padding: 85px 0 90px;
+        padding: 85px 0 90px; 
     }
 
     .timeline-hero-visual { min-height: 390px; }
@@ -959,4 +959,4 @@
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
     }
-}
+} 
