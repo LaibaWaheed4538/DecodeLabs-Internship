@@ -4,8 +4,8 @@
 */
 
 .about-page {
-    --font-heading: "Playfair Display", serif;
-    --font-body: "DM Sans", sans-serif;
+    --font-heading: "Roboto", sans-serif;
+    --font-body: "Inter", sans-serif;
     --about-blue: #A0D4E0;
    
     --about-blue-light: #B4DDE8;
@@ -27,13 +27,13 @@
 
     background: var(--about-moon), var(--about-cream);
     color: var(--about-mocha);
-    font-family: "DM Sans", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     overflow-wrap: anywhere;
 }
 
 .about-page .brand {
-    font-family: "Playfair Display", serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .about-page *,
@@ -152,7 +152,7 @@
 .about-page .about-hero h1 {
     margin: 0;
     color: var(--about-cream);
-    font-family: "Playfair Display", serif;
+    font-family: "Roboto", sans-serif;
     font-size: clamp(2.45rem, 10vw, 3.8rem);
     font-weight: 400;
     line-height: 1.05;
@@ -247,7 +247,7 @@
 .about-page .about-section-heading h2,
 .about-page .about-closing h2 {
     margin: 0;
-    font-family: "Playfair Display", serif;
+    font-family: "Roboto", sans-serif;
     font-size: clamp(2.3rem, 8.5vw, 3.2rem);
     font-weight: 400;
     line-height: 1.15;
@@ -435,7 +435,7 @@
 .about-page .about-pillar h3 {
     margin: 0 0 14px;
     color: var(--about-mocha);
-    font-family: "Playfair Display", serif;
+    font-family: "Roboto", sans-serif;
     font-size: 1.7rem;
     font-weight: 400;
 }
