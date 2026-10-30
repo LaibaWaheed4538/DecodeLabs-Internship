@@ -115,7 +115,7 @@
     text-align: center;
 }
 
-.exhibit-error h1 {
+.exhibit-error h2 {
     margin: 0 auto 18px;
     font-family: "Inter", sans-serif;
     font-size: clamp(2.1rem, 5vw, 3.8rem);

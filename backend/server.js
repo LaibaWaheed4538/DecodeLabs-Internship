@@ -1,19 +1,27 @@
 // Load the packages needed to run the backend server.
 const express = require("express");
 const path = require("node:path");
-
-// Load environment variables from the backend .env file.
+const crypto = require("node:crypto");
+const fs = require("node:fs");
+const vm = require("node:vm");
 const process = require("node:process");
 
-process.loadEnvFile(path.join(__dirname, ".env"));
+// Load environment variables from backend/.env.
+// The server still starts if the file is missing; database routes then
+// answer with a clear 500 error instead of the whole server crashing.
+try {
+  process.loadEnvFile(path.join(__dirname, ".env"));
+} catch (error) {
+  console.warn("backend/.env not found. Copy .env.example to .env and add your MySQL settings.");
+}
 
 // Use the promise-based MySQL driver for database queries.
 const mysql = require("mysql2/promise");
 
 // Create a connection pool using the database settings from .env.
 const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
+  host: process.env.DB_HOST || "localhost",
+  port: Number(process.env.DB_PORT) || 3306,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME
@@ -21,15 +29,10 @@ const db = mysql.createPool({
 
 // Load the existing exhibit data.
 const exhibits = require("./data/exhibits");
-const fs = require("node:fs");
-const vm = require("node:vm");
 const context = { window: {} };
 
 // Read the shared data file used by the frontend.
-const source = fs.readFileSync(
-  path.join(__dirname, "../js/data.js"),
-  "utf8"
-);
+const source = fs.readFileSync(path.join(__dirname, "../js/data.js"), "utf8");
 
 // Make the shared timeline and quiz data available to the backend.
 vm.runInNewContext(source, context);
@@ -55,6 +58,100 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
+/* ------------------------------------------------------------------
+   Validation helpers ("Never trust the client")
+   Syntactic validation: is the format correct?
+   Semantic validation: is the value allowed?
+------------------------------------------------------------------ */
+
+// Maximum lengths match the columns in schema.sql.
+const FIELD_LIMITS = {
+  title: 100,
+  category: 50,
+  period: 60,
+  location: 100,
+  contributor: 70,
+  description: 1000
+};
+const REFERENCE_LIMIT = 180;
+
+// Categories offered by the Community Discoveries form.
+const ALLOWED_CATEGORIES = [
+  "Archaeology",
+  "History",
+  "Science",
+  "Nature",
+  "Invention",
+  "Other"
+];
+
+// Standard UUID format used for discovery IDs.
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+// Demo marketplace products (used by the products and orders routes).
+const marketplaceProducts = [
+  { id: "greek-oinochoe", name: "Ancient Greek Oinochoe", category: "History", price: 85 },
+  { id: "greek-krater", name: "Greek Terracotta Calyx-Krater", category: "Art", price: 120 },
+  { id: "archaic-oinochoe", name: "Archaic Greek Oinochoe", category: "History", price: 95 },
+  { id: "terracotta-vessel", name: "Terracotta Vessel Study", category: "History", price: 75 },
+  { id: "egyptian-bronze", name: "Egyptian Bronze Statuette", category: "History", price: 110 },
+  { id: "ancient-bronze-figure", name: "Ancient Bronze Figure", category: "Art", price: 95 }
+];
+
+// Check and clean the body of a discovery request.
+// Returns { value } when valid, or { error } when invalid.
+function validateDiscovery(body) {
+  const input = body || {};
+  const value = {};
+
+  for (const [key, limit] of Object.entries(FIELD_LIMITS)) {
+    const field = input[key];
+
+    if (typeof field !== "string" || !field.trim()) {
+      return { error: `"${key}" is required.` };
+    }
+
+    if (field.trim().length > limit) {
+      return { error: `"${key}" must be ${limit} characters or fewer.` };
+    }
+
+    value[key] = field.trim();
+  }
+
+  if (!ALLOWED_CATEGORIES.includes(value.category)) {
+    return {
+      error: `"category" must be one of: ${ALLOWED_CATEGORIES.join(", ")}.`
+    };
+  }
+
+  // The reference is optional, but it must be a string within the limit.
+  if (input.reference !== undefined && input.reference !== null) {
+    if (typeof input.reference !== "string") {
+      return { error: `"reference" must be text.` };
+    }
+
+    if (input.reference.trim().length > REFERENCE_LIMIT) {
+      return {
+        error: `"reference" must be ${REFERENCE_LIMIT} characters or fewer.`
+      };
+    }
+  }
+
+  value.reference = (input.reference || "").trim();
+
+  return { value };
+}
+
+// Check that a discovery ID has the correct UUID format.
+function isValidDiscoveryId(id) {
+  return typeof id === "string" && UUID_PATTERN.test(id);
+}
+
+/* ------------------------------------------------------------------
+   Routes
+------------------------------------------------------------------ */
+
 // Check whether the backend is responding.
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "ok" });
@@ -72,67 +169,79 @@ app.get("/api/timeline", (req, res) => {
 
 // Return the demo products displayed in the marketplace.
 app.get("/api/marketplace", (req, res) => {
-    res.status(200).json([
-        { id: "greek-oinochoe", name: "Ancient Greek Oinochoe", category: "History", price: 85 },
-        { id: "greek-krater", name: "Greek Terracotta Calyx-Krater", category: "Art", price: 120 },
-        { id: "archaic-oinochoe", name: "Archaic Greek Oinochoe", category: "History", price: 95 },
-        { id: "terracotta-vessel", name: "Terracotta Vessel Study", category: "History", price: 75 },
-        { id: "egyptian-bronze", name: "Egyptian Bronze Statuette", category: "History", price: 110 },
-        { id: "ancient-bronze-figure", name: "Ancient Bronze Figure", category: "Art", price: 95 }
-    ]);
+  res.status(200).json(marketplaceProducts);
 });
-
-// Keep the existing demo order functionality.
-const demoOrders = [];
 
 // Validate the demo order request and return a confirmation.
 // Orders are not saved to MySQL by this route.
 app.post("/api/orders", (req, res) => {
-    const { name, items } = req.body || {};
+  const { name, items } = req.body || {};
 
-    if (typeof name !== "string" || !name.trim() ||
-        !Array.isArray(items) || items.length === 0) {
-        return res.status(400).json({
-            error: "Valid customer name and cart items are required."
-        });
-    }
-
-    res.status(201).json({
-        message: "Demo order confirmed.",
-        customer: name.trim()
+  if (typeof name !== "string" || !name.trim() || name.trim().length > 100) {
+    return res.status(400).json({
+      error: "A customer name of 1 to 100 characters is required."
     });
+  }
+
+  if (!Array.isArray(items) || items.length === 0) {
+    return res.status(400).json({
+      error: "At least one cart item is required."
+    });
+  }
+
+  const validItems = items.every(item =>
+    item &&
+    typeof item.id === "string" &&
+    marketplaceProducts.some(product => product.id === item.id) &&
+    Number.isInteger(item.quantity) &&
+    item.quantity >= 1 &&
+    item.quantity <= 1000
+  );
+
+  if (!validItems) {
+    return res.status(400).json({
+      error: "Each cart item needs a valid product id and a whole-number quantity from 1 to 1000."
+    });
+  }
+
+  res.status(201).json({
+    message: "Demo order confirmed.",
+    customer: name.trim()
+  });
 });
 
 // Return quiz questions without revealing the answers beforehand.
 app.get("/api/quiz", (req, res) => {
-    const questions = quizQuestions.map(({ answer, explanation, ...question }) => question);
+  const questions = quizQuestions.map(
+    ({ answer, explanation, ...question }) => question
+  );
 
-    res.status(200).json(questions);
+  res.status(200).json(questions);
 });
 
-// Check an answer submitted for a quiz question.
-app.post("/api/quiz/check", (req, res) => {
-    const { questionId, selectedAnswer } = req.body || {};
+// Submit an answer to a quiz question (a quiz answer is the resource).
+app.post("/api/quiz/answers", (req, res) => {
+  const { questionId, selectedAnswer } = req.body || {};
 
-    const question = quizQuestions.find(q => q.id === questionId);
+  const question = quizQuestions.find(q => q.id === questionId);
 
-    if (!question) {
-        return res.status(404).json({ error: "Question not found" });
-    }
+  if (!question) {
+    return res.status(404).json({ error: "Question not found" });
+  }
 
-    if (
-        !Number.isInteger(selectedAnswer) ||
-        selectedAnswer < 0 ||
-        selectedAnswer >= question.options.length
-    ) {
-        return res.status(400).json({ error: "Invalid answer" });
-    }
+  if (
+    !Number.isInteger(selectedAnswer) ||
+    selectedAnswer < 0 ||
+    selectedAnswer >= question.options.length
+  ) {
+    return res.status(400).json({ error: "Invalid answer" });
+  }
 
-    res.status(200).json({
-        correct: selectedAnswer === question.answer,
-        correctAnswer: question.answer,
-        explanation: question.explanation
-    });
+  res.status(200).json({
+    correct: selectedAnswer === question.answer,
+    correctAnswer: question.answer,
+    explanation: question.explanation
+  });
 });
 
 // Return one exhibit using its ID.
@@ -147,7 +256,6 @@ app.get("/api/exhibits/:id", (req, res) => {
 
   res.status(200).json(exhibit);
 });
-
 
 // Retrieve community discoveries from MySQL.
 app.get("/api/discoveries", async (req, res) => {
@@ -199,68 +307,16 @@ app.get("/api/discoveries", async (req, res) => {
   }
 });
 
-
 // Create a new community discovery after validating the submitted details.
 app.post("/api/discoveries", async (req, res) => {
-  const {
-    title,
-    category,
-    period,
-    location,
-    contributor,
-    description,
-    reference
-  } = req.body || {};
+  const { value, error } = validateDiscovery(req.body);
 
-  // List the fields that must be provided.
-  const requiredFields = {
-    title,
-    category,
-    period,
-    location,
-    contributor,
-    description
-  };
-
-const fieldLimits = {
-  title: 100,
-  category: 50,
-  period: 60,
-  location: 100,
-  contributor: 70,
-  description: 1000
-};
-
-// Check that required fields are valid and within their length limits.
-const invalid = Object.entries(requiredFields).some(
-  ([key, value]) =>
-    typeof value !== "string" ||
-    !value.trim() ||
-    value.trim().length > fieldLimits[key]
-);
-
-// The reference is optional, but it must be a string within the allowed length.
-const invalidReference =
-  reference !== undefined &&
-  (typeof reference !== "string" || reference.trim().length > 180);
-
-if (invalid || invalidReference) {
-    return res.status(400).json({
-      error: "Please provide valid discovery details."
-    });
+  if (error) {
+    return res.status(400).json({ error });
   }
 
   // Prepare the discovery record before saving it.
-  const discovery = {
-    id: require("node:crypto").randomUUID(),
-    title: title.trim(),
-    category: category.trim(),
-    period: period.trim(),
-    location: location.trim(),
-    contributor: contributor.trim(),
-    description: description.trim(),
-    reference: (reference || "").trim()
-  };
+  const discovery = { id: crypto.randomUUID(), ...value };
 
   try {
     // Save the new discovery using a parameterized MySQL query.
@@ -297,8 +353,8 @@ if (invalid || invalidReference) {
     discovery.createdAt = rows[0].created_at.toISOString();
 
     return res.status(201).json(discovery);
-  } catch (error) {
-    console.error("Failed to save discovery:", error.message);
+  } catch (dbError) {
+    console.error("Failed to save discovery:", dbError.message);
 
     return res.status(500).json({
       error: "Failed to save discovery."
@@ -306,54 +362,16 @@ if (invalid || invalidReference) {
   }
 });
 
-
 // Update an existing community discovery.
 app.put("/api/discoveries/:id", async (req, res) => {
-  const {
-    title,
-    category,
-    period,
-    location,
-    contributor,
-    description,
-    reference
-  } = req.body || {};
+  if (!isValidDiscoveryId(req.params.id)) {
+    return res.status(400).json({ error: "Invalid discovery ID." });
+  }
 
-  const requiredFields = {
-    title,
-    category,
-    period,
-    location,
-    contributor,
-    description
-  };
+  const { value, error } = validateDiscovery(req.body);
 
-// Keep the input length limits consistent with the database columns.
-  const fieldLimits = {
-  title: 100,
-  category: 50,
-  period: 60,
-  location: 100,
-  contributor: 70,
-  description: 1000
-};
-
-// Check the required fields and their maximum lengths.
-const invalid = Object.entries(requiredFields).some(
-  ([key, value]) =>
-    typeof value !== "string" ||
-    !value.trim() ||
-    value.trim().length > fieldLimits[key]
-);
-
-// Check the optional reference field.
-const invalidReference =
-  reference !== undefined &&
-  (typeof reference !== "string" || reference.trim().length > 180);
-  if (invalid || invalidReference) {
-    return res.status(400).json({
-      error: "Please provide valid discovery details."
-    });
+  if (error) {
+    return res.status(400).json({ error });
   }
 
   try {
@@ -382,13 +400,13 @@ const invalidReference =
            updated_at = CURRENT_TIMESTAMP(3)
        WHERE id = ?`,
       [
-        title.trim(),
-        category.trim(),
-        period.trim(),
-        location.trim(),
-        contributor.trim(),
-        description.trim(),
-        (reference || "").trim(),
+        value.title,
+        value.category,
+        value.period,
+        value.location,
+        value.contributor,
+        value.description,
+        value.reference,
         req.params.id
       ]
     );
@@ -405,7 +423,7 @@ const invalidReference =
 
     const row = rows[0];
 
-    const discovery = {
+    return res.status(200).json({
       id: row.id,
       title: row.title,
       category: row.category,
@@ -416,11 +434,9 @@ const invalidReference =
       reference: row.reference,
       createdAt: row.created_at.toISOString(),
       updatedAt: row.updated_at.toISOString()
-    };
-
-    return res.status(200).json(discovery);
-  } catch (error) {
-    console.error("Failed to update discovery:", error.message);
+    });
+  } catch (dbError) {
+    console.error("Failed to update discovery:", dbError.message);
 
     return res.status(500).json({
       error: "Failed to update discovery."
@@ -428,9 +444,12 @@ const invalidReference =
   }
 });
 
-
 // Delete a discovery from MySQL using its ID.
 app.delete("/api/discoveries/:id", async (req, res) => {
+  if (!isValidDiscoveryId(req.params.id)) {
+    return res.status(400).json({ error: "Invalid discovery ID." });
+  }
+
   try {
     const [result] = await db.execute(
       "DELETE FROM community_discoveries WHERE id = ?",
@@ -443,18 +462,16 @@ app.delete("/api/discoveries/:id", async (req, res) => {
       });
     }
 
-    return res.status(200).json({
-      message: "Discovery deleted successfully"
-    });
-  } catch (error) {
-    console.error("Failed to delete discovery:", error.message);
+    // 204 No Content: the record was removed and there is nothing to return.
+    return res.status(204).end();
+  } catch (dbError) {
+    console.error("Failed to delete discovery:", dbError.message);
 
     return res.status(500).json({
       error: "Failed to delete discovery."
     });
   }
 });
-
 
 // Return a 404 response for API endpoints that do not exist.
 app.use("/api", (req, res) => {
@@ -481,6 +498,17 @@ app.get("/community-discoveries.html", (req, res) => {
 
 // Serve the remaining static frontend files.
 app.use(express.static(frontendPath));
+
+// Final safety net: unexpected errors return a JSON 500 instead of a stack trace.
+app.use((err, req, res, next) => {
+  console.error("Unexpected error:", err.message);
+
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  res.status(500).json({ error: "Internal server error" });
+});
 
 // Start the backend server.
 const server = app.listen(PORT, () => {

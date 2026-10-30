@@ -1,4 +1,3 @@
-
 /* 
    CURIO MUSEUM — KNOWLEDGE CHALLENGE
     */
@@ -271,7 +270,7 @@ const question = state.questions[state.currentIndex];
 let correct;
 
 try {
-    const response = await fetch("/api/quiz/check", {
+    const response = await fetch("/api/quiz/answers", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -467,4 +466,3 @@ try {
 
    loadQuizQuestions();
 });
-
