@@ -1,4 +1,3 @@
-
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -72,6 +71,31 @@ document.addEventListener("DOMContentLoaded", function () {
     function showStatus(message, isError = false) {
         status.textContent = message;
         status.classList.toggle("is-error", isError);
+    }
+
+    // Records created while the backend was offline have non-UUID ids,
+    // so they are never sent to the API.
+    function isServerId(id) {
+        return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+            .test(id);
+    }
+
+    // When the server rejects the data (400), show its message instead of
+    // saving the rejected data locally. Returns true when it handled it.
+    async function showValidationError(response) {
+        if (response.status !== 400) return false;
+
+        let text = "Please check the discovery details and try again.";
+
+        try {
+            const body = await response.json();
+            if (body && typeof body.error === "string") text = body.error;
+        } catch (error) {
+            // Keep the default message if the response is not JSON.
+        }
+
+        showStatus(text, true);
+        return true;
     }
 
     function makeElement(tag, className, text) {
@@ -236,6 +260,8 @@ if (!currentId) {
             body: JSON.stringify(data)
         });
 
+        if (await showValidationError(response)) return;
+
         if (!response.ok) {
             throw new Error("Failed to publish discovery");
         }
@@ -265,6 +291,10 @@ if (!currentId) {
 }
         if (currentId) {
     try {
+        if (!isServerId(currentId)) {
+            throw new Error("Local-only discovery");
+        }
+
         const response = await fetch(`${API_URL}/${currentId}`, {
     method: "PUT",
             headers: {
@@ -272,6 +302,8 @@ if (!currentId) {
             },
             body: JSON.stringify(data)
         });
+
+        if (await showValidationError(response)) return;
 
         if (!response.ok) {
             throw new Error("Failed to update discovery");
@@ -364,6 +396,10 @@ if (!currentId) {
 
             if (!confirmed) return;
             try {
+   if (!isServerId(id)) {
+       throw new Error("Local-only discovery");
+   }
+
    const response = await fetch(`${API_URL}/${id}`, {
     method: "DELETE"
     });

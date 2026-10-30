@@ -1,4 +1,3 @@
-
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -229,6 +228,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
    
    
+   if (response.status === 400) {
+    let text = "Please check your order details and try again.";
+
+    try {
+        const body = await response.json();
+        if (body && typeof body.error === "string") text = body.error;
+    } catch (parseError) {
+        // Keep the default message if the response is not JSON.
+    }
+
+    showMessage(text);
+    return;
+}
+
    if (!response.ok) {
     throw new Error("Order API unavailable");
 }
