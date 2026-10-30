@@ -245,19 +245,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 throw new Error(reason);
             }
+const confirmation = makeElement("div", "billing-success");
 
-            const confirmation = makeElement("div", "billing-success");
-            const heading = makeElement("strong", "", "Demo order confirmed.");
+const heading = makeElement(
+    "strong",
+    "",
+    "Thank you for your order!"
+);
 
-            const detail = makeElement(
-                "p",
-                "",
-                `Thank you, ${name}. Your demo order total is ${money(total)}. ` +
-                "No payment was processed and no order was saved."
-            );
+const detail = makeElement(
+    "p",
+    "",
+    `Thank you, ${name}. Your order has been submitted successfully. ` +
+    `Your total is ${money(total)}. We appreciate your interest in CURIO Museum!`
+);
 
-            confirmation.append(heading, detail);
-            message.replaceChildren(confirmation);
+confirmation.append(heading, detail);
+message.replaceChildren(confirmation);
         } catch (error) {
             console.error("Order request failed:", error);
 
