@@ -1,0 +1,14 @@
+{
+  "name": "curio-museum",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "workspaces": [
+    "backend"
+  ],
+  "scripts": {
+    "start": "node backend/server.js"
+  }
+}
