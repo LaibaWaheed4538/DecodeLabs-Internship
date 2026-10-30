@@ -1,4 +1,3 @@
-
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,16 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!grid) return;
 
     let cart = [];
+    let products = [];
+
     async function loadProducts() {
-    const response = await fetch("/api/marketplace");
+        const response = await fetch("/api/marketplace");
 
-    if (!response.ok) {
-        throw new Error("Unable to load marketplace products");
+        if (!response.ok) {
+            throw new Error("Unable to load marketplace products");
+        }
+
+        return response.json();
     }
-
-    return response.json();
-}
-let products = [];
 
     /* READ CART */
 
@@ -109,13 +109,13 @@ let products = [];
         const card = button.closest(".market-product");
 
         if (!card) return;
-const id = card.dataset.productId;
-const product = products.find(item => item.id === id);
+        const id = card.dataset.productId;
+        const product = products.find(item => item.id === id);
 
-const name = product?.name || card.dataset.name;
-const price = product
-    ? Number(product.price)
-    : Number(card.dataset.price);
+        const name = product?.name || card.dataset.name;
+        const price = product
+            ? Number(product.price)
+            : Number(card.dataset.price);
 
         if (!id || !name || !Number.isFinite(price) || price < 0) {
             if (feedback) {
@@ -148,24 +148,27 @@ const price = product
         }
 
         button.textContent = saved ? "Added ✓" : "Added (not saved)";
-        button.setAttribute("aria-label", `${name} added to cart`);
-
-        button.disabled = true;
-
-        button.textContent = "Added ✓";
-button.setAttribute("aria-label", `Add another ${name} to cart`);
-button.disabled = false;
+        button.setAttribute("aria-label", `Add another ${name} to cart`);
     });
 
     /* INITIAL STATE */
 
     cart = readCart();
     updateCount();
-    loadProducts()
-    .then(data => {
-        products = data;
-    })
-    .catch(error => {
-        console.error("Marketplace products could not be loaded:", error);
-    });
+
+    async function initProducts() {
+        try {
+            products = await loadProducts();
+        } catch (error) {
+            console.error("Marketplace products could not be loaded:", error);
+
+            if (feedback) {
+                feedback.textContent =
+                    "Live product details could not be loaded. " +
+                    "Showing the prices listed on this page.";
+            }
+        }
+    }
+
+    initProducts();
 });

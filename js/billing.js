@@ -211,57 +211,64 @@ document.addEventListener("DOMContentLoaded", () => {
             (sum, item) => sum + item.price * item.quantity,
             0
         );
+
+        submitButton.disabled = true;
+        showMessage("Placing your demo order...");
+
         try {
-    const response = await fetch("/api/orders", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            name,
-            items: cart.map(item => ({
-                id: item.id,
-                quantity: item.quantity
-            }))
-        })
-    });
+            const response = await fetch("/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name,
+                    items: cart.map(item => ({
+                        id: item.id,
+                        quantity: item.quantity
+                    }))
+                })
+            });
 
-   
-   
-   if (response.status === 400) {
-    let text = "Please check your order details and try again.";
+            if (!response.ok) {
+                let reason = "The order could not be placed.";
 
-    try {
-        const body = await response.json();
-        if (body && typeof body.error === "string") text = body.error;
-    } catch (parseError) {
-        // Keep the default message if the response is not JSON.
-    }
+                try {
+                    const body = await response.json();
 
-    showMessage(text);
-    return;
-}
+                    if (body && typeof body.error === "string") {
+                        reason = body.error;
+                    }
+                } catch (parseError) {
+                    // The response body was not JSON; keep the default reason.
+                }
 
-   if (!response.ok) {
-    throw new Error("Order API unavailable");
-}
-} catch (error) {
-    console.warn("Backend unavailable; confirming demo locally.", error);
+                throw new Error(reason);
+            }
 
-}
+            const confirmation = makeElement("div", "billing-success");
+            const heading = makeElement("strong", "", "Demo order confirmed.");
 
-        const confirmation = makeElement("div", "billing-success");
-        const heading = makeElement("strong", "", "Demo order confirmed.");
+            const detail = makeElement(
+                "p",
+                "",
+                `Thank you, ${name}. Your demo order total is ${money(total)}. ` +
+                "No payment was processed and no order was saved."
+            );
 
-        const detail = makeElement(
-            "p",
-            "",
-            `Thank you, ${name}. Your demo order total is ${money(total)}. ` +
-            "No payment was processed and no order was sent to a server."
-        );
+            confirmation.append(heading, detail);
+            message.replaceChildren(confirmation);
+        } catch (error) {
+            console.error("Order request failed:", error);
 
-        confirmation.append(heading, detail);
-        message.replaceChildren(confirmation);
+            showMessage(
+                error instanceof TypeError
+                    ? "Cannot reach the server. Check your connection and try again."
+                    : "Order failed: " + error.message
+            );
+        } finally {
+            submitButton.disabled = cart.length === 0;
+        }
     });
 
     renderCart();

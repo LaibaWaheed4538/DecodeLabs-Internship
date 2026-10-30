@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentIndex: 0,
         score: 0,
         answered: false,
+        checking: false,
         selectedAnswer: null
     };
 
@@ -245,8 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
         elements.question.focus({ preventScroll: true });
     }
 
-   async function checkAnswer() {
-        if (state.answered) {
+    async function checkAnswer() {
+        if (state.answered || state.checking) {
             return;
         }
 
@@ -265,48 +266,54 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         state.selectedAnswer = Number(selected.value);
-const question = state.questions[state.currentIndex];
 
-let correct;
+        const question = state.questions[state.currentIndex];
+        let correct;
 
-try {
-    const response = await fetch("/api/quiz/answers", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            questionId: question.id,
-            selectedAnswer: state.selectedAnswer
-        })
-    });
+        // Block repeated clicks while the answer is being checked.
+        state.checking = true;
+        elements.submit.disabled = true;
 
-    if (!response.ok) {
-        throw new Error("Answer checking API unavailable");
-    }
+        try {
+            const response = await fetch("/api/quiz/answers", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    questionId: question.id,
+                    selectedAnswer: state.selectedAnswer
+                })
+            });
 
-    const result = await response.json();
+            if (!response.ok) {
+                throw new Error("Answer checking API unavailable");
+            }
 
-    correct = result.correct;
-    question.answer = result.correctAnswer;
-    question.explanation = result.explanation;
+            const result = await response.json();
 
-} catch (error) {
-    console.warn("Backend unavailable; checking answer locally.", error);
+            correct = result.correct;
+            question.answer = result.correctAnswer;
+            question.explanation = result.explanation;
+        } catch (error) {
+            console.warn("Backend unavailable; checking answer locally.", error);
 
-    const localQuestion = data.quizQuestions.find(function (item) {
-        return item.id === question.id;
-    });
+            const localQuestion = data.quizQuestions.find(function (item) {
+                return item.id === question.id;
+            });
 
-    if (!localQuestion) {
-        showError("Could not check the answer.");
-        return;
-    }
+            if (!localQuestion) {
+                showError("Could not check the answer. Please try again.");
+                return;
+            }
 
-    correct = state.selectedAnswer === localQuestion.answer;
-    question.answer = localQuestion.answer;
-    question.explanation = localQuestion.explanation;
-}
+            correct = state.selectedAnswer === localQuestion.answer;
+            question.answer = localQuestion.answer;
+            question.explanation = localQuestion.explanation;
+        } finally {
+            state.checking = false;
+            elements.submit.disabled = false;
+        }
 
         state.answered = true;
 
@@ -464,5 +471,5 @@ try {
         }
     });
 
-   loadQuizQuestions();
+    loadQuizQuestions();
 });

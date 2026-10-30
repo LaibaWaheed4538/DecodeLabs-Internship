@@ -1,7 +1,6 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const STORAGE_KEY = "curioCommunityDiscoveries";
     const API_URL = "/api/discoveries";
 
     const form = document.getElementById("discovery-form");
@@ -27,75 +26,67 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     let discoveries = [];
-    async function fetchDiscoveries() {
-    try {
-        const response = await fetch(API_URL);
 
-        if (!response.ok) {
-            throw new Error("Failed to load discoveries");
-        }
-
-        discoveries = await response.json();
-        renderDiscoveries();
-   } catch (error) {
-    console.warn("Backend unavailable; loading local discoveries.", error);
-
-    discoveries = loadDiscoveries();
-    renderDiscoveries();
-}
-}
-
-    function loadDiscoveries() {
+    // Read the error message sent by the API, or use a fallback message.
+    async function readError(response, fallback) {
         try {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            const records = saved ? JSON.parse(saved) : [];
-            return Array.isArray(records) ? records : [];
-        } catch (error) {
-            return [];
+            const body = await response.json();
+
+            if (body && typeof body.error === "string") {
+                return body.error;
+            }
+        } catch (parseError) {
+            // The response body was not JSON; use the fallback message.
         }
+
+        return fallback;
     }
 
-    function saveDiscoveries() {
+    // Turn any error into a message that is safe to show to the user.
+    function friendlyMessage(error) {
+        if (error instanceof TypeError) {
+            return "Cannot reach the server. Check your connection and try again.";
+        }
+
+        return error.message || "Something went wrong. Please try again.";
+    }
+
+    // Disable the form while a request is running.
+    function setBusy(isBusy) {
+        form.setAttribute("aria-busy", String(isBusy));
+        submitButton.disabled = isBusy;
+        cancelButton.disabled = isBusy;
+    }
+
+    // Load discoveries from the API. Returns true on success.
+    async function fetchDiscoveries() {
+        list.setAttribute("aria-busy", "true");
+        summary.textContent = "Loading discoveries...";
+
         try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(discoveries));
+            const response = await fetch(API_URL);
+
+            if (!response.ok) {
+                throw new Error(
+                    await readError(response, "Failed to load discoveries.")
+                );
+            }
+
+            discoveries = await response.json();
+            renderDiscoveries();
             return true;
         } catch (error) {
-            showStatus(
-                "Browser storage is unavailable. Changes may not persist.",
-                true
-            );
+            console.error("Failed to load discoveries:", error);
+            renderLoadError(friendlyMessage(error));
             return false;
+        } finally {
+            list.removeAttribute("aria-busy");
         }
     }
 
     function showStatus(message, isError = false) {
         status.textContent = message;
         status.classList.toggle("is-error", isError);
-    }
-
-    // Records created while the backend was offline have non-UUID ids,
-    // so they are never sent to the API.
-    function isServerId(id) {
-        return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-            .test(id);
-    }
-
-    // When the server rejects the data (400), show its message instead of
-    // saving the rejected data locally. Returns true when it handled it.
-    async function showValidationError(response) {
-        if (response.status !== 400) return false;
-
-        let text = "Please check the discovery details and try again.";
-
-        try {
-            const body = await response.json();
-            if (body && typeof body.error === "string") text = body.error;
-        } catch (error) {
-            // Keep the default message if the response is not JSON.
-        }
-
-        showStatus(text, true);
-        return true;
     }
 
     function makeElement(tag, className, text) {
@@ -129,6 +120,22 @@ document.addEventListener("DOMContentLoaded", function () {
         empty.append(link);
 
         list.append(empty);
+    }
+
+    function renderLoadError(message) {
+        list.replaceChildren();
+        count.textContent = "00";
+        summary.textContent = "Discoveries could not be loaded.";
+
+        const box = makeElement("div", "community-empty");
+        box.setAttribute("role", "alert");
+        box.append(
+            makeElement("h3", "", "Discoveries unavailable"),
+            makeElement("p", "", message),
+            makeButton("Try again", "retry", "community-submit", "retry")
+        );
+
+        list.append(box);
     }
 
     function renderDiscoveries() {
@@ -243,130 +250,69 @@ document.addEventListener("DOMContentLoaded", function () {
         return data;
     }
 
-    form.addEventListener("submit", async function (event)  {
+    form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         if (!form.reportValidity()) return;
 
         const data = getFormData();
         const currentId = editId.value;
-if (!currentId) {
-    try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+        const isEdit = Boolean(currentId);
 
-        if (await showValidationError(response)) return;
+        setBusy(true);
+        showStatus(isEdit ? "Updating discovery..." : "Publishing discovery...");
 
-        if (!response.ok) {
-            throw new Error("Failed to publish discovery");
+        try {
+            const response = await fetch(
+                isEdit ? `${API_URL}/${encodeURIComponent(currentId)}` : API_URL,
+                {
+                    method: isEdit ? "PUT" : "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    await readError(
+                        response,
+                        isEdit
+                            ? "Failed to update discovery."
+                            : "Failed to publish discovery."
+                    )
+                );
+            }
+
+            resetForm();
+
+            const refreshed = await fetchDiscoveries();
+
+            showStatus(
+                refreshed
+                    ? (isEdit
+                        ? "Discovery updated successfully."
+                        : "Discovery published successfully.")
+                    : "Saved, but the list could not be refreshed. Please reload the page.",
+                !refreshed
+            );
+        } catch (error) {
+            console.error("Failed to save discovery:", error);
+            showStatus(friendlyMessage(error), true);
+        } finally {
+            setBusy(false);
         }
-
-        await fetchDiscoveries();
-        resetForm();
-        showStatus("Discovery published successfully.");
-        return;
-    } catch (error) {
-    console.warn("Backend unavailable; saving discovery locally.", error);
-
-    discoveries = loadDiscoveries();
-
-    discoveries.unshift({
-      id: Date.now().toString(36) + Math.random().toString(36).slice(2),
-        ...data,
-        createdAt: new Date().toISOString()
     });
 
-    if (!saveDiscoveries()) return;
-
-    resetForm();
-    renderDiscoveries();
-    showStatus("Discovery published locally.");
-    return;
-}
-}
-        if (currentId) {
-    try {
-        if (!isServerId(currentId)) {
-            throw new Error("Local-only discovery");
-        }
-
-        const response = await fetch(`${API_URL}/${currentId}`, {
-    method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
-        if (await showValidationError(response)) return;
-
-        if (!response.ok) {
-            throw new Error("Failed to update discovery");
-        }
-
-        await fetchDiscoveries();
-        resetForm();
-        showStatus("Discovery updated successfully.");
-        return;
-
-  } catch (error) {
-    console.warn("Backend unavailable; updating locally.", error);
-
-    const index = discoveries.findIndex(item => item.id === currentId);
-
-    if (index === -1) {
-        showStatus("Discovery not found.", true);
-        return;
-    }
-
-    discoveries[index] = {
-        ...discoveries[index],
-        ...data
-    };
-
-    if (!saveDiscoveries()) return;
-
-    resetForm();
-    renderDiscoveries();
-    showStatus("Discovery updated locally.");
-    return;
-}
-}else {
-            const id = window.crypto && crypto.randomUUID
-                ? crypto.randomUUID()
-                : Date.now().toString(36) +
-                  Math.random().toString(36).slice(2);
-
-            discoveries.unshift({
-                id: id,
-                ...data,
-                createdAt: new Date().toISOString()
-            });
-        }
-
-        const saved = saveDiscoveries();
-
-        resetForm();
-        renderDiscoveries();
-
-        showStatus(
-            saved
-                ? (currentId
-                    ? "Discovery updated successfully."
-                    : "Discovery published successfully.")
-                : "Updated for this session, but could not be saved permanently.",
-            !saved
-        );
-    });
-
-    list.addEventListener("click",async function (event) {
+    list.addEventListener("click", async function (event) {
         const button = event.target.closest("button[data-action]");
         if (!button) return;
+
+        if (button.dataset.action === "retry") {
+            await fetchDiscoveries();
+            return;
+        }
 
         const id = button.dataset.id;
         const item = discoveries.find(record => record.id === id);
@@ -395,43 +341,37 @@ if (!currentId) {
             );
 
             if (!confirmed) return;
+
+            button.disabled = true;
+
             try {
-   if (!isServerId(id)) {
-       throw new Error("Local-only discovery");
-   }
+                const response = await fetch(
+                    `${API_URL}/${encodeURIComponent(id)}`,
+                    { method: "DELETE" }
+                );
 
-   const response = await fetch(`${API_URL}/${id}`, {
-    method: "DELETE"
-    });
+                if (!response.ok) {
+                    throw new Error(
+                        await readError(response, "Failed to delete discovery.")
+                    );
+                }
 
-    if (!response.ok) {
-        throw new Error("Failed to delete discovery");
-    }
+                if (editId.value === id) resetForm();
 
-    await fetchDiscoveries();
-    if (editId.value === id) resetForm();
-    showStatus("Discovery deleted successfully.");
-    return;
+                const refreshed = await fetchDiscoveries();
 
-} catch (error) {
-    console.warn("Backend unavailable; deleting locally.", error);
-
-    discoveries = discoveries.filter(function (record) {
-        return record.id !== id;
-    });
-
-    if (!saveDiscoveries()) return;
-
-    if (editId.value === id) {
-        resetForm();
-    }
-
-    renderDiscoveries();
-    showStatus("Discovery deleted locally.");
-    return;
-}          
-
-           
+                showStatus(
+                    refreshed
+                        ? "Discovery deleted successfully."
+                        : "Deleted, but the list could not be refreshed. Please reload the page.",
+                    !refreshed
+                );
+            } catch (error) {
+                console.error("Failed to delete discovery:", error);
+                showStatus(friendlyMessage(error), true);
+            } finally {
+                button.disabled = false;
+            }
         }
     });
 
